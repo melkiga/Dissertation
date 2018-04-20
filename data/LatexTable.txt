@@ -1,0 +1,55 @@
+Acronym & Definition \\
+\textbf{aCC} & Average Correlation Coefficient \\
+\textbf{APR} & Axis Parallel Rectangle \\
+\textbf{aRMSE} & Average Root Mean Squared Error \\
+\textbf{aRRMSE} & Average Relative Root Mean Squared Error \\
+\textbf{AUC} & Area Under ROC Curve \\
+\textbf{BVM} & Ball Vector Machines \\
+\textbf{CitationKNN} & Citation k-Nearest Neighbors \\
+\textbf{CV} & Cross Validation \\
+\textbf{CVM} & Core Vector Machines \\
+\textbf{DD} & Diverse Density \\
+\textbf{EM-DD} & Expectation-Maximization Diverse Density \\
+\textbf{ERC} & Ensemble of Random Chains \\
+\textbf{ERCC} & Ensemble of Random Chains Corrected \\
+\textbf{FN} & False Negative \\
+\textbf{FP} & False Positive \\
+\textbf{ISDA} & Iterative Single Data Algorithm \\
+\textbf{KNN} & k-Nearest Neighbors \\
+\textbf{MI} & Multiple Instance \\
+\textbf{miGraph} & Mixed Integer Graph \\
+\textbf{MIL} & Multiple Instance Learning \\
+\textbf{MIOptimalBall} & Multiple Instance Optimal Ball \\
+\textbf{MIRI} & Multi-Instance Rule Induction \\
+\textbf{MIRSVM} & Multi-Instance Support Vector Machine \\
+\textbf{MISMO} & Multiple Instance Sequential Minimal Optimization \\
+\textbf{MITI} & Multi-Instance Tree Inducer \\
+\textbf{MNSVM} & Minimal Norm Support Vector Machine \\
+\textbf{MORF} & Multi-Objective Random Forests \\
+\textbf{MSE} & Mean Squared Error \\
+\textbf{MT} & Multiple Target \\
+\textbf{MTR} & Multiple Target Regression \\
+\textbf{MTS} & Multiple Target Stacking \\
+\textbf{MTSC} & Multiple Target Stacking Corrected \\
+\textbf{NLSVR} & Non-Linear Support Vector Regressor \\
+\textbf{NNISDA} & Non-Negative Iterative Single Data Algorithm \\
+\textbf{NORMA} & "Na{\""}ve Online R Minimization Algorithm" \\
+\textbf{OLLA} & Online Learning Algorithm \\
+\textbf{PEGASOS} & Primal Estimated Sub-Gradient Solver for Support Vector Machines \\
+\textbf{QP} & Quadratic Programming \\
+\textbf{RC} & Random Chaining \\
+\textbf{RCC} & Regression Chains Corrected \\
+\textbf{ROC} & Receiver Operating Characteristic \\
+\textbf{SGD} & Stochastic Gradient Descent \\
+\textbf{SMI} & Standard Multiple Instance Assumption \\
+\textbf{SMO} & Sequential Minimal Optimization \\
+\textbf{SphereSVM} & Sphere Support Vector Machine \\
+\textbf{SRM} & Structured Risk Minimization \\
+\textbf{ST} & Single Target \\
+\textbf{SVM} & Support Vector Machine \\
+\textbf{SVR} & Support Vector Regressor \\
+\textbf{SVRCC} & Support Vector Regressor with maximum Correlation Chaining \\
+\textbf{SVRRC} & Support Vector Regressor with Random Chaining \\
+\textbf{TLC} & Two-Level Classifier \\
+\textbf{TN} & True Negative \\
+\textbf{TP} & True Positive  \\

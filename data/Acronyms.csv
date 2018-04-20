@@ -1,0 +1,55 @@
+﻿Acronym,Definition
+aCC,Average Correlation Coefficient
+APR,Axis Parallel Rectangle
+aRMSE,Average Root Mean Squared Error
+aRRMSE,Average Relative Root Mean Squared Error
+AUC,Area Under ROC Curve
+BVM,Ball Vector Machines
+CitationKNN,Citation k-Nearest Neighbors
+CV,Cross Validation
+CVM,Core Vector Machines
+DD,Diverse Density
+EM-DD,Expectation-Maximization Diverse Density
+ERC,Ensemble of Random Chains
+ERCC,Ensemble of Random Chains Corrected
+FN,False Negative
+FP,False Positive
+ISDA,Iterative Single Data Algorithm
+KNN,k-Nearest Neighbors
+MI,Multiple Instance
+miGraph,Mixed Integer Graph
+MIL,Multiple Instance Learning
+MIOptimalBall,Multiple Instance Optimal Ball
+MIRI,Multi-Instance Rule Induction
+MIRSVM,Multi-Instance Support Vector Machine
+MISMO,Multiple Instance Sequential Minimal Optimization
+MITI,Multi-Instance Tree Inducer
+MNSVM,Minimal Norm Support Vector Machine
+MORF,Multi-Objective Random Forests
+MSE,Mean Squared Error
+MT,Multiple Target
+MTR,Multiple Target Regression
+MTS,Multiple Target Stacking
+MTSC,Multiple Target Stacking Corrected
+NLSVR,Non-Linear Support Vector Regressor
+NNISDA,Non-Negative Iterative Single Data Algorithm
+NORMA,"Na{\""}ve Online R Minimization Algorithm"
+OLLA,Online Learning Algorithm
+PEGASOS,Primal Estimated Sub-Gradient Solver for Support Vector Machines
+QP,Quadratic Programming
+RC,Random Chaining
+RCC,Regression Chains Corrected
+ROC,Receiver Operating Characteristic
+SGD,Stochastic Gradient Descent
+SMI,Standard Multiple Instance Assumption
+SMO,Sequential Minimal Optimization
+SphereSVM,Sphere Support Vector Machine
+SRM,Structured Risk Minimization
+ST,Single Target
+SVM,Support Vector Machine
+SVR,Support Vector Regressor
+SVRCC,Support Vector Regressor with maximum Correlation Chaining
+SVRRC,Support Vector Regressor with Random Chaining
+TLC,Two-Level Classifier
+TN,True Negative
+TP,True Positive

@@ -1,0 +1,93 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Abstract}{i}{Doc-Start}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Table of Contents}{ii}{Doc-Start}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{List of Algorithms}{iii}{chapter*.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{List of Tables}{iv}{chapter*.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{List of Figures}{vi}{chapter*.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {1} Introduction }{9}{chapter.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.1}Contributions of the Proposal }{12}{section.1.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {2} Background}{15}{chapter.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.1}Support Vector Machine Classification}{15}{section.2.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.2}Support Vector Regression}{18}{section.2.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.3}Methods for Solving the SVM Problem}{20}{section.2.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {3} Multi-Target SVR using Maximum Correlation Chains}{23}{chapter.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.1}Multi-Target Regression Background}{23}{section.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1.1}Notation}{24}{subsection.3.1.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1.2}Multi-Target Regression}{24}{subsection.3.1.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.2}Three Novel SVMs for Multi-Target Regression}{26}{section.3.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.3}Experimental Environment}{30}{section.3.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.4}Results \& Statistical Analysis}{33}{section.3.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.4.1}Average Correlation Coefficient}{33}{subsection.3.4.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.4.2}Mean Square Error}{36}{subsection.3.4.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.4.3}Average Root Mean Square Error}{36}{subsection.3.4.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.4.4}Average Relative Root Mean Square Error}{37}{subsection.3.4.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.4.5}Run Time}{39}{subsection.3.4.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.4.6}Discussion}{39}{subsection.3.4.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.5}Conclusions}{41}{section.3.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {4} Multi-Instance SVM using Bag-Representatives }{43}{chapter.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.1}Multi-Instance Classification Background}{43}{section.4.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.1.1}Notation}{43}{subsection.4.1.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.1.2}Multi-Instance Classification}{44}{subsection.4.1.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.2}Novel SVM for Multi-Instance Classification}{47}{section.4.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.3}Experimental Environment}{53}{section.4.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.4}Results \& Statistical Analysis}{55}{section.4.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.4.1}Accuracy}{57}{subsection.4.4.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.4.2}Precision \& Recall}{59}{subsection.4.4.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.4.3}Cohen's Kappa Rate}{61}{subsection.4.4.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.4.4}Area Under ROC Curve}{62}{subsection.4.4.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.4.5}Overall Comparison}{63}{subsection.4.4.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.5}Conclusions}{65}{section.4.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {5} Conclusions}{67}{chapter.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6} Future Work}{68}{chapter.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{References}{70}{chapter*.11}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Appendix \numberline {A} Publications}{79}{Appendix.a.A}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {A.1}MIRSVM: Multi-Instance SVM with Bag Representatives}{81}{section.a.A.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {A.2}Multi-Target Support Vector Regression Via Correlation Regressor Chains}{96}{section.a.A.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Appendix \numberline {B} List of Acronyms}{113}{Appendix.a.B}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Vita}{116}{chapter*.12}

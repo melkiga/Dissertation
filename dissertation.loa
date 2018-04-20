@@ -1,0 +1,10 @@
+\defcounter {refsection}{0}\relax 
+\contentsline {algorithm}{\numberline {3.1}{\ignorespaces MT Support Vector Regression (SVR)}}{26}{algorithm.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {algorithm}{\numberline {3.2}{\ignorespaces Build Chained Model}}{27}{algorithm.3.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {algorithm}{\numberline {3.3}{\ignorespaces MT SVR with Random-Chains (SVRRC)}}{28}{algorithm.3.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {algorithm}{\numberline {3.4}{\ignorespaces MT SVR with Max-Correlation Chain (SVRCC)}}{29}{algorithm.3.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {algorithm}{\numberline {4.1}{\ignorespaces Multi-Instance Representative SVM (MIRSVM)}}{51}{algorithm.4.1}

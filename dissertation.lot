@@ -1,0 +1,49 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {3.1}{\ignorespaces Multi-Target (MT) Regression datasets}}{31}{table.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {3.2}{\ignorespaces Average Correlation Coefficient (aCC) for MT regressors}}{34}{table.3.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {3.3}{\ignorespaces Wilcoxon, Nemenyi, and Holm tests for aCC}}{34}{table.3.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {3.4}{\ignorespaces Mean Square Error (MSE) for MT regressors}}{35}{table.3.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {3.5}{\ignorespaces Wilcoxon, Nemenyi, and Holm tests for MSE}}{35}{table.3.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {3.6}{\ignorespaces Average Root Mean Square Error (aRMSE) for MT regressors}}{37}{table.3.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {3.7}{\ignorespaces Wilcoxon, Nemenyi, and Holm tests for aRMSE}}{37}{table.3.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {3.8}{\ignorespaces Average Relative Root Mean Square Error (aRRMSE) for MT regressors}}{38}{table.3.8}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {3.9}{\ignorespaces Wilcoxon, Nemenyi, and Holm tests for aRRMSE}}{38}{table.3.9}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {3.10}{\ignorespaces Run Time (seconds) for MT regressors}}{40}{table.3.10}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {3.11}{\ignorespaces Wilcoxon, Nemenyi, and Holm tests for Run Time}}{40}{table.3.11}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.1}{\ignorespaces Multi-Instance (MI) Classification datasets}}{54}{table.4.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.2}{\ignorespaces Accuracy for MI classifiers}}{58}{table.4.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.3}{\ignorespaces Holm and Wilcoxon tests for Accuracy}}{58}{table.4.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.4}{\ignorespaces Precision for MI classifiers}}{59}{table.4.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.5}{\ignorespaces Holm and Wilcoxon tests for Precision}}{59}{table.4.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.6}{\ignorespaces Recall for MI classifiers}}{60}{table.4.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.7}{\ignorespaces Holm and Wilcoxon tests for Recall}}{60}{table.4.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.8}{\ignorespaces Cohen's Kappa Rate for MI classifiers}}{61}{table.4.8}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.9}{\ignorespaces Holm and Wilcoxon tests for Cohen's Kappa rate}}{61}{table.4.9}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.10}{\ignorespaces AUC for MI classifiers}}{62}{table.4.10}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.11}{\ignorespaces Holm and Wilcoxon tests for AUC}}{62}{table.4.11}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.12}{\ignorespaces Run Time (seconds) for MI classifiers}}{64}{table.4.12}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.13}{\ignorespaces Overall ranks comparison for MI classifiers}}{64}{table.4.13}

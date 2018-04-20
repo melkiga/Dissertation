@@ -1,0 +1,2283 @@
+% $ biblatex auxiliary file $
+% $ biblatex version 2.5 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\entry{Aizerman67theoretical}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Aizerman}{A.}%
+     {M.~A.}{M.~A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Braverman}{B.}%
+     {E.~A.}{E.~A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Rozonoer}{R.}%
+     {L.}{L.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{AMABEARL1}
+  \strng{fullhash}{AMABEARL1}
+  \field{sortinit}{A}
+  \field{booktitle}{Automation and Remote Control}
+  \field{number}{25}
+  \field{pages}{821\bibrangedash 837}
+  \field{title}{Theoretical foundations of the potential function method in
+  pattern recognition learning}
+  \field{year}{1964}
+\endentry
+
+\entry{Alca2011}{article}{}
+  \name{author}{7}{}{%
+    {{}%
+     {Alcal\'{a}-Fdez}{A.-F.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Fern\'{a}ndez}{F.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Luengo}{L.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Derrac}{D.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Garc\'{i}a}{G.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {S\'{a}nchez}{S.}%
+     {L.}{L.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Herrera}{H.}%
+     {F.}{F.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{AFJ+1}
+  \strng{fullhash}{AFJFALJDJGSSLHF1}
+  \field{sortinit}{A}
+  \field{pages}{255\bibrangedash 287}
+  \field{title}{{KEEL Data-mining software tool: data set repository,
+  integration of algorithms and experimental analysis framework, analysis
+  framework}}
+  \field{volume}{17}
+  \field{journaltitle}{Journal of Multiple-Valued Logic and Soft Computing}
+  \field{year}{2011}
+\endentry
+
+\entry{Amores2013}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Amores}{A.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{AJ1}
+  \strng{fullhash}{AJ1}
+  \field{sortinit}{A}
+  \field{pages}{81\bibrangedash 105}
+  \field{title}{{Multiple instance classification: review, taxonomy and
+  comparative study}}
+  \field{volume}{201}
+  \field{journaltitle}{Artificial Intelligence}
+  \field{year}{2013}
+\endentry
+
+\entry{Andrews2002}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Andrews}{A.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Tsochantaridis}{T.}%
+     {I.}{I.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Hofmann}{H.}%
+     {T.}{T.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{ASTIHT1}
+  \strng{fullhash}{ASTIHT1}
+  \field{sortinit}{A}
+  \field{booktitle}{{Proceedings of the 15th International Conference on Neural
+  Information Processing Systems}}
+  \field{pages}{577\bibrangedash 584}
+  \field{title}{{Support Vector Machines for Multiple-Instance Learning}}
+  \field{year}{2002}
+\endentry
+
+\entry{Lichman:2013}{misc}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Asuncion}{A.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Newman}{N.}%
+     {D.}{D.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{AAND1}
+  \strng{fullhash}{AAND1}
+  \field{sortinit}{A}
+  \field{title}{{UCI} machine learning repository}
+  \field{year}{2007}
+\endentry
+
+\entry{Auer2004}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Auer}{A.}%
+     {P.}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ortner}{O.}%
+     {R.}{R.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{APOR1}
+  \strng{fullhash}{APOR1}
+  \field{sortinit}{A}
+  \field{booktitle}{European Conference on Machine Learning}
+  \field{pages}{63\bibrangedash 74}
+  \field{series}{Lecture Notes in Computer Science}
+  \field{title}{A Boosting Approach to Multiple Instance Learning}
+  \field{volume}{3201}
+  \field{year}{2004}
+\endentry
+
+\entry{Baxter1997}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Baxter}{B.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{BJ1}
+  \strng{fullhash}{BJ1}
+  \field{sortinit}{B}
+  \field{pages}{7\bibrangedash 39}
+  \field{title}{A {B}ayesian/information theoretic model of learning to learn
+  via multiple task sampling}
+  \field{volume}{28}
+  \field{journaltitle}{Machine Learning}
+  \field{year}{1997}
+\endentry
+
+\entry{BenDavic2003}{incollection}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Ben-David}{B.-D.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Schuller}{S.}%
+     {R.}{R.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer}%
+  }
+  \strng{namehash}{BDSSR1}
+  \strng{fullhash}{BDSSR1}
+  \field{sortinit}{B}
+  \field{booktitle}{Learning Theory and Kernel Machines}
+  \field{pages}{567\bibrangedash 580}
+  \field{title}{Exploiting task relatedness for multiple task learning}
+  \field{year}{2003}
+\endentry
+
+\entry{bennett2000duality}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Bennett}{B.}%
+     {K.~P.}{K.~P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Bredensteiner}{B.}%
+     {E.~J.}{E.~J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{BKPBEJ1}
+  \strng{fullhash}{BKPBEJ1}
+  \field{sortinit}{B}
+  \field{booktitle}{International Conference on Machine Learning}
+  \field{pages}{57\bibrangedash 64}
+  \field{title}{Duality and geometry in SVM classifiers}
+  \field{year}{2000}
+\endentry
+
+\entry{Bjerring2011}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Bjerring}{B.}%
+     {L.}{L.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Frank}{F.}%
+     {E.}{E.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{BLFE1}
+  \strng{fullhash}{BLFE1}
+  \field{sortinit}{B}
+  \field{booktitle}{Proceedings of the Australasian Joint Conference on
+  Artificial Intelligence}
+  \field{pages}{41\bibrangedash 50}
+  \field{title}{{Beyond trees: adopting MITI to learn rules and ensemble
+  classifiers for multi-instance data}}
+  \field{year}{2011}
+\endentry
+
+\entry{Blaschko2006}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Blaschko}{B.}%
+     {M.}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Hofmann}{H.}%
+     {T.}{T.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{BMHT1}
+  \strng{fullhash}{BMHT1}
+  \field{sortinit}{B}
+  \field{booktitle}{{Proceedings of the 19th Conference on Advances in Neural
+  Information Processing Systems}}
+  \field{pages}{1\bibrangedash 6}
+  \field{title}{{Conformal Multi-instance Kernels}}
+  \field{year}{2006}
+\endentry
+
+\entry{Blockeel2005}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Blockeel}{B.}%
+     {H.}{H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Page}{P.}%
+     {D.}{D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Srinivasan}{S.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{BHPDSA1}
+  \strng{fullhash}{BHPDSA1}
+  \field{sortinit}{B}
+  \field{booktitle}{{Proceedings of the International Conference on Machine
+  Learning}}
+  \field{pages}{57\bibrangedash 64}
+  \field{title}{Multi-instance tree learning}
+  \field{year}{2005}
+\endentry
+
+\entry{Borchani2015}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Borchani}{B.}%
+     {H.}{H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Varando}{V.}%
+     {G.}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Bielza}{B.}%
+     {C.}{C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Larra{\~n}aga}{L.}%
+     {P.}{P.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{BH+1}
+  \strng{fullhash}{BHVGBCLP1}
+  \field{sortinit}{B}
+  \field{number}{5}
+  \field{pages}{216\bibrangedash 233}
+  \field{title}{A survey on multi-output regression}
+  \field{volume}{5}
+  \field{journaltitle}{Wiley Interdisciplinary Reviews: Data Mining and
+  Knowledge Discovery}
+  \field{year}{2015}
+\endentry
+
+\entry{boser1992training}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Boser}{B.}%
+     {B.~E.}{B.~E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Guyon}{G.}%
+     {I.~M.}{I.~M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Vapnik}{V.}%
+     {V.~N.}{V.~N.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{BBEGIMVVN1}
+  \strng{fullhash}{BBEGIMVVN1}
+  \field{sortinit}{B}
+  \field{booktitle}{Proceedings of the 5th Annual Workshop on Computational
+  Learning Theory}
+  \field{pages}{144\bibrangedash 152}
+  \field{title}{A training algorithm for optimal margin classifiers}
+  \field{year}{1992}
+\endentry
+
+\entry{bottou2010large}{inproceedings}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Bottou}{B.}%
+     {L.}{L.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{BL1}
+  \strng{fullhash}{BL1}
+  \field{sortinit}{B}
+  \field{booktitle}{Proceedings of nineteenth International Conference on
+  Computational Statistics}
+  \field{pages}{177\bibrangedash 186}
+  \field{title}{Large-scale machine learning with stochastic gradient descent}
+  \field{year}{2010}
+\endentry
+
+\entry{bousquet2008tradeoffs}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Bousquet}{B.}%
+     {O.}{O.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Bottou}{B.}%
+     {L.}{L.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{BOBL1}
+  \strng{fullhash}{BOBL1}
+  \field{sortinit}{B}
+  \field{booktitle}{Advances in Neural Information Processing Systems}
+  \field{pages}{161\bibrangedash 168}
+  \field{title}{The tradeoffs of large scale learning}
+  \field{year}{2008}
+\endentry
+
+\entry{Boyd2004}{book}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Boyd}{B.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Vanderberghe}{V.}%
+     {L.}{L.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Cambridge University Press}%
+  }
+  \strng{namehash}{BSVL1}
+  \strng{fullhash}{BSVL1}
+  \field{sortinit}{B}
+  \field{title}{{Convex Optimization}}
+  \field{year}{2004}
+\endentry
+
+\entry{Breiman1996}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Breiman}{B.}%
+     {L.}{L.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{BL2}
+  \strng{fullhash}{BL2}
+  \field{sortinit}{B}
+  \field{number}{2}
+  \field{pages}{123\bibrangedash 140}
+  \field{title}{Bagging predictors}
+  \field{volume}{24}
+  \field{journaltitle}{Machine Learning}
+  \field{year}{1996}
+\endentry
+
+\entry{Carbonneau2016}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Carbonneau}{C.}%
+     {M.~A.}{M.~A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Granger}{G.}%
+     {E.}{E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Raymond}{R.}%
+     {A.~J.}{A.~J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Gagnon}{G.}%
+     {G.}{G.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{CMA+1}
+  \strng{fullhash}{CMAGERAJGG1}
+  \field{sortinit}{C}
+  \field{pages}{83\bibrangedash 99}
+  \field{title}{{Robust multiple-instance learning ensembles using random
+  subspace instance selection}}
+  \field{volume}{58}
+  \field{journaltitle}{Pattern Recognition}
+  \field{year}{2016}
+\endentry
+
+\entry{Caruana1997}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Caruana}{C.}%
+     {R.}{R.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer}%
+  }
+  \strng{namehash}{CR1}
+  \strng{fullhash}{CR1}
+  \field{sortinit}{C}
+  \field{booktitle}{Learning to learn}
+  \field{pages}{95\bibrangedash 133}
+  \field{title}{Multitask learning}
+  \field{year}{1998}
+\endentry
+
+\entry{cauwenberghs2001incremental}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Cauwenberghs}{C.}%
+     {G.}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Poggio}{P.}%
+     {T.}{T.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{CGPT1}
+  \strng{fullhash}{CGPT1}
+  \field{sortinit}{C}
+  \field{booktitle}{Advances in Neural Information Processing Systems}
+  \field{pages}{409\bibrangedash 415}
+  \field{title}{Incremental and decremental support vector machine learning}
+  \field{year}{2001}
+\endentry
+
+\entry{CC01a}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Chang}{C.}%
+     {C.~C.}{C.~C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Lin}{L.}%
+     {C.~J.}{C.~J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{CCCLCJ1}
+  \strng{fullhash}{CCCLCJ1}
+  \field{sortinit}{C}
+  \field{note}{Software available at
+  \url{http://www.csie.ntu.edu.tw/~cjlin/libsvm}}
+  \field{number}{3}
+  \field{pages}{1\bibrangedash 27}
+  \field{title}{{LIBSVM}: A library for support vector machines}
+  \field{volume}{2}
+  \field{journaltitle}{ACM Transactions on Intelligent Systems and Technology}
+  \field{year}{2011}
+\endentry
+
+\entry{Chen2006}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Chen}{C.}%
+     {Y.}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Bi}{B.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Wang}{W.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{CYBJWJ1}
+  \strng{fullhash}{CYBJWJ1}
+  \field{sortinit}{C}
+  \field{number}{12}
+  \field{pages}{1931\bibrangedash 1947}
+  \field{title}{{MILES: multiple-instance learning via embedded instance
+  selection}}
+  \field{volume}{28}
+  \field{journaltitle}{IEEE Transactions on Pattern Analysis and Machine
+  Intelligence}
+  \field{year}{2006}
+\endentry
+
+\entry{Chen2004}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Chen}{C.}%
+     {Y.}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Wang}{W.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{CYWJ1}
+  \strng{fullhash}{CYWJ1}
+  \field{sortinit}{C}
+  \field{pages}{913\bibrangedash 939}
+  \field{title}{Image categorization by learning and reasoning with regions}
+  \field{volume}{5}
+  \field{journaltitle}{Journal of Machine Learning Research}
+  \field{year}{2004}
+\endentry
+
+\entry{collobert2004links}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Collobert}{C.}%
+     {R.}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Bengio}{B.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{CRBS1}
+  \strng{fullhash}{CRBS1}
+  \field{sortinit}{C}
+  \field{booktitle}{Proceedings of the twenty first International Conference on
+  Machine Learning}
+  \field{pages}{23}
+  \field{title}{Links between perceptrons, MLPs and SVMs}
+  \field{year}{2004}
+\endentry
+
+\entry{Cortes1995}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Cortes}{C.}%
+     {C.}{C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Vapnik}{V.}%
+     {V.}{V.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{CCVV1}
+  \strng{fullhash}{CCVV1}
+  \field{sortinit}{C}
+  \field{number}{3}
+  \field{pages}{273\bibrangedash 297}
+  \field{title}{Support-vector networks}
+  \field{volume}{20}
+  \field{journaltitle}{Machine Learning}
+  \field{year}{1995}
+\endentry
+
+\entry{Dietterich1997}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Dietterich}{D.}%
+     {T.~G.}{T.~G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Lathrop}{L.}%
+     {R.~H.}{R.~H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Lozano-Perez}{L.-P.}%
+     {T.}{T.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{DTGLRHLPT1}
+  \strng{fullhash}{DTGLRHLPT1}
+  \field{sortinit}{D}
+  \field{pages}{31\bibrangedash 71}
+  \field{title}{Solving the multiple instance problem with axis-parallel
+  rectangles}
+  \field{volume}{89}
+  \field{journaltitle}{Artificial Intelligence}
+  \field{year}{1997}
+\endentry
+
+\entry{Dong2006}{thesis}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Dong}{D.}%
+     {L.}{L.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{DL1}
+  \strng{fullhash}{DL1}
+  \field{sortinit}{D}
+  \field{title}{A comparison of multi-instance learning algorithms}
+  \list{institution}{1}{%
+    {The University of Waikato}%
+  }
+  \field{type}{phdthesis}
+  \field{year}{2006}
+\endentry
+
+\entry{Doran201479}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Doran}{D.}%
+     {G.}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ray}{R.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{DGRS1}
+  \strng{fullhash}{DGRS1}
+  \field{sortinit}{D}
+  \field{number}{1-2}
+  \field{pages}{79\bibrangedash 102}
+  \field{title}{A theoretical and empirical analysis of support vector machine
+  methods for multiple-instance classification}
+  \field{volume}{97}
+  \field{journaltitle}{Machine Learning}
+  \field{year}{2014}
+\endentry
+
+\entry{Drucker1997}{inproceedings}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Drucker}{D.}%
+     {H.}{H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Burges}{B.}%
+     {C.~J.~C.}{C.~J.~C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kaufman}{K.}%
+     {L.}{L.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Smola}{S.}%
+     {A.~J.}{A.~J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Vapnik}{V.}%
+     {V.}{V.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{DH+1}
+  \strng{fullhash}{DHBCJCKLSAJVV1}
+  \field{sortinit}{D}
+  \field{booktitle}{Advances in neural information processing systems}
+  \field{pages}{155\bibrangedash 161}
+  \field{title}{Support vector regression machines}
+  \field{year}{1997}
+\endentry
+
+\entry{Dunn1961}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Dunn}{D.}%
+     {O.~J.}{O.~J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{DOJ1}
+  \strng{fullhash}{DOJ1}
+  \field{sortinit}{D}
+  \field{number}{293}
+  \field{pages}{52\bibrangedash 64}
+  \field{title}{Multiple comparisons among means}
+  \field{volume}{56}
+  \field{journaltitle}{Journal of the American Statistical Association}
+  \field{year}{1961}
+\endentry
+
+\entry{Evgeniou2005}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Evgeniou}{E.}%
+     {T.}{T.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Micchelli}{M.}%
+     {C.A.}{C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Pontil}{P.}%
+     {M.}{M.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{ETMCPM1}
+  \strng{fullhash}{ETMCPM1}
+  \field{sortinit}{E}
+  \field{pages}{615\bibrangedash 637}
+  \field{title}{Learning multiple tasks with kernel methods}
+  \field{volume}{6}
+  \field{journaltitle}{Journal of Machine Learning Research}
+  \field{year}{2005}
+\endentry
+
+\entry{evgeniou2004regularized}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Evgeniou}{E.}%
+     {T.}{T.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Pontil}{P.}%
+     {M.}{M.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{ETPM1}
+  \strng{fullhash}{ETPM1}
+  \field{sortinit}{E}
+  \field{booktitle}{Proceedings of the tenth ACM SIGKDD international
+  conference on Knowledge discovery and data mining}
+  \field{pages}{109\bibrangedash 117}
+  \field{title}{Regularized multi--task learning}
+  \field{year}{2004}
+\endentry
+
+\entry{Foulds2010}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Foulds}{F.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Frank}{F.}%
+     {E.}{E.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{FJFE1}
+  \strng{fullhash}{FJFE1}
+  \field{sortinit}{F}
+  \field{number}{1}
+  \field{pages}{1\bibrangedash 24}
+  \field{title}{A review of multi-instance learning assumptions}
+  \field{volume}{25}
+  \field{journaltitle}{The Knowledge Engineering Review}
+  \field{year}{2010}
+\endentry
+
+\entry{Frank2003}{report}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Frank}{F.}%
+     {E.~T.}{E.~T.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Xu}{X.}%
+     {X.}{X.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{FETXX1}
+  \strng{fullhash}{FETXX1}
+  \field{sortinit}{F}
+  \field{title}{Applying propositional learning algorithms to multi-instance
+  data}
+  \list{institution}{1}{%
+    {University of Waikato, Department of Computer Science}%
+  }
+  \field{type}{techreport}
+  \field{year}{2003}
+\endentry
+
+\entry{Fu2011}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Fu}{F.}%
+     {Z.}{Z.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Robles-Kelly}{R.-K.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Zhou}{Z.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{FZRKAZJ1}
+  \strng{fullhash}{FZRKAZJ1}
+  \field{sortinit}{F}
+  \field{number}{5}
+  \field{pages}{958\bibrangedash 977}
+  \field{title}{{MILIS: multiple instance learning with instance selection}}
+  \field{volume}{33}
+  \field{journaltitle}{{IEEE Transactions on Pattern Analysis and Machine
+  Intelligence}}
+  \field{year}{2011}
+\endentry
+
+\entry{Smola2002}{inproceedings}{}
+  \name{author}{4}{}{%
+    {{}%
+     {G{\"a}rtner}{G.}%
+     {T.}{T.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Flach}{F.}%
+     {P.A.}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kowalczyk}{K.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Smola}{S.}%
+     {A.J.}{A.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{GT+1}
+  \strng{fullhash}{GTFPKASA1}
+  \field{sortinit}{G}
+  \field{booktitle}{Proceedings of the 19th International Conference on Machine
+  Learning}
+  \field{pages}{179\bibrangedash 186}
+  \field{title}{Multi-Instance Kernels}
+  \field{year}{2002}
+\endentry
+
+\entry{Hall2009}{article}{}
+  \name{author}{6}{}{%
+    {{}%
+     {Hall}{H.}%
+     {M.}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Frank}{F.}%
+     {E.}{E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Holmes}{H.}%
+     {G.}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Pfahringer}{P.}%
+     {B.}{B.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Reutemann}{R.}%
+     {P.}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Witten}{W.}%
+     {I.~H.}{I.~H.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{HM+1}
+  \strng{fullhash}{HMFEHGPBRPWIH1}
+  \field{sortinit}{H}
+  \field{number}{1}
+  \field{pages}{10\bibrangedash 18}
+  \field{title}{{The WEKA data mining software: an update}}
+  \field{volume}{11}
+  \field{journaltitle}{ACM SIGKDD explorations newsletter}
+  \field{year}{2009}
+\endentry
+
+\entry{herbrich2016learning}{book}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Herbrich}{H.}%
+     {R.}{R.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {MIT Press}%
+  }
+  \strng{namehash}{HR1}
+  \strng{fullhash}{HR1}
+  \field{sortinit}{H}
+  \field{title}{Learning kernel classifiers}
+  \field{year}{2016}
+\endentry
+
+\entry{Herman2008}{inproceedings}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Herman}{H.}%
+     {G.}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ye}{Y.}%
+     {G.}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Xu}{X.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Zhang}{Z.}%
+     {B.}{B.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{HG+1}
+  \strng{fullhash}{HGYGXJZB1}
+  \field{sortinit}{H}
+  \field{booktitle}{Proceedings of the 10th IEEE Workshop on Multimedia Signal
+  Processing}
+  \field{pages}{586\bibrangedash 591}
+  \field{title}{Region-based image categorization with reduced feature set}
+  \field{year}{2008}
+\endentry
+
+\entry{Holander1999}{book}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Hollander}{H.}%
+     {M.}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Wolfe}{W.}%
+     {D.A.}{D.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {John Wiley \& Sons, Inc.}%
+  }
+  \strng{namehash}{HMWD1}
+  \strng{fullhash}{HMWD1}
+  \field{sortinit}{H}
+  \field{title}{Nonparametric statistical methods}
+  \field{year}{1999}
+\endentry
+
+\entry{Huang2006}{book}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Huang}{H.}%
+     {T.~M.}{T.~M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kecman}{K.}%
+     {V.}{V.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kopriva}{K.}%
+     {I.}{I.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer-Verlag}%
+  }
+  \strng{namehash}{HTMKVKI1}
+  \strng{fullhash}{HTMKVKI1}
+  \field{sortinit}{H}
+  \field{title}{Kernel based algorithms for mining huge data sets, supervised,
+  semi-supervised, and unsupervised learning}
+  \field{year}{2006}
+\endentry
+
+\entry{Jeong2009}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Jeong}{J.}%
+     {M.}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Lee}{L.}%
+     {G.~G.}{G.~G.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{JMLGG1}
+  \strng{fullhash}{JMLGG1}
+  \field{sortinit}{J}
+  \field{number}{5}
+  \field{pages}{412\bibrangedash 424}
+  \field{title}{Multi-domain spoken language understanding with transfer
+  learning}
+  \field{volume}{51}
+  \field{journaltitle}{Speech Communication}
+  \field{year}{2009}
+\endentry
+
+\entry{kecman2016fast}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Kecman}{K.}%
+     {V.}{V.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer}%
+  }
+  \strng{namehash}{KV1}
+  \strng{fullhash}{KV1}
+  \field{sortinit}{K}
+  \field{number}{4}
+  \field{pages}{203\bibrangedash 218}
+  \field{title}{Fast online algorithm for nonlinear support vector machines and
+  other alike models}
+  \field{volume}{25}
+  \field{journaltitle}{Optical Memory and Neural Networks}
+  \field{year}{2016}
+\endentry
+
+\entry{Kecman2001}{book}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Kecman}{K.}%
+     {V.}{V.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {MIT Press}%
+  }
+  \strng{namehash}{KV1}
+  \strng{fullhash}{KV1}
+  \field{sortinit}{K}
+  \field{title}{Learning and soft computing: support vector machines, neural
+  networks, and fuzzy logic models}
+  \field{year}{2001}
+\endentry
+
+\entry{Kecman2005}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Kecman}{K.}%
+     {V.}{V.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Huang}{H.}%
+     {T.~M}{T.~M}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Vogt}{V.}%
+     {M.}{M.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{KVHTMVM1}
+  \strng{fullhash}{KVHTMVM1}
+  \field{sortinit}{K}
+  \field{pages}{255\bibrangedash 274}
+  \field{title}{{Iterative single data algorithm for training kernel machines
+  from huge data sets: theory and performance}}
+  \field{volume}{177}
+  \field{journaltitle}{Studies in Computational Intelligence}
+  \field{year}{2005}
+\endentry
+
+\entry{kecman2016ieee}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Kecman}{K.}%
+     {V.}{V.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Melki}{M.}%
+     {G.}{G.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{KVMG1}
+  \strng{fullhash}{KVMG1}
+  \field{sortinit}{K}
+  \field{booktitle}{Proceedings of the IEEE Southeast Conference}
+  \field{pages}{1\bibrangedash 6}
+  \field{title}{Fast online algorithms for cupport vector machines}
+  \field{year}{2016}
+\endentry
+
+\entry{Kecman2014}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Kecman}{K.}%
+     {V.}{V.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Zigic}{Z.}%
+     {L.}{L.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{KVZL1}
+  \strng{fullhash}{KVZL1}
+  \field{sortinit}{K}
+  \field{booktitle}{Proceedings of the IEEE International Symposium on
+  Innovations in Intelligent Systems and Applications}
+  \field{pages}{419\bibrangedash 424}
+  \field{title}{{Algorithms for direct L2 support vector machines}}
+  \field{year}{2014}
+\endentry
+
+\entry{keerthi2001improvements}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Keerthi}{K.}%
+     {S.~S.}{S.~S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Shevade}{S.}%
+     {S.~K.}{S.~K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Bhattacharyya}{B.}%
+     {C.}{C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Murthy}{M.}%
+     {K.~R.~K.}{K.~R.~K.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{KSS+1}
+  \strng{fullhash}{KSSSSKBCMKRK1}
+  \field{sortinit}{K}
+  \field{number}{3}
+  \field{pages}{637\bibrangedash 649}
+  \field{title}{Improvements to Platt's SMO algorithm for SVM classifier
+  design}
+  \field{volume}{13}
+  \field{journaltitle}{Neural computation}
+  \field{year}{2001}
+\endentry
+
+\entry{kivinen2002large}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Kivinen}{K.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Smola}{S.}%
+     {A.~J.}{A.~J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Williamson}{W.}%
+     {R.~C.}{R.~C.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{KJSAJWRC1}
+  \strng{fullhash}{KJSAJWRC1}
+  \field{sortinit}{K}
+  \field{booktitle}{International Conference on Algorithmic Learning Theory}
+  \field{pages}{113\bibrangedash 127}
+  \field{title}{Large margin classification for moving targets}
+  \field{volume}{2}
+  \field{year}{2002}
+\endentry
+
+\entry{kivinen2004online}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Kivinen}{K.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Smola}{S.}%
+     {A.~J.}{A.~J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Williamson}{W.}%
+     {R.~C.}{R.~C.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{KJSAJWRC1}
+  \strng{fullhash}{KJSAJWRC1}
+  \field{sortinit}{K}
+  \field{number}{8}
+  \field{pages}{2165\bibrangedash 2176}
+  \field{title}{Online learning with kernels}
+  \field{volume}{52}
+  \field{journaltitle}{IEEE Transactions on Signal Processing}
+  \field{year}{2004}
+\endentry
+
+\entry{Kocev2007}{inproceedings}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Kocev}{K.}%
+     {D.}{D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Vens}{V.}%
+     {C.}{C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Struyf}{S.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {D{\v{z}}eroski}{D.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{organization}{1}{%
+    {Springer}%
+  }
+  \strng{namehash}{KD+1}
+  \strng{fullhash}{KDVCSJDS1}
+  \field{sortinit}{K}
+  \field{booktitle}{European Conference on Machine Learning}
+  \field{pages}{624\bibrangedash 631}
+  \field{title}{Ensembles of multi-objective decision trees}
+  \field{year}{2007}
+\endentry
+
+\entry{Kocev2013}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Kocev}{K.}%
+     {D.}{D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Vens}{V.}%
+     {C.}{C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Struyf}{S.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Dzeroski}{D.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{KD+1}
+  \strng{fullhash}{KDVCSJDS2}
+  \field{sortinit}{K}
+  \field{issue}{3}
+  \field{pages}{817\bibrangedash 833}
+  \field{title}{Tree ensembles for predicting structured outputs}
+  \field{volume}{43}
+  \field{journaltitle}{Pattern Recognition}
+  \field{year}{2013}
+\endentry
+
+\entry{Lui2010}{article}{}
+  \name{author}{6}{}{%
+    {{}%
+     {Liu}{L.}%
+     {Q.}{Q.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Xu}{X.}%
+     {Q.}{Q.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Zheng}{Z.}%
+     {V.~W.}{V.~W.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Xue}{X.}%
+     {H.}{H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Cao}{C.}%
+     {Z.}{Z.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Yang}{Y.}%
+     {Q.}{Q.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{LQ+1}
+  \strng{fullhash}{LQXQZVWXHCZYQ1}
+  \field{sortinit}{L}
+  \field{number}{1}
+  \field{pages}{181\bibrangedash 196}
+  \field{title}{Multi-task learning for cross-platform siRNA efficacy
+  prediction: an in-silico study}
+  \field{volume}{11}
+  \field{journaltitle}{BMC Bioinformatics}
+  \field{year}{2010}
+\endentry
+
+\entry{Maron1998}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Maron}{M.}%
+     {O.}{O.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Lozano-P{\'e}rez}{L.-P.}%
+     {T.}{T.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{MOLPT1}
+  \strng{fullhash}{MOLPT1}
+  \field{sortinit}{M}
+  \field{pages}{570\bibrangedash 576}
+  \field{title}{A framework for multiple-instance learning}
+  \field{volume}{3201}
+  \field{journaltitle}{Neural Information Processing Systems}
+  \field{year}{1998}
+\endentry
+
+\entry{melki2018mirsvm}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Melki}{M.}%
+     {G.}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Cano}{C.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ventura}{V.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Elsevier}%
+  }
+  \strng{namehash}{MGCAVS1}
+  \strng{fullhash}{MGCAVS1}
+  \field{sortinit}{M}
+  \field{title}{MIRSVM: Multi-Instance Support Vector Machine with Bag
+  Representatives}
+  \field{journaltitle}{Pattern Recognition}
+  \field{year}{2018}
+\endentry
+
+\entry{Melki2016}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Melki}{M.}%
+     {G.}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kecman}{K.}%
+     {V.}{V.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{organization}{1}{%
+    {IEEE}%
+  }
+  \strng{namehash}{MGKV1}
+  \strng{fullhash}{MGKV1}
+  \field{sortinit}{M}
+  \field{booktitle}{SoutheastCon, 2016}
+  \field{pages}{1\bibrangedash 6}
+  \field{title}{Speeding up online training of L1 Support Vector Machines}
+  \field{year}{2016}
+\endentry
+
+\entry{melki2017multi}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Melki}{M.}%
+     {G.}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Cano}{C.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kecman}{K.}%
+     {V.}{V.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ventura}{V.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Elsevier}%
+  }
+  \strng{namehash}{MG+1}
+  \strng{fullhash}{MGCAKVVS1}
+  \field{sortinit}{M}
+  \field{pages}{53\bibrangedash 69}
+  \field{title}{Multi-target support vector regression via correlation
+  regressor chains}
+  \field{volume}{415}
+  \field{journaltitle}{Information Sciences}
+  \field{year}{2017}
+\endentry
+
+\entry{panagiotakopoulos2013stochastic}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Panagiotakopoulos}{P.}%
+     {C.}{C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Tsampouka}{T.}%
+     {R.}{R.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{PCTR1}
+  \strng{fullhash}{PCTR1}
+  \field{sortinit}{P}
+  \field{booktitle}{Proceedings of the European Conference on Machine Learning
+  and Knowledge Discovery in Databases}
+  \field{pages}{65\bibrangedash 80}
+  \field{title}{The stochastic gradient descent for the primal L1-SVM
+  optimization revisited}
+  \field{year}{2013}
+\endentry
+
+\entry{Platt1998}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Platt}{P.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{PJ1}
+  \strng{fullhash}{PJ1}
+  \field{sortinit}{P}
+  \field{title}{Sequential minimal optimization: A fast algorithm for training
+  support vector machines}
+  \field{journaltitle}{Technical Report: MSR-TR-98-14}
+  \field{year}{1998}
+\endentry
+
+\entry{Ray2005}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Ray}{R.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Craven}{C.}%
+     {M.}{M.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{RSCM1}
+  \strng{fullhash}{RSCM1}
+  \field{sortinit}{R}
+  \field{booktitle}{Proceeding of the International Conference on Machine
+  Learning}
+  \field{pages}{697\bibrangedash 704}
+  \field{title}{Supervised versus multiple instance learning: an empirical
+  comparison}
+  \field{year}{2005}
+\endentry
+
+\entry{Schoelkopf2002}{book}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Sch{\"o}lkopf}{S.}%
+     {B.}{B.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Smola}{S.}%
+     {A.~J.}{A.~J.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {MIT press}%
+  }
+  \strng{namehash}{SBSAJ1}
+  \strng{fullhash}{SBSAJ1}
+  \field{sortinit}{S}
+  \field{title}{Learning with kernels: support vector machines, regularization,
+  optimization, and beyond}
+  \field{year}{2002}
+\endentry
+
+\entry{Shalev2014}{book}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Shalev-Shwartz}{S.-S.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ben-David}{B.-D.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Cambridge university press}%
+  }
+  \strng{namehash}{SSSBDS1}
+  \strng{fullhash}{SSSBDS1}
+  \field{sortinit}{S}
+  \field{title}{Understanding machine learning: From theory to algorithms}
+  \field{year}{2014}
+\endentry
+
+\entry{shalev2011pegasos}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Shalev-Shwartz}{S.-S.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Singer}{S.}%
+     {Y.}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Srebro}{S.}%
+     {N.}{N.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Cotter}{C.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer}%
+  }
+  \strng{namehash}{SSS+1}
+  \strng{fullhash}{SSSSYSNCA1}
+  \field{sortinit}{S}
+  \field{number}{1}
+  \field{pages}{3\bibrangedash 30}
+  \field{title}{Pegasos: Primal estimated sub-gradient solver for svm}
+  \field{volume}{127}
+  \field{journaltitle}{Mathematical programming}
+  \field{year}{2011}
+\endentry
+
+\entry{Spyromitros2014}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Spyromitros-Xioufis}{S.-X.}%
+     {E.}{E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Tsoumakas}{T.}%
+     {G.}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Groves}{G.}%
+     {W.}{W.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Vlahavas}{V.}%
+     {I.}{I.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{SXE+1}
+  \strng{fullhash}{SXETGGWVI1}
+  \field{sortinit}{S}
+  \field{title}{Multi-label classification methods for multi-target regression}
+  \field{journaltitle}{ArXiv e-prints}
+  \field{year}{2012}
+\endentry
+
+\entry{Xioufis2016}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Spyromitros-Xioufis}{S.-X.}%
+     {E.}{E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Tsoumakas}{T.}%
+     {G.}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Groves}{G.}%
+     {W.}{W.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Vlahavas}{V.}%
+     {I.}{I.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{SXE+1}
+  \strng{fullhash}{SXETGGWVI1}
+  \field{sortinit}{S}
+  \field{number}{1}
+  \field{pages}{55\bibrangedash 98}
+  \field{title}{Multi-target regression via input space expansion: treating
+  targets as inputs}
+  \field{volume}{104}
+  \field{journaltitle}{Machine Learning}
+  \field{year}{2016}
+\endentry
+
+\entry{strack2013geometric}{thesis}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Strack}{S.}%
+     {R.}{R.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{SR1}
+  \strng{fullhash}{SR1}
+  \field{sortinit}{S}
+  \field{title}{Geometric approach to support vector machines learning for
+  large datasets}
+  \list{institution}{1}{%
+    {Virginia Commonwealth University}%
+  }
+  \field{type}{phdthesis}
+  \field{year}{2013}
+\endentry
+
+\entry{thrun1996learning}{inproceedings}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Thrun}{T.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{TS1}
+  \strng{fullhash}{TS1}
+  \field{sortinit}{T}
+  \field{booktitle}{Advances in Neural Information Processing Systems}
+  \field{pages}{640\bibrangedash 646}
+  \field{title}{Is learning the n-th thing any easier than learning the first?}
+  \field{year}{1996}
+\endentry
+
+\entry{tsang2007simpler}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Tsang}{T.}%
+     {I.~W.}{I.~W.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kocsor}{K.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kwok}{K.}%
+     {K.~T.}{K.~T.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{TIWKAKKT1}
+  \strng{fullhash}{TIWKAKKT1}
+  \field{sortinit}{T}
+  \field{booktitle}{Proceedings of the twenty fourth International Conference
+  on Machine Learning}
+  \field{pages}{911\bibrangedash 918}
+  \field{title}{Simpler core vector machines with enclosing balls}
+  \field{year}{2007}
+\endentry
+
+\entry{tsang2005core}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Tsang}{T.}%
+     {I.~W.}{I.~W.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kwok}{K.}%
+     {J.~T.}{J.~T.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Cheung}{C.}%
+     {P.~M.}{P.~M.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{TIWKJTCPM1}
+  \strng{fullhash}{TIWKJTCPM1}
+  \field{sortinit}{T}
+  \field{pages}{363\bibrangedash 392}
+  \field{title}{Core vector machines: Fast SVM training on very large data
+  sets}
+  \field{volume}{6}
+  \field{journaltitle}{Journal of Machine Learning Research}
+  \field{year}{2005}
+\endentry
+
+\entry{mulan}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Tsoumakas}{T.}%
+     {G.}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Spyromitros-Xioufis}{S.-X.}%
+     {E.}{E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Vilcek}{V.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Vlahavas}{V.}%
+     {I.}{I.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{TG+1}
+  \strng{fullhash}{TGSXEVJVI1}
+  \field{sortinit}{T}
+  \field{pages}{2411\bibrangedash 2414}
+  \field{title}{Mulan: A java library for multi-label learning}
+  \field{volume}{12}
+  \field{journaltitle}{Journal of Machine Learning Research}
+  \field{year}{2011}
+\endentry
+
+\entry{Tsoumakas2014}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Tsoumakas}{T.}%
+     {G.}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Spyromitros-Xioufis}{S.-X.}%
+     {E.}{E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Vrekou}{V.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Vlahavas}{V.}%
+     {I.}{I.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{TG+1}
+  \strng{fullhash}{TGSXEVAVI1}
+  \field{sortinit}{T}
+  \field{pages}{225\bibrangedash 240}
+  \field{title}{Multi-target regression via random linear target combinations}
+  \field{volume}{8726}
+  \field{journaltitle}{Machine Learning and Knowledge Discovery in Databases}
+  \field{year}{2014}
+\endentry
+
+\entry{vapnik1997support}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Vapnik}{V.}%
+     {V.}{V.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Golowich}{G.}%
+     {S.~E.}{S.~E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Smola}{S.}%
+     {A.~J.}{A.~J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{VVGSESAJ1}
+  \strng{fullhash}{VVGSESAJ1}
+  \field{sortinit}{V}
+  \field{booktitle}{Advances in neural information processing systems}
+  \field{pages}{281\bibrangedash 287}
+  \field{title}{Support vector method for function approximation, regression
+  estimation and signal processing}
+  \field{year}{1997}
+\endentry
+
+\entry{vapnik2015uniform}{incollection}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Vapnik}{V.}%
+     {V.~N.}{V.~N.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Chervonenkis}{C.}%
+     {A.~J.}{A.~J.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer}%
+  }
+  \strng{namehash}{VVNCAJ1}
+  \strng{fullhash}{VVNCAJ1}
+  \field{sortinit}{V}
+  \field{booktitle}{Theory of Probability and its Applications}
+  \field{pages}{264\bibrangedash 280}
+  \field{title}{On the uniform convergence of relative frequencies of events to
+  their probabilities}
+  \field{volume}{16}
+  \field{year}{1971}
+\endentry
+
+\entry{vapnik2013nature}{book}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Vapnik}{V.}%
+     {Vladimir}{V.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer-Verlag}%
+  }
+  \strng{namehash}{VV1}
+  \strng{fullhash}{VV1}
+  \field{sortinit}{V}
+  \field{title}{The nature of statistical learning theory}
+  \field{year}{1995}
+\endentry
+
+\entry{Wang2000}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Wang}{W.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Zucker}{Z.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{WJZJ1}
+  \strng{fullhash}{WJZJ1}
+  \field{sortinit}{W}
+  \field{booktitle}{Proceedings of the International Conference on Machine
+  Learning}
+  \field{pages}{1119\bibrangedash 1126}
+  \field{title}{Solving the multiple-instance problem: a lazy learning
+  approach.}
+  \field{year}{2000}
+\endentry
+
+\entry{Wang2014}{inproceedings}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Wang}{W.}%
+     {X.}{X.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Liu}{L.}%
+     {X.}{X.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Matwin}{M.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Japkowicz}{J.}%
+     {N.}{N.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Guo}{G.}%
+     {H.}{H.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{WX+1}
+  \strng{fullhash}{WXLXMSJNGH1}
+  \field{sortinit}{W}
+  \field{booktitle}{Proceeding of the IEEE International Conference on Big
+  Data}
+  \field{pages}{104\bibrangedash 111}
+  \field{title}{A multi-view two-level classification method for generalized
+  multi-instance problems}
+  \field{year}{2014}
+\endentry
+
+\entry{Wilcoxon1945}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Wilcoxon}{W.}%
+     {F.}{F.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{WF1}
+  \strng{fullhash}{WF1}
+  \field{sortinit}{W}
+  \field{number}{6}
+  \field{pages}{80\bibrangedash 83}
+  \field{title}{Individual comparisons by ranking methods}
+  \field{volume}{1}
+  \field{journaltitle}{Biometrics bulletin}
+  \field{year}{1945}
+\endentry
+
+\entry{Wu2015430}{article}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Wu}{W.}%
+     {Q.}{Q.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ye}{Y.}%
+     {Y.}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Zhang}{Z.}%
+     {H.}{H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Chow}{C.}%
+     {T.~W.~S.}{T.~W.~S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ho}{H.}%
+     {S.~S.}{S.~S.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{WQ+1}
+  \strng{fullhash}{WQYYZHCTWSHSS1}
+  \field{sortinit}{W}
+  \field{number}{3}
+  \field{pages}{430\bibrangedash 443}
+  \field{title}{{ML-TREE: A tree-structure-based approach to multilabel
+  learning}}
+  \field{volume}{26}
+  \field{journaltitle}{IEEE Transactions on Neural Networks and Learning
+  Systems}
+  \field{year}{2015}
+\endentry
+
+\entry{Xu2003}{thesis}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Xu}{X.}%
+     {X.}{X.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{XX1}
+  \strng{fullhash}{XX1}
+  \field{sortinit}{X}
+  \field{title}{Statistical learning in multiple instance problems}
+  \list{institution}{1}{%
+    {The University of Waikato}%
+  }
+  \field{type}{phdthesis}
+  \field{year}{2003}
+\endentry
+
+\entry{Yi2016}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Yi}{Y.}%
+     {Y.}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Lin}{L.}%
+     {M.}{M.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{YYLM1}
+  \strng{fullhash}{YYLM1}
+  \field{sortinit}{Y}
+  \field{pages}{148\bibrangedash 162}
+  \field{title}{Human action recognition with graph-based multiple-instance
+  learning}
+  \field{volume}{53}
+  \field{journaltitle}{Pattern Recognition}
+  \field{year}{2016}
+\endentry
+
+\entry{Zhang20141819}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Zhang}{Z.}%
+     {M.~L.}{M.~L.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Zhou}{Z.}%
+     {Z.~H.}{Z.~H.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{ZMLZZH1}
+  \strng{fullhash}{ZMLZZH1}
+  \field{sortinit}{Z}
+  \field{number}{8}
+  \field{pages}{1819\bibrangedash 1837}
+  \field{title}{A review on multi-label learning algorithms}
+  \field{volume}{26}
+  \field{journaltitle}{IEEE Transactions on Knowledge and Data Engineering}
+  \field{year}{2014}
+\endentry
+
+\entry{Zhang2001}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Zhang}{Z.}%
+     {Q.}{Q.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Goldman}{G.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{ZQGS1}
+  \strng{fullhash}{ZQGS1}
+  \field{sortinit}{Z}
+  \field{booktitle}{Advances in Neural Information Processing Systems}
+  \field{pages}{1073\bibrangedash 1080}
+  \field{title}{{Em-DD: an improved multiple-instance learning technique}}
+  \field{year}{2002}
+\endentry
+
+\entry{zhang2004solving}{inproceedings}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Zhang}{Z.}%
+     {T.}{T.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{organization}{1}{%
+    {ACM}%
+  }
+  \strng{namehash}{ZT1}
+  \strng{fullhash}{ZT1}
+  \field{sortinit}{Z}
+  \field{booktitle}{Proceedings of the twenty first International Conference on
+  Machine Learning}
+  \field{pages}{116}
+  \field{title}{Solving large scale linear prediction problems using stochastic
+  gradient descent algorithms}
+  \field{year}{2004}
+\endentry
+
+\entry{zigic2016}{thesis}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Zigic}{Z.}%
+     {L.~J.}{L.~J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{ZLJ1}
+  \strng{fullhash}{ZLJ1}
+  \field{sortinit}{Z}
+  \field{title}{Direct L2 support vector machine}
+  \list{institution}{1}{%
+    {Virginia Commonwealth University}%
+  }
+  \field{type}{phdthesis}
+  \field{year}{2016}
+\endentry
+
+\lossort
+\endlossort
+
+\endinput
