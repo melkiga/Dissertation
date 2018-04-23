@@ -1576,6 +1576,24 @@
   \field{year}{2017}
 \endentry
 
+\entry{melki2016fast}{book}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Melki}{M.}%
+     {Gabriella~Angela}{G.~A.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Virginia Commonwealth University}%
+  }
+  \strng{namehash}{MGA1}
+  \strng{fullhash}{MGA1}
+  \field{sortinit}{M}
+  \field{title}{Fast online training of L1 support vector machines}
+  \field{year}{2016}
+\endentry
+
 \entry{panagiotakopoulos2013stochastic}{inproceedings}{}
   \name{author}{2}{}{%
     {{}%

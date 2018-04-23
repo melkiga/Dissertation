@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  20 APR 2018 10:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  23 APR 2018 11:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -677,6 +677,10 @@ Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
 \c@LT@chunks=\count153
 \LT@p@ftn=\toks39
 )
+(/usr/local/texlive/2015/texmf-dist/tex/latex/comment/comment.sty
+\CommentStream=\write4
+
+Excluding comment 'comment')
 (/usr/local/texlive/2015/texmf-dist/tex/latex/threeparttable/threeparttable.sty
 Package: threeparttable 2003/06/13  v 3.0
 \@tempboxb=\box47
@@ -770,7 +774,7 @@ File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 \bibparsep=\skip72
 \bibhang=\skip73
 \blx@auxin=\read2
-\blx@auxout=\write4
+\blx@auxout=\write5
 \c@mincomprange=\count194
 \c@maxcomprange=\count195
 \c@mincompwidth=\count196
@@ -1312,7 +1316,7 @@ Package biblatex Info: No input encoding detected.
 (biblatex)             Assuming 'ascii'.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'ascii'.
-\openout4 = `dissertation-blx.bib'.
+\openout5 = `dissertation-blx.bib'.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'dissertation.bbl' found.
@@ -1338,8 +1342,8 @@ LaTeX Info: Redefining \pageref on input line 54.
 LaTeX Info: Redefining \nameref on input line 54.
 
 (./dissertation.out) (./dissertation.out)
-\@outlinefile=\write5
-\openout5 = `dissertation.out'.
+\@outlinefile=\write6
+\openout6 = `dissertation.out'.
 
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 90.
 
@@ -1374,12 +1378,12 @@ l.110 \tableofcontents
                        [1] (./dissertation.toc [2
 
 ])
-\tf@toc=\write6
-\openout6 = `dissertation.toc'.
+\tf@toc=\write7
+\openout7 = `dissertation.toc'.
 
  [3] (./dissertation.loa)
-\tf@loa=\write7
-\openout7 = `dissertation.loa'.
+\tf@loa=\write8
+\openout8 = `dissertation.loa'.
 
 
 [4
@@ -1387,14 +1391,14 @@ l.110 \tableofcontents
 ] (./dissertation.lot [5
 
 ])
-\tf@lot=\write8
-\openout8 = `dissertation.lot'.
+\tf@lot=\write9
+\openout9 = `dissertation.lot'.
 
  [6] (./dissertation.lof [7
 
 ])
-\tf@lof=\write9
-\openout9 = `dissertation.lof'.
+\tf@lof=\write10
+\openout10 = `dissertation.lof'.
 
  [8]
 CHAPTER 1.
@@ -1427,7 +1431,7 @@ CHAPTER 4.
 [43
 
 ] [44] [45] [46] [47] [48] [49] [50] [51]
-<figures/convergence.png, id=928, 2400.97pt x 1559.8275pt>
+<figures/convergence.png, id=910, 2400.97pt x 1559.8275pt>
 File: figures/convergence.png Graphic file (type png)
 
 <use figures/convergence.png>
@@ -1445,7 +1449,7 @@ converted-to.pdf figures/mirsvm_figure.eps>
 (epstopdf)             \includegraphics on input line 1400.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/mirsvm_figure-eps-converted-to.pdf, id=930, 421.575pt x 316.18124pt>
+<figures/mirsvm_figure-eps-converted-to.pdf, id=912, 421.575pt x 316.18124pt>
 File: figures/mirsvm_figure-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/mirsvm_figure-eps-converted-to.pdf>
@@ -1464,7 +1468,7 @@ onverted-to.pdf figures/misvm_figure.eps>
 (epstopdf)             \includegraphics on input line 1404.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/misvm_figure-eps-converted-to.pdf, id=931, 421.575pt x 316.18124pt>
+<figures/misvm_figure-eps-converted-to.pdf, id=913, 421.575pt x 316.18124pt>
 File: figures/misvm_figure-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/misvm_figure-eps-converted-to.pdf>
@@ -1503,856 +1507,64 @@ CHAPTER 6.
 
 ] [69] [70
 
-] [71] [72] [73] [74] [75] [76] [77] [78]
-Appendix A.
-[79
-
-] <figures/pr.jpg, id=1152, 578.16pt x 770.88pt>
-File: figures/pr.jpg Graphic file (type jpg)
- <use figures/pr.jpg>
-Package pdftex.def Info: figures/pr.jpg used on input line 2021.
-(pdftex.def)             Requested size: 144.53964pt x 192.71953pt.
-
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mirsvm.pdf): 
-PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mirsvm.pdf, id=1153, 597.47716pt x 796.89719pt>
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf>
-Package pdftex.def Info: publications/mirsvm.pdf used on input line 2031.
-(pdftex.def)             Requested size: 597.47571pt x 796.89525pt.
-
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mirsvm.pdf): 
-PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-File: publications/mirsvm.pdf Graphic file (type pdf)
-<use publications/mirsvm.pdf>
-Package pdftex.def Info: publications/mirsvm.pdf used on input line 2031.
-(pdftex.def)             Requested size: 597.47571pt x 796.89525pt.
-
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mirsvm.pdf): 
-PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mirsvm.pdf): 
-PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mirsvm.pdf, id=1156, page=1, 597.47716pt x 796.89719pt>
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 1>
-Package pdftex.def Info: publications/mirsvm.pdf, page1 used on input line 2031
-.
-(pdftex.def)             Requested size: 597.47571pt x 796.89525pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
- <use publications/mirsvm.pdf, page 1>
-Package pdftex.def Info: publications/mirsvm.pdf, page1 used on input line 2031
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 1>
-Package pdftex.def Info: publications/mirsvm.pdf, page1 used on input line 2031
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
- <use publications/mirsvm.pdf, page 1>
-Package pdftex.def Info: publications/mirsvm.pdf, page1 used on input line 2031
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-
-[80 <./figures/pr.jpg>]
-File: publications/mirsvm.pdf Graphic file (type pdf)
- <use publications/mirsvm.pdf, page 1>
-Package pdftex.def Info: publications/mirsvm.pdf, page1 used on input line 2031
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
- [81 <./publications/mirsvm.pdf>]
-File: publications/mirsvm.pdf Graphic file (type pdf)
- <use publications/mirsvm.pdf>
-Package pdftex.def Info: publications/mirsvm.pdf used on input line 2032.
-(pdftex.def)             Requested size: 597.47571pt x 796.89525pt.
-
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mirsvm.pdf): 
-PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-File: publications/mirsvm.pdf Graphic file (type pdf)
-<use publications/mirsvm.pdf>
-Package pdftex.def Info: publications/mirsvm.pdf used on input line 2032.
-(pdftex.def)             Requested size: 597.47571pt x 796.89525pt.
-
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mirsvm.pdf): 
-PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mirsvm.pdf): 
-PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mirsvm.pdf, id=1218, page=2, 597.47716pt x 796.89719pt>
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 2>
-Package pdftex.def Info: publications/mirsvm.pdf, page2 used on input line 2032
-.
-(pdftex.def)             Requested size: 597.47571pt x 796.89525pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
- <use publications/mirsvm.pdf, page 2>
-Package pdftex.def Info: publications/mirsvm.pdf, page2 used on input line 2032
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 2>
-Package pdftex.def Info: publications/mirsvm.pdf, page2 used on input line 2032
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
- <use publications/mirsvm.pdf, page 2>
-Package pdftex.def Info: publications/mirsvm.pdf, page2 used on input line 2032
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mirsvm.pdf): 
-PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mirsvm.pdf, id=1219, page=3, 597.47716pt x 796.89719pt>
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 3>
-Package pdftex.def Info: publications/mirsvm.pdf, page3 used on input line 2032
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
- <use publications/mirsvm.pdf, page 3>
-Package pdftex.def Info: publications/mirsvm.pdf, page3 used on input line 2032
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 2>
-Package pdftex.def Info: publications/mirsvm.pdf, page2 used on input line 2032
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
- [82 <./publications/mirsvm.pdf>]
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mirsvm.pdf): 
-PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mirsvm.pdf, id=1255, page=4, 597.47716pt x 796.89719pt>
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 4>
-Package pdftex.def Info: publications/mirsvm.pdf, page4 used on input line 2032
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
- <use publications/mirsvm.pdf, page 4>
-Package pdftex.def Info: publications/mirsvm.pdf, page4 used on input line 2032
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 3>
-Package pdftex.def Info: publications/mirsvm.pdf, page3 used on input line 2032
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
- [83 <./publications/mirsvm.pdf>]
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mirsvm.pdf): 
-PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mirsvm.pdf, id=1272, page=5, 597.47716pt x 796.89719pt>
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 5>
-Package pdftex.def Info: publications/mirsvm.pdf, page5 used on input line 2032
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
- <use publications/mirsvm.pdf, page 5>
-Package pdftex.def Info: publications/mirsvm.pdf, page5 used on input line 2032
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 4>
-Package pdftex.def Info: publications/mirsvm.pdf, page4 used on input line 2032
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
- [84 <./publications/mirsvm.pdf>]
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mirsvm.pdf): 
-PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mirsvm.pdf, id=1278, page=6, 597.47716pt x 796.89719pt>
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 6>
-Package pdftex.def Info: publications/mirsvm.pdf, page6 used on input line 2032
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
- <use publications/mirsvm.pdf, page 6>
-Package pdftex.def Info: publications/mirsvm.pdf, page6 used on input line 2032
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 5>
-Package pdftex.def Info: publications/mirsvm.pdf, page5 used on input line 2032
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
- [85 <./publications/mirsvm.pdf>]
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mirsvm.pdf): 
-PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mirsvm.pdf, id=1302, page=7, 597.47716pt x 796.89719pt>
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 7>
-Package pdftex.def Info: publications/mirsvm.pdf, page7 used on input line 2032
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
- <use publications/mirsvm.pdf, page 7>
-Package pdftex.def Info: publications/mirsvm.pdf, page7 used on input line 2032
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 6>
-Package pdftex.def Info: publications/mirsvm.pdf, page6 used on input line 2032
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
- [86 <./publications/mirsvm.pdf>]
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mirsvm.pdf): 
-PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mirsvm.pdf, id=1312, page=8, 597.47716pt x 796.89719pt>
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 8>
-Package pdftex.def Info: publications/mirsvm.pdf, page8 used on input line 2032
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
- <use publications/mirsvm.pdf, page 8>
-Package pdftex.def Info: publications/mirsvm.pdf, page8 used on input line 2032
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 7>
-Package pdftex.def Info: publications/mirsvm.pdf, page7 used on input line 2032
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
- [87 <./publications/mirsvm.pdf>]
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mirsvm.pdf): 
-PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mirsvm.pdf, id=1322, page=9, 597.47716pt x 796.89719pt>
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 9>
-Package pdftex.def Info: publications/mirsvm.pdf, page9 used on input line 2032
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
- <use publications/mirsvm.pdf, page 9>
-Package pdftex.def Info: publications/mirsvm.pdf, page9 used on input line 2032
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 8>
-Package pdftex.def Info: publications/mirsvm.pdf, page8 used on input line 2032
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
- [88 <./publications/mirsvm.pdf>]
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mirsvm.pdf): 
-PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mirsvm.pdf, id=1348, page=10, 597.47716pt x 796.89719pt>
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 10>
-Package pdftex.def Info: publications/mirsvm.pdf, page10 used on input line 203
-2.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
- <use publications/mirsvm.pdf, page 10>
-Package pdftex.def Info: publications/mirsvm.pdf, page10 used on input line 203
-2.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 9>
-Package pdftex.def Info: publications/mirsvm.pdf, page9 used on input line 2032
-.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
- [89 <./publications/mirsvm.pdf>]
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mirsvm.pdf): 
-PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mirsvm.pdf, id=1359, page=11, 597.47716pt x 796.89719pt>
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 11>
-Package pdftex.def Info: publications/mirsvm.pdf, page11 used on input line 203
-2.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
- <use publications/mirsvm.pdf, page 11>
-Package pdftex.def Info: publications/mirsvm.pdf, page11 used on input line 203
-2.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 10>
-Package pdftex.def Info: publications/mirsvm.pdf, page10 used on input line 203
-2.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
- [90 <./publications/mirsvm.pdf>]
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mirsvm.pdf): 
-PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mirsvm.pdf, id=1365, page=12, 597.47716pt x 796.89719pt>
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 12>
-Package pdftex.def Info: publications/mirsvm.pdf, page12 used on input line 203
-2.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
- <use publications/mirsvm.pdf, page 12>
-Package pdftex.def Info: publications/mirsvm.pdf, page12 used on input line 203
-2.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 11>
-Package pdftex.def Info: publications/mirsvm.pdf, page11 used on input line 203
-2.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
- [91 <./publications/mirsvm.pdf>]
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mirsvm.pdf): 
-PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mirsvm.pdf, id=1371, page=13, 597.47716pt x 796.89719pt>
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 13>
-Package pdftex.def Info: publications/mirsvm.pdf, page13 used on input line 203
-2.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
- <use publications/mirsvm.pdf, page 13>
-Package pdftex.def Info: publications/mirsvm.pdf, page13 used on input line 203
-2.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 12>
-Package pdftex.def Info: publications/mirsvm.pdf, page12 used on input line 203
-2.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
- [92 <./publications/mirsvm.pdf>]
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mirsvm.pdf): 
-PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mirsvm.pdf, id=1377, page=14, 597.47716pt x 796.89719pt>
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 14>
-Package pdftex.def Info: publications/mirsvm.pdf, page14 used on input line 203
-2.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
- <use publications/mirsvm.pdf, page 14>
-Package pdftex.def Info: publications/mirsvm.pdf, page14 used on input line 203
-2.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 13>
-Package pdftex.def Info: publications/mirsvm.pdf, page13 used on input line 203
-2.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
- [93 <./publications/mirsvm.pdf>]
-File: publications/mirsvm.pdf Graphic file (type pdf)
-
-<use publications/mirsvm.pdf, page 14>
-Package pdftex.def Info: publications/mirsvm.pdf, page14 used on input line 203
-2.
-(pdftex.def)             Requested size: 477.98238pt x 637.51862pt.
- [94 <./publications/mirsvm.pdf>]
-<figures/is.jpg, id=1388, 565.11125pt x 770.88pt>
-File: figures/is.jpg Graphic file (type jpg)
- <use figures/is.jpg>
-Package pdftex.def Info: figures/is.jpg used on input line 2041.
-(pdftex.def)             Requested size: 141.27747pt x 192.71953pt.
-Missing character: There is no â in font cmcsc10!
-Missing character: There is no € in font cmcsc10!
-Missing character: There is no “ in font cmcsc10!
-
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mtr.pdf): PDF
- inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mtr.pdf, id=1389, 546.21864pt x 745.43294pt>
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf>
-Package pdftex.def Info: publications/mtr.pdf used on input line 2051.
-(pdftex.def)             Requested size: 546.2173pt x 745.4311pt.
-
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mtr.pdf): PDF
- inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-File: publications/mtr.pdf Graphic file (type pdf)
-<use publications/mtr.pdf>
-Package pdftex.def Info: publications/mtr.pdf used on input line 2051.
-(pdftex.def)             Requested size: 546.2173pt x 745.4311pt.
-
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mtr.pdf): PDF
- inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mtr.pdf): PDF
- inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mtr.pdf, id=1392, page=1, 546.21864pt x 745.43294pt>
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 1>
-Package pdftex.def Info: publications/mtr.pdf, page1 used on input line 2051.
-(pdftex.def)             Requested size: 546.2173pt x 745.4311pt.
-File: publications/mtr.pdf Graphic file (type pdf)
- <use publications/mtr.pdf, page 1>
-Package pdftex.def Info: publications/mtr.pdf, page1 used on input line 2051.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 1>
-Package pdftex.def Info: publications/mtr.pdf, page1 used on input line 2051.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
- <use publications/mtr.pdf, page 1>
-Package pdftex.def Info: publications/mtr.pdf, page1 used on input line 2051.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
- [95 <./figures/is.jpg>]
-File: publications/mtr.pdf Graphic file (type pdf)
- <use publications/mtr.pdf, page 1>
-Package pdftex.def Info: publications/mtr.pdf, page1 used on input line 2051.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
- [96 <./publications/mtr.pdf>]
-File: publications/mtr.pdf Graphic file (type pdf)
-<use publications/mtr.pdf>
-Package pdftex.def Info: publications/mtr.pdf used on input line 2052.
-(pdftex.def)             Requested size: 546.2173pt x 745.4311pt.
-
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mtr.pdf): PDF
- inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-File: publications/mtr.pdf Graphic file (type pdf)
-<use publications/mtr.pdf>
-Package pdftex.def Info: publications/mtr.pdf used on input line 2052.
-(pdftex.def)             Requested size: 546.2173pt x 745.4311pt.
-
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mtr.pdf): PDF
- inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mtr.pdf): PDF
- inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mtr.pdf, id=1454, page=2, 546.21864pt x 745.43294pt>
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 2>
-Package pdftex.def Info: publications/mtr.pdf, page2 used on input line 2052.
-(pdftex.def)             Requested size: 546.2173pt x 745.4311pt.
-File: publications/mtr.pdf Graphic file (type pdf)
- <use publications/mtr.pdf, page 2>
-Package pdftex.def Info: publications/mtr.pdf, page2 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 2>
-Package pdftex.def Info: publications/mtr.pdf, page2 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
- <use publications/mtr.pdf, page 2>
-Package pdftex.def Info: publications/mtr.pdf, page2 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mtr.pdf): PDF
- inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mtr.pdf, id=1455, page=3, 546.21864pt x 745.43294pt>
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 3>
-Package pdftex.def Info: publications/mtr.pdf, page3 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
- <use publications/mtr.pdf, page 3>
-Package pdftex.def Info: publications/mtr.pdf, page3 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 2>
-Package pdftex.def Info: publications/mtr.pdf, page2 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
- [97 <./publications/mtr.pdf>]
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mtr.pdf): PDF
- inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mtr.pdf, id=1466, page=4, 546.21864pt x 745.43294pt>
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 4>
-Package pdftex.def Info: publications/mtr.pdf, page4 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
- <use publications/mtr.pdf, page 4>
-Package pdftex.def Info: publications/mtr.pdf, page4 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 3>
-Package pdftex.def Info: publications/mtr.pdf, page3 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
- [98 <./publications/mtr.pdf>]
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mtr.pdf): PDF
- inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mtr.pdf, id=1520, page=5, 546.21864pt x 745.43294pt>
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 5>
-Package pdftex.def Info: publications/mtr.pdf, page5 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
- <use publications/mtr.pdf, page 5>
-Package pdftex.def Info: publications/mtr.pdf, page5 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 4>
-Package pdftex.def Info: publications/mtr.pdf, page4 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
- [99 <./publications/mtr.pdf>]
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mtr.pdf): PDF
- inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mtr.pdf, id=1526, page=6, 546.21864pt x 745.43294pt>
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 6>
-Package pdftex.def Info: publications/mtr.pdf, page6 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
- <use publications/mtr.pdf, page 6>
-Package pdftex.def Info: publications/mtr.pdf, page6 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 5>
-Package pdftex.def Info: publications/mtr.pdf, page5 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
- [100 <./publications/mtr.pdf>]
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mtr.pdf): PDF
- inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mtr.pdf, id=1552, page=7, 546.21864pt x 745.43294pt>
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 7>
-Package pdftex.def Info: publications/mtr.pdf, page7 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
- <use publications/mtr.pdf, page 7>
-Package pdftex.def Info: publications/mtr.pdf, page7 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 6>
-Package pdftex.def Info: publications/mtr.pdf, page6 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
- [101 <./publications/mtr.pdf>]
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mtr.pdf): PDF
- inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mtr.pdf, id=1568, page=8, 546.21864pt x 745.43294pt>
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 8>
-Package pdftex.def Info: publications/mtr.pdf, page8 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
- <use publications/mtr.pdf, page 8>
-Package pdftex.def Info: publications/mtr.pdf, page8 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 7>
-Package pdftex.def Info: publications/mtr.pdf, page7 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
- [102 <./publications/mtr.pdf>]
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mtr.pdf): PDF
- inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mtr.pdf, id=1583, page=9, 546.21864pt x 745.43294pt>
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 9>
-Package pdftex.def Info: publications/mtr.pdf, page9 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
- <use publications/mtr.pdf, page 9>
-Package pdftex.def Info: publications/mtr.pdf, page9 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 8>
-Package pdftex.def Info: publications/mtr.pdf, page8 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
- [103 <./publications/mtr.pdf>]
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mtr.pdf): PDF
- inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mtr.pdf, id=1589, page=10, 546.21864pt x 745.43294pt>
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 10>
-Package pdftex.def Info: publications/mtr.pdf, page10 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
- <use publications/mtr.pdf, page 10>
-Package pdftex.def Info: publications/mtr.pdf, page10 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 9>
-Package pdftex.def Info: publications/mtr.pdf, page9 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
- [104 <./publications/mtr.pdf>]
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mtr.pdf): PDF
- inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mtr.pdf, id=1596, page=11, 546.21864pt x 745.43294pt>
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 11>
-Package pdftex.def Info: publications/mtr.pdf, page11 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
- <use publications/mtr.pdf, page 11>
-Package pdftex.def Info: publications/mtr.pdf, page11 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 10>
-Package pdftex.def Info: publications/mtr.pdf, page10 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
- [105 <./publications/mtr.pdf>]
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mtr.pdf): PDF
- inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mtr.pdf, id=1602, page=12, 546.21864pt x 745.43294pt>
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 12>
-Package pdftex.def Info: publications/mtr.pdf, page12 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
- <use publications/mtr.pdf, page 12>
-Package pdftex.def Info: publications/mtr.pdf, page12 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 11>
-Package pdftex.def Info: publications/mtr.pdf, page11 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
- [106 <./publications/mtr.pdf>]
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mtr.pdf): PDF
- inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mtr.pdf, id=1608, page=13, 546.21864pt x 745.43294pt>
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 13>
-Package pdftex.def Info: publications/mtr.pdf, page13 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
- <use publications/mtr.pdf, page 13>
-Package pdftex.def Info: publications/mtr.pdf, page13 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 12>
-Package pdftex.def Info: publications/mtr.pdf, page12 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
- [107 <./publications/mtr.pdf>]
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mtr.pdf): PDF
- inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mtr.pdf, id=1623, page=14, 546.21864pt x 745.43294pt>
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 14>
-Package pdftex.def Info: publications/mtr.pdf, page14 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
- <use publications/mtr.pdf, page 14>
-Package pdftex.def Info: publications/mtr.pdf, page14 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 13>
-Package pdftex.def Info: publications/mtr.pdf, page13 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
- [108 <./publications/mtr.pdf>]
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mtr.pdf): PDF
- inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mtr.pdf, id=1633, page=15, 546.21864pt x 745.43294pt>
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 15>
-Package pdftex.def Info: publications/mtr.pdf, page15 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
- <use publications/mtr.pdf, page 15>
-Package pdftex.def Info: publications/mtr.pdf, page15 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 14>
-Package pdftex.def Info: publications/mtr.pdf, page14 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
- [109 <./publications/mtr.pdf>]
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mtr.pdf): PDF
- inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mtr.pdf, id=1643, page=16, 546.21864pt x 745.43294pt>
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 16>
-Package pdftex.def Info: publications/mtr.pdf, page16 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
- <use publications/mtr.pdf, page 16>
-Package pdftex.def Info: publications/mtr.pdf, page16 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 15>
-Package pdftex.def Info: publications/mtr.pdf, page15 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
- [110 <./publications/mtr.pdf>]
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./publications/mtr.pdf): PDF
- inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<publications/mtr.pdf, id=1653, page=17, 546.21864pt x 745.43294pt>
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 17>
-Package pdftex.def Info: publications/mtr.pdf, page17 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
- <use publications/mtr.pdf, page 17>
-Package pdftex.def Info: publications/mtr.pdf, page17 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 16>
-Package pdftex.def Info: publications/mtr.pdf, page16 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
- [111 <./publications/mtr.pdf>]
-File: publications/mtr.pdf Graphic file (type pdf)
-
-<use publications/mtr.pdf, page 17>
-Package pdftex.def Info: publications/mtr.pdf, page17 used on input line 2052.
-(pdftex.def)             Requested size: 436.9755pt x 596.34715pt.
- [112 <./publications/mtr.pdf>]
-Appendix B.
-
-Overfull \hbox (23.99998pt too wide) in alignment at lines 2056--2077
- [] [] 
- []
-
-
-Overfull \hbox (23.99998pt too wide) in alignment at lines 2077--2097
- [] [] 
- []
-
-
-Overfull \hbox (23.99998pt too wide) in alignment at lines 2097--2111
- [] [] 
- []
-
-[113
-
-] [114] [115] [116
+] [71] [72] [73] [74] [75] [76] [77] Excluding 'comment' comment.
+[78] [79
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2130.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2130.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2134.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2134.
  (./dissertation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2130.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2130.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2134.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2134.
 
 Package rerunfilecheck Info: File `dissertation.out' has not changed.
-(rerunfilecheck)             Checksum: C02E4CC63D4419DEB28743AC571D71C1;3239.
+(rerunfilecheck)             Checksum: DB20FC90BE9BD6A48A89F447A5CAB44B;2881.
 Package logreq Info: Writing requests to 'dissertation.run.xml'.
 \openout1 = `dissertation.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 37621 strings out of 493089
- 853635 string characters out of 6134842
- 1278210 words of memory out of 5000000
- 40091 multiletter control sequences out of 15000+600000
- 18158 words of font info for 66 fonts, out of 8000000 for 9000
+ 37490 strings out of 493089
+ 850515 string characters out of 6134842
+ 1279089 words of memory out of 5000000
+ 40005 multiletter control sequences out of 15000+600000
+ 17550 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  69i,20n,89p,1845b,2148s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pf
 b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy
 6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10
 .pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.
-pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx5.pf
-b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb>
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></
-usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></
-usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
-sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb>
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></
-usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></us
-r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/
-local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/lo
-cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/lo
-cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib5.pfb></us
-r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib6.pfb>
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.
-pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmm
-ib9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
-0.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.
-pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></
-usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr
-/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/
-local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/lo
-cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/loca
-l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local
-/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/te
-xlive/2015/texmf-dist/fonts/type1/public/lm/lmsy5.pfb></usr/local/texlive/2015/
-texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2
-015/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on dissertation.pdf (118 pages, 3495215 bytes).
+pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pf
+b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb>
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pf
+b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb>
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></
+usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></us
+r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/
+local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/
+local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib5.pfb></
+usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib6.pf
+b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib
+8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.
+pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pf
+b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></us
+r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/l
+ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/lo
+cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/loca
+l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/
+texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on dissertation.pdf (81 pages, 789648 bytes).
 PDF statistics:
- 1854 PDF objects out of 2073 (max. 8388607)
- 1513 compressed objects within 16 object streams
- 359 named destinations out of 1000 (max. 500000)
- 611 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1299 PDF objects out of 1440 (max. 8388607)
+ 1165 compressed objects within 12 object streams
+ 318 named destinations out of 1000 (max. 500000)
+ 364 words of extra memory for PDF output out of 10000 (max. 10000000)
 

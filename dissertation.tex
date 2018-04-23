@@ -14,7 +14,7 @@
 %%%%%%%%%%%%
 % PACKAGES %
 \usepackage{bm,amsmath,subfigure,graphicx,url,algorithm,algorithmicx,algpseudocode,booktabs}
-\usepackage{tikz-cd,adjustbox,amsfonts,mathtools,tabularx,capt-of,longtable}
+\usepackage{tikz-cd,adjustbox,amsfonts,mathtools,tabularx,capt-of,longtable,comment}
 \usepackage[flushleft]{threeparttable}
 \usepackage[top=1in,bottom=1in,right=1in,left=1in]{geometry}
 \usepackage[backend=bibtex]{biblatex}
@@ -444,7 +444,7 @@ Recently, several authors have proposed the use of a standard stochastic gradien
 Notable representatives of this method of learning include the \textit{Na{\"i}ve Online R Minimization Algorithm} (NORMA) by Kivinen et al.~\cite{kivinen2004online} and the \textit{Primal Estimated Sub-Gradient SOlver for SVM} (PEGASOS) by Shalev-Shwartz et al.~\cite{shalev2011pegasos}. NORMA is an online kernel based algorithm designed to utilize SGD for solving the SVM problem, exploiting the kernel trick in an online setting. It can be regarded as a generalization of the kernel perceptron algorithm with regularization~\cite{kivinen2004online}. PEGASOS solves the primal SVM problem using stochastic sub-gradient descent, implementing both linear and non-linear kernels, and showed that the algorithm does not directly depend on the size of the data, making it suitable for large-scale learning problems. 
 
 A more recent approach, named \textit{OnLine Learning Algorithm} (OLLA)~\cite{kecman2016fast} is a unification, simplification, and expansion of the somewhat similar approaches presented in
-~\cite{herbrich2016learning,kivinen2002large,Schoelkopf2002,Shalev2014,shalev2011pegasos} and~\cite{kecman2016ieee,Melki2016}. This algorithm is unique because it is not only designed to optimize the SVM cost function, but also the cost functions of several other popular nonlinear (kernel) classifiers using SGD in the primal domain. Collobert and Bengio~\cite{collobert2004links} provided justification for not using regularization, and thus OLLA was designed to handle cost functions with and without the regularization term. Comparisons of performances of OLLA with the popular SMO algorithm highlighted the merits of OLLA in terms of speed, as well as accuracy, when the number of samples was increased, making it suitable for large-scale learning. Comparisons using various different classifiers against SMO were also shown~\cite{kecman2016fast}, but for the scope of this proposal the L1-SVM was mentioned.
+~\cite{herbrich2016learning,kivinen2002large,Schoelkopf2002,Shalev2014,shalev2011pegasos} and~\cite{kecman2016ieee,Melki2016,melki2016fast}. This algorithm is unique because it is not only designed to optimize the SVM cost function, but also the cost functions of several other popular nonlinear (kernel) classifiers using SGD in the primal domain. Collobert and Bengio~\cite{collobert2004links} provided justification for not using regularization, and thus OLLA was designed to handle cost functions with and without the regularization term. Comparisons of performances of OLLA with the popular SMO algorithm highlighted the merits of OLLA in terms of speed, as well as accuracy, when the number of samples was increased, making it suitable for large-scale learning. Comparisons using various different classifiers against SMO were also shown~\cite{kecman2016fast}, but for the scope of this proposal the L1-SVM was mentioned.
 
 Although the SGD approaches mentioned above have many merits when it comes to solving large-scale machine learning problems, stochastic procedures also have their disadvantages. One of them stems from the lack of meaningful stopping criteria. The only specified stopping criteria is a user defined input for the number of iterations, which gives rise to the question of what it should be set to. Another disadvantage of kernelized online algorithms is that the training time for each update increases superlinearly with the number of samples. 
 
@@ -2007,6 +2007,8 @@ To address the limitations presented by current popular SVM solvers, the future 
 
 \printbibliography[title={References}, heading=bibintoc]
 
+\begin{comment}
+
 \begin{appendices}
 \titleformat{\chapter}[display]{\bfseries\centering}{\huge Appendix \thechapter}{1em}{\Huge #1}
 \chapter{Publications}
@@ -2110,8 +2112,9 @@ To address the limitations presented by current popular SVM solvers, the future 
 \textbf{TP} & True Positive  \\
 \end{longtable}
 
-
 \end{appendices}
+
+\end{comment}
 
 \chapter*{Vita}
 \thispagestyle{plain}
@@ -2120,6 +2123,7 @@ Gabriella Melki received her BSc. in Computer Science at the American University
 
 \textbf{Publications:}
 \begin{itemize}
+\item[-] \textbf{Melki G}, Kecman V, Ventura S, Cano A, ``OLLAWV: OnLine Learning using Worst-Violators", In: \textit{Applied Soft Computing} 66, (2018), pp. 384--393
 \item[-] \textbf{Melki G}, Cano A, Ventura S, ``MIRSVM: Multi-Instance Support Vector Machine with Bag Representatives", In: \textit{Pattern Recognition} 75, (2018), pp. 228--214
 \item[-] \textbf{Melki G}, Cano A, Kecman V, Ventura S, ``Multi-Target Support Vector Regression Via Correlation Regressor Chains", In: \textit{Information Sciences} 415, (2017), pp. 53--69
 \item[-] \textbf{Melki G}, ``Fast Online Training of L1 Support Vector Machines", Master's Thesis, \textit{Virginia Commonwealth University}, (2016), pp. 1--64

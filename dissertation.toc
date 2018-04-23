@@ -82,12 +82,4 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{References}{70}{chapter*.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Appendix \numberline {A} Publications}{79}{Appendix.a.A}
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {A.1}MIRSVM: Multi-Instance SVM with Bag Representatives}{81}{section.a.A.1}
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {A.2}Multi-Target Support Vector Regression Via Correlation Regressor Chains}{96}{section.a.A.2}
-\defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Appendix \numberline {B} List of Acronyms}{113}{Appendix.a.B}
-\defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Vita}{116}{chapter*.12}
+\contentsline {chapter}{Vita}{79}{chapter*.12}
