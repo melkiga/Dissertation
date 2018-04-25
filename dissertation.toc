@@ -76,10 +76,12 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.5}Conclusions}{65}{section.4.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5} Conclusions}{67}{chapter.5}
+\contentsline {chapter}{\numberline {5} OLLAWV: OnLine Learning Algorithm using Worst-Violators}{67}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6} Future Work}{68}{chapter.6}
+\contentsline {chapter}{\numberline {6} Conclusions}{68}{chapter.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{References}{70}{chapter*.11}
+\contentsline {chapter}{\numberline {7} Future Work}{69}{chapter.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Vita}{79}{chapter*.12}
+\contentsline {chapter}{References}{71}{chapter*.11}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Vita}{80}{chapter*.12}
