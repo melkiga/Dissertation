@@ -41,3 +41,7 @@
 \contentsline {figure}{\numberline {4.8}{\ignorespaces Bonferroni-Dunn test for AUC}}{62}{figure.4.8}
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {4.9}{\ignorespaces Bonferroni-Dunn test for overall ranks comparison}}{64}{figure.4.9}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.1}{\ignorespaces A case of classifying 2-dimensional normally distributed data with different covariance matrices, (left) for 200 and (right) 2000 data points. The theoretical separation boundary (denoted as the Bayes Separation Boundary) is quadratic and is shown as the dashed black curve. The other two separation boundaries shown are the ones obtained by OLLAWV and SMO (implemented within LIBSVM), respectively. In this particular case (left), the difference between the OLLAWV boundary and the SMO boundary is hardly visible. The case presented on the right shows that, with an increase of training samples, the OLLAWV and SMO boundaries converge to the theoretical Bayesian solution.}}{72}{figure.5.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.2}{\ignorespaces A summary of the steps performed by OLLAWV. The model parameters ($\bm {\alpha }$, $b$, $\bm {S}$) and the algorithm variables ($\bm {o}$, $t$, $wv$, and $yo$) are first initialized. The worst-violator with respect to the current hyperplane is then found and the model parameters are then updated. Once no more violating samples are found, the model is returned.}}{74}{figure.5.2}

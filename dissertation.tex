@@ -70,7 +70,7 @@
 \newcommand{\thesisordissertation}{Dissertation}
 \newcommand{\thesistitle}{\uppercase\expandafter{} Novel Support Vector Machines for Diverse Learning Paradigms}
 \newcommand{\authorsname}{Gabriella Angela Melki}
-\newcommand{\thesismonth}{August}
+\newcommand{\thesismonth}{September}
 \newcommand{\graduatingyear}{2018}
 \newcommand{\degree}{Doctor of Philosophy}
 \newcommand{\pastdegreeone}{Ph.D. Candidate}
@@ -87,7 +87,7 @@
 \vspace*{10em}
 \begin{center}
 \thispagestyle{empty}
-\copyright Gabriella Angela Melki, April {\graduatingyear}\\
+\copyright Gabriella Angela Melki, September {\graduatingyear}\\
 All Rights Reserved.
 \end{center}
 \vspace*{\fill}
@@ -98,11 +98,13 @@ All Rights Reserved.
 % ABSTRACT  %
 
 \theabstract{\label{sec:abstractlabel}
-This thesis proposes novel support vector machines for two non-traditional learning paradigms, \textit{Multi-Target} Regression and \textit{Multiple-Instance} classification. 
+This dissertation introduces novel support vector machines (SVM) for the traditional and non-traditional learning paradigms: \textit{Online Learning}, \textit{Multi-Target} Regression, \textit{Multiple-Instance} classification, and \textit{Data Stream} classification. 
 
 Three multi-target support vector regression (SVR) models are first presented. The first involves building independent, single-target SVR models for each target. The second builds an ensemble of random chains using the first single-target method as a base model. The third calculates the targets' correlations and forms a maximum correlation chain, which is used to build a single chained SVR model, improving the model's prediction performance, while reducing computational complexity.
 
-\sloppypar{Under the multi-instance paradigm, this proposal introduces a novel support vector machine (SVM) multiple-instance formulation, and presents an algorithm with a bag-representative selector that trains the SVM based on bag-level information, named MIRSVM. The contribution is able to identify instances that highly impact classification, i.e. bag-representatives, for both positive and negative bags, while finding the optimal class separation hyperplane. Unlike other multi-instance SVM methods, this approach eliminates possible class imbalance issues by allowing both positive and negative bags to have at most one representative, which constitute as the most contributing instances to the model.}
+Under the multi-instance paradigm, a novel SVM multiple-instance formulation and an algorithm with a bag-representative selector, named MIRSVM, are presented. The contribution trains the SVM based on bag-level information and is able to identify instances that highly impact classification, i.e. bag-representatives, for both positive and negative bags, while finding the optimal class separation hyperplane. Unlike other multi-instance SVM methods, this approach eliminates possible class imbalance issues by allowing both positive and negative bags to have at most one representative, which constitute as the most contributing instances to the model.
+
+\textbf{Add OLLAWV and DS Application}
 
 Rigorous experimental studies and statistical analyses over various metrics and datasets were conducted in order to comprehensively compare the proposed solutions against modern, widely-used methods from both paradigms. The experimental study and analysis confirms that the proposals achieve better performances and more scalable solutions than the methods compared, making them competitive in their respected fields.
 }\\
@@ -1983,8 +1985,199 @@ This proposal consisted of a novel formulation and algorithm for the multiple-in
 
 The experimental study showed the better performance of MIRSVM compared with existing multi-instance support vector machines, traditional multi-instance learners, as well as ensemble methods. The results, according to a variety of performance metrics, were compared and further validated using statistical analysis with non-parametric tests which highlight the advantages of using bag-level based and ensemble learners, such as miGraph, Bagging, and Stacking, while showing the instance-level based learners performed poorly in comparison or were deemed as strongly biased and unstable classifiers. Our proposal, MIRSVM, performs statistically better, neither compromising accuracy nor run-time while displaying a robust performance across all of the evaluated datasets. The research outcomes of this chapter have been published in~\cite{melki2018mirsvm}.
 
-\chapter{OLLAWV: OnLine Learning Algorithm using Worst-Violators}
+\chapter{Novel OnLine SVM using Worst-Violators}
+Due to the ever-growing nature of dataset sizes, the need for scalable and accurate machine learning algorithms has become evident. Stochastic gradient descent methods are popular tools used to optimize large-scale learning problems because of their generalization performance, simplicity, and scalability. This chapter proposes a novel stochastic, also known as online, learning algorithm for solving the L1 support vector machine (SVM) problem, named \textit{OnLine Learning Algorithm using Worst-Violators} (OLLAWV). Unlike other stochastic methods, OLLAWV eliminates the need for specifying the maximum number of iterations and the use of a regularization term. OLLAWV uses early stopping for controlling the size of the margin instead of the regularization term. The experimental study, performed under very strict nested cross-validation (a.k.a., double resampling), evaluates and compares the performance of this proposal with state-of-the-art SVM kernel methods that have been shown to outperform traditional and widely used approaches for solving L1-SVMs such as \textit{Sequential Minimal Optimization}. OLLAWV is also compared to $5$ other traditional non-SVM algorithms. The results over $23$ datasets show OLLAWV's superior performance in terms of accuracy, scalability, and model sparseness, making it suitable for large-scale learning.
 
+\section{Online Learning Background}
+% taken from introduction of OLLAWV paper (excluding methods for solving the SVM problem). I think I'll have subsections here for solving the SVM problem using online learning only since this is the Online Learning paradigm.
+
+% TODO: add citations for the real-world applications + need to check if i already used this text in the SVM chapter
+Over the past decade, dataset sizes have grown disproportionately to the speed of processors and memory capacity, limiting statistical learning methods to computational time. The exponential growth of data, in size and complexity, has produced a pressing need to develop scalable machine learning algorithms to learn from data. Many real-world applications, such as human activity recognition, operations research, and video and signal processing, require algorithms that are scalable and accurate, while being able to process data and provide insightful information in a timely fashion. The scope of this paper is concerned with developing a unique learning algorithm for such large data problems without the use of parallelization techniques and distributed systems. 
+
+\subsection{Notation}\label{subsec:notation}
+Let $\mathcal{D}$ be the full training dataset of $n$ $d$-dimensional samples. Let $\bm{Y} \in \mathcal{D}$ be a vector of $n$ labels corresponding to each sample, such that $\bm{Y} \in \set{-1,1}^n$. In the non-binary (more than two classes) classification cases, $\bm Y \in \ints^n$. Let $\bm{X} \in \mathcal{D}$ be a matrix consisting of $n$ samples that are $d$-dimensional, $\bm{X} \in \mathbb{R}^{n \times d}$. 
+
+\section{Novel Online Learning Algorithm using Worst-Violators}
+OLLAWV is an iterative, online learning algorithm for solving the L1-SVM problem using a novel model update procedure while implementing a self-stopping condition. The inspiration behind OLLAWV came from~\cite{kecman2016fast} which presented a generic online learning algorithm tailored not only for SVMs, but also for various other popular classifiers that use different risk functions, with or without a regularization term. The difference, novelty, and advantage of OLLAWV resides in its iterative method, where the weight $\alpha_i$ of the most violating sample i.e., of the \textit{worst-violator}, is only updated in each iteration. A worst violating sample is defined as the sample that has the largest error with respect to the current decision function. Rather than randomly selecting samples to update per iteration, OLLAWV selects (without replacement) the most incorrectly classified sample and updates the model accordingly. By iteratively updating the model using only the worst-violator, the model is essentially finding its support vectors, as well as implicitly defining a stopping criterion. If there are no more violating samples, the algorithm terminates, eliminating the need to define the number of iterations for an algorithm to perform before returning the model, as is the case with most state-of-the-art online algorithms. 
+
+At every iteration, the algorithm selects a worst violating sample that has not been previously chosen, stores its index in vector $\bm S$, and then updates the model. Equation~\ref{eq:wv} shows the method for selecting the worst-violator, where $yo \in \reals$ is the error value, $wv \in \set{1, \ldots, n}$ is the error value's index, $\bm o \in \reals^n$ is the decision function output, and $\neg$ is the `not' symbol. For the L1-SVM, an error value will always be negative which is why the minimum function is used (i.e. the most negative output value or incorrectly classified sample). The worst violating sample becomes the model's support vector because its weight is updated and non-zero. Therefore, the number of iterations of OLLAWV is equal to the number of support vectors that the resulting model has. This is an interesting property of OLLAWV; if the number of iterations is set beforehand, one is implicitly setting a bound on the number of support vectors. 
+\begin{equation}
+[yo, wv] = \min \set{y_{wv} \cdot o_{wv}},\, \forall wv \in \set{\neg \bm S}
+\label{eq:wv}
+\end{equation}
+
+Algorithm~\ref{alg:ollawv} lists OLLAWV's pseudocode and Figure~\ref{fig:ollawv} illustrates the steps taken by OLLAWV. First, the model parameters ($\bm \alpha$, $b$, $\bm S$) and the algorithm variables ($\bm o$, iteration counter ($t$), initial worst-violator index $wv$ and it's error $yo$) are first initialized. The worst-violator with respect to the current hyperplane is then found and the model parameters are updated. Once no more violating samples are found or the maximum number of iterations is reached, the model is returned.
+
+OLLAWV performs stochastic gradient descent on the primal L1-SVM objective function given below:
+\begin{equation}
+\label{eq:l1svm}
+\min\limits_{\bm{w} \in \mathcal{H}_o \times \reals} R {\,\,} = {\,\,} \frac{1}{2}||\bm{w}||^2 + C\sum_{i=1}^n \max \set{0, 1 - y_i o_{(w)}(\bm{x}_i)},
+\end{equation}
+where $o_{(w)}(\bm{x}_i) = \langle\bm w, \bm x_i\rangle$ is a linear predictor, with the bias term excluded for simplicity. Note that the loss function used in Equation~\ref{eq:l1svm} is non-differentiable, but it has a subgradient due to a knick-point at $yo = 1$. The loss function's gradient after the knick-point equals zero, which leads to a sparse model. Hence, when the value of $yo \geq 1$ the loss is zero, and for $yo < 1$ the loss increases linearly. The subgradient of the above cost function is given by:
+\begin{equation}
+\label{eq:subgrful}
+\frac{\partial R}{\partial \bm w} = \begin{cases} 
+						\bm w - C \sum_{i=1}^n y_i \bm{x_i} & y_i o_i < 1 \\
+						\bm w & \text{otherwise.}
+						\end{cases}
+\end{equation}
+In the stochastic case, the calculation of the gradient needed for the weight update, is \textit{pattern based}, not \textit{epoch based} as in batch gradient descent. It has been shown~\cite{Kecman2001} that the ideal gradient is equal to the sum of the gradients calculated after each sample is presented for fixed weights during the whole epoch. Thus, the stochastic update of $\bm w$ from the subgradient shown in Equation~\ref{eq:subgrful} becomes:
+\begin{align*}
+\bm w &\leftarrow \bm w - \eta \frac{\partial R}{\partial \bm w} \\
+\bm w &\leftarrow \bm w + \eta \begin{cases} 
+															C y_i \bm{x_i} - \bm w & y_i o_i < 1 \\
+															-\bm w & \text{otherwise},
+													 \end{cases}
+\end{align*}
+where $\eta > 0 \in \reals $ is the learning rate. According to the Representer Theorem, a vector $\bm \alpha \in \reals^n$ exists such that $\bm w = \sum_{i=1}^n \alpha_i \phi(\bm x_i)$ is an optimal solution to Equation~\ref{eq:l1svm}, where $\phi(\cdot)$ is a mapping from feature space to Hilbert space~\cite{Shalev2014}. On the basis of the Representer Theorem, Equation~\ref{eq:l1svm} can be optimized with respect to $\bm \alpha$ instead of $\bm w$. By expressing $\bm w$ this way and mapping input sample $\bm{x_i}$ to $\phi(\bm{x_i})$, the kernelized SGD update becomes:
+\begin{equation*}
+\centering
+\sum_{i=1}^n \alpha_i \phi(\bm x_i) \leftarrow \sum_{i=1}^n \alpha_i \phi(\bm x_i) + \eta \begin{cases} 
+															C y_i \phi(\bm{x_i}) - \sum_{i=1}^n \alpha_i \phi(\bm x_i) & y_i o_i < 1 \\[5pt]
+															-\sum_{i=1}^n \alpha_i \phi(\bm x_i) & \text{otherwise}.
+													 \end{cases}
+\end{equation*}
+However, OLLAWV optimizes in a stochastic manner, resulting in the following update:
+\begin{align*}
+&\forall i: \alpha_i \phi(\bm x_i) \leftarrow \alpha_i \phi(\bm x_i) + \eta \begin{cases} 
+																													(Cy_i\phi(\bm{x_i}) - \alpha_i \phi(\bm x_i)) & y_i o_i < 1 \\
+																													(- \alpha_i \phi(\bm x_i)) & \text{otherwise}
+																													 \end{cases} \\							
+&\forall i: \alpha_i \leftarrow \alpha_i + \eta \begin{cases} 
+																(Cy_i - \alpha_i) & y_i o_i < 1 \\
+																(- \alpha_i) & \text{otherwise}.
+															\end{cases} 
+\end{align*}
+The case when the worst violating sample is correctly classified $yo \geq 1$ is OLLAWV's termination condition, i.e. is used as the stopping criterion in the algorithm. Hence the update for $\bm \alpha$ is reduced to the following:
+\begin{equation}
+\label{eq:alphaupdate}
+\forall i: \alpha_i \leftarrow \alpha_i + \eta(Cy_i - \alpha_i)
+\end{equation}
+If the bias term $b$ is included in Equation~\ref{eq:l1svm}, it's stochastic update is as follows:
+\begin{equation}
+\label{eq:upbias}
+\forall i: b \leftarrow b + \eta \frac{C y_i}{n}
+\end{equation}
+
+\begin{figure}[t!]
+\centering
+\begin{minipage}{0.49\textwidth}
+\includegraphics[width=\textwidth]{figures/OLLAWVSeparation.png}
+\end{minipage}
+\begin{minipage}{0.49\textwidth}
+\includegraphics[width=\textwidth]{figures/SeparationOLLAWV2000.png}
+\end{minipage}
+\caption{A case of classifying 2-dimensional normally distributed data with different covariance matrices, (left) for 200 and (right) 2000 data points. The theoretical separation boundary (denoted as the Bayes Separation Boundary) is quadratic and is shown as the dashed black curve. The other two separation boundaries shown are the ones obtained by OLLAWV and SMO (implemented within LIBSVM), respectively. In this particular case (left), the difference between the OLLAWV boundary and the SMO boundary is hardly visible. The case presented on the right shows that, with an increase of training samples, the OLLAWV and SMO boundaries converge to the theoretical Bayesian solution.}
+\label{fig:ollawvseparation}
+\end{figure}
+
+In this experimental study, $\eta = 2/\sqrt{t}$ is used, where $t$ is the current iteration; however, other learning rates such as $\eta = 1/t$ can also be used. Let $\Lambda = \eta Cy_i$ and $\Rho = \eta \alpha_i$ be the update parameters for OLLAWV, and the $\bm \alpha$ update can be expressed as: $\alpha_i \leftarrow \alpha_i + (\Lambda - \Rho)$. Note that $\Lambda$ is the update resulting from the loss function and $\Rho$ is derived from the regularizer term in Equation~\ref{eq:l1svm}. In the case of OLLAWV, $\Rho = 0$ because samples are never updated more than once and their initial $\alpha$ value is always $0$. It is important to note that in OLLAWV's case, $\Lambda$ never equals $0$ because the samples being updated are worst-violators, meaning they are misclassified or incur some loss. The values of the decision function (output vector $\bm o \in \reals^n$ in Algorithm~\ref{alg:ollawv}), from which a worst-violator is found, changes per iteration based on the influence of the support-vectors that have been previously updated. From Equation~\ref{eq:output}, the output vector update becomes the following: 
+\begin{equation}
+\label{eq:upoutput}
+\bm o \leftarrow \bm o + \Lambda*\mathcal{K}\left(\bm{x}_{\neg \bm S},\, \bm{x}_{wv}, \gamma \right) + B
+\end{equation}
+where $\mathcal{K}(\cdot)$ is the Gaussian radial basis function (RBF) kernel, $\gamma \in \reals$ is it's parameter, and $B = (\Lambda * \beta)/n$ denotes the bias update. Only non-support vector output values are calculated per iteration, as denoted by $\bm x_{\neg \bm S}$ in the kernel function, because samples are never selected to be updated more than once. Because the output values scale with the $C$ value, the stopping criteria for OLLAWV is also set to scale with $C$, rather than the classic formulation $y_i o_i \geq 1$. If the value of $C$ is very large, $y_i o_i$ will never be greater than 1 and the algorithm will never terminate. Therefore, the stopping criteria is set to be $y_i o_i \geq M$, where $M \in \reals$ is a scaled value of $C$. For the $B$ calculation in Equation~\ref{eq:upoutput}, $\beta \in \set{0,1}$ indicates whether the bias term is to be used. If $b$ is not a part of the model, it should be omitted from Equations~\ref{eq:output} and~\ref{eq:upoutput} by setting $\beta = 0$, otherwise $\beta = 1$. 
+
+OLLAWV is a stochastic gradient method (SGM) that has a convex cost function. Its learning rate coefficient can decrease linearly or semi-linearly during the learning stage. Hence, OLLAWV shares the complexity characteristics of SGM methods. Primarily, it can achieve linear convergence, making it a particularly convenient and practical method for solving very large machine learning problems. OLLAWV also works over a cost function without local minima, always leading towards the global minimum, even though it stops the learning process as soon as all samples are outside the prescribed margin. Figure~\ref{fig:ollawvseparation} shows the decision boundaries achieved by OLLAWV versus SMO (implemented within LIBSVM) and Bayes for toy datasets. 
+\begin{figure}
+\centering
+\small
+\begin{algorithm}[H]
+\caption{OnLine Learning Algorithm using Worst-Violators (OLLAWV)}
+\label{alg:ollawv}
+\begin{algorithmic}[1]
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\Require $\mathcal{D}$, $C$, $\gamma$, $\beta$, $M$
+\Ensure  $\bm \alpha$, $b$, $\bm S$
+\State $\bm \alpha \leftarrow \bm 0,\, b \leftarrow 0, \bm S \leftarrow \bm 0$ \Comment{Initialize OLLAWV model parameters}
+\State $\bm o \leftarrow \bm 0,\, t \leftarrow 0$ \Comment{Initialize the output vector and iteration counter}
+\State $wv \leftarrow 0,\, yo \leftarrow y_{wv}*\bm{o}_{wv}$ \Comment{Initialize hinge loss error and worst-violator index}
+\While {$yo < M$}
+\State $t \leftarrow t + 1$
+\State $\eta \leftarrow 2/\sqrt{t}$ \Comment{Learning rate}
+\State 
+\State $\Lambda \leftarrow \eta*C*y_{wv}$ \Comment{Calculate hinge loss update}
+\State $B \leftarrow \left(\Lambda*\beta\right)/n$ \Comment{Calculate bias update}
+\State $\bm o \leftarrow \bm o + \Lambda*\mathcal{K}\left(\bm{x}_{\neg \bm S},\, \bm{x}_{wv}, \gamma \right) + B$ \Comment{Update output vector}
+\State $\bm \alpha_{wv} \leftarrow \bm \alpha_{wv} + \Lambda$ \Comment{Update worst-violator's alpha value}
+\State $b \leftarrow b + B$ \Comment{Update bias term}
+\State
+\State $\bm S_t \leftarrow wv$ \Comment{Save index of worst-violator}
+\State $\left[yo,\, wv\right] \leftarrow \min\limits_{wv \in \set{\neg \bm S}}\set{y_{wv} \cdot o_{wv}}$ \Comment{Find the worst-violator}
+\EndWhile 
+\end{algorithmic} 
+\end{algorithm}
+\begin{minipage}{\textwidth}
+\small
+\adjustbox{scale=0.9028}{
+\begin{tikzpicture}[%
+    node distance=4cm,
+    on grid,
+    auto
+]
+\node[block](A) {Initialize training variables};
+\node(B)[block, right of=A, text width=6em] {Calculate updates based on worst-violator and current decision boundary};
+\draw[arrow] (A) -- (B);
+\node(C)[block, right of=B,text width=6.3em] {Update output vector, worst-violator's alpha, \& bias term};
+\draw[arrow] (B) -- (C);
+\node(D) [decision,right of=C,fill=gray!55,text width=2cm]{while errors exist};
+\draw[arrow] (C) -- (D);
+\node(E) [block,right of=D]{return $\bm \alpha,\, b, \bm S$};
+\draw[arrow] (D) -- node {no} (E);
+\draw[arrow] (D.south) --+(0,-0.35cm) -| (B.south) node[below,pos=0.25] {yes} ;
+\end{tikzpicture}}
+\caption{A summary of the steps performed by OLLAWV. The model parameters ($\bm \alpha$, $b$, $\bm S$) and the algorithm variables ($\bm o$, $t$, $wv$, and $yo$) are first initialized. The worst-violator with respect to the current hyperplane is then found and the model parameters are then updated. Once no more violating samples are found, the model is returned.}
+\label{fig:ollawv}
+\end{minipage}
+\end{figure}
+
+\section{Experimental Environment}
+This section presents two experimental setups of our contribution against other state-of-the-art algorithms on $23$ different benchmark datasets. The first study, presented in Section~\ref{subsec:expsvm}, compares OLLAWV to two other SVM kernel methods, and the second compares OLLAWV to $5$ non-SVM methods, shown in Section~\ref{subsec:nonsvmexp}. In each section, the experimental setups are first described and the state-of-the-art methods are listed. The results and statistical analysis~\cite{Derrac2011} are then presented and analyzed. The main aim of the experiments is to compare our contribution to other support vector machine solvers that have been shown to surpass popular and widely used SVM kernel methods in terms of memory consumption, runtime, and accuracy. The supplemental experimental study in~\ref{subsec:nonsvmexp} was conducted to emphasizes the better performance of OLLAWV against non-SVM algorithms.
+\begin{table}[t!]
+\caption{Datasets}
+\footnotesize
+\centering
+\label{tab:Dataset}
+\begin{tabularx}{0.7\textwidth}{l@{\extracolsep{\fill}}rrr}
+\hline\noalign{\smallskip}
+Dataset & \# Samples & \# Attributes & \# Classes \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\textbf{\textit{small datasets}} & \\
+iris & 150 & 4 &  3  \\ 
+teach & 151 & 5 &  3  \\ 
+wine & 178 & 13 &  3  \\ 
+cancer & 198 & 32 &  2  \\ 
+sonar & 208 & 60 &  2  \\ 
+glass & 214 & 9 &  6  \\ 
+vote & 232 & 16 &  2  \\ 
+heart & 270 & 13 &  2  \\ 
+dermatology & 366 & 33 &  6  \\ 
+prokaryotic & 997 & 20 &  3  \\ 
+eukaryotic & 2,427 & 20 &  2  \\ 
+\textbf{\textit{medium datasets}} & \\
+optdigits & 5,620 & 64 &  10  \\ 
+satimage & 6,435 & 36 &  6  \\ 
+usps & 9,298 & 256 &  10  \\ 
+pendigits & 10,992 & 16 &  10  \\ 
+reuters & 11,069 & 8,315 &  2  \\ 
+letter & 20,000 & 16 &  26  \\ 
+\textbf{\textit{large datasets}} & \\
+adult & 48,842 & 123 &  2  \\ 
+w3a & 49,749 & 300 &  2  \\ 
+shuttle & 58,000 & 7 &  7  \\ 
+web (w8a) & 64,700 & 300 &  2  \\ 
+ijcnn1 & 141,691 & 22 &  2  \\ 
+intrusion & 5,209,460 & 127 &  2  \\  
+\noalign{\smallskip}\hline
+\end{tabularx}
+\end{table}
+
+Table~\ref{tab:Dataset} presents a summary of the $23$ datasets used throughout the experiments, where the number of attributes (dimensionality), classes, and samples are shown. The datasets used and the results obtained are divided into three groups: \textit{small}, \textit{medium} and \textit{large}. The datasets were obtained from the UCI Machine Learning repository\footnote{http://archive.ics.uci.edu/ml/index.php}~\cite{Lichman:2013}, and the LibCVM\footnote{http://c2inet.sce.ntu.edu.sg/ivor/cvm.html}~\cite{tsang2005core} and LIBSVM\footnote{https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/}~\cite{CC01a} sites. 
+
+\section{Results \& Statistical Analysis}
+
+\section{Conclusions}
 
 \chapter{Conclusions}
 This thesis introduced four novel SVM algorithms for learning from the non-standard and diverse learning paradigms: multi-target regression and multi-instance classification. 
@@ -1992,7 +2185,6 @@ This thesis introduced four novel SVM algorithms for learning from the non-stand
 Three unique approaches for multi-target regression were proposed: the baseline problem transformation support vector regressor SVR, an ensemble of randomly generated chains using this base model SVRRC, and a maximally correlated chained model SVRCC. The results highlighted the better performance of SVR as a base model, however, because it is a problem transformation method, the possible correlations amongst the targets are lost on the final model. SVRRC was designed to test whether taking these correlations into account would benefit the final learning model, and the results showed a performance increase. However, due to the random nature of SVRRC, capturing target correlations is not guaranteed. SVRCC was designed to remedy this issue using a maximum correlation chain and proved to capture target correlations accurately, providing the best results among the contributions, as well as against the methods compared. 
 
 A novel multiple-instance bag-level formulation and algorithm, dubbed MIRSVM, with a bag-representative selector, are proposed. The algorithm trains the SVM on bag-level information, iteratively selecting the best representative instance for each positive and negative bag, while finding the optimal separating hyperplane. This approach, unlike other existing ones, eliminates possible class imbalance issues by allowing both positive and negative bags to be represented. The experimental and statistical study showed that bag-level learners outperform instance-level learners and wrapper methods. MIRSVM outperformed current contemporary SVM multi-instance algorithms, as well as other algorithms of different classes. 
-
 
 \chapter{Future Work}
 The contributions introduced in this work highlight the performance quality of SVMs for solving difficult learning problems. The SVM solvers used were LIBSVM's SMO implementation and MATLAB's standard QP solver. Even though the proposals outperformed existing popular algorithms in each learning paradigm, these two popular and standard solvers have some disadvantages. Although SMO provides an exact solution to the SVM QP problem, its performance is highly dependent on the SVM hyperparameters and MATLAB's QP solver is notoriously dependent on the size and complexity of the data. To address these problems, the future work of this dissertation first aims to deal with these limitations without sacrificing accuracy for scalability with respect to large-scale problems, while maintaining applicability to small and medium sized datasets. 

@@ -76,12 +76,24 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.5}Conclusions}{65}{section.4.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5} OLLAWV: OnLine Learning Algorithm using Worst-Violators}{67}{chapter.5}
+\contentsline {chapter}{\numberline {5} Novel OnLine SVM using Worst-Violators}{67}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6} Conclusions}{68}{chapter.6}
+\contentsline {section}{\numberline {5.1}Online Learning Background}{67}{section.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7} Future Work}{69}{chapter.7}
+\contentsline {subsection}{\numberline {5.1.1}Notation}{68}{subsection.5.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{References}{71}{chapter*.11}
+\contentsline {section}{\numberline {5.2}Novel Online Learning Algorithm using Worst-Violators}{68}{section.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Vita}{80}{chapter*.12}
+\contentsline {section}{\numberline {5.3}Experimental Environment}{73}{section.5.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.4}Results \& Statistical Analysis}{75}{section.5.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.5}Conclusions}{75}{section.5.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6} Conclusions}{76}{chapter.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {7} Future Work}{77}{chapter.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{References}{79}{chapter*.11}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Vita}{88}{chapter*.12}

@@ -36,8 +36,14 @@
 \BOOKMARK [2][-]{subsection.4.4.4}{Area Under ROC Curve}{section.4.4}% 36
 \BOOKMARK [2][-]{subsection.4.4.5}{Overall Comparison}{section.4.4}% 37
 \BOOKMARK [1][-]{section.4.5}{Conclusions}{chapter.4}% 38
-\BOOKMARK [0][-]{chapter.5}{ OLLAWV: OnLine Learning Algorithm using Worst-Violators}{}% 39
-\BOOKMARK [0][-]{chapter.6}{ Conclusions}{}% 40
-\BOOKMARK [0][-]{chapter.7}{ Future Work}{}% 41
-\BOOKMARK [0][-]{chapter*.11}{References}{}% 42
-\BOOKMARK [0][-]{chapter*.12}{Vita}{}% 43
+\BOOKMARK [0][-]{chapter.5}{ Novel OnLine SVM using Worst-Violators}{}% 39
+\BOOKMARK [1][-]{section.5.1}{Online Learning Background}{chapter.5}% 40
+\BOOKMARK [2][-]{subsection.5.1.1}{Notation}{section.5.1}% 41
+\BOOKMARK [1][-]{section.5.2}{Novel Online Learning Algorithm using Worst-Violators}{chapter.5}% 42
+\BOOKMARK [1][-]{section.5.3}{Experimental Environment}{chapter.5}% 43
+\BOOKMARK [1][-]{section.5.4}{Results \046 Statistical Analysis}{chapter.5}% 44
+\BOOKMARK [1][-]{section.5.5}{Conclusions}{chapter.5}% 45
+\BOOKMARK [0][-]{chapter.6}{ Conclusions}{}% 46
+\BOOKMARK [0][-]{chapter.7}{ Future Work}{}% 47
+\BOOKMARK [0][-]{chapter*.11}{References}{}% 48
+\BOOKMARK [0][-]{chapter*.12}{Vita}{}% 49
