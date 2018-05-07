@@ -1989,13 +1989,23 @@ The experimental study showed the better performance of MIRSVM compared with exi
 Due to the ever-growing nature of dataset sizes, the need for scalable and accurate machine learning algorithms has become evident. Stochastic gradient descent methods are popular tools used to optimize large-scale learning problems because of their generalization performance, simplicity, and scalability. This chapter proposes a novel stochastic, also known as online, learning algorithm for solving the L1 support vector machine (SVM) problem, named \textit{OnLine Learning Algorithm using Worst-Violators} (OLLAWV). Unlike other stochastic methods, OLLAWV eliminates the need for specifying the maximum number of iterations and the use of a regularization term. OLLAWV uses early stopping for controlling the size of the margin instead of the regularization term. The experimental study, performed under very strict nested cross-validation (a.k.a., double resampling), evaluates and compares the performance of this proposal with state-of-the-art SVM kernel methods that have been shown to outperform traditional and widely used approaches for solving L1-SVMs such as \textit{Sequential Minimal Optimization}. OLLAWV is also compared to $5$ other traditional non-SVM algorithms. The results over $23$ datasets show OLLAWV's superior performance in terms of accuracy, scalability, and model sparseness, making it suitable for large-scale learning.
 
 \section{Online Learning Background}
-% taken from introduction of OLLAWV paper (excluding methods for solving the SVM problem). I think I'll have subsections here for solving the SVM problem using online learning only since this is the Online Learning paradigm.
-
-% TODO: add citations for the real-world applications + need to check if i already used this text in the SVM chapter
-Over the past decade, dataset sizes have grown disproportionately to the speed of processors and memory capacity, limiting statistical learning methods to computational time. The exponential growth of data, in size and complexity, has produced a pressing need to develop scalable machine learning algorithms to learn from data. Many real-world applications, such as human activity recognition, operations research, and video and signal processing, require algorithms that are scalable and accurate, while being able to process data and provide insightful information in a timely fashion. The scope of this paper is concerned with developing a unique learning algorithm for such large data problems without the use of parallelization techniques and distributed systems. 
+The scope of this paper is concerned with developing a unique learning algorithm for such large data problems without the use of parallelization techniques and distributed systems. 
 
 \subsection{Notation}\label{subsec:notation}
 Let $\mathcal{D}$ be the full training dataset of $n$ $d$-dimensional samples. Let $\bm{Y} \in \mathcal{D}$ be a vector of $n$ labels corresponding to each sample, such that $\bm{Y} \in \set{-1,1}^n$. In the non-binary (more than two classes) classification cases, $\bm Y \in \ints^n$. Let $\bm{X} \in \mathcal{D}$ be a matrix consisting of $n$ samples that are $d$-dimensional, $\bm{X} \in \mathbb{R}^{n \times d}$. 
+
+\subsection{Regularized Loss Minimization}
+
+\subsection{Stochastic Gradient Descent}
+
+% maybe these dont need to be subsections
+\subsubsection{Gradient Descent}
+
+\subsubsection{Subgradients}
+
+\subsubsection{Stochastic Gradient Descent}
+
+\subsection{Solving the SVM Problem with Stochastic Gradient Descent}
 
 \section{Novel Online Learning Algorithm using Worst-Violators}
 OLLAWV is an iterative, online learning algorithm for solving the L1-SVM problem using a novel model update procedure while implementing a self-stopping condition. The inspiration behind OLLAWV came from~\cite{kecman2016fast} which presented a generic online learning algorithm tailored not only for SVMs, but also for various other popular classifiers that use different risk functions, with or without a regularization term. The difference, novelty, and advantage of OLLAWV resides in its iterative method, where the weight $\alpha_i$ of the most violating sample i.e., of the \textit{worst-violator}, is only updated in each iteration. A worst violating sample is defined as the sample that has the largest error with respect to the current decision function. Rather than randomly selecting samples to update per iteration, OLLAWV selects (without replacement) the most incorrectly classified sample and updates the model accordingly. By iteratively updating the model using only the worst-violator, the model is essentially finding its support vectors, as well as implicitly defining a stopping criterion. If there are no more violating samples, the algorithm terminates, eliminating the need to define the number of iterations for an algorithm to perform before returning the model, as is the case with most state-of-the-art online algorithms. 
@@ -2085,6 +2095,7 @@ OLLAWV is a stochastic gradient method (SGM) that has a convex cost function. It
 \begin{algorithm}[H]
 \caption{OnLine Learning Algorithm using Worst-Violators (OLLAWV)}
 \label{alg:ollawv}
+\small
 \begin{algorithmic}[1]
 \renewcommand{\algorithmicrequire}{\textbf{Input:}}
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
@@ -2110,7 +2121,7 @@ OLLAWV is a stochastic gradient method (SGM) that has a convex cost function. It
 \end{algorithm}
 \begin{minipage}{\textwidth}
 \small
-\adjustbox{scale=0.9028}{
+\adjustbox{scale=0.9}{
 \begin{tikzpicture}[%
     node distance=4cm,
     on grid,
@@ -2125,7 +2136,7 @@ OLLAWV is a stochastic gradient method (SGM) that has a convex cost function. It
 \draw[arrow] (C) -- (D);
 \node(E) [block,right of=D]{return $\bm \alpha,\, b, \bm S$};
 \draw[arrow] (D) -- node {no} (E);
-\draw[arrow] (D.south) --+(0,-0.35cm) -| (B.south) node[below,pos=0.25] {yes} ;
+\draw[arrow] (D.south) --+(0,-0.7cm) -| (B.south) node[below,pos=0.25] {yes} ;
 \end{tikzpicture}}
 \caption{A summary of the steps performed by OLLAWV. The model parameters ($\bm \alpha$, $b$, $\bm S$) and the algorithm variables ($\bm o$, $t$, $wv$, and $yo$) are first initialized. The worst-violator with respect to the current hyperplane is then found and the model parameters are then updated. Once no more violating samples are found, the model is returned.}
 \label{fig:ollawv}
@@ -2135,8 +2146,8 @@ OLLAWV is a stochastic gradient method (SGM) that has a convex cost function. It
 \section{Experimental Environment}
 This section presents two experimental setups of our contribution against other state-of-the-art algorithms on $23$ different benchmark datasets. The first study, presented in Section~\ref{subsec:expsvm}, compares OLLAWV to two other SVM kernel methods, and the second compares OLLAWV to $5$ non-SVM methods, shown in Section~\ref{subsec:nonsvmexp}. In each section, the experimental setups are first described and the state-of-the-art methods are listed. The results and statistical analysis~\cite{Derrac2011} are then presented and analyzed. The main aim of the experiments is to compare our contribution to other support vector machine solvers that have been shown to surpass popular and widely used SVM kernel methods in terms of memory consumption, runtime, and accuracy. The supplemental experimental study in~\ref{subsec:nonsvmexp} was conducted to emphasizes the better performance of OLLAWV against non-SVM algorithms.
 \begin{table}[t!]
-\caption{Datasets}
-\footnotesize
+\caption{Datasets used for OLLAWV Comparison}
+\small
 \centering
 \label{tab:Dataset}
 \begin{tabularx}{0.7\textwidth}{l@{\extracolsep{\fill}}rrr}
@@ -2154,7 +2165,7 @@ vote & 232 & 16 &  2  \\
 heart & 270 & 13 &  2  \\ 
 dermatology & 366 & 33 &  6  \\ 
 prokaryotic & 997 & 20 &  3  \\ 
-eukaryotic & 2,427 & 20 &  2  \\ 
+eukaryotic & 2,427 & 20 &  4  \\ 
 \textbf{\textit{medium datasets}} & \\
 optdigits & 5,620 & 64 &  10  \\ 
 satimage & 6,435 & 36 &  6  \\ 
@@ -2314,7 +2325,7 @@ To address the limitations presented by current popular SVM solvers, the future 
 \chapter*{Vita}
 \thispagestyle{plain}
 \addcontentsline{toc}{chapter}{Vita}
-Gabriella Melki received her BSc. in Computer Science at the American University of Beirut in 2011 and her MSc. in Computer Science from Virginia Commonwealth University in 2016. As a full-time student in the dual Ph.D. program between Virginia Commonwealth University and the University of C\'{o}rdoba in Spain, her research is focused on machine learning algorithms for large datasets and different data representations. Her more specialized field of interest is support vector machines.
+Gabriella Melki received her BSc. in Computer Science at the American University of Beirut in 2011 and her MSc. in Computer Science from Virginia Commonwealth University in 2016. As a full-time student in the dual Ph.D. program between Virginia Commonwealth University and the University of C\'{o}rdoba in Spain, her research is focused on machine learning algorithms for large datasets and various data paradigms. Her more specialized field of interest is support vector machines.
 
 \textbf{Publications:}
 \begin{itemize}
@@ -2324,6 +2335,7 @@ Gabriella Melki received her BSc. in Computer Science at the American University
 \item[-] \textbf{Melki G}, ``Fast Online Training of L1 Support Vector Machines", Master's Thesis, \textit{Virginia Commonwealth University}, (2016), pp. 1--64
 \item[-] \textbf{Melki G}, Kecman V, ``Speeding Up Online Training of L1 Support Vector Machines", In: \textit{Proceedings of the IEEE SoutheastCon, 2016}, (2016), pp. 1--6
 \item[-] Kecman V, \textbf{Melki G}, ``Fast Online Algorithm for SVMs", In: \textit{Proceedings of the IEEE SoutheastCon, 2016}. (2016), pp. 1--6
+\item[-] Kecman V, Zigic L, \textbf{Melki G}, ``Models and Algorithms for Support Vector Machines: Direct L2 SVM'', \textit{Seminar at Max Planck Institute for Intelligent Systems, Empirical Inference}, T\"{u}bigen, Germany, 2015
 \end{itemize}
 
 \end{document}
