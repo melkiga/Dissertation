@@ -14,7 +14,7 @@
 %%%%%%%%%%%%
 % PACKAGES %
 \usepackage{bm,amsmath,subfigure,graphicx,url,algorithm,algorithmicx,algpseudocode,booktabs}
-\usepackage{tikz-cd,adjustbox,amsfonts,mathtools,tabularx,capt-of,longtable,comment}
+\usepackage{tikz-cd,adjustbox,amsfonts,mathtools,tabularx,capt-of,longtable,comment,caption}
 \usepackage[flushleft]{threeparttable}
 \usepackage[top=1in,bottom=1in,right=1in,left=1in]{geometry}
 \usepackage[backend=bibtex]{biblatex}
@@ -2149,7 +2149,7 @@ This section presents two experimental setups of our contribution against other 
 \caption{Datasets used for OLLAWV Comparison}
 \small
 \centering
-\label{tab:Dataset}
+\label{tab:DatasetOLLAWV}
 \begin{tabularx}{0.7\textwidth}{l@{\extracolsep{\fill}}rrr}
 \hline\noalign{\smallskip}
 Dataset & \# Samples & \# Attributes & \# Classes \\
@@ -2184,9 +2184,135 @@ intrusion & 5,209,460 & 127 &  2  \\
 \end{tabularx}
 \end{table}
 
-Table~\ref{tab:Dataset} presents a summary of the $23$ datasets used throughout the experiments, where the number of attributes (dimensionality), classes, and samples are shown. The datasets used and the results obtained are divided into three groups: \textit{small}, \textit{medium} and \textit{large}. The datasets were obtained from the UCI Machine Learning repository\footnote{http://archive.ics.uci.edu/ml/index.php}~\cite{Lichman:2013}, and the LibCVM\footnote{http://c2inet.sce.ntu.edu.sg/ivor/cvm.html}~\cite{tsang2005core} and LIBSVM\footnote{https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/}~\cite{CC01a} sites. 
+Table~\ref{tab:DatasetOLLAWV} presents a summary of the $23$ datasets used throughout the experiments, where the number of attributes (dimensionality), classes, and samples are shown. The datasets used and the results obtained are divided into three groups: \textit{small}, \textit{medium} and \textit{large}. The datasets were obtained from the UCI Machine Learning repository\footnote{http://archive.ics.uci.edu/ml/index.php}~\cite{Lichman:2013}, and the LibCVM\footnote{http://c2inet.sce.ntu.edu.sg/ivor/cvm.html}~\cite{tsang2005core} and LIBSVM\footnote{https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/}~\cite{CC01a} sites. 
 
 \section{Results \& Statistical Analysis}
+\begin{table}[t!]
+\centering
+\caption{Comparison of OLLAWV vs. NNISDA and MNSVM}
+\scriptsize
+\label{tab:results}
+\resizebox{\textwidth}{!}{\begin{tabularx}{\textwidth}{l@{\extracolsep{\fill}}cccrrrccc}
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\multicolumn{1}{l}{Dataset} & \multicolumn{3}{c}{Accuracy (\%)} & \multicolumn{3}{c}{Runtime (s)} & \multicolumn{3}{c}{Support Vectors (\%)} \\
+\cmidrule(lr){2-4}
+\cmidrule(lr){5-7}
+\cmidrule(lr){8-10} 
+ & OLLAWV & NNISDA & MNSVM & OLLAWV & NNISDA & MNSVM & OLLAWV & NNISDA & MNSVM \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\textbf{\textit{small datasets}} & & & & & & & & & \\
+iris & \textbf{97.33} & 94.00 & 96.67 & \textbf{0.05} & 0.27 & 3.57 & \textbf{13.50} & 40.20 & 29.80 \\
+teach & 52.32 & 52.31 & \textbf{52.95} & \textbf{0.12} & 0.44 & 8.85 & \textbf{69.19} & 99.80 & 87.40 \\
+wine & \textbf{98.87} & 96.60 & 96.60 & \textbf{0.28} & 0.43 & 4.84 & \textbf{15.02} & 44.40 & 48.60 \\
+cancer & 80.36 & \textbf{81.86} & 81.38 & \textbf{0.49} & 0.85 & 4.46 & \textbf{42.79} & 83.80 & 89.60 \\
+sonar & \textbf{92.32} & 89.48 & 87.57 & \textbf{0.59} & 0.98 & 3.03 & \textbf{31.26} & 73.00 & 66.00 \\
+glass & \textbf{72.41} & 67.81 & 69.30 & \textbf{0.46} & 1.01 & 11.94 & \textbf{62.84} & 90.80 & 87.60 \\
+vote & \textbf{96.54} & 96.11 & 93.99 & \textbf{0.26} & 0.46 & 1.49 & \textbf{13.36} & 33.20 & 34.00 \\
+heart & 82.22 & \textbf{83.33} & \textbf{83.33} & \textbf{0.50} & 0.91 & 6.45 & \textbf{37.69} & 73.00 & 82.00 \\
+dermatology & 97.82 & \textbf{98.36} & \textbf{98.36} & \textbf{1.62} & 2.47 & 11.68 & \textbf{36.94} & 59.00 & 59.80 \\
+prokaryotic & 88.96 & 88.86 & \textbf{88.97} & \textbf{6.09} & 10.64 & 50.86 & \textbf{29.01} & 51.20 & 49.00 \\
+eukaryotic & 77.38 & 79.56 & \textbf{81.21} & 61.95 & \textbf{49.16} & 342.76 & \textbf{54.11} & 76.40 & 72.60 \\
+\textbf{\textit{medium datasets}} & & & & & & & & & \\
+optdigits & 99.11 & 99.29 & \textbf{99.31} & \textbf{411} & 528 & 787 & \textbf{28.64} & 31.60 & 30.60 \\
+satimage & 91.66 & \textbf{92.39} & 92.35 & 1,334 & \textbf{687} & 1,094 & \textbf{20.72} & 45.00 & 44.80 \\
+usps & 97.49 & 98.05 & \textbf{98.24} & 10,214 & \textbf{5,245} & 7,777 & \textbf{11.22} & 29.40 & 28.00 \\
+pendigits & 99.56 & \textbf{99.62} & 99.61 & \textbf{723} & 909 & 1,500 & \textbf{10.27} & 17.60 & 16.60 \\
+reuters & 98.03 & \textbf{98.08} & 97.99 & \textbf{954} & 1,368 & 1,657 & \textbf{8.770} & 18.20 & 18.60 \\
+letter & 96.99 & 99.11 & \textbf{99.13} & \textbf{5,259} & 12,009 & 26,551 & \textbf{43.56} & 57.60 & 56.60 \\
+\textbf{\textit{large datasets}} & & & & & & & & & \\
+adult & 84.75 & 85.07 & \textbf{85.13} & \textbf{21,025} & 72,552 & 123,067 & \textbf{34.66} & 56.00 & 56.60 \\
+w3a & \textbf{98.86} & 98.82 & 98.82 & \textbf{6,532} & 15,951 & 24,562 & \textbf{3.270} & 14.60 & 12.40 \\
+shuttle & 99.77 & 99.83 & \textbf{99.87} & \textbf{2,833} & 7,420 & 45,062 & \textbf{2.010} & 6.00 & 16.40 \\
+web & 98.94 & \textbf{99.00} & 99.00 & \textbf{12,067} & 30,583 & 38,040 & \textbf{4.320} & 13.20 & 10.80 \\
+ijcnn1 & 98.31 & 99.34 & \textbf{99.41} & \textbf{162,587} & 296,917 & 370,144 & 16.36 & 11.00 & \textbf{7.600} \\
+intrusion & \textbf{99.77} & 99.67 & 99.66 & \textbf{2,402,804} & 4,646,810 & 3,772,113 & \textbf{0.780} & 2.000 & 1.700 \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Average & \textbf{91.29} & 91.15 & 91.25 & \textbf{114,209} & 221,350 & 191,861 & \textbf{25.66} & 44.65 & 43.79 \\
+Ranks & \textbf{1.739} & 2.022 & 2.239 & \textbf{1.217} & 1.913 & 2.869 & \textbf{1.087} & 2.609 & 2.304 \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\end{tabularx}}
+\\ \vspace{2em}
+\begin{minipage}{0.3\textwidth}
+\centering
+\resizebox{0.9\textwidth}{!}{\begin{tikzpicture}
+\draw (1,0) -- (3,0);
+\foreach \x in {1,2,3} {
+\draw (\x, 0) -- ++(0,.1) node [above,scale=0.7] {\tiny \x};
+\ifthenelse{\x < 3}{\draw (\x+.5, 0) -- ++(0,.03);}{}
+}
+
+\coordinate (c0) at (1.7391,0);
+\coordinate (c1) at (2.0217,0);
+\coordinate (c2) at (2.2391,0);
+
+\node (l0) at (c0) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny \textbf{OLLAWV}};
+\node (l1) at (c1) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny NNISDA};
+\node (l2) at (c2) [above right=.2cm and 0cm, align=right,scale=0.7] {\tiny MNSVM};
+
+\fill[fill=gray,fill opacity=0.5] (1.7391,-0.1) rectangle (2.3991,0.1);
+
+\foreach \x in {0,1,2} {
+\draw (l\x) -| (c\x);
+};
+\end{tikzpicture}}
+\captionsetup{width=0.8\linewidth}
+\captionof{figure}{Bonferroni-Dunn test for Accuracy}\label{fig:BonfDunnacc}
+\end{minipage}
+\hspace{0.5em}
+\begin{minipage}{0.3\textwidth}
+\centering
+\resizebox{0.9\textwidth}{!}{\begin{tikzpicture}
+\draw (1,0) -- (3,0);
+\foreach \x in {1,2,3}{
+\draw (\x, 0) -- ++(0,.1) node [above,scale=0.7] {\tiny \x};
+\ifthenelse{\x < 3}{\draw (\x+.5, 0) -- ++(0,.03);}{}
+}
+
+\coordinate (c0) at (1.2174,0);
+\coordinate (c1) at (1.913,0);
+\coordinate (c2) at (2.8696,0);
+
+\node (l0) at (c0) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny \textbf{OLLAWV}};
+\node (l1) at (c1) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny NNISDA};
+\node (l2) at (c2) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny MNSVM};
+
+\fill[fill=gray,fill opacity=0.5] (1.2174,-0.1) rectangle (1.8774,0.1);
+
+\foreach \x in {0,1,2} {
+\draw (l\x) -| (c\x);
+};
+\end{tikzpicture}}
+\captionsetup{width=0.8\linewidth}
+\captionof{figure}{Bonferroni-Dunn test for Runtime}\label{fig:BonfDunncpu}
+\end{minipage}
+\hspace{0.5em}
+\begin{minipage}{0.3\textwidth}
+\centering
+\resizebox{0.9\textwidth}{!}{\begin{tikzpicture}
+\draw (1,0) -- (3,0);
+\foreach \x in {1,2,3} {
+\draw (\x, 0) -- ++(0,.1) node [above,scale=0.7] {\tiny \x};
+\ifthenelse{\x < 3}{\draw (\x+.5, 0) -- ++(0,.03);}{}
+}
+
+\coordinate (c0) at (1.087,0);
+\coordinate (c1) at (2.6087,0);
+\coordinate (c2) at (2.3043,0);
+
+\node (l0) at (c0) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny \textbf{OLLAWV}};
+\node (l1) at (c1) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny NNISDA};
+\node (l2) at (c2) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny MNSVM};
+
+\fill[fill=gray,fill opacity=0.5] (1.087,-0.1) rectangle (1.747,0.1);
+
+\foreach \x in {0,1,2} {
+\draw (l\x) -| (c\x);
+};
+\end{tikzpicture}}
+\captionsetup{width=0.8\linewidth}
+\captionof{figure}{Bonferroni-Dunn test for \% Support Vectors}\label{fig:BonfDunnsv}
+\end{minipage}
+\end{table}
 
 \section{Conclusions}
 

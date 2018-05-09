@@ -5,3 +5,5 @@
 *.out
 *.toc
 *.synctex.gz
+*.lof
+*.loa
