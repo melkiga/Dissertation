@@ -2187,6 +2187,35 @@ intrusion & 5,209,460 & 127 &  2  \\
 Table~\ref{tab:DatasetOLLAWV} presents a summary of the $23$ datasets used throughout the experiments, where the number of attributes (dimensionality), classes, and samples are shown. The datasets used and the results obtained are divided into three groups: \textit{small}, \textit{medium} and \textit{large}. The datasets were obtained from the UCI Machine Learning repository\footnote{http://archive.ics.uci.edu/ml/index.php}~\cite{Lichman:2013}, and the LibCVM\footnote{http://c2inet.sce.ntu.edu.sg/ivor/cvm.html}~\cite{tsang2005core} and LIBSVM\footnote{https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/}~\cite{CC01a} sites. 
 
 \section{Results \& Statistical Analysis}
+The classification performance was measured using the following metrics: accuracy, runtime, and the percentage of support vectors (size of the model). Table~\ref{tab:results} displays the results for OLLAWV and the two state-of-the-art methods. The percentage of support vectors was reported for analyzing the complexities of the resulting models over the variously sized datasets. In order to analyze the performances of the multiple models, non-parametric statistical tests are used to validate the experimental results obtained~\cite{Derrac2011}. The Iman-Davenport non-parametric test is run to investigate whether significant differences exist among the performance of the algorithms by ranking them over the datasets used, using the Friedman test. The algorithm ranks for each metric are presented in the last row of Table~\ref{tab:results}, and the lowest (best) rank value is typeset in bold. After the Iman-Davenport test indicates significant differences (with $p$-value =  $0.2397$ for accuracy, and $p$-value =  $0$ for runtime and percent support vectors), the Bonferroni-Dunn post-hoc test is then used to find where they occur between algorithms by assuming the classifiers' performances are different by at least some critical value (critical distance is $0.66$ for $\alpha = 0.05$). Below Table~\ref{tab:results}, Figures~\ref{fig:BonfDunnacc}, \ref{fig:BonfDunncpu}, and \ref{fig:BonfDunnsv} highlight the critical distance (in gray) from the best ranking algorithm to the rest. The algorithms to the right of the critical distance bar perform statistically significantly worse than the control algorithm, OLLAWV.
+% small data speedup [1.0720    6.2136]
+% medium data speed [2.3860    4.5274]
+% large data speedup [2.06-NNISDA 2.93-MNSVM]
+\begin{figure}[t!]
+\centering
+\begin{minipage}{0.49\textwidth}
+\includegraphics[width=\textwidth]{figures/CPU_vs_NumData_SM.eps}
+\end{minipage}
+\begin{minipage}{0.49\textwidth}
+\includegraphics[width=\textwidth]{figures/CPU_vs_NumData_L.eps}
+\end{minipage}
+\caption{Runtime in seconds versus the number of samples, divided into two groups: small \& medium (left) versus large (right). Note OLLAWV's gradual increase in runtime as the number of samples increases compared to NNISDA and MNSVM's steeper change. In almost all cases, OLLAWV displays superior runtime over state-of-the-art. Runtime depends upon many characteristics: dimensionality, class-overlapping, complexity of the separation boundary, number of classes as well as upon the number of support vectors, which partly explains the tiny bump in the left figure. }
+\label{fig:cpuvssamples}
+\end{figure}
+
+The results in Table~\ref{tab:results} indicate that OLLAWV outperforms NNISDA and MNSVM in terms of accuracy, runtime, and model complexity. Although the differences in accuracy between the methods is not very large, on average, OLLAWV is about $2$ times faster than NNISDA and MNSVM. As mentioned previously, OLLAWV aims to speed up the learning process without sacrificing the model's accuracy. This stems from OLLAWV's ability to produce sparse models, as is shown by the averaged percentage of support vectors. The speedup that OLLAWV presents is proportional to the model complexity and the experimental results show that OLLAWV produces, on average, models that are $1.7$ times smaller than the two state-of-the-art methods used. This highlights the applicability and advantage that OLLAWV has for learning from large datasets. 
+
+Figures~\ref{fig:BonfDunnacc}, \ref{fig:BonfDunncpu}, and \ref{fig:BonfDunnsv} show the results of the statistical analysis for accuracy, runtime, and percentage of support vectors. Figures~\ref{fig:BonfDunncpu} and~\ref{fig:BonfDunnsv} show that OLLAWV is statistically significantly better than MNSVM and NNISDA for runtime and percentage of support vectors (model size). At the same time, Figure~\ref{fig:BonfDunnacc} emphasizes what was mentioned earlier: OLLAWV is shown to speed up the learning process without sacrificing model accuracy against the state-of-the-art methods used. 
+
+Figure~\ref{fig:cpuvssamples} plots the correlation of OLLAWV, NNISDA, and MNSVM's runtime versus number of samples for the small, medium, and large datasets. The figure clearly emphasizes the benefit of using OLLAWV for large-scale learning due to it's gradual increase in runtime as the number of samples increases in comparison to NNISDA and MNSVM. Figure~\ref{fig:psvvssamples} shows the correlation between OLLAWV, NNISDA, and MNSVM's percentage of support vectors and the number of samples for all datasets. It highlights OLLAWV's model sparseness in comparison to the competing methods, while mirroring the runtime results. 
+
+\begin{figure}
+\centering
+\includegraphics[trim={3.2cm 0 3.2cm 0},clip,width=\textwidth]{figures/PSV_vs_NumData.eps}
+\caption{Size of the model given as percentage of support vectors with respect to the number of samples  versus the number of samples. Note that OLLAWV’s percentage of support vectors is always smaller (except in one case) than NNISDA's and MNSVM's ones.}
+\label{fig:psvvssamples}
+\end{figure}
+
 \begin{table}[t!]
 \centering
 \caption{Comparison of OLLAWV vs. NNISDA and MNSVM}
