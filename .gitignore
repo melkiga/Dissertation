@@ -8,3 +8,6 @@
 *.lof
 *.loa
 .DS_Store
+*.xml
+*.blg
+*.bbl
