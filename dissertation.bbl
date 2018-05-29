@@ -574,6 +574,28 @@
   \field{year}{2011}
 \endentry
 
+\entry{Chapelle2007}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Chapelle}{C.}%
+     {O.}{O.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {MIT Press}%
+  }
+  \strng{namehash}{CO1}
+  \strng{fullhash}{CO1}
+  \field{sortinit}{C}
+  \field{number}{5}
+  \field{pages}{1155\bibrangedash 1178}
+  \field{title}{Training a Support Vector Machine in the Primal}
+  \field{volume}{19}
+  \field{journaltitle}{Neural Computing}
+  \field{year}{2007}
+\endentry
+
 \entry{Chen2006}{article}{}
   \name{author}{3}{}{%
     {{}%
@@ -1139,6 +1161,43 @@
   \field{year}{2009}
 \endentry
 
+\entry{Joachims1999}{incollection}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Joachims}{J.}%
+     {T.}{T.}%
+     {}{}%
+     {}{}}%
+  }
+  \name{editor}{3}{}{%
+    {{}%
+     {Sch\"{o}lkopf}{S.}%
+     {B.}{B.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Burges}{B.}%
+     {C.~J.~C.}{C.~J.~C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Smola}{S.}%
+     {A.~J.}{A.~J.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {MIT Press}%
+  }
+  \strng{namehash}{JT1}
+  \strng{fullhash}{JT1}
+  \field{sortinit}{J}
+  \field{chapter}{Making Large-scale Support Vector Machine Learning Practical}
+  \field{pages}{169\bibrangedash 184}
+  \field{title}{Advances in Kernel Methods}
+  \field{year}{1999}
+\endentry
+
 \entry{kecman2016fast}{article}{}
   \name{author}{1}{}{%
     {{}%
@@ -1484,6 +1543,24 @@
   \field{year}{1998}
 \endentry
 
+\entry{melki2016fast}{book}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Melki}{M.}%
+     {G.}{G.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Virginia Commonwealth University}%
+  }
+  \strng{namehash}{MG1}
+  \strng{fullhash}{MG1}
+  \field{sortinit}{M}
+  \field{title}{Fast online training of L1 support vector machines}
+  \field{year}{2016}
+\endentry
+
 \entry{melki2018mirsvm}{article}{}
   \name{author}{3}{}{%
     {{}%
@@ -1576,24 +1653,6 @@
   \field{year}{2017}
 \endentry
 
-\entry{melki2016fast}{book}{}
-  \name{author}{1}{}{%
-    {{}%
-     {Melki}{M.}%
-     {Gabriella~Angela}{G.~A.}%
-     {}{}%
-     {}{}}%
-  }
-  \list{publisher}{1}{%
-    {Virginia Commonwealth University}%
-  }
-  \strng{namehash}{MGA1}
-  \strng{fullhash}{MGA1}
-  \field{sortinit}{M}
-  \field{title}{Fast online training of L1 support vector machines}
-  \field{year}{2016}
-\endentry
-
 \entry{panagiotakopoulos2013stochastic}{inproceedings}{}
   \name{author}{2}{}{%
     {{}%
@@ -1657,6 +1716,36 @@
   \field{title}{Supervised versus multiple instance learning: an empirical
   comparison}
   \field{year}{2005}
+\endentry
+
+\entry{scholkopf2001generalized}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Sch{\"o}lkopf}{S.}%
+     {B.}{B.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Herbrich}{H.}%
+     {R.}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Smola}{S.}%
+     {A.~J.}{A.~J.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{organization}{1}{%
+    {Springer}%
+  }
+  \strng{namehash}{SBHRSAJ1}
+  \strng{fullhash}{SBHRSAJ1}
+  \field{sortinit}{S}
+  \field{booktitle}{International conference on computational learning theory}
+  \field{pages}{416\bibrangedash 426}
+  \field{title}{A generalized representer theorem}
+  \field{year}{2001}
 \endentry
 
 \entry{Schoelkopf2002}{book}{}
