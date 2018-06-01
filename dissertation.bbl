@@ -408,6 +408,28 @@
   \field{year}{2010}
 \endentry
 
+\entry{bottou2004large}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Bottou}{B.}%
+     {L}{L}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Cun}{C.}%
+     {Y.~L.}{Y.~L.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{BLCYL1}
+  \strng{fullhash}{BLCYL1}
+  \field{sortinit}{B}
+  \field{booktitle}{Advances in neural information processing systems}
+  \field{pages}{217\bibrangedash 224}
+  \field{title}{Large scale online learning}
+  \field{year}{2004}
+\endentry
+
 \entry{bousquet2008tradeoffs}{inproceedings}{}
   \name{author}{2}{}{%
     {{}%

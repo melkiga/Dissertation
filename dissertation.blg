@@ -13,50 +13,52 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated field_info (elt_size=4) to 17093 items from 5000.
+Reallocated field_info (elt_size=4) to 17788 items from 5000.
 Database file #1: dissertation-blx.bib
 Database file #2: references.bib
+Warning--I didn't find a database entry for "Derrac2011"
 Biblatex version: 3.0
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
-You've used 87 entries,
+You've used 91 entries,
             6047 wiz_defined-function locations,
-            1632 strings with 21394 characters,
-and the built_in function-call counts, 274644 in all, are:
-= -- 10093
-> -- 9789
-< -- 2712
-+ -- 2984
-- -- 3661
-* -- 21799
-:= -- 16395
+            1657 strings with 21943 characters,
+and the built_in function-call counts, 287736 in all, are:
+= -- 10604
+> -- 10227
+< -- 2847
++ -- 3115
+- -- 3818
+* -- 22833
+:= -- 17149
 add.period$ -- 0
-call.type$ -- 87
-change.case$ -- 1234
+call.type$ -- 91
+change.case$ -- 1300
 chr.to.int$ -- 34
-cite$ -- 172
-duplicate$ -- 31139
-empty$ -- 28714
-format.name$ -- 6343
-if$ -- 62443
+cite$ -- 180
+duplicate$ -- 32634
+empty$ -- 30090
+format.name$ -- 6626
+if$ -- 65416
 int.to.chr$ -- 0
-int.to.str$ -- 207
+int.to.str$ -- 219
 missing$ -- 0
-newline$ -- 2245
-num.names$ -- 4029
-pop$ -- 27919
+newline$ -- 2356
+num.names$ -- 4230
+pop$ -- 29207
 preamble$ -- 1
-purify$ -- 1515
+purify$ -- 1591
 quote$ -- 0
-skip$ -- 16404
+skip$ -- 17188
 stack$ -- 0
-substring$ -- 4876
-swap$ -- 10259
-text.length$ -- 2461
-text.prefix$ -- 87
+substring$ -- 5172
+swap$ -- 10762
+text.length$ -- 2577
+text.prefix$ -- 92
 top$ -- 1
-type$ -- 3289
+type$ -- 3441
 warning$ -- 0
-while$ -- 1595
+while$ -- 1671
 width$ -- 0
-write$ -- 2157
+write$ -- 2264
+(There was 1 warning)
