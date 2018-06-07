@@ -13,52 +13,50 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated field_info (elt_size=4) to 18066 items from 5000.
+Reallocated field_info (elt_size=4) to 18205 items from 5000.
 Database file #1: dissertation-blx.bib
 Database file #2: references.bib
-Warning--I didn't find a database entry for "Derrac2011"
 Biblatex version: 3.0
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
-You've used 93 entries,
+You've used 95 entries,
             6047 wiz_defined-function locations,
-            1665 strings with 22223 characters,
-and the built_in function-call counts, 294211 in all, are:
-= -- 10847
-> -- 10446
-< -- 2912
-+ -- 3184
-- -- 3898
-* -- 23356
-:= -- 17526
+            1674 strings with 22650 characters,
+and the built_in function-call counts, 301117 in all, are:
+= -- 11123
+> -- 10669
+< -- 2976
++ -- 3262
+- -- 3976
+* -- 23931
+:= -- 17920
 add.period$ -- 0
-call.type$ -- 93
-change.case$ -- 1332
+call.type$ -- 95
+change.case$ -- 1371
 chr.to.int$ -- 34
-cite$ -- 184
-duplicate$ -- 33388
-empty$ -- 30768
-format.name$ -- 6778
-if$ -- 66874
+cite$ -- 188
+duplicate$ -- 34209
+empty$ -- 31490
+format.name$ -- 6947
+if$ -- 68414
 int.to.chr$ -- 0
-int.to.str$ -- 224
+int.to.str$ -- 229
 missing$ -- 0
-newline$ -- 2414
-num.names$ -- 4327
-pop$ -- 29863
+newline$ -- 2483
+num.names$ -- 4430
+pop$ -- 30523
 preamble$ -- 1
-purify$ -- 1630
+purify$ -- 1677
 quote$ -- 0
-skip$ -- 17568
+skip$ -- 17956
 stack$ -- 0
-substring$ -- 5291
-swap$ -- 11003
-text.length$ -- 2633
-text.prefix$ -- 93
+substring$ -- 5432
+swap$ -- 11279
+text.length$ -- 2685
+text.prefix$ -- 95
 top$ -- 1
-type$ -- 3517
+type$ -- 3593
 warning$ -- 0
-while$ -- 1706
+while$ -- 1741
 width$ -- 0
-write$ -- 2320
-(There was 1 warning)
+write$ -- 2387

@@ -752,6 +752,42 @@
   \field{year}{1995}
 \endentry
 
+\entry{Derrac2011}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Derrac}{D.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Garc{\'i}a}{G.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Molina}{M.}%
+     {D.}{D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Herrera}{H.}%
+     {F.}{F.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{DJ+1}
+  \strng{fullhash}{DJGSMDHF1}
+  \field{sortinit}{D}
+  \field{number}{1}
+  \field{pages}{3\bibrangedash 18}
+  \field{title}{A practical tutorial on the use of nonparametric statistical
+  tests as a methodology for comparing evolutionary and swarm intelligence
+  algorithms}
+  \field{volume}{1}
+  \field{journaltitle}{Swarm and Evolutionary Computation}
+  \field{year}{2011}
+\endentry
+
 \entry{Dietterich1997}{article}{}
   \name{author}{3}{}{%
     {{}%
@@ -879,6 +915,42 @@
   \field{volume}{56}
   \field{journaltitle}{Journal of the American Statistical Association}
   \field{year}{1961}
+\endentry
+
+\entry{eibe2016weka}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Eibe}{E.}%
+     {F.}{F.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Hall}{H.}%
+     {M.~A.}{M.~A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Witten}{W.}%
+     {I.~H.}{I.~H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Pal}{P.}%
+     {J.~C.}{J.~C.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Morgan Kaufmann MA}%
+  }
+  \strng{namehash}{EF+1}
+  \strng{fullhash}{EFHMAWIHPJC1}
+  \field{sortinit}{E}
+  \field{title}{The WEKA workbench}
+  \field{volume}{4}
+  \field{journaltitle}{Online Appendix for “Data Mining: Practical Machine
+  Learning Tools and Techniques}
+  \field{year}{2016}
 \endentry
 
 \entry{Evgeniou2005}{article}{}
