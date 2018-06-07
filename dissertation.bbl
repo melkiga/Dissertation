@@ -412,7 +412,7 @@
   \name{author}{2}{}{%
     {{}%
      {Bottou}{B.}%
-     {L}{L}%
+     {L.}{L.}%
      {}{}%
      {}{}}%
     {{}%
@@ -428,6 +428,39 @@
   \field{pages}{217\bibrangedash 224}
   \field{title}{Large scale online learning}
   \field{year}{2004}
+\endentry
+
+\entry{bottou2007large}{book}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Bottou}{B.}%
+     {L.}{L.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Chapelle}{C.}%
+     {O.}{O.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Decoste}{D.}%
+     {D.}{D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Weston}{W.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {MIT press}%
+  }
+  \strng{namehash}{BL+1}
+  \strng{fullhash}{BLCODDWJ1}
+  \field{sortinit}{B}
+  \field{title}{Large-scale kernel machines}
+  \field{year}{2007}
 \endentry
 
 \entry{bousquet2008tradeoffs}{inproceedings}{}
@@ -483,7 +516,7 @@
      {}{}%
      {}{}}%
   }
-  \strng{namehash}{BL2}
+  \strng{namehash}{BL1}
   \strng{fullhash}{BL2}
   \field{sortinit}{B}
   \field{number}{2}
