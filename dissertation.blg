@@ -13,52 +13,52 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated field_info (elt_size=4) to 17927 items from 5000.
+Reallocated field_info (elt_size=4) to 18066 items from 5000.
 Database file #1: dissertation-blx.bib
 Database file #2: references.bib
 Warning--I didn't find a database entry for "Derrac2011"
 Biblatex version: 3.0
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
-You've used 92 entries,
+You've used 93 entries,
             6047 wiz_defined-function locations,
-            1660 strings with 22044 characters,
-and the built_in function-call counts, 291076 in all, are:
-= -- 10736
-> -- 10333
-< -- 2880
-+ -- 3152
-- -- 3855
-* -- 23104
-:= -- 17338
+            1665 strings with 22223 characters,
+and the built_in function-call counts, 294211 in all, are:
+= -- 10847
+> -- 10446
+< -- 2912
++ -- 3184
+- -- 3898
+* -- 23356
+:= -- 17526
 add.period$ -- 0
-call.type$ -- 92
-change.case$ -- 1319
+call.type$ -- 93
+change.case$ -- 1332
 chr.to.int$ -- 34
-cite$ -- 182
-duplicate$ -- 33036
-empty$ -- 30439
-format.name$ -- 6708
-if$ -- 66161
+cite$ -- 184
+duplicate$ -- 33388
+empty$ -- 30768
+format.name$ -- 6778
+if$ -- 66874
 int.to.chr$ -- 0
-int.to.str$ -- 221
+int.to.str$ -- 224
 missing$ -- 0
-newline$ -- 2389
-num.names$ -- 4280
-pop$ -- 29543
+newline$ -- 2414
+num.names$ -- 4327
+pop$ -- 29863
 preamble$ -- 1
-purify$ -- 1614
+purify$ -- 1630
 quote$ -- 0
-skip$ -- 17379
+skip$ -- 17568
 stack$ -- 0
-substring$ -- 5236
-swap$ -- 10886
-text.length$ -- 2603
-text.prefix$ -- 92
+substring$ -- 5291
+swap$ -- 11003
+text.length$ -- 2633
+text.prefix$ -- 93
 top$ -- 1
-type$ -- 3479
+type$ -- 3517
 warning$ -- 0
-while$ -- 1687
+while$ -- 1706
 width$ -- 0
-write$ -- 2296
+write$ -- 2320
 (There was 1 warning)

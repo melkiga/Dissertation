@@ -1850,6 +1850,32 @@
   \field{year}{2014}
 \endentry
 
+\entry{shalev2008svm}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Shalev-Shwartz}{S.-S.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Srebro}{S.}%
+     {N.}{N.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{organization}{1}{%
+    {ACM}%
+  }
+  \strng{namehash}{SSSSN1}
+  \strng{fullhash}{SSSSN1}
+  \field{sortinit}{S}
+  \field{booktitle}{Proceedings of the 25th International Conference on Machine
+  learning}
+  \field{pages}{928\bibrangedash 935}
+  \field{title}{SVM optimization: inverse dependence on training set size}
+  \field{year}{2008}
+\endentry
+
 \entry{shalev2011pegasos}{article}{}
   \name{author}{4}{}{%
     {{}%
