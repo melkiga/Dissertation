@@ -98,15 +98,15 @@ All Rights Reserved.
 % ABSTRACT  %
 
 \theabstract{\label{sec:abstractlabel}
-This dissertation introduces novel support vector machines (SVM) for the traditional and non-traditional learning paradigms: \textit{Online Learning}, \textit{Multi-Target} Regression, \textit{Multiple-Instance} classification, and \textit{Data Stream} classification. 
+This dissertation introduces novel support vector machines (SVM) for the follwing traditional and non-traditional learning paradigms: \textit{Online Learning}, \textit{Multi-Target} Regression, \textit{Multiple-Instance} classification, and \textit{Data Stream} classification. 
 
-Three multi-target support vector regression (SVR) models are first presented. The first involves building independent, single-target SVR models for each target. The second builds an ensemble of random chains using the first single-target method as a base model. The third calculates the targets' correlations and forms a maximum correlation chain, which is used to build a single chained SVR model, improving the model's prediction performance, while reducing computational complexity.
+Three multi-target support vector regression (SVR) models are first presented. The first involves building independent, single-target SVR models for each target. The second builds an ensemble of randomly chained models using the first single-target method as a base model. The third calculates the targets' correlations and forms a maximum correlation chain, which is used to build a single chained SVR model, improving the model's prediction performance, while reducing computational complexity.
 
 Under the multi-instance paradigm, a novel SVM multiple-instance formulation and an algorithm with a bag-representative selector, named MIRSVM, are presented. The contribution trains the SVM based on bag-level information and is able to identify instances that highly impact classification, i.e. bag-representatives, for both positive and negative bags, while finding the optimal class separation hyperplane. Unlike other multi-instance SVM methods, this approach eliminates possible class imbalance issues by allowing both positive and negative bags to have at most one representative, which constitute as the most contributing instances to the model.
 
 \textbf{Add OLLAWV and DS Application}
 
-Rigorous experimental studies and statistical analyses over various metrics and datasets were conducted in order to comprehensively compare the proposed solutions against modern, widely-used methods from both paradigms. The experimental study and analysis confirms that the proposals achieve better performances and more scalable solutions than the methods compared, making them competitive in their respected fields.
+Rigorous experimental studies and statistical analyses over various metrics and datasets were conducted in order to comprehensively compare the proposed solutions against modern, widely-used methods from all paradigms. The experimental studies and analyses confirm that the proposals achieve better performances and more scalable solutions than the methods compared, making them competitive in their respected fields.
 }\\
 
 \tableofcontents
