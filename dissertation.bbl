@@ -107,8 +107,8 @@
   \strng{fullhash}{AJ1}
   \field{sortinit}{A}
   \field{pages}{81\bibrangedash 105}
-  \field{title}{{Multiple instance classification: review, taxonomy and
-  comparative study}}
+  \field{title}{Multiple instance classification: review, taxonomy, and
+  comparative study}
   \field{volume}{201}
   \field{journaltitle}{Artificial Intelligence}
   \field{year}{2013}
@@ -138,7 +138,7 @@
   \field{booktitle}{{Proceedings of the 15th International Conference on Neural
   Information Processing Systems}}
   \field{pages}{577\bibrangedash 584}
-  \field{title}{{Support Vector Machines for Multiple-Instance Learning}}
+  \field{title}{Support Vector Machines for Multiple-Instance Learning}
   \field{year}{2002}
 \endentry
 
@@ -390,24 +390,6 @@
   \field{year}{1992}
 \endentry
 
-\entry{bottou2010large}{inproceedings}{}
-  \name{author}{1}{}{%
-    {{}%
-     {Bottou}{B.}%
-     {L.}{L.}%
-     {}{}%
-     {}{}}%
-  }
-  \strng{namehash}{BL1}
-  \strng{fullhash}{BL1}
-  \field{sortinit}{B}
-  \field{booktitle}{Proceedings of nineteenth International Conference on
-  Computational Statistics}
-  \field{pages}{177\bibrangedash 186}
-  \field{title}{Large-scale machine learning with stochastic gradient descent}
-  \field{year}{2010}
-\endentry
-
 \entry{bottou2004large}{inproceedings}{}
   \name{author}{2}{}{%
     {{}%
@@ -517,7 +499,7 @@
      {}{}}%
   }
   \strng{namehash}{BL1}
-  \strng{fullhash}{BL2}
+  \strng{fullhash}{BL1}
   \field{sortinit}{B}
   \field{number}{2}
   \field{pages}{123\bibrangedash 140}
@@ -579,28 +561,6 @@
   \field{pages}{95\bibrangedash 133}
   \field{title}{Multitask learning}
   \field{year}{1998}
-\endentry
-
-\entry{cauwenberghs2001incremental}{inproceedings}{}
-  \name{author}{2}{}{%
-    {{}%
-     {Cauwenberghs}{C.}%
-     {G.}{G.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Poggio}{P.}%
-     {T.}{T.}%
-     {}{}%
-     {}{}}%
-  }
-  \strng{namehash}{CGPT1}
-  \strng{fullhash}{CGPT1}
-  \field{sortinit}{C}
-  \field{booktitle}{Advances in Neural Information Processing Systems}
-  \field{pages}{409\bibrangedash 415}
-  \field{title}{Incremental and decremental support vector machine learning}
-  \field{year}{2001}
 \endentry
 
 \entry{CC01a}{article}{}
@@ -1209,6 +1169,54 @@
   \field{pages}{586\bibrangedash 591}
   \field{title}{Region-based image categorization with reduced feature set}
   \field{year}{2008}
+\endentry
+
+\entry{Ventura2016}{book}{}
+  \name{author}{7}{}{%
+    {{}%
+     {Herrera}{H.}%
+     {F.}{F.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ventura}{V.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Bello}{B.}%
+     {R.}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Cornelis}{C.}%
+     {C.}{C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Zafra}{Z.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Sánchez-Tarragó}{S.-T.}%
+     {D.}{D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Vluymans}{V.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer}%
+  }
+  \strng{namehash}{HF+1}
+  \strng{fullhash}{HFVSBRCCZASTDVS1}
+  \field{sortinit}{H}
+  \field{title}{Multiple Instance Learning: Foundations and Algorithms}
+  \field{year}{2016}
 \endentry
 
 \entry{Holander1999}{book}{}
@@ -2494,28 +2502,6 @@
   \field{pages}{1073\bibrangedash 1080}
   \field{title}{{Em-DD: an improved multiple-instance learning technique}}
   \field{year}{2002}
-\endentry
-
-\entry{zhang2004solving}{inproceedings}{}
-  \name{author}{1}{}{%
-    {{}%
-     {Zhang}{Z.}%
-     {T.}{T.}%
-     {}{}%
-     {}{}}%
-  }
-  \list{organization}{1}{%
-    {ACM}%
-  }
-  \strng{namehash}{ZT1}
-  \strng{fullhash}{ZT1}
-  \field{sortinit}{Z}
-  \field{booktitle}{Proceedings of the twenty first International Conference on
-  Machine Learning}
-  \field{pages}{116}
-  \field{title}{Solving large scale linear prediction problems using stochastic
-  gradient descent algorithms}
-  \field{year}{2004}
 \endentry
 
 \entry{zigic2016}{thesis}{}
