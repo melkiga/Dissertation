@@ -186,6 +186,36 @@
   \field{year}{2004}
 \endentry
 
+\entry{babenko2009visual}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Babenko}{B.}%
+     {B.}{B.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Yang}{Y.}%
+     {M.~H.}{M.~H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Belongie}{B.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{organization}{1}{%
+    {IEEE}%
+  }
+  \strng{namehash}{BBYMHBS1}
+  \strng{fullhash}{BBYMHBS1}
+  \field{sortinit}{B}
+  \field{booktitle}{IEEE Conference on Computer Vision and Pattern Recognition}
+  \field{pages}{983\bibrangedash 990}
+  \field{title}{Visual tracking with online multiple instance learning}
+  \field{year}{2009}
+\endentry
+
 \entry{Baxter1997}{article}{}
   \name{author}{1}{}{%
     {{}%
@@ -1013,6 +1043,29 @@
   \field{year}{2003}
 \endentry
 
+\entry{freund1996experiments}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Freund}{F.}%
+     {Y.}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Schapire}{S.}%
+     {R.~E.}{R.~E.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{FYSRE1}
+  \strng{fullhash}{FYSRE1}
+  \field{sortinit}{F}
+  \field{booktitle}{Proceedings of the 13th International Conference on Machine
+  Learning}
+  \field{pages}{148\bibrangedash 156}
+  \field{title}{Experiments with a new boosting algorithm}
+  \field{year}{1996}
+\endentry
+
 \entry{Fu2011}{article}{}
   \name{author}{3}{}{%
     {{}%
@@ -1062,12 +1115,12 @@
      {}{}}%
     {{}%
      {Smola}{S.}%
-     {A.J.}{A.}%
+     {A.~J.}{A.~J.}%
      {}{}%
      {}{}}%
   }
   \strng{namehash}{GT+1}
-  \strng{fullhash}{GTFPKASA1}
+  \strng{fullhash}{GTFPKASAJ1}
   \field{sortinit}{G}
   \field{booktitle}{Proceedings of the 19th International Conference on Machine
   Learning}
@@ -1788,6 +1841,29 @@
   \field{year}{2017}
 \endentry
 
+\entry{oza2001online}{book}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Oza}{O.}%
+     {N.~C.}{N.~C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Russell}{R.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {University of California, Berkeley}%
+  }
+  \strng{namehash}{ONCRS1}
+  \strng{fullhash}{ONCRS1}
+  \field{sortinit}{O}
+  \field{title}{Online ensemble learning}
+  \field{year}{2001}
+\endentry
+
 \entry{panagiotakopoulos2013stochastic}{inproceedings}{}
   \name{author}{2}{}{%
     {{}%
@@ -1851,6 +1927,34 @@
   \field{title}{Supervised versus multiple instance learning: an empirical
   comparison}
   \field{year}{2005}
+\endentry
+
+\entry{schapire1999improved}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Schapire}{S.}%
+     {R.~E.}{R.~E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Singer}{S.}%
+     {Y.}{Y.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer}%
+  }
+  \strng{namehash}{SRESY1}
+  \strng{fullhash}{SRESY1}
+  \field{sortinit}{S}
+  \field{number}{3}
+  \field{pages}{297\bibrangedash 336}
+  \field{title}{Improved boosting algorithms using confidence-rated
+  predictions}
+  \field{volume}{37}
+  \field{journaltitle}{Machine learning}
+  \field{year}{1999}
 \endentry
 
 \entry{scholkopf2001generalized}{inproceedings}{}
@@ -2316,43 +2420,58 @@
   \field{year}{2000}
 \endentry
 
-\entry{Wang2014}{inproceedings}{}
-  \name{author}{5}{}{%
+\entry{wang2000solving}{article}{}
+  \name{author}{2}{}{%
     {{}%
      {Wang}{W.}%
-     {X.}{X.}%
+     {J.}{J.}%
      {}{}%
      {}{}}%
     {{}%
-     {Liu}{L.}%
-     {X.}{X.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Matwin}{M.}%
-     {S.}{S.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Japkowicz}{J.}%
-     {N.}{N.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Guo}{G.}%
-     {H.}{H.}%
+     {Zucker}{Z.}%
+     {J.~D.}{J.~D.}%
      {}{}%
      {}{}}%
   }
-  \strng{namehash}{WX+1}
-  \strng{fullhash}{WXLXMSJNGH1}
+  \list{publisher}{1}{%
+    {Morgan Kaufmann}%
+  }
+  \strng{namehash}{WJZJD1}
+  \strng{fullhash}{WJZJD1}
   \field{sortinit}{W}
-  \field{booktitle}{Proceeding of the IEEE International Conference on Big
-  Data}
-  \field{pages}{104\bibrangedash 111}
-  \field{title}{A multi-view two-level classification method for generalized
-  multi-instance problems}
-  \field{year}{2014}
+  \field{title}{Solving multiple-instance problem: A lazy learning approach}
+  \field{year}{2000}
+\endentry
+
+\entry{Weidmann2003}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Weidmann}{W.}%
+     {Nils}{N.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Frank}{F.}%
+     {Eibe}{E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Pfahringer}{P.}%
+     {Bernhard}{B.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer}%
+  }
+  \strng{namehash}{WNFEPB1}
+  \strng{fullhash}{WNFEPB1}
+  \field{sortinit}{W}
+  \field{booktitle}{Fourteenth European Conference on Machine Learning}
+  \field{pages}{468\bibrangedash 479}
+  \field{title}{A two-level learning method for generalized multi-instance
+  problems}
+  \field{year}{2003}
 \endentry
 
 \entry{Wilcoxon1945}{article}{}
@@ -2458,6 +2577,33 @@
   \field{year}{2016}
 \endentry
 
+\entry{zhang2006multiple}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Zhang}{Z.}%
+     {C.}{C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Platt}{P.}%
+     {J.~C.}{J.~C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Viola}{V.}%
+     {P.~A.}{P.~A.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{ZCPJCVPA1}
+  \strng{fullhash}{ZCPJCVPA1}
+  \field{sortinit}{Z}
+  \field{booktitle}{Advances in neural information processing systems}
+  \field{pages}{1417\bibrangedash 1424}
+  \field{title}{Multiple instance boosting for object detection}
+  \field{year}{2006}
+\endentry
+
 \entry{Zhang20141819}{article}{}
   \name{author}{2}{}{%
     {{}%
@@ -2502,6 +2648,38 @@
   \field{pages}{1073\bibrangedash 1080}
   \field{title}{{Em-DD: an improved multiple-instance learning technique}}
   \field{year}{2002}
+\endentry
+
+\entry{zhou2009multi}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Zhou}{Z.}%
+     {Z.~H.}{Z.~H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Sun}{S.}%
+     {Y.~Y.}{Y.~Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Li}{L.}%
+     {Y.~F.}{Y.~F.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{organization}{1}{%
+    {ACM}%
+  }
+  \strng{namehash}{ZZHSYYLYF1}
+  \strng{fullhash}{ZZHSYYLYF1}
+  \field{sortinit}{Z}
+  \field{booktitle}{Proceedings of the 26th annual international conference on
+  machine learning}
+  \field{pages}{1249\bibrangedash 1256}
+  \field{title}{Multi-instance learning by treating instances as non-iid
+  samples}
+  \field{year}{2009}
 \endentry
 
 \entry{zigic2016}{thesis}{}
