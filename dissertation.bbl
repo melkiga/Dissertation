@@ -695,6 +695,32 @@
   \field{year}{2004}
 \endentry
 
+\entry{cheung2006regularization}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Cheung}{C.}%
+     {Pak-Ming}{P.-M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kwok}{K.}%
+     {James~T}{J.~T.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{organization}{1}{%
+    {ACM}%
+  }
+  \strng{namehash}{CPMKJT1}
+  \strng{fullhash}{CPMKJT1}
+  \field{sortinit}{C}
+  \field{booktitle}{Proceedings of the 23rd international conference on Machine
+  learning}
+  \field{pages}{193\bibrangedash 200}
+  \field{title}{A regularization framework for multiple-instance learning}
+  \field{year}{2006}
+\endentry
+
 \entry{collobert2004links}{inproceedings}{}
   \name{author}{2}{}{%
     {{}%
