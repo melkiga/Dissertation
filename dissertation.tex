@@ -1244,8 +1244,31 @@ This section defines the notation that will be used throughout the paper, and re
 \subsection{Notation}\label{subsec:minotation}
 Let $\mathcal{D}$ be a training dataset of $n$ bags. Let $\bm{Y} \in \mathcal{D}$ be a vector of $n$ labels corresponding to each bag, having a domain of $\bm{Y} \in \set{-1,1}^n$. Let $\bm{X} \in \mathcal{D}$ be a matrix consisting of $d$ input variables and $m$ instances, $\bm x_i \in \bm X,\, \forall i \in \set{1,\ldots,m}$ , having a domain of $\bm{X} \in \mathbb{R}^{m \times d}$. Let $\mathcal{B}$ be the set of bags which contain $|\mathcal{B}_I|$ number of instances, sometimes of different size and usually non-overlapping, such that $\mathcal{B}_I = \{\bm x_{1}, \ldots, \bm x_{|\mathcal{B}_I|}\}$ for index set $I \in \set{1,\ldots,n}$. 
 
+\begin{table}[htbp]
+\small
+\caption{Summary of Multiple-Instance Learning Notation}\label{tab:MILNotation}
+\begin{tabularx}{\textwidth}{l@{\extracolsep{\fill}}l}
+\hline\noalign{\smallskip}
+Definition & Notation\\ 
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Number of Bags & $n$ \\
+Number of Instances & $m$ \\
+Number of Input Attributes & $d$ \\
+Set of Bags & $\mathcal{B} = \set{\mathcal{B}_1,\, \ldots,\, \mathcal{B}_n}$ \\
+Bag Index Set & $I \in \ints_+^n$ \\
+Input Space & $\bm{X} \in \mathbb{R}^{m \times d}$ \\
+Bag Labels & $\bm{Y} \in \{-1,1\}^n$ \\
+Input Instance $i$ from Bag $I$ & $\bm{x}_i \in \reals^d,\, i \in I$ \\
+Unknown Individual Instance Label $i$ & $y_i \in \set{-1,1}$ \\
+Bag $I$ & $\mathcal{B}_I = \set{\bm x_i \st \forall i \in I}$ \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Full Multi-Instance Training Dataset & $\mathcal{D} = \{(\mathcal{B}_1,Y_1), \ldots, (\mathcal{B}_n,Y_n)\}$ \\
+\noalign{\smallskip}\hline
+\end{tabularx}
+\end{table}
+
 \subsection{Multi-Instance Classification}
-The difference between MIL and traditional learning lies in the nature of the data. In the traditional binary classification setting, the goal is to learn a model that maps input samples to labels, $f: \reals^{m \times d} \rightarrow Y^m \in \set{-1,\,+1}$. In the multi-instance setting, samples are called \textit{bags} and each bag contains one or more input instances and is assigned a single bag-level label. Input instances, $\set{\bm x_1,\, \bm x_2,\, \ldots,\, \bm x_m}$, are grouped into bags with unique identifiers, \hl{$\mathcal{B} = \set{\mathcal{B}_1,\, \mathcal{B}_2,\, \ldots,\, \mathcal{B}_n \st \mathcal{B}_I = \set{\bm x_i \st \forall i \in I},\, \forall I \in \set{1, \ldots, n}}$} and assigned a label, $Y_I$. The individual instance labels within a bag are unknown. Traditionally, MIL has focused on binary classification problems, however, there are cases where the number of classes can be larger, i.e. $\bm Y \in \ints^n$. The scope of this chapter will consist of binary multiple instance classification problems. 
+The difference between MIL and traditional learning lies in the nature of the data. In the traditional binary classification setting, the goal is to learn a model that maps input samples to labels, $f: \reals^{m \times d} \rightarrow Y^m \in \set{-1,\,+1}$. In the multi-instance setting, samples are called \textit{bags} and each bag contains one or more input instances and is assigned a single bag-level label. Input instances, $\set{\bm x_1,\, \bm x_2,\, \ldots,\, \bm x_m}$, are grouped into bags with unique identifiers, $\mathcal{B} = \set{\mathcal{B}_1,\, \mathcal{B}_2,\, \ldots,\, \mathcal{B}_n \st \mathcal{B}_I = \set{\bm x_i \st \forall i \in I},\, \forall I \in \set{1, \ldots, n}}$ and assigned a label, $Y_I$. The individual instance labels within a bag are unknown. Traditionally, MIL has focused on binary classification problems, however, there are cases where the number of classes can be larger, i.e. $\bm Y \in \ints^n$. The scope of this chapter will consist of binary multiple instance classification problems. 
 
 Using the training dataset $\mathcal{D} = \{(\mathcal{B}_1,Y_1), \ldots, (\mathcal{B}_n,Y_n)\}$, the goal is to train a classifier that predicts the label of an unseen bag, $f(\mathcal{B}_{n+1}) \rightarrow Y_{n+1}$~\cite{Amores2013}. In order to build a classifier without any knowledge of the individual training instance labels, Dietterich et. al.~\cite{Dietterich1997} proposed the \textit{standard MI} (SMI) hypothesis, shown in Equation~\eqref{eqn:stas}, which states that a bag is labeled positive if and only if at least one of the instances in the bag is positive, and is labeled negative otherwise.
 \begin{equation}
@@ -1287,8 +1310,6 @@ Unlike the bag-based methods mentioned previously, which have a the SMI assumpti
 Wang and Zucker~\cite{wang2000solving} proposed CitationKNN which extends the traditional $k$-nearest neighbors ($k$-NN) method to the bag-level. To classify a new bag $\mathcal{B}$, CitationKNN uses a distance function that operates at the bag level to determine which bags are the closest to $\mathcal{B}$. It not only considers the bags that are closest, but also the bags for which $\mathcal{B}$ is in the set of closest bags to others. Any bag-based distance function can be used by CitationKNN.
 
 For most of the methods described above, implicit or explicit assumptions have been made about the distribution of the data. Selecting a method that is robust for a problem such as MIL can be difficult when little is known about the nature of the data, especially considering the unknown distribution of the instances within bags~\cite{Amores2013}. The proposed method, MIRSVM, is a general method that uses support vector machines to design a MIL model without making prior assumptions about the data. Classifiers of this type are known to provide better generalization capabilities and performance, as well as sparser models.
-
-\newpage
 
 \section{MIRSVM: A Novel SVM for Multi-Instance Classification}
 MIRSVM is based on the idea of selecting representative instances from both positive and negative bags which are used to find an unbiased, optimal separating hyperplane. A representative is iteratively chosen from each bag, and a new hyperplane is formed according to the representatives until they converge. Based on the SMI hypothesis, only one instance in a bag is required to be positive for the bag to adopt a positive label. Due to the unknown distribution of instances within positive bags, MIRSVM is designed to give preference to negative bags during training, because their distribution is known, i.e. all instances are guaranteed to be negative. This is evident during the representative selection process, by taking the index of the maximum output value within each bag based on the current hyperplane using the following rule, $s_I = \text{argmax}_{i \in I} (\langle \bm w,\, \bm x_i \rangle + b),\, \forall I \in \set{1,\ldots,n}$. In other words, the most positive instance is chosen from each positive bag and the least negative instance is chosen from each negative bag (instances with the largest output value based on the current hyperplane), pushing the decision boundary  towards the positive bags. Equation~\eqref{eq:primalmirsvm} presents the primal MIRSVM optimization problem:
@@ -1508,14 +1529,9 @@ The results for the following are shown in Tables~\ref{tab:accResults},~\ref{tab
 \end{subequations}
 
 In order to analyze the performances of the multiple models, non-parametric statistical tests are used to validate the experimental results obtained. The Iman-Davenport non-parametric test is run to investigate whether significant differences exist among the performance of the algorithms by ranking them over the datasets used, using the Friedman test. The algorithm ranks for each metric in Equations~\eqref{eq:metrics} are presented in the last row of the results tables, and the lowest (best) rank value is typeset in bold. Table~\ref{tab:metarank} contains the ranks and meta-rank of all methods, which helps determine and visualize the best performing algorithms across all datasets and metrics. 
-\newpage
+
 After the Iman-Davenport test indicates significant differences, the Bonferroni-Dunn post-hoc test~\cite{Dunn1961} is then used to find where they occur between algorithms by assuming the classifiers' performances are different by at least some critical value. Below each result table, a figure highlighting the critical distance (in gray), from the best ranking algorithm to the rest, is shown. The algorithms to the right of the critical distance bar perform statistically significantly worse than the control algorithm, MIRSVM. Figures \ref{fig:BonfDunnacc}, \ref{fig:BonfDunnprec}, \ref{fig:BonfDunnrec}, \ref{fig:BonfDunnkappa}, \ref{fig:BonfDunnauc}, \ref{fig:BonfDunnpmeta} show the results of the Bonferroni-Dunn post-hoc procedure over the metrics in~\eqref{eq:metrics}, as well as the meta-rank results in Table~\ref{tab:metarank}. The Holm (multiple) and Wilcoxon (pairwise) rank-sum post-hoc tests~\cite{Holander1999} were then run for each of the metrics to compute multiple and pairwise comparisons between the proposed algorithm and the other methods compared, investigating whether statistical differences exist among the algorithms' results. Tables~\ref{tab:MIstatacc},~\ref{tab:statprec},~\ref{tab:statrec},~\ref{tab:statkappa}, and~\ref{tab:statauc} show the $p$-values for the Holm test for $\alpha = 0.05$, and the rank-sums and adjusted $p$-values for the Wilcoxon test.
-
-\subsection{Accuracy}
-The results for accuracy indicate that the bag-based and ensemble learners perform better than the instance-based and wrapper methods. MIRSVM achieves the best accuracy over $5$ of the $15$ datasets with a competitive average against miGraph, Bagging, Stacking, and TLC. Note that MIRSVM performs better than MISVM for all datasets, indicating that using representatives from each bag and limiting the number of support vectors per negative bag improves the classification performance. The instance-level classifiers and wrapper methods, such as MIBoost, MIWrapper, and SimpleMI perform the worst. This behavior emphasizes the importance of not making prior assumptions about the positive bags' distributions. 
-
-Figure~\ref{fig:BonfDunnacc} and Table~\ref{tab:statacc} show the results for the statistical analysis on the accuracy results. The algorithms with ranking higher than $5.63$ (MIRSVM rank + Bonferroni-Dunn critical value), to the right of the grey bar in Figure~\ref{fig:BonfDunnacc}, perform statistically worse than MIRSVM. Table~\ref{tab:statacc} shows the $p$-values of the Holm and Wilcoxon tests and their results complement one another. Holm's procedure rejects those hypotheses having a $p$-value $\leq 0.01$, thus indicating that MIRSVM performs significantly better than all methods except miGraph, Bagging, Stacking, and TLC. The Wilcoxon $p$-values show significant differences exist among all algorithms except miGraph, Bagging, and Stacking. They also show that MIRSVM has significantly better accuracy than MIBoost, MIOptimalBall, MIDD, MIWrapper, MISMO, MISVM, and SimpleMI, each having respectively small $p$-values, highlighting MIRSVM's superior classification accuracy. 
-\begin{table}[t!]
+\begin{table}[b!]
 \small
 \caption{\small Accuracy for MI classifiers}\label{tab:accResults}
 \resizebox{0.95\textwidth}{!}{\begin{tabular}{l@{\extracolsep{\fill}}ccccccccccccc}
@@ -1581,9 +1597,10 @@ Rank &\textbf{2.2000} &3.8667 &9.6000 &7.8667 &6.5667 &9.6000 &5.3333 &8.5667 &9
 \foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11} {
 \draw (l\x) -| (c\x);
 };
-\end{tikzpicture}}\vspace{-1.8em}
+\end{tikzpicture}}\vspace{-1.3em}
 \captionof{figure}{\small Bonferroni-Dunn test for Accuracy}\label{fig:BonfDunnacc}\vspace{-1.3em}
 \captionof{table}{\small Holm and Wilcoxon tests for Accuracy}\label{tab:MIstatacc}
+\vspace{-1em}
 \scriptsize
 \resizebox{0.95\textwidth}{!}{\begin{tabular}{lccccccccccc}
 \noalign{\smallskip}\hline\noalign{\smallskip}
@@ -1596,6 +1613,10 @@ Wilcoxon R$^-$ &21.500 & 0.0000 &1.0000 & 0.0000 &0.0000 &0.0000 &0.0000 &0.0000
 \noalign{\smallskip}\hline\noalign{\smallskip}
 \end{tabular}}
 \end{table}
+\subsection{Accuracy}
+The results for accuracy indicate that the bag-based and ensemble learners perform better than the instance-based and wrapper methods. MIRSVM achieves the best accuracy over $5$ of the $15$ datasets with a competitive average against miGraph, Bagging, Stacking, and TLC. Note that MIRSVM performs better than MISVM for all datasets, indicating that using representatives from each bag and limiting the number of support vectors per negative bag improves the classification performance. The instance-level classifiers and wrapper methods, such as MIBoost, MIWrapper, and SimpleMI perform the worst. This behavior emphasizes the importance of not making prior assumptions about the positive bags' distributions. 
+
+Figure~\ref{fig:BonfDunnacc} and Table~\ref{tab:statacc} show the results for the statistical analysis on the accuracy results. The algorithms with ranking higher than $5.63$ (MIRSVM rank + Bonferroni-Dunn critical value), to the right of the grey bar in Figure~\ref{fig:BonfDunnacc}, perform statistically worse than MIRSVM. Table~\ref{tab:statacc} shows the $p$-values of the Holm and Wilcoxon tests and their results complement one another. Holm's procedure rejects those hypotheses having a $p$-value $\leq 0.01$, thus indicating that MIRSVM performs significantly better than all methods except miGraph, Bagging, Stacking, and TLC. The Wilcoxon $p$-values show significant differences exist among all algorithms except miGraph, Bagging, and Stacking. They also show that MIRSVM has significantly better accuracy than MIBoost, MIOptimalBall, MIDD, MIWrapper, MISMO, MISVM, and SimpleMI, each having respectively small $p$-values, highlighting MIRSVM's superior classification accuracy. 
 
 \subsection{Precision \& Recall}
 Precision and recall are conflicting metrics that must be evaluated together in order to observe their behavior, since they are both used to measure relevance. The results for MIWrapper and SimpleMI indicate that they are unstable classifiers, exhibiting extreme variance in behavior, making them unsuitable for real-world applications. It is also interesting to analyze the performance on the mutagenesis datasets which have a larger number of positive bags than negative, where MISVM, MIBoost, MIWrapper, and SimpleMI predict all bags as negative. Additionally, while MISMO obtains unbiased results on these datasets, MIRSVM significantly outperforms it over both precision and recall, achieving a better trade-off.  
@@ -1658,17 +1679,18 @@ Rank &\textbf{5.3333} &6.1333 &7.1000 &7.3333 &7.3667 &7.1000 &5.8667 &5.8667 &7
 \node (l8) at (c8) [above right=.3cm and 0cm, align=left,scale=0.7] {\tiny SimpleMI};
 \node (l9) at (c9) [above left=.24cm and 0cm, align=right,scale=0.7] {\tiny TLC};
 \node (l10) at (c10) [below right=.01cm and 0cm, align=left,scale=0.7] {\tiny Bagging};
-\node (l11) at (c11) [above left=.24cm and 0cm, align=right,scale=0.7] {\tiny Stacking};
+\node (l11) at (c11) [above left=.3cm and 0cm, align=right,scale=0.7] {\tiny Stacking};
 
 \fill[fill=gray,fill opacity=0.5] (5.3333,-0.1) rectangle (8.7683,0.1);
 
 \foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11} {
 \draw (l\x) -| (c\x);};
-\end{tikzpicture}}\vspace{-1.8em}
+\end{tikzpicture}}\vspace{-1.3em}
 \captionof{figure}{\small Bonferroni-Dunn test for Precision}\label{fig:BonfDunnprec}\vspace{-1.3em}
 \captionof{table}{\small Holm and Wilcoxon tests for Precision}\label{tab:statprec}
+\vspace{-1em}
 \scriptsize
-\resizebox{0.95\textwidth}{!}{\begin{tabular}{lccccccccccc}
+\resizebox{0.9\textwidth}{!}{\begin{tabular}{lccccccccccc}
 \noalign{\smallskip}\hline\noalign{\smallskip}
 MIRSVM vs. &miGraph &MIBoost &MIOptimalBall &MIDD &MIWrapper &MISMO &MISVM &SimpleMI &TLC &Bagging &Stacking \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
@@ -1678,11 +1700,8 @@ Wilcoxon R$^+$ &75.000 &71.000 &90.000 &99.000 &71.000 &75.000 &55.000 &71.000 &
 Wilcoxon R$^-$ &45.000 &49.000 &30.000 &21.000 &49.000 &45.000 &65.000 &49.000 &33.000 &46.000 &33.000 \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
 \end{tabular}}
-\end{table}
-Figure~\ref{fig:BonfDunnprec} and~\ref{fig:BonfDunnrec} show that there are no significant differences between the precision and recall results obtained by all algorithms. Note, MIRSVM outperforms both ensemble methods according to recall, despite them exhibiting good accuracy and precision, indicating they are strongly conservative towards predicting positive bags. Holm's test indicates significant differences exist between MIRSVM and all algorithms except miGraph, MISMO, MISVM, and TLC for precision, and all the above along with SimpleMI, MIOptimalBall, and Bagging for recall. The Wilcoxon test does not reflect significant differences for precision, does for recall. The tests are severely biased due to the classifier's extreme unbalanced behavior, whereas MIRSVM demonstrates proper balance of the precision-recall trade-off.
-\begin{table}[t!]
-\small
-\caption{\small Recall for MI classifiers}\label{tab:recResults}
+\small \centering
+\captionof{table}{\small Recall for MI classifiers}\label{tab:recResults}
 \resizebox{0.95\textwidth}{!}{\begin{tabular}{l@{\extracolsep{\fill}}ccccccccccccc}
 \noalign{\smallskip}\hline\noalign{\smallskip}
 Datasets &MIRSVM & miGraph & MIBoost &MIOptimalBall &MIDD &MIWrapper &MISMO &MISVM &SimpleMI &TLC &Bagging &Stacking \\
@@ -1727,12 +1746,12 @@ Rank &4.8667 &6.5667 &6.8667 &6.3333 &7.3667 &6.8667 &6.7000 &7.4333 &\textbf{4.
 \coordinate (c10) at (6.0667,0);
 \coordinate (c11) at (6.7333,0);
 
-\node (l0) at (c0) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny \textbf{MIRSVM}};
+\node (l0) at (c0) [above left=.3cm and 0cm, align=right,scale=0.7] {\tiny \textbf{MIRSVM}};
 \node (l1) at (c1) [below left=.2cm and 0cm, align=right,scale=0.7] {\tiny miGraph};
-\node (l2) at (c2) [above right=.3cm and 0cm, align=left,scale=0.7] {\tiny MIBoost};
+\node (l2) at (c2) [above right=.35cm and 0cm, align=left,scale=0.7] {\tiny MIBoost};
 \node (l3) at (c3) [above left=.2cm and 0cm, align=right,scale=0.7] {\tiny MIOptimalBall};
 \node (l4) at (c4) [below right=.2cm and 0cm, align=left,scale=0.7] {\tiny MIDD};
-\node (l5) at (c5) [above right=.43cm and 0cm, align=left,scale=0.7] {\tiny MIWrapper};
+\node (l5) at (c5) [above right=.45cm and 0cm, align=left,scale=0.7] {\tiny MIWrapper};
 \node (l6) at (c6) [below right=.1cm and 0cm, align=left,scale=0.7] {\tiny MISMO};
 \node (l7) at (c7) [above right=.23cm and 0cm, align=left,scale=0.7] {\tiny MISVM};
 \node (l8) at (c8) [below left=.05cm and 0cm, align=right,scale=0.7] {\tiny SimpleMI};
@@ -1744,11 +1763,13 @@ Rank &4.8667 &6.5667 &6.8667 &6.3333 &7.3667 &6.8667 &6.7000 &7.4333 &\textbf{4.
 
 \foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11} {
 \draw (l\x) -| (c\x);};
-\end{tikzpicture}}\vspace{-1.8em}
+\end{tikzpicture}}\vspace{-1.3em}
 \captionof{figure}{\small Bonferroni-Dunn test for Recall}\label{fig:BonfDunnrec}\vspace{-1.3em}
 \captionof{table}{\small Holm and Wilcoxon tests for Recall}\label{tab:statrec}
+\vspace{-1em}
 \scriptsize
-\resizebox{0.95\textwidth}{!}{\begin{tabular}{lccccccccccc}
+\centering
+\resizebox{0.9\textwidth}{!}{\begin{tabular}{lccccccccccc}
 \noalign{\smallskip}\hline\noalign{\smallskip}
 MIRSVM vs. &miGraph &MIBoost &MIOptimalBall &MIDD &MIWrapper &MISMO &MISVM &SimpleMI &TLC &Bagging &Stacking \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
@@ -1760,8 +1781,10 @@ Wilcoxon R$^-$ &13.500 &37.000 &49.000 &46.000 &37.000 &51.000 &31.000 &45.000 &
 \end{tabular}}
 \end{table}
 
+Figure~\ref{fig:BonfDunnprec} and~\ref{fig:BonfDunnrec} show that there are no significant differences between the precision and recall results obtained by all algorithms. Note, MIRSVM outperforms both ensemble methods according to recall, despite them exhibiting good accuracy and precision, indicating they are strongly conservative towards predicting positive bags. Holm's test indicates significant differences exist between MIRSVM and all algorithms except miGraph, MISMO, MISVM, and TLC for precision, and all the above along with SimpleMI, MIOptimalBall, and Bagging for recall. The Wilcoxon test does not reflect significant differences for precision, does for recall. The tests are severely biased due to the classifier's extreme unbalanced behavior, whereas MIRSVM demonstrates proper balance of the precision-recall trade-off.
+
 \subsection{Cohen's Kappa Rate}
-\begin{table}[t!]
+\begin{table}[b!]
 \small
 \caption{\small Cohen's Kappa Rate for MI classifiers}\label{tab:kappaResults}
 \resizebox{0.95\textwidth}{!}{\begin{tabular}{lccccccccccccc}
@@ -1810,29 +1833,30 @@ Rank &\textbf{2.6333} &4.2000 &10.1667 &7.0000 &6.5333 &10.1667 &5.2333 &8.3667 
 \coordinate (c11) at (5,0);
 
 \node (l0) at (c0) [below left=.05cm and 0cm, align=right,scale=0.7] {\tiny \textbf{MIRSVM}};
-\node (l1) at (c1) [above right=.1cm and 0cm, align=left,scale=0.7] {\tiny miGraph};
-\node (l2) at (c2) [above right=.27cm and 0cm, align=right,scale=0.7] {\tiny MIBoost};
+\node (l1) at (c1) [above right=.2cm and 0cm, align=left,scale=0.7] {\tiny miGraph};
+\node (l2) at (c2) [above right=.35cm and 0cm, align=right,scale=0.7] {\tiny MIBoost};
 \node (l3) at (c3) [below right=.05cm and 0cm, align=left,scale=0.7] {\tiny MIOptimalBall};
 \node (l4) at (c4) [below left=.05cm and 0cm, align=right,scale=0.7] {\tiny MIDD};
 \node (l5) at (c5) [below right=.05cm and 0cm, align=left,scale=0.7] {\tiny MIWrapper};
 \node (l6) at (c6) [above right=.1cm and 0cm, align=left,scale=0.7] {\tiny MISMO};
 \node (l7) at (c7) [below right=.05cm and 0cm, align=left,scale=0.7] {\tiny MISVM};
-\node (l8) at (c8) [above right=.1cm and 0cm, align=left,scale=0.7] {\tiny SimpleMI};
+\node (l8) at (c8) [above right=.2cm and 0cm, align=left,scale=0.7] {\tiny SimpleMI};
 \node (l9) at (c9) [below left=.2cm and 0cm, align=right,scale=0.7] {\tiny TLC};
 \node (l10) at (c10) [below left=.02cm and 0cm, align=right,scale=0.7] {\tiny Bagging};
-\node (l11) at (c11) [below left=.05cm and 0cm, align=right,scale=0.7] {\tiny Stacking};
+\node (l11) at (c11) [below right=.05cm and 0cm, align=right,scale=0.7] {\tiny Stacking};
 
 \fill[fill=gray,fill opacity=0.5] (2.6333,-0.1) rectangle (6.0683,0.1);
 
 \foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11} {
 \draw (l\x) -| (c\x);
 };
-\end{tikzpicture}}\vspace{-1.8em}
+\end{tikzpicture}}\vspace{-1.3em}
 \captionof{figure}{\small Bonferroni-Dunn test for Cohen's Kappa rate}\label{fig:BonfDunnkappa}
 \vspace{-1.3em}
 \captionof{table}{\small Holm and Wilcoxon tests for Cohen's Kappa rate}\label{tab:statkappa}
-\scriptsize
-\resizebox{0.95\textwidth}{!}{\begin{tabular}{lccccccccccc}
+\vspace{-1em}
+\scriptsize \centering
+\resizebox{0.9\textwidth}{!}{\begin{tabular}{lccccccccccc}
 \noalign{\smallskip}\hline\noalign{\smallskip}
 MIRSVM vs. &miGraph &MIBoost &MIOptimalBall &MIDD &MIWrapper &MISMO &MISVM &SimpleMI &TLC &Bagging &Stacking \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
@@ -1847,7 +1871,7 @@ Table~\ref{tab:kappaResults} shows the Cohen's Kappa rate results obtained by th
 
 \subsection{Area Under ROC Curve}
 \begin{table}[b!]
-\small
+\small \centering
 \caption{\small AUC for MI classifiers}\label{tab:aucResults}
 \resizebox{0.95\textwidth}{!}{\begin{tabular}{lccccccccccccc}
 \hline\noalign{\smallskip}
@@ -1912,11 +1936,12 @@ Rank &\textbf{2.7667} &4.2667 &10.1667 &7.0000 &6.5333 &10.1667 &5.2333 &8.2333 
 \foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11} {
 \draw (l\x) -| (c\x);
 };
-\end{tikzpicture}}\vspace{-1.8em}
+\end{tikzpicture}}\vspace{-1.3em}
 \captionof{figure}{\small Bonferroni-Dunn test for AUC}\label{fig:BonfDunnauc}\vspace{-1.3em}
 \captionof{table}{\small Holm and Wilcoxon tests for AUC}\label{tab:statauc}
-\scriptsize
-\resizebox{0.95\textwidth}{!}{\begin{tabular}{lccccccccccc}
+\vspace{-1em}
+\scriptsize \centering
+\resizebox{0.9\textwidth}{!}{\begin{tabular}{lccccccccccc}
 \noalign{\smallskip}\hline\noalign{\smallskip}
 MIRSVM vs. &miGraph &MIBoost &MIOptimalBall &MIDD &MIWrapper &MISMO &MISVM &SimpleMI &TLC &Bagging &Stacking \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
@@ -1998,14 +2023,14 @@ Rank &\textbf{1.3333} &3.6667 &8.9167 &7.7500 &9.2500 &9.0833 &5.9167 &8.7500 &7
 \node (l0) at (c0) [below left=.05cm and 0cm, align=right,scale=0.7] {\tiny \textbf{MIRSVM}};
 \node (l1) at (c1) [below left=.05cm and 0cm, align=right,scale=0.7] {\tiny miGraph};
 \node (l2) at (c2) [below right=.05cm and 0cm, align=left,scale=0.7] {\tiny MIBoost};
-\node (l3) at (c3) [above left=.23cm and 0cm, align=right,scale=0.7] {\tiny MIOptimalBall};
+\node (l3) at (c3) [above left=.3cm and 0cm, align=right,scale=0.7] {\tiny MIOptimalBall};
 \node (l4) at (c4) [above right=.05cmand 0cm, align=left,scale=0.7] {\tiny MIDD};
 \node (l5) at (c5) [above left=.23cm and 0cm, align=right,scale=0.7] {\tiny MIWrapper};
 \node (l6) at (c6) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny MISMO};
 \node (l7) at (c7) [below left=.05cm and 0cm, align=right,scale=0.7] {\tiny MISVM};
 \node (l8) at (c8) [below left=.05cm and 0cm, align=right,scale=0.7] {\tiny SimpleMI};
 \node (l9) at (c9) [below left=.05cm and 0cm, align=right,scale=0.7] {\tiny TLC};
-\node (l10) at (c10) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny Bagging};
+\node (l10) at (c10) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny Bagging};
 \node (l11) at (c11) [above left=.23cm and 0cm, align=right,scale=0.7] {\tiny Stacking};
 
 \fill[fill=gray,fill opacity=0.5] (1.3333,-0.1) rectangle (4.7683,0.1);
@@ -2013,7 +2038,7 @@ Rank &\textbf{1.3333} &3.6667 &8.9167 &7.7500 &9.2500 &9.0833 &5.9167 &8.7500 &7
 \foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11} {
 \draw (l\x) -| (c\x);
 };
-\end{tikzpicture}}\vspace{-1.8em}
+\end{tikzpicture}}\vspace{-1.3em}
 \captionof{figure}{\small Bonferroni-Dunn test for overall ranks comparison}\label{fig:BonfDunnpmeta}
 \end{table}
 Table~\ref{tab:time} shows the run times, in seconds, for each algorithm. MIRSVM has the fastest run time and is ranked second. MIRSVM shows very good scalability considering the number of features, such as in the webmining dataset which comprises of $5863$ attributes. Additionally, taking into account the number of instances as seen in the two largest datasets, component and function, MIRSVM displays superior scalability. It is important to note that quadratic programming solvers are not the most efficient tools for solving optimization problems in terms of run time, and yet MIRSVM still is shown to perform competitively against the current widely used algorithms. The scalability of MIRSVM is founded on the speedy rate of bag-representative convergence, as shown previously in Figure~\ref{fig:convegence}.
