@@ -420,6 +420,24 @@
   \field{year}{1992}
 \endentry
 
+\entry{bottou2010large}{inproceedings}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Bottou}{B.}%
+     {L.}{L.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{BL1}
+  \strng{fullhash}{BL1}
+  \field{sortinit}{B}
+  \field{booktitle}{Proceedings of nineteenth International Conference on
+  Computational Statistics}
+  \field{pages}{177\bibrangedash 186}
+  \field{title}{Large-scale machine learning with stochastic gradient descent}
+  \field{year}{2010}
+\endentry
+
 \entry{bottou2004large}{inproceedings}{}
   \name{author}{2}{}{%
     {{}%
@@ -529,7 +547,7 @@
      {}{}}%
   }
   \strng{namehash}{BL1}
-  \strng{fullhash}{BL1}
+  \strng{fullhash}{BL2}
   \field{sortinit}{B}
   \field{number}{2}
   \field{pages}{123\bibrangedash 140}
@@ -1501,7 +1519,7 @@
   \field{sortinit}{K}
   \field{booktitle}{Proceedings of the IEEE Southeast Conference}
   \field{pages}{1\bibrangedash 6}
-  \field{title}{Fast online algorithms for cupport vector machines}
+  \field{title}{Fast online algorithms for support vector machines}
   \field{year}{2016}
 \endentry
 
@@ -2674,6 +2692,28 @@
   \field{pages}{1073\bibrangedash 1080}
   \field{title}{{Em-DD: an improved multiple-instance learning technique}}
   \field{year}{2002}
+\endentry
+
+\entry{zhang2004solving}{inproceedings}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Zhang}{Z.}%
+     {T.}{T.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{organization}{1}{%
+    {ACM}%
+  }
+  \strng{namehash}{ZT1}
+  \strng{fullhash}{ZT1}
+  \field{sortinit}{Z}
+  \field{booktitle}{Proceedings of the twenty first International Conference on
+  Machine Learning}
+  \field{pages}{116}
+  \field{title}{Solving large scale linear prediction problems using stochastic
+  gradient descent algorithms}
+  \field{year}{2004}
 \endentry
 
 \entry{zhou2009multi}{inproceedings}{}
