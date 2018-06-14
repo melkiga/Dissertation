@@ -1,7 +1,7 @@
 %%% VCU thesis/dissertation template file
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL proposal.tex          Tue Apr 17 10:15:48 2018
-%DIF ADD ../dissertation.tex   Tue Jun 12 11:17:19 2018
+%DIF ADD ../dissertation.tex   Tue Jun 12 13:53:38 2018
 \makeatletter
 \let\my@xfloat\@xfloat
 \makeatother
@@ -589,7 +589,38 @@ This chapter is organized as follows: Section~\ref{sec:MTRbackground} describes 
 This section first defines the notation that will be used throughout this chapter, and then formally describes the multi-target regression problem along with relevant popular algorithms used within this paradigm.
 
 \subsection{Notation}\label{subsec:mtrnotation}
-Let $\mathcal{D}$ be a training dataset of $n$ instances. Let $\bm{X} \in \mathcal{D}$ be a matrix consisting of $d$ input variables and $n$ samples, such that $\bm{X} \in \mathbb{R}^{n \times d}$. Let $\bm{Y} \in \mathcal{D}$ be a matrix consisting of $m$ continuous target variables and $n$ samples,  where $\bm{Y} \in \mathbb{R}^{n \times m}$. 
+\DIFaddbegin \begin{table*}[t!]
+\small \centering
+\caption{\DIFaddFL{Multiple-Target Learning Notation}}
+\resizebox{\textwidth}{!}{\begin{tabular}{ll}
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Definition & Notation\\ 
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Number of Samples & $\mathcal{N}$ \\
+Number of Input Attributes & $d$ \\
+Input Space & $\bm{X} = \{\bm X_1, \ldots, \bm X_i, \ldots, \bm X_d\} \in \mathbb{R}^{\mathcal{N} \times d},\,1\leq i \leq d$ \\
+Input Instance & $\bm{x}^{(l)} = (x_1^{(l)}, \ldots, x_d^{(l)}) \in \bm{X},\, 1 \leq l \leq\mathcal{N}$ \\
+Number of Dataset Targets/Outputs & $m$ \\
+Target Space & $\bm{Y} = \{\bm Y_1, \ldots, \bm Y_j, \ldots, \bm Y_m\} \in \mathbb{R}^{\mathcal{N} \times m},\, 1 \leq j \leq m$ \\
+Predicted Target Space & $\bm{\hat{Y}} = \{\bm{\hat{Y_1}}, \ldots, \bm{\hat{Y_j}}, \ldots, \bm{\hat{Y}_m}\} \in \mathbb{R}^{\mathcal{N} \times m},\, 1 \leq j \leq m$ \\
+\vspace{1.5pt}
+Target Instance & $\bm y^{(l)} = (y_1^{(l)}, \ldots, y_m^{(l)}) \in \bm{Y},\,1 \leq l \leq\mathcal{N}$ \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\noalign{\vskip 0.04in}
+Full Multi-Target (MT) Training Dataset & $\mathcal{D} = \{(x_1^{(1)},y_1^{(1)}), \ldots, (x_d^{(\mathcal N)},y_m^{(\mathcal N)})\}$ \\
+Single-Target (ST) Dataset with $j^{th}$ Target & $\mathcal{D}_j = \{(x_1^{(1)},y_j^{(1)}), \ldots, (x_d^{(\mathcal N)},y_j^{(\mathcal N)})\} \in \mathcal{D},\, 1 \leq j \leq m$\\
+Number of Cross-Validation (CV) Sets & $k$ \\
+ST Test Dataset with $j^{th}$ Target, $i^{th}$ CV Fold & $\mathcal{D}_j^{(i)} = \{(x_1^{(i)},y_j^{(i)}), \ldots, (x_d^{(i)},y_j^{(i)}) \in \mathcal{D}_j,\, i \in \{1,\ldots,\mathcal{N}\}$ \\
+ST Training Dataset with $j^{th}$ Target, Excluding the $i^{th}$ CV Fold & $\mathcal{D}_j^{(k-i)} = \mathcal{D}_j \setminus \mathcal{D}_j^{(i)}$ \\
+MT Regression Model & $h : \bm{X} \times \bm{Y}$ \\
+ST Regression Model & $h_j : \bm{X} \times \bm{Y}_j,\, 1 \leq j \leq m$ \\
+Unknown Sample & $\bm{x}^{(\mathcal N^\prime)} = \{\bm {x}^{(\mathcal N+1)}, \ldots, \bm {x}^{\mathcal (N^\prime)}\}$ \\
+Predicted Values for Unknown Sample & $\bm{y}^{(\mathcal N^\prime)} = \{\bm{y}^{(\mathcal N+1)}, \ldots, \bm {y}^{(\mathcal N^\prime)}\}$\\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\end{tabular}}
+\label{tab:mtrNotation}
+\end{table*}
+\DIFaddend Let $\mathcal{D}$ be a training dataset of $n$ instances. Let $\bm{X} \in \mathcal{D}$ be a matrix consisting of $d$ input variables and $n$ samples, such that $\bm{X} \in \mathbb{R}^{n \times d}$. Let $\bm{Y} \in \mathcal{D}$ be a matrix consisting of $m$ continuous target variables and $n$ samples,  where $\bm{Y} \in \mathbb{R}^{n \times m}$. 
 
 \subsection{Multi-Target Regression}
 In the multi-target learning paradigm, the \textit{problem transformation} approach involves training $m$ independent, single-target models for each target output on datasets $\mathcal{D}_j = \set{\bm X, \bm Y_j},\, \forall j \in \{1, \ldots, m\}$, and is considered as a baseline for measuring model performance~\cite{Spyromitros2014}. Many \textit{problem transformation} methods have been proposed for solve multi-target problems, however, the main issue with this type of approach is that the relationships between the targets is lost once independent models are built for each target. Examples of \textit{problem transformation} approaches include Linear Target Combinations for MT Regression~\cite{Tsoumakas2014}, and Multi-Objective Random Forests (MORF) \cite{Kocev2007}. 
@@ -1338,15 +1369,15 @@ This contribution proposed three novel methods for solving multi-target regressi
 The experimental study compared the proposed methods' performances to $7$ popular, contemporary methods on 24 MT regression datasets. Firstly, the results show the superior performance of using the SVR method as a base-line model, rather than regression trees as used in MORF. The results for SVRRC show an increase in performance when random chaining is used to develop an ensemble model. This indicates the importance of the relationship among the target variables during training. Finally, the results show the superiority of using the SVRCC method, which was ranked the best in all quality metrics and second best in terms of run time. SVRCC performed better than the single-target SVR model and the randomly chained ensemble model SVRRC, showing that the targets' maximum correlation does positively contribute toward model training. The statistical analysis supports and shows the significance of the results obtained by our experiments. They demonstrated that statistically significant differences exist between the proposed algorithms against the methods compared. SVRCCs competitive performance, as well as speed, shows that it is a powerful learning algorithm for multi-target problems. The research outcomes of this chapter have been published in~\cite{melki2017multi}.
 
 \chapter{Multi-Instance SVM using Bag-Representatives \label{chap:mirsvm}}
-This contribution proposes a novel support vector machine multiple-instance formulation and presents an algorithm with a bag-representative selector that trains the SVM based on bag-level information, named MIRSVM. The contribution is able to identify instances that highly impact classification, i.e. bag-representatives, for both positive and negative bags, while finding the optimal class separation hyperplane. Unlike other multi-instance SVM methods, this approach eliminates possible class imbalance issues by allowing both positive and negative bags to have at most one representative, which constitute as the most contributing instances to the model. The experimental study evaluates and compares the performance of this proposal against $11$ popular multi-instance methods over $15$ datasets, and the results are validated through non-parametric statistical analysis. The results indicate that bag-based learners outperform the instance-based and wrapper methods, and this proposal's overall superior performance against other multi-instance SVM models. 
+This contribution \DIFaddbegin \DIFadd{of this chapter }\DIFaddend proposes a novel support vector machine \DIFdelbegin \DIFdel{multiple-instance formulation and presents an algorithm with a bag-representative }\DIFdelend \DIFaddbegin \DIFadd{(SVM) formulation under the multiple-instance learning (MIL) paradigm. It also presents a novel algorithm and  bag representative }\DIFaddend selector that trains the SVM \DIFdelbegin \DIFdel{based on }\DIFdelend \DIFaddbegin \DIFadd{using }\DIFaddend bag-level information, named \DIFdelbegin \DIFdel{MIRSVM}\DIFdelend \DIFaddbegin \DIFadd{Multi-Instance Representative SVM (MIRSVM)}\DIFaddend . The contribution is able to identify instances that highly impact classification, i.e. \DIFdelbegin \DIFdel{bag-representatives}\DIFdelend \DIFaddbegin \DIFadd{the }\textit{\DIFadd{bag-representatives}}\DIFaddend , for both positive and negative bags, while finding the optimal class separation hyperplane. Unlike other multi-instance SVM methods, this approach eliminates possible class imbalance issues by allowing both positive and negative bags to have at most one representative, which constitute as the most contributing instances to the model. The experimental study evaluates and compares the performance of this proposal against $11$ popular \DIFaddbegin \DIFadd{and widely used }\DIFaddend multi-instance methods over $15$ datasets, and the results are validated through non-parametric statistical analysis. The results indicate that bag-based learners outperform the instance-based and wrapper methods, and \DIFaddbegin \DIFadd{emphasize }\DIFaddend this proposal's overall superior performance against other multi-instance SVM models. 
 
 \section{Multi-Instance Classification Background}\label{sec:mibackground}
-This section defines the notation that will be used throughout the paper, and reviews related works on multi-instance learning and multi-instance support vector machines.
+This section defines the notation that will be used throughout \DIFdelbegin \DIFdel{the paper, }\DIFdelend \DIFaddbegin \DIFadd{this chapter }\DIFaddend and reviews related works \DIFdelbegin \DIFdel{on multi-instance learningand multi-instance support vector machines}\DIFdelend \DIFaddbegin \DIFadd{pertaining to multiple-instance learning, specifically the concepts of instance-based and bag-based learners are discussed and compared, along with algorithms within those paradigms}\DIFaddend .
 
 \subsection{Notation}\label{subsec:minotation}
 Let $\mathcal{D}$ be a training dataset of $n$ bags. Let $\bm{Y} \in \mathcal{D}$ be a vector of $n$ labels corresponding to each bag, having a domain of $\bm{Y} \in \set{-1,1}^n$. Let $\bm{X} \in \mathcal{D}$ be a matrix consisting of $d$ input variables and $m$ instances, $\bm x_i \in \bm X,\, \forall i \in \set{1,\ldots,m}$ , having a domain of $\bm{X} \in \mathbb{R}^{m \times d}$. Let $\mathcal{B}$ be the set of bags which contain $|\mathcal{B}_I|$ number of instances, sometimes of different size and usually non-overlapping, such that $\mathcal{B}_I = \{\bm x_{1}, \ldots, \bm x_{|\mathcal{B}_I|}\}$ for index set $I \in \set{1,\ldots,n}$. 
 
-\DIFaddbegin \begin{table}[htbp]
+\DIFaddbegin \begin{table}[t!]
 \small
 \caption{\DIFaddFL{Summary of Multiple-Instance Learning Notation}}\label{tab:MILNotation}
 \begin{tabularx}{\textwidth}{l@{\extracolsep{\fill}}l}
@@ -1360,7 +1391,7 @@ Let $\mathcal{D}$ be a training dataset of $n$ bags. Let $\bm{Y} \in \mathcal{D}
 \DIFaddFL{Bag Index Set }& \DIFaddFL{$I \in \ints_+^n$ }\\
 \DIFaddFL{Input Space }& \DIFaddFL{$\bm{X} \in \mathbb{R}^{m \times d}$ }\\
 \DIFaddFL{Bag Labels }& \DIFaddFL{$\bm{Y} \in \{-1,1\}^n$ }\\
-\DIFaddFL{Input Instance $i$ from Bag $I$ }& \DIFaddFL{$\bm{x}_i \in \reals^d,\, i \in I$ }\\
+\DIFaddFL{Input Instance $i$ from Bag $I$ }& \DIFaddFL{$\bm{x}_i \in \bm{x}_i = (x_{i1}, \ldots, x_{id}),\, \forall i \in \set{1,\ldots,n},\, i \in I$ }\\
 \DIFaddFL{Unknown Individual Instance Label $i$ }& \DIFaddFL{$y_i \in \set{-1,1}$ }\\
 \DIFaddFL{Bag $I$ }& \DIFaddFL{$\mathcal{B}_I = \set{\bm x_i \st \forall i \in I}$ }\\
 \noalign{\smallskip}\hline\noalign{\smallskip}
@@ -1437,7 +1468,17 @@ The MI adaptation of the SVM presents two contexts for solving the problem: the 
 
 Andrews et. al.~\cite{Andrews2002} proposed a mixed-integer quadratic program that solves the MI problem at an instance-level, using a support vector machine, named MISVM, that can be solved heuristically. Rather than maximizing the margin of separability between instances of different classes, this instance-based method maximizes the margin between bags. It tries to identify the key instance from each positive bag that makes the bag positive by assuming it has the highest margin value. Instances from positive bags are selected as bag-representatives, and the algorithm iteratively creates a classifier that separates those representatives from all instances from the negative bags. Using bag-representatives from one class and all instances from the other is an example of an approach that combines rules from the SMI assumption and the collective assumption. A disadvantage of this approach stems from the assumption that all instances within positive bags are also positive, which is an implicit step in the initialization of MISVM. Andrews et. al.~\cite{Andrews2002} also proposed a second mixed-integer instance-level approach, named mi-SVM, which does not discard the negative instances of the positive bags. It rather tries to identify the instances within positive bags that are negative and utilize them in the construction of the negative margin. The main disadvantage of these approaches is that they create an imbalanced class problem that favors the negative class, resulting in a biased classifier.
 
-\DIFdelbegin \DIFdel{One of the }\DIFdelend \DIFaddbegin \DIFadd{An example of using the approach of a bag-level kernel would coincidentally be one of the }\DIFaddend first bag-level approaches to the multi-instance SVM problem\DIFdelbegin \DIFdel{was }\DIFdelend \DIFaddbegin \DIFadd{, }\DIFaddend proposed by G{\"a}rtner et. al.~\cite{Smola2002}\DIFdelbegin \DIFdel{, who defined a bag-level kernel}\DIFdelend . A bag-level kernel determines the similarity between two bags in a higher dimensional space. Blaschko et. al.~\cite{Blaschko2006} proposed conformal kernels which manipulate each attribute's dimension based on its importance, without affecting the angles between vectors in the transformed space. These type of bag level kernels transform the bags into a single-instance representation which enables standard SVMs to be directly applied to multi-instance data. 
+\DIFdelbegin \DIFdel{One of the }\DIFdelend \DIFaddbegin \DIFadd{Asymmetric SVM (ASVM), presented by Yang et al.~\mbox{%DIFAUXCMD
+\cite{Herman2008}}%DIFAUXCMD
+, was designed to use an asymmetric loss function under the SMI assumption. This approach was based on the idea that the cost of misclassification is different for positive and negative bags. For example, a false negative instance in a positive bag would not necessarily introduce an error on the bag label, assuming there are many positive instances within the bag. However, a false positive instance in a negative bag would definitely lead to an error. Using rules such as these, ASVM aims to minimize false positives, while ensuring all negative instances are on the negative side of the hyperplane.
+}
+
+\DIFadd{The approach presented by Cheung et al.~\mbox{%DIFAUXCMD
+\cite{cheung2006regularization} }%DIFAUXCMD
+presented a loss function that takes the cost associated with bag labels and the cost (under the SMI assumption) between prediction of beach bag and its instances into account. They also presented an SVM regularization scheme as well which, rather than using a heuristic method, used concave-convex optimization, ensuring local-optimum convergence.
+}
+
+\DIFadd{An example of using the approach of a bag-level kernel would coincidentally be one of the }\DIFaddend first bag-level approaches to the multi-instance SVM problem\DIFdelbegin \DIFdel{was }\DIFdelend \DIFaddbegin \DIFadd{, }\DIFaddend proposed by G{\"a}rtner et. al.~\cite{Smola2002}\DIFdelbegin \DIFdel{, who defined a bag-level kernel}\DIFdelend . A bag-level kernel determines the similarity between two bags in a higher dimensional space. Blaschko et. al.~\cite{Blaschko2006} proposed conformal kernels which manipulate each attribute's dimension based on its importance, without affecting the angles between vectors in the transformed space. These type of bag level kernels transform the bags into a single-instance representation which enables standard SVMs to be directly applied to multi-instance data. 
 
 \DIFaddbegin \DIFadd{Unlike the bag-based methods mentioned previously, which have a the SMI assumption embedded in their design, mapping-based algorithms do not assume a specific relationship exists between the labels of each bag and its instances. Rather, the relationship is learned from the data. An example of such methods is the Two-Level Classifier (TLC)~\mbox{%DIFAUXCMD
 \cite{Weidmann2003}}%DIFAUXCMD
@@ -1454,7 +1495,10 @@ proposed CitationKNN which extends the traditional $k$-nearest neighbors ($k$-NN
 \DIFaddend For most of the methods described above, implicit or explicit assumptions have been made about the distribution of the data. Selecting a method that is robust for a problem such as MIL can be difficult when little is known about the nature of the data, especially considering the unknown distribution of the instances within bags~\cite{Amores2013}. The proposed method, MIRSVM, is a general method that uses support vector machines to design a MIL model without making prior assumptions about the data. Classifiers of this type are known to provide better generalization capabilities and performance, as well as sparser models.
 
 \section{\DIFaddbegin \DIFadd{MIRSVM: A }\DIFaddend Novel SVM for Multi-Instance Classification}
-MIRSVM is based on the idea of selecting representative instances from both positive and negative bags which are used to find an unbiased, optimal separating hyperplane. A representative is iteratively chosen from each bag, and a new hyperplane is formed according to the representatives until they converge. Based on the SMI hypothesis, only one instance in a bag is required to be positive for the bag to adopt a positive label. Due to the unknown distribution of instances within positive bags, MIRSVM is designed to give preference to negative bags during training, because their distribution is known, i.e. all instances are guaranteed to be negative. This is evident during the representative selection process, by taking the index of the maximum output value within each bag based on the current hyperplane using the following rule, $s_I = \text{argmax}_{i \in I} (\langle \bm w,\, \bm x_i \rangle + b),\, \forall I \in \set{1,\ldots,n}$. In other words, the most positive instance is chosen from each positive bag and the least negative instance is chosen from each negative bag (instances with the largest output value based on the current hyperplane), pushing the decision boundary  towards the positive bags. Equation~\eqref{eq:primalmirsvm} presents the primal MIRSVM optimization problem:
+MIRSVM is based on the idea of selecting representative instances from both positive and negative bags which are used to find an unbiased, optimal separating hyperplane. A representative is iteratively chosen from each bag, and a new hyperplane is formed according to the representatives until they converge. Based on the SMI hypothesis, only one instance in a bag is required to be positive for the bag to adopt a positive label. Due to the unknown distribution of instances within positive bags, MIRSVM is designed to give preference to negative bags during training, because their distribution is known, i.e. all instances are guaranteed to be negative. This is evident during the representative selection process, by taking the index of the maximum output value within each bag based on the current hyperplane using the following rule, $s_I = \text{argmax}_{i \in I} (\langle \bm w,\, \bm x_i \rangle + b),\, \forall I \in \set{1,\ldots,n}$. In other words, the most positive instance is chosen from each positive bag and the least negative instance is chosen from each negative bag (instances with the largest output value based on the current hyperplane), pushing the decision boundary  towards the positive bags. 
+\DIFaddbegin 
+
+\DIFaddend Equation~\eqref{eq:primalmirsvm} presents the primal MIRSVM optimization problem:
 \begin{subequations} 
 \label{eq:primalmirsvm}
 \begin{alignat}{2}
@@ -1533,12 +1577,15 @@ To evaluate the output vector, $\bm o_I$, of bag $I$ using the kernel, the follo
 \bm o_I = \spa{K}(\mathcal{B}_I,\bm X_S)*(\bm\alpha \cdot \bm Y_S) + b
 \end{align}
 
-The bias term $b$ is calculated as shown in Equation~\eqref{eqn:bias}, where $\bm{sv}$ is the vector of support vector indices and $n_{sv}$ is the number of support vectors~\cite{Huang2006}.
+\DIFaddbegin \newpage
+
+\DIFaddend The bias term $b$ is calculated as shown in Equation~\eqref{eqn:bias}, where $\bm{sv}$ is the vector of support vector indices and $n_{sv}$ is the number of support vectors~\cite{Huang2006}.
 \begin{align}
 \label{eqn:bias}
 b = \frac{1}{n_{\bm{sv}}}\sum_{\bm{sv}} Y_{\bm{sv}} - \spa{K}(\bm X_{\bm{sv}},\bm X_{\bm{sv}})*(\bm \alpha_{\bm{sv}}\bm\cdot Y_{\bm{sv}})
 \end{align}
-Algorithm~\ref{alg:mirsvm} shows the procedure for training the multi-instance representative SVM classifier and obtaining the optimal representatives from each bag.  During training, the representatives, $\bm S$, are first initialized by randomly selecting an instance from each bag. A hyperplane is then obtained using the representative instances, and new optimal representatives are found with respect to the current hyperplane, by using the rule given in Equation~\eqref{eq:si}. At each step, the previous values in $\bm S$ are stored in $\bm S_{old}$. The training procedure ends when the bag representatives stop changing from one iteration to the next ($\bm S = \bm S_{old}$). Examples of the convergence of bag-representatives are shown in Figure~\ref{fig:convegence}. During the testing procedure, each bag produces an output vector based on the hyperplane found in the training procedure. The bag label is then assigned by taking the sign of the output vector's maximum value, following the SMI assumption. 
+\DIFaddbegin 
+
 \begin{figure}[t!]
 \centering
 \small
@@ -1562,42 +1609,126 @@ Algorithm~\ref{alg:mirsvm} shows the procedure for training the multi-instance r
 \draw[arrow] (D) -- node {yes} (E);
 \draw[arrow] (D.north) --+(0,0.1cm) -| (B.north) node[below,pos=0.25] {no} ;
 \end{tikzpicture}}
-\caption{\small A summary of the steps performed by MIRSVM. The representatives are first randomly initialized and continuously updated according to the current hyperplane, which is found using a quadratic programming solver. Upon completion, the model is returned along with the optimal bag-representatives.}
+\caption{\small \DIFaddFL{A summary of the steps performed by MIRSVM. The representatives are first randomly initialized and continuously updated according to the current hyperplane. Upon completion, the model is returned along with the optimal bag-representatives.}}
 \end{minipage}
 \begin{minipage}{\textwidth}
 \begin{algorithm}[H]
 \small
-\caption{Multi-Instance Representative SVM (MIRSVM)}
+\caption{\DIFaddFL{Multi-Instance Representative SVM (MIRSVM)}}
 \label{alg:mirsvm} 
 \begin{algorithmic}
 \renewcommand{\algorithmicrequire}{\textbf{Input:}}
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
-\Require Training dataset $\mathcal{D}$, SVM Parameters $C$ and $\sigma$
-\Ensure  SVM model parameters $\bm \alpha$ and $b$, Bag Representative IDs $\bm S$
-\For {$I \in \set{1,\ldots,n}$}
-\State $\bm S_I \leftarrow \text{ rand}\left(|\mathcal{B}_I|,1,1\right)$ \Comment{Assign each bag a random instance}
+\Require \DIFaddFL{Training dataset $\mathcal{D}$, SVM Parameters $C$ and $\sigma$
+}\Ensure  \DIFaddFL{SVM model parameters $\bm \alpha$ and $b$, Bag Representative IDs $\bm S$
+}\For {\DIFaddFL{$I \in \set{1,\ldots,n}$}}
+\State \DIFaddFL{$\bm S_I \leftarrow \text{ rand}\left(|\mathcal{B}_I|,1,1\right)$ }\Comment{Assign each bag a random instance}
 \EndFor
-\While {$\bm S \neq \bm S_{old}$}
-\State $\bm S_{old} \leftarrow \bm S$
-\State $\bm X_S \leftarrow \bm X(\bm S),\,\bm Y_S \leftarrow \bm Y(\bm S)$ \Comment{Initialize the representative dataset}
-\State $\bm G \leftarrow (\bm Y_S \times \bm Y_S) \bm \cdot \mathcal{K}\left( \bm X_S,\,\bm X_S,\,\sigma\right)$ \Comment{Build Gram matrix}
-\State $\bm \alpha \leftarrow \text{ quadprog}\left(\bm G, \bm{-1}^n, \bm Y_S, \bm 0^n, \bm 0^n, \bm C^n\right)$ \Comment{Solve QP Problem}
-\State $\bm{sv} \leftarrow \text{find}\left(0 < \bm \alpha \leq C \right)$ \Comment{Get the support vector indices}
-\State $n_{\bm{sv}} \leftarrow \text{count}\left(0 < \bm \alpha \leq C \right)$ \Comment{Get the number of support vectors}
-\State $b \leftarrow \frac{1}{n_{\bm{sv}}}\sum_{i=1}^{n_{\bm{sv}}} \left(\bm Y_{\bm{sv}} - \bm G_{\bm{sv}}*\left(\bm{\alpha_{\bm{sv}}} \cdot \bm Y_{\bm{sv}}\right)\right)$ \Comment{Calculate the bias term}
-\For {$I \in \set{1,\ldots,n}$} 
-\State $\bm G_I \leftarrow (Y_I \times \bm Y_S) \bm \cdot \mathcal{K}\left( \mathcal{B}_I,\,\bm X_S,\,\sigma\right)$
-\State $\bm S_I \leftarrow \text{argmax}_{i \in I}\left(\bm G_I*\bm{\alpha} + b \right)$ \tab\tab[0.62cm]\Comment{Select optimal bag-representatives}
+\While {\DIFaddFL{$\bm S \neq \bm S_{old}$}}
+\State \DIFaddFL{$\bm S_{old} \leftarrow \bm S$
+}\State \DIFaddFL{$\bm X_S \leftarrow \bm X(\bm S),\,\bm Y_S \leftarrow \bm Y(\bm S)$ }\Comment{Initialize the representative dataset}
+\State \DIFaddFL{$\bm G \leftarrow (\bm Y_S \times \bm Y_S) \bm \cdot \mathcal{K}\left( \bm X_S,\,\bm X_S,\,\sigma\right)$ }\Comment{Build Gram matrix}
+\State \DIFaddFL{$\bm \alpha \leftarrow \text{ quadprog}\left(\bm G, \bm{-1}^n, \bm Y_S, \bm 0^n, \bm 0^n, \bm C^n\right)$ }\Comment{Solve QP Problem}
+\State \DIFaddFL{$\bm{sv} \leftarrow \text{find}\left(0 < \bm \alpha \leq C \right)$ }\Comment{Get the support vector indices}
+\State \DIFaddFL{$n_{\bm{sv}} \leftarrow \text{count}\left(0 < \bm \alpha \leq C \right)$ }\Comment{Get the number of support vectors}
+\State \DIFaddFL{$b \leftarrow \frac{1}{n_{\bm{sv}}}\sum_{i=1}^{n_{\bm{sv}}} \left(\bm Y_{\bm{sv}} - \bm G_{\bm{sv}}*\left(\bm{\alpha_{\bm{sv}}} \cdot \bm Y_{\bm{sv}}\right)\right)$ }\Comment{Calculate the bias term}
+\For {\DIFaddFL{$I \in \set{1,\ldots,n}$}} 
+\State \DIFaddFL{$\bm G_I \leftarrow (Y_I \times \bm Y_S) \bm \cdot \mathcal{K}\left( \mathcal{B}_I,\,\bm X_S,\,\sigma\right)$
+}\State \DIFaddFL{$\bm S_I \leftarrow \text{argmax}_{i \in I}\left(\bm G_I*\bm{\alpha} + b \right)$ }\tab\tab[0.62cm]\Comment{Select optimal bag-representatives}
 \EndFor
 \EndWhile 
 \end{algorithmic}
 \end{algorithm}
 \end{minipage}
 \end{figure}
-\newpage
-\begin{figure}[t!]
+
+\DIFaddend Algorithm~\ref{alg:mirsvm} shows the procedure for training the multi-instance representative SVM classifier and obtaining the optimal representatives from each bag.  During training, the representatives, $\bm S$, are first initialized by randomly selecting an instance from each bag. A hyperplane is then obtained using the representative instances, and new optimal representatives are found with respect to the current hyperplane, by using the rule given in Equation~\eqref{eq:si}. At each step, the previous values in $\bm S$ are stored in $\bm S_{old}$. The training procedure ends when the bag representatives stop changing from one iteration to the next ($\bm S = \bm S_{old}$). Examples of the convergence of bag-representatives are shown in Figure~\ref{fig:convegence}. During the testing procedure, each bag produces an output vector based on the hyperplane found in the training procedure. The bag label is then assigned by taking the sign of the output vector's maximum value, following the SMI assumption. 
+\DIFaddbegin 
+
+\DIFaddend \begin{figure}[t!]
 \centering
-\includegraphics[width=0.94\textwidth]{figures/convergence.png} 
+\DIFdelbeginFL %DIFDELCMD < \small
+%DIFDELCMD < \label{fig:mirsvm}
+%DIFDELCMD < \begin{minipage}{\textwidth}
+%DIFDELCMD < \small
+%DIFDELCMD < \adjustbox{scale=0.9}{
+%DIFDELCMD < \begin{tikzpicture}[%
+%DIFDELCMD <     node distance=4cm,
+%DIFDELCMD <     on grid,
+%DIFDELCMD <     auto
+%DIFDELCMD <   ]
+%DIFDELCMD < \node[block](A) {Initialize $\bm S$ randomly};
+%DIFDELCMD < \node(B)[block, right of=A, text width=6em] {Train SVM using QP solver over $\bm S$, set $\bm S_{old} = \bm S$};
+%DIFDELCMD < \draw[arrow] (A) -- (B);
+%DIFDELCMD < \node(C)[block, right of=B,text width=6.3em] {Find optimal representatives, $\bm S$, for the current hyperplane};
+%DIFDELCMD < \draw[arrow] (B) -- (C);
+%DIFDELCMD < \node(D) [decision,right of=C,fill=gray!55,text width=2cm]{while $\bm S$ has not changed, $\bm S \neq \bm S_{old}$};
+%DIFDELCMD < \draw[arrow] (C) -- (D);
+%DIFDELCMD < \node(E) [block,right of=D]{return $\bm \alpha,\, b, \bm S$};
+%DIFDELCMD < \draw[arrow] (D) -- node {yes} (E);
+%DIFDELCMD < \draw[arrow] (D.north) --+(0,0.1cm) -| (B.north) node[below,pos=0.25] {no} ;
+%DIFDELCMD < \end{tikzpicture}}
+%DIFDELCMD < %%%
+%DIFDELCMD < \caption{%
+{%DIFAUXCMD
+%DIFDELCMD < \small %%%
+\DIFdelFL{A summary of the steps performed by MIRSVM. The representatives are first randomly initialized and continuously updated according to the current hyperplane, which is found using a quadratic programming solver. Upon completion, the model is returned along with the optimal bag-representatives.}}
+%DIFAUXCMD
+%DIFDELCMD < \end{minipage}
+%DIFDELCMD < \begin{minipage}{\textwidth}
+%DIFDELCMD < \begin{algorithm}[H]
+%DIFDELCMD < \small
+%DIFDELCMD < %%%
+%DIFDELCMD < \caption{%
+{%DIFAUXCMD
+\DIFdelFL{Multi-Instance Representative SVM (MIRSVM)}}
+%DIFAUXCMD
+%DIFDELCMD < \label{alg:mirsvm} 
+%DIFDELCMD < \begin{algorithmic}
+%DIFDELCMD < \renewcommand{\algorithmicrequire}{\textbf{Input:}}
+%DIFDELCMD < \renewcommand{\algorithmicensure}{\textbf{Output:}}
+%DIFDELCMD < \Require %%%
+\DIFdelFL{Training dataset $\mathcal{D}$, SVM Parameters $C$ and $\sigma$
+}%DIFDELCMD < \Ensure  %%%
+\DIFdelFL{SVM model parameters $\bm \alpha$ and $b$, Bag Representative IDs $\bm S$
+}%DIFDELCMD < \For {%%%
+\DIFdelFL{$I \in \set{1,\ldots,n}$}%DIFDELCMD < }
+%DIFDELCMD < \State %%%
+\DIFdelFL{$\bm S_I \leftarrow \text{ rand}\left(|\mathcal{B}_I|,1,1\right)$ }%DIFDELCMD < \Comment{Assign each bag a random instance}
+%DIFDELCMD < \EndFor
+%DIFDELCMD < \While {%%%
+\DIFdelFL{$\bm S \neq \bm S_{old}$}%DIFDELCMD < }
+%DIFDELCMD < \State %%%
+\DIFdelFL{$\bm S_{old} \leftarrow \bm S$
+}%DIFDELCMD < \State %%%
+\DIFdelFL{$\bm X_S \leftarrow \bm X(\bm S),\,\bm Y_S \leftarrow \bm Y(\bm S)$ }%DIFDELCMD < \Comment{Initialize the representative dataset}
+%DIFDELCMD < \State %%%
+\DIFdelFL{$\bm G \leftarrow (\bm Y_S \times \bm Y_S) \bm \cdot \mathcal{K}\left( \bm X_S,\,\bm X_S,\,\sigma\right)$ }%DIFDELCMD < \Comment{Build Gram matrix}
+%DIFDELCMD < \State %%%
+\DIFdelFL{$\bm \alpha \leftarrow \text{ quadprog}\left(\bm G, \bm{-1}^n, \bm Y_S, \bm 0^n, \bm 0^n, \bm C^n\right)$ }%DIFDELCMD < \Comment{Solve QP Problem}
+%DIFDELCMD < \State %%%
+\DIFdelFL{$\bm{sv} \leftarrow \text{find}\left(0 < \bm \alpha \leq C \right)$ }%DIFDELCMD < \Comment{Get the support vector indices}
+%DIFDELCMD < \State %%%
+\DIFdelFL{$n_{\bm{sv}} \leftarrow \text{count}\left(0 < \bm \alpha \leq C \right)$ }%DIFDELCMD < \Comment{Get the number of support vectors}
+%DIFDELCMD < \State %%%
+\DIFdelFL{$b \leftarrow \frac{1}{n_{\bm{sv}}}\sum_{i=1}^{n_{\bm{sv}}} \left(\bm Y_{\bm{sv}} - \bm G_{\bm{sv}}*\left(\bm{\alpha_{\bm{sv}}} \cdot \bm Y_{\bm{sv}}\right)\right)$ }%DIFDELCMD < \Comment{Calculate the bias term}
+%DIFDELCMD < \For {%%%
+\DIFdelFL{$I \in \set{1,\ldots,n}$}%DIFDELCMD < } 
+%DIFDELCMD < \State %%%
+\DIFdelFL{$\bm G_I \leftarrow (Y_I \times \bm Y_S) \bm \cdot \mathcal{K}\left( \mathcal{B}_I,\,\bm X_S,\,\sigma\right)$
+}%DIFDELCMD < \State %%%
+\DIFdelFL{$\bm S_I \leftarrow \text{argmax}_{i \in I}\left(\bm G_I*\bm{\alpha} + b \right)$ }%DIFDELCMD < \tab\tab[0.62cm]\Comment{Select optimal bag-representatives}
+%DIFDELCMD < \EndFor
+%DIFDELCMD < \EndWhile 
+%DIFDELCMD < \end{algorithmic}
+%DIFDELCMD < \end{algorithm}
+%DIFDELCMD < \end{minipage}
+%DIFDELCMD < \end{figure}
+%DIFDELCMD < \newpage
+%DIFDELCMD < \begin{figure}[t!]
+%DIFDELCMD < \centering
+%DIFDELCMD < %%%
+\DIFdelendFL \includegraphics[width=0.94\textwidth]{figures/convergence.png} 
 \caption{Bag representative convergence plots on 9 datasets. The blue line shows the number of bag representatives that are equal from one iteration to the next. The red dashed line represents the total number of bags.}\label{fig:convegence}
 \end{figure}
 
@@ -1613,7 +1744,9 @@ Algorithm~\ref{alg:mirsvm} shows the procedure for training the multi-instance r
     \end{minipage}
     \caption{Difference between MIRSVM and MISVM on a random $2$-dimensional toy dataset. Note the differing number of support vectors produced by the two methods. MIRSVM has $6$, one for each bag, and MISVM has $29$. Also note the smoother representation of the data distribution given by MIRSVM's decision boundary, unlike MISVM whose decision boundary was greatly influenced by the larger number of support vectors belonging to the negative class with respect to the only $2$ positive support vectors.}\label{fig:diff}
 \end{figure}
-This formulation is designed to utilize and select representatives from positive and negative bags, unlike MISVM, which only optimizes over representatives from positive bags, while flattening the negative bag instances. MISVM allows multiple representatives to be chosen from negative bags and limits positive bag-representatives to be one, while MIRSVM allows for balanced bag-representative selection, where each bag is allowed one. MISVM also uses a wrapper method to initialize the positive bag-representatives by taking the mean vector of the instances within each positive bag. This is an implicit assumption that the instances within the positive bags are all positive, whereas MIRSVM's initialization procedure selects an instance from all bags at random, ensuring no noise is added by any wrapper techniques during initialization and no assumptions are made about the instances. Due to the constraints on the representatives, MIRSVM produces sparser models while MISVM has the freedom to select as many negative support vectors as it needs and restricts the support vectors chosen from positive bags to be one. Figure~\ref{fig:diff} shows the decision boundaries produced by MIRSVM and MISVM to highlight the differences in their solutions. As Figure~\ref{fig:diff} shows, MISVM produces a larger number of support vectors from the negative bags, which greatly influences the final decision boundary in favor of the negative class.
+\DIFaddbegin 
+
+\DIFaddend This formulation is designed to utilize and select representatives from positive and negative bags, unlike MISVM, which only optimizes over representatives from positive bags, while flattening the negative bag instances. MISVM allows multiple representatives to be chosen from negative bags and limits positive bag-representatives to be one, while MIRSVM allows for balanced bag-representative selection, where each bag is allowed one. MISVM also uses a wrapper method to initialize the positive bag-representatives by taking the mean vector of the instances within each positive bag. This is an implicit assumption that the instances within the positive bags are all positive, whereas MIRSVM's initialization procedure selects an instance from all bags at random, ensuring no noise is added by any wrapper techniques during initialization and no assumptions are made about the instances. Due to the constraints on the representatives, MIRSVM produces sparser models while MISVM has the freedom to select as many negative support vectors as it needs and restricts the support vectors chosen from positive bags to be one. Figure~\ref{fig:diff} shows the decision boundaries produced by MIRSVM and MISVM to highlight the differences in their solutions. As Figure~\ref{fig:diff} shows, MISVM produces a larger number of support vectors from the negative bags, which greatly influences the final decision boundary in favor of the negative class.
 
 \section{Experimental Environment}
 This section presents the experimental setup and comparison of our contribution, as well as $11$ other widely used methods on $15$ different benchmark datasets. The main aim of the experiments is to compare our contribution to other multi-instance support vector machines, contemporary multi-instance learners, and ensemble methods. 
@@ -2589,17 +2722,75 @@ The experimental study showed the better performance of MIRSVM compared with exi
 }
 
 \subsection{\DIFadd{Notation}}\label{subsec:notation}
+\begin{table}[t!]
+\small \centering
+\caption{\DIFaddFL{Summary of notation used throughout the paper}}\label{tab:Notation}
+\begin{tabularx}{\textwidth}{l@{\extracolsep{\fill}}l}
+\hline\noalign{\smallskip}
+\DIFaddFL{Definition }& \DIFaddFL{Notation}\\ 
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\DIFaddFL{Number of Samples }& \DIFaddFL{$n$ }\\
+\DIFaddFL{Number of Input Attributes }& \DIFaddFL{$d$ }\\
+\DIFaddFL{Input Space }& \DIFaddFL{$\bm{X} \in \mathbb{R}^{n \times d}$ }\\
+\DIFaddFL{Labels }& \DIFaddFL{$\bm{Y} \in \{-1,1\}^n$ }\\
+\DIFaddFL{Sample $i$ }& \DIFaddFL{$\bm{x}_i = (x_{i1}, \ldots, x_{id}),\, \forall i \in \set{1,\ldots,n}$ }\\
+\DIFaddFL{Sample Label $i$ }& \DIFaddFL{$y_i \in \set{-1,1},\, \forall i \in \set{1,\ldots,n}$ }\\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\DIFaddFL{Full Training Dataset }& \DIFaddFL{$\mathcal{D} = \{(\bm x_1,y_1), \ldots, \set{\bm x_i,y_i}, \ldots, (\bm x_n,y_n)\}$ }\\
+\noalign{\smallskip}\hline
+\end{tabularx}
+\end{table}
 \DIFadd{Let $\mathcal{D}$ be the full training dataset of $n$ $d$-dimensional samples. Let $\bm{Y} \in \mathcal{D}$ be a vector of $n$ labels corresponding to each sample, such that $\bm{Y} \in \set{-1,1}^n$. In the non-binary (more than two classes) classification cases, $\bm Y \in \ints^n$. Let $\bm{X} \in \mathcal{D}$ be a matrix consisting of $n$ samples that are $d$-dimensional, $\bm{X} \in \mathbb{R}^{n \times d}$. 
 }
 
 \subsection{\DIFadd{Stochastic Gradient Descent}}
-%DIF > Gradient Descent
-%DIF > Subgradients
-%DIF > Stochastic Gradient Descent
+\DIFadd{In the context of convex learning problems, such as RLM, the advantage of SGD is that it is an efficient and simple algorithm that has a good sample complexity. In this section we will first describe gradient descent, subgradients for non-differentiable function, and finally describe the SGD algorithm with some variants. 
+}
+
+\DIFadd{The approach for minimizing a convex, differentiable function $f(\bm{w})$ is an iterative one where the gradient of $f$ is taken at each step and used to update the variable to be minimized. The gradient of function $f : \mathbb{R}^d \rightarrow \mathbb{R}$ at $\bm{w}$, is denoted and defined by $\bigtriangledown f(\bm{w}) = \left(\frac{\partial f(\bm{w})}{\partial w[1]}, \ldots, \frac{\partial f(\bm{w})}{\partial w[d]}\right)$, the vector of partial derivatives of $f$ with respect to $\bm{w}$. The Gradient Descent (GD) algorithm is as follows: $\bm{w}$ is first initialized to some random value (say $\bm{w}^{(1)} = 0$), and at each iteration, a step is taken in the negative direction of the gradient at that point, as shown in equation~\ref{eqn:gradientupdate}.
+}\begin{equation}
+\DIFadd{\bm{w}^{(t+1)} = \bm{w}^{(t)} - \eta\bigtriangledown f(\bm{w}^{(t)})
+\label{eqn:gradientupdate}
+}\end{equation}
+\DIFadd{After $T$ iterations, the algorithm returns the averaged weight vector $\bm{\bar{w}} = \frac{1}{T}\sum_{t=1}^T \bm{w}^{(t)}$. Different versions of the weight could also be returned, such as the last weight vector or the average of the last 25\% of changes, but this will be elaborated on in section~\ref{sec:sgd4svm}. The scalar parameter $\eta > 0$ will also be discussed later. 
+}
+
+\begin{figure}
+\centering
+\includegraphics{figures/stronglyconvex.png}
+\caption{\DIFaddFL{Right-hand side of Equation~\ref{eqn:convexsubgr} is the tangent of $f$ at $\bm{w}$, where for convex functions, the tangent lower bounds $f$.}}
+\label{fig:stronglyconvex}
+\end{figure}
+
+\DIFadd{The Gradient Descent algorithm requires that the function being minimized is differentiable. Some loss functions are not differentiable, and in these cases, the subgradient of $f(\bm{w})$ at $\bm{w}^{(t)}$ can be taken instead of the gradient. A vector $\bm{v}$ that satisfies Equation~\ref{eqn:convexsubgr} is called a }\textit{\DIFadd{subgradient}} \DIFadd{of $f$ at $\bm{w}$ and the set of subgradients is called the }\textit{\DIFadd{differential set}} \DIFadd{denoted as $\delta f(\bm{w})$. For every $\bm{w} \in S$, where $S$ is an open convex set, there exists a $\bm{v}$ such that
+}\begin{equation}
+\DIFadd{f(\bm{u}) \geq f(\bm{w}) + \langle\bm{u}-\bm{w},\bm{v}\rangle, \, \forall\bm{u}\in S.
+\label{eqn:convexsubgr}
+}\end{equation}
+
+\begin{figure}
+\centering
+\includegraphics{figures/SGDvsGD.png}
+\caption{\DIFaddFL{A plot of the gradient descent algorithm (left) and the stochastic gradient descent algorithm (right). The function being minimized is $1.25(x+6)^2+(y-8)^2$. In the figure representing stochastic gradient descent, the solid line shows the averaged value of $\bm{w}$. }}
+\label{fig:SGDvsGD}
+\end{figure}
+
+\DIFadd{For the stochastic gradient descent algorithm, the update direction does not need to be based exactly on the gradient. It is instead allowed to be a random vector, and at each iteration, its }\textit{\DIFadd{expected value}} \DIFadd{is required to be a subgradient of the function a the current vector. An example of the difference between the SGD and the GD procedure for minimization of convex function is shown in Fig.~\ref{fig:SGDvsGD}.
+As stated previously in~\ref{sec:RLM} and in, if a function $f$ is $\lambda$-strongly convex for every vector $\bm{w}, \bm{u},$ and $\bm{v} \in \partial f(\bm{w})$ then we have $\langle w-u,v\rangle \geq f(w) - f(u) + \frac{\lambda}{2}||w-u||^2$ implying that the norms will never be greater than $\lambda$. It is then shown in that an unbiased estimate of the function's subgradient can be chosen. The update rule for these functions can then be rewritten as~\ref{eqn:unbiasedestimate}. 
+}
+
+\begin{equation}
+\DIFadd{w^{(t+1)} = -\frac{1}{\lambda\,t}\sum_{i=1}^t v_i,
+\label{eqn:unbiasedestimate}
+}\end{equation}
+
+\DIFadd{where $t$ is the number of iterations. This shows, by using SGD, the regularized loss function can directly be minimized. It is done by sampling a point i.i.d from a distribution, then using a subgradient of the loss function at this point as an unbiased estimate of the subgradient of the risk function.
+}
 
 \subsection{\DIFadd{Issues with Current Online Learning Algorithms}}
 
-\section{\DIFadd{OLLAWV: A Novel OnLine Learning Algorithm using Worst-Violators}}
+\newpage
+\section{\DIFadd{OLLAWV: OnLine Learning Algorithm using Worst-Violators}}
 \DIFadd{OLLAWV is an iterative, online learning algorithm for solving the L1-SVM problem using a novel model update procedure while implementing a self-stopping condition. The inspiration behind OLLAWV came from~\mbox{%DIFAUXCMD
 \cite{kecman2016fast} }%DIFAUXCMD
 which presented a generic online learning algorithm tailored not only for SVMs, but also for various other popular classifiers that use different risk functions, with or without a regularization term. The difference, novelty, and advantage of OLLAWV resides in its iterative method, where the weight $\alpha_i$ of the most violating sample i.e., of the }\textit{\DIFadd{worst-violator}}\DIFadd{, is only updated in each iteration. A worst violating sample is defined as the sample that has the largest error with respect to the current decision function. Rather than randomly selecting samples to update per iteration, OLLAWV selects (without replacement) the most incorrectly classified sample and updates the model accordingly. By iteratively updating the model using only the worst-violator, the model is essentially finding its support vectors, as well as implicitly defining a stopping criterion. If there are no more violating samples, the algorithm terminates, eliminating the need to define the number of iterations for an algorithm to perform before returning the model, as is the case with most state-of-the-art online algorithms. 
@@ -2748,7 +2939,7 @@ that the ideal gradient is equal to the sum of the gradients calculated after ea
 \section{\DIFadd{Experimental Environment, Results, and Analysis}}\label{sec:exp}
 \DIFadd{This section presents two experimental setups of our contribution against other state-of-the-art algorithms on $23$ different benchmark datasets. The first study, presented in Section~\ref{subsec:expsvm}, compares OLLAWV to two other SVM kernel methods, and the second compares OLLAWV to $5$ non-SVM methods, shown in Section~\ref{subsec:nonsvmexp}. In each section, the experimental setups are first described and the state-of-the-art methods are listed. The results and statistical analysis are then presented and analyzed. The main aim of the experiments is to compare our contribution to other support vector machine solvers that have been shown to surpass popular and widely used SVM kernel methods in terms of memory consumption, runtime, and accuracy. The supplemental experimental study in~\ref{subsec:nonsvmexp} was conducted to emphasize the better performance of OLLAWV against non-SVM algorithms.
 }\begin{table}[t!]
-\caption{\DIFaddFL{Datasets}}
+\caption{\DIFaddFL{Classification Datasets}}
 \footnotesize
 \centering
 \label{tab:ollawvDataset}
@@ -3163,9 +3354,10 @@ and }\textit{\DIFdel{PEGASOS}}%DIFAUXCMD
 %DIFDELCMD < %%%
 \DIFdelend \printbibliography[title={References}, heading=bibintoc]
 
-\begin{comment}
+%DIF > \begin{comment}
+\DIFaddbegin 
 
-\begin{appendices}
+\DIFaddend \begin{appendices}
 \titleformat{\chapter}[display]{\bfseries\centering}{\huge Appendix \thechapter}{1em}{\Huge #1}
 \chapter{Publications}
 \newpage
@@ -3270,9 +3462,10 @@ and }\textit{\DIFdel{PEGASOS}}%DIFAUXCMD
 
 \end{appendices}
 
-\end{comment}
+%DIF > \end{comment}
+\DIFaddbegin 
 
-\chapter*{Vita}
+\DIFaddend \chapter*{Vita}
 \thispagestyle{plain}
 \addcontentsline{toc}{chapter}{Vita}
 Gabriella Melki received her BSc. in Computer Science at the American University of Beirut in 2011 and her MSc. in Computer Science from Virginia Commonwealth University in 2016. As a full-time student in the dual Ph.D. program between Virginia Commonwealth University and the University of C\'{o}rdoba in Spain, her research is focused on machine learning algorithms for large datasets and \DIFdelbegin \DIFdel{different data representations}\DIFdelend \DIFaddbegin \DIFadd{various data paradigms}\DIFaddend . Her more specialized field of interest is support vector machines.
