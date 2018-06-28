@@ -12,3 +12,7 @@
 *.blg
 *.bbl
 *.blg
+*.dvi
+*.blg
+*.bbl
+*.xml
