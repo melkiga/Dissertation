@@ -714,6 +714,43 @@
   \field{year}{2006}
 \endentry
 
+\entry{carbonneau2018multiple}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Carbonneau}{C.}%
+     {M.-A.}{M.-A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Cheplygina}{C.}%
+     {V.}{V.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Granger}{G.}%
+     {E.}{E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Gagnon}{G.}%
+     {G.}{G.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Elsevier}%
+  }
+  \strng{namehash}{CMA+1}
+  \strng{fullhash}{CMACVGEGG1}
+  \field{sortinit}{C}
+  \field{pages}{329\bibrangedash 353}
+  \field{title}{Multiple instance learning: A survey of problem characteristics
+  and applications}
+  \field{volume}{77}
+  \field{journaltitle}{Pattern Recognition}
+  \field{year}{2018}
+\endentry
+
 \entry{Carbonneau2016}{article}{}
   \name{author}{4}{}{%
     {{}%
@@ -1312,6 +1349,33 @@
   \field{pages}{148\bibrangedash 156}
   \field{title}{Experiments with a new boosting algorithm}
   \field{year}{1996}
+\endentry
+
+\entry{freund1999large}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Freund}{F.}%
+     {Y.}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Schapire}{S.}%
+     {R.~E.}{R.~E.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer}%
+  }
+  \strng{namehash}{FYSRE1}
+  \strng{fullhash}{FYSRE1}
+  \field{sortinit}{F}
+  \field{number}{3}
+  \field{pages}{277\bibrangedash 296}
+  \field{title}{Large margin classification using the perceptron algorithm}
+  \field{volume}{37}
+  \field{journaltitle}{Machine Learning}
+  \field{year}{1999}
 \endentry
 
 \entry{Fu2011}{article}{}
@@ -2330,6 +2394,29 @@
   \field{volume}{85}
   \field{journaltitle}{Machine learning}
   \field{year}{2011}
+\endentry
+
+\entry{rosenblatt1958perceptron}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Rosenblatt}{R.}%
+     {F.}{F.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {American Psychological Association}%
+  }
+  \strng{namehash}{RF1}
+  \strng{fullhash}{RF1}
+  \field{sortinit}{R}
+  \field{number}{6}
+  \field{pages}{386\bibrangedash 408}
+  \field{title}{The perceptron: a probabilistic model for information storage
+  and organization in the brain.}
+  \field{volume}{65}
+  \field{journaltitle}{Psychological Review}
+  \field{year}{1958}
 \endentry
 
 \entry{schapire1999improved}{article}{}
