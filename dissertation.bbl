@@ -488,6 +488,38 @@
   \field{year}{2004}
 \endentry
 
+\entry{bottou2018optimization}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Bottou}{B.}%
+     {L.}{L.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Curtis}{C.}%
+     {F.~E.}{F.~E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Nocedal}{N.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {SIAM}%
+  }
+  \strng{namehash}{BLCFENJ1}
+  \strng{fullhash}{BLCFENJ1}
+  \field{sortinit}{B}
+  \field{number}{2}
+  \field{pages}{223\bibrangedash 311}
+  \field{title}{Optimization methods for large-scale machine learning}
+  \field{volume}{60}
+  \field{journaltitle}{Society for Industrial and Applied Mathematics Review}
+  \field{year}{2018}
+\endentry
+
 \entry{bottou2007large}{book}{}
   \name{author}{4}{}{%
     {{}%
