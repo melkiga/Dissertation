@@ -36,6 +36,7 @@
 \newcommand{\spa}[1]{\mathcal{#1}}
 \newcommand\tab[1][1cm]{\hspace*{#1}}
 \newcommand{\Rho}{\mathrm{P}}
+\newcommand{\proc}{{\mathcal P}}
 
 %%%%%%%%%%%
 \overfullrule=5pt
@@ -102,9 +103,11 @@ This dissertation introduces novel support vector machines (SVM) for the follwin
 
 Three multi-target support vector regression (SVR) models are first presented. The first involves building independent, single-target SVR models for each target. The second builds an ensemble of randomly chained models using the first single-target method as a base model. The third calculates the targets' correlations and forms a maximum correlation chain, which is used to build a single chained SVR model, improving the model's prediction performance, while reducing computational complexity.
 
-Under the multi-instance paradigm, a novel SVM multiple-instance formulation and an algorithm with a bag-representative selector, named MIRSVM, are presented. The contribution trains the SVM based on bag-level information and is able to identify instances that highly impact classification, i.e. bag-representatives, for both positive and negative bags, while finding the optimal class separation hyperplane. Unlike other multi-instance SVM methods, this approach eliminates possible class imbalance issues by allowing both positive and negative bags to have at most one representative, which constitute as the most contributing instances to the model.
+Under the multi-instance paradigm, a novel SVM multiple-instance formulation and an algorithm with a bag-representative selector, named Multi-Instance Representative SVM (MIRSVM), are presented. The contribution trains the SVM based on bag-level information and is able to identify instances that highly impact classification, i.e. bag-representatives, for both positive and negative bags, while finding the optimal class separation hyperplane. Unlike other multi-instance SVM methods, this approach eliminates possible class imbalance issues by allowing both positive and negative bags to have at most one representative, which constitute as the most contributing instances to the model.
 
-\textbf{Add OLLAWV and DS Application}
+Due to the shortcomings of current popular SVM solvers, especially when used on large datasets, the third contribution presents a novel stochastic, i.e. online, learning aglorithm for solving the L1-SVM problem in the primal domain, dubbed OnLine Learning Algorithm using Worst-Violators (OLLAWV). This algorithm, unlike other stochastic methods, provides a novel stopping cirteria and eliminates the need for using a regularization term. It instead uses early stopping. Because of these characteristics, OLLAWV proved to produce sparse models very quickly, while maintaining a competitive accuracy.
+
+\textit{The success of OLLAWV for traditional classification, as well as its online nature, inspired its implementation under the data stream setting.}
 
 Rigorous experimental studies and statistical analyses over various metrics and datasets were conducted in order to comprehensively compare the proposed solutions against modern, widely-used methods from all paradigms. The experimental studies and analyses confirm that the proposals achieve better performances and more scalable solutions than the methods compared, making them competitive in their respected fields.
 }\\
@@ -2641,14 +2644,632 @@ This paper proposed a novel online learning procedure and algorithm for solving 
 The first experimental study demonstrates the better performance of OLLAWV compared with state-of-the-art SVM solvers (MNSVM and NNISDA) which have been shown to outperform the popular SMO implementation in the LIBSVM package. The results for accuracy, runtime, and percentage of support-vectors, obtained by the strict nested cross-validation procedure, were compared and further validated using statistical analysis with non-parametric tests. They highlighted the advantages and major speedup achieved by OLLAWV against the competing MNSVM and NNISDA. The second, supplemental experimental study evaluated the performance of OLLAWV against $5$ popular non-SVM methods, showing the better performance of OLLAWV against all five non-SVM algorithms ($k$-Nearest Neighbors ($k$-NN), J48, JRip, Na\"ive Bayes, and Logistic). The proposal, OLLAWV, performs statistically better in terms of runtime and model size across all $23$ evaluated benchmark datasets, without compromising accuracy.
 
 \chapter{OLLAWV for Batched Data Streams}
+A SURVEY OF CLASSIFICATION METHODS IN DATA STREAMS
+With the advance in both hardware and software technologies, automated data generationandstoragehasbecomefasterthanever. Suchdataisreferredtoasdata streams. Streaming data is ubiquitous today and it is often a challenging task to store, analyze and visualize such rapid large volumes of data. Most conventional data mining techniques have to be adapted to run in a streaming environment, because of the underlying resource constraints in terms of memory and running time. Furthermore, the data stream may often show concept drift, because of which adaptation of conventional algorithms becomes more challenging. One such important conventional data mining problem is that of classification. In the classificationproblem, we attempt to model the class variable on the basis of one or more feature variables. While this problem has been extensively studied from a conventional mining perspective, it is a much more challenging problem in the data stream domain.
 
 \section{Background}
+Advances in hardware technology have led to the increasing popularity of data streams [1]. Many simple operations of everyday life, such as using a credit card or the phone, often lead to automated creation of data. Since these operations often scale over large numbers of participants, they lead to massive data streams. Similarly, telecommunications and social networks often contain large amounts of network or text data streams. The problem of learning from such data streams presents unprecedented challenges, especially in resource-constrained scenarios.
+An important problem in the streaming scenario is that of data classification. In this problem, the data instances are associated with labels, and it is desirable to determine the labels on the test instances. Typically, it is assumed that both the training data and the test data may arrive in the form of a stream. In the most general case, the two types of instances are mixed with one another. Since the test instances are classified independently of one another, it is usually not difficult to perform the real-time classification of the test stream. The problems arise because of the fact that the training model is always based on the aggregate properties of multiple records. These aggregate properties may change over time. This phenomenon is referred to as concept drift. All streaming models need to account for concept drift in the model construction process. Therefore, the construction of a training model in a streaming and evolving scenarios can often be very challenging.
+Aside from the issue of concept drift, many other issues arise in data stream classification, which are specific to the problem at hand. These issues are dependent on the nature of the application in which streaming classification is used. A single approach may not work well in all scenarios. This diversity in problem scenarios is discussed below:
+• The classification may need to be performed in a resource-adaptive way. In particular, the stream needs to be classified on demand, since it may not be possible to control the rate at which test instances arrive.
+• In many scenarios, some of the classes may be rare, and may arrive only occasionally in the data stream. In such cases, the classification of the stream becomes extremely challenging because of the fact that it is often more important to detect the rare class rather than the nor- mal class. This is typical of cost sensitive scenarios. Furthermore, in some cases, previously unseen classes may be mixed with classes for which training data is available.
+• Streaming classifiers can be designed to provide either incremental or decremental learning. In incremental learning, only the impact of incoming data points is accounted for. In decre- mental sampling, a sliding window model is used, and expiring items at the other end of the window are accounted for, the model update process. Not all classes of models can be used effectively for decremental learning, though incremental learning is usually much easier to address.
+• In the context of discrete (categorical) attributes, the massive domain case is particularly important. In these cases, the attributes are drawn on massive domain of categorical values. For example, if the IP-address is an attribute, then the number of possible values may be in the millions. Therefore, it often becomes difficult to store the relevant summary information for classification purposes.
+• Many other data domains such as text [6] and graphs [9] have been studied in the context of classification. Such scenarios may require dedicated techniques, because of the difference in the underlying data format.
+• Inmanycases,theentirestreammaynotbeavailableatasingleprocessororlocation.Insuch cases, distributed mining of data streams becomes extremely important.
+
 
 \section{DSOLLAWV}
 
+\begin{algorithm}
+\caption{List 2 L1-SVM}
+\label{alg:List2L1SVM} 
+\begin{algorithmic}[1]
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\Require $\bm X, \bm Y, C, \sigma, n, e, \beta$
+\Ensure  $\bm \alpha$, $b$, $\bm I$
+\State $\bm \alpha \leftarrow \bm 0,\, \bm o \leftarrow \bm 0,\, b \leftarrow 0,\, i \leftarrow 0$
+\State $yo \leftarrow 0,\, max\_iter \leftarrow e*n,\, nsv \leftarrow 0$ 
+\While{$i < max\_iter$}
+\State $\eta \leftarrow \frac{2}{\sqrt{i}}$
+\If{$yo \leq 1$}
+\State $\lambda \leftarrow \eta\,C\,Y_i$, $\alpha_i \leftarrow \alpha_i + \lambda$, $b \leftarrow b + \lambda\,\beta$, $\bm I_{nsv} \leftarrow i$, $nsv \leftarrow nsv + 1$
+\EndIf
+\State $i \leftarrow i + 1$
+\State $o_i \leftarrow \bm{K}(\bm x_i,\, \bm x_{\bm I})\, \bm \alpha_{\bm I} + b$
+\State $yo \leftarrow Y_i\, o_i$
+\EndWhile
+\end{algorithmic} 
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Evaluate Interleaved Chunks}
+\label{alg:evalChunk} 
+\begin{algorithmic}[1]
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\Require $\proc = \set{\mathcal{S}_1,\ldots,\mathcal{S}_T}$
+\Ensure  ?
+\State $\mathtt{firstChunk =\,TRUE}$
+\State Initialize $\mathtt{learner.setModelContext(InstancesHeader\,\,header)}$
+\While{stream has more instances}
+\State Generate new batch of instances, $\mathcal{S}_t$
+\If{!$\mathtt{firstChunk}$}
+\For{each test instance}
+\State $\mathtt{double[]\,\,pred = learner.getVotesForInstance(Instance\,\,instance)}$ 
+\EndFor
+\Else 
+\State $\mathtt{firstChunk =\,FALSE}$
+\EndIf
+\State $\mathtt{learner.trainOnInstances(Instances\,\,chunk)}$
+\EndWhile
+\end{algorithmic} 
+\end{algorithm}
+
+\begin{table}[t!]
+\centering
+\caption{Comparison of OLLAWV vs. DSL2SVM}
+\scriptsize
+\label{tab:dslvsolla}
+\resizebox{\textwidth}{!}{\begin{tabularx}{\textwidth}{l@{\extracolsep{\fill}}cccc}
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\multicolumn{1}{l}{Dataset} & \multicolumn{2}{c}{Accuracy (\%)} & \multicolumn{2}{c}{Runtime (s)} \\
+\cmidrule(lr){2-3}
+\cmidrule(lr){4-5}
+ & DSL2SVM & OLLAWV & DSL2SVM & OLLAWV \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+RBFNoDrift &93.0663 &\textbf{94.2117} &\textbf{0.0073} &0.0329 \\
+HyperplaneSlow &87.4016 &\textbf{90.0913} &\textbf{0.0087} &0.0353 \\
+HyperplaneFaster &87.4033 &\textbf{89.5092} &\textbf{0.0085} &0.0263  \\
+STAGGERGeneratorF1 &\textbf{100.000} &\textbf{100.000} &\textbf{0.0011} &0.0021  \\
+HyperplaneFaster0.2 &87.4047 &\textbf{89.4911} &\textbf{0.0086} &0.0268  \\
+MixedGeneratorBT &92.4990 &\textbf{97.9969} &\textbf{0.0036} &0.0205  \\
+MixedGeneratorBF &92.5537 &\textbf{98.0284} &\textbf{0.0036} &0.0299  \\
+SineGeneratorF1BF &97.3659 &\textbf{97.7909} &\textbf{0.0030} &0.0122  \\
+SineGeneratorF2BF &97.3659 &\textbf{97.7909} &\textbf{0.0030} &0.0121  \\
+STAGGERGeneratorF1BF &\textbf{100.000} &\textbf{100.000} &\textbf{0.0012} &0.0021  \\
+STAGGERGeneratorF2BF &\textbf{100.000} &\textbf{100.000} &\textbf{0.0013} &0.0022  \\
+HyperplaneFasterAN0 &87.4033 &\textbf{89.5092} &\textbf{0.0085} &0.0263  \\
+HyperplaneFasterAN5 &87.2912 &\textbf{89.2898} &\textbf{0.0086} &0.0264   \\
+HyperplaneFasterCN0 &87.4033 &\textbf{89.5092} &\textbf{0.0086} &0.0263   \\
+HyperplaneFasterACN0 &87.4033 &\textbf{89.5092} & \textbf{0.0086} &0.0263   \\
+SEASuddenAN0 &84.0088 &\textbf{87.7956} & \textbf{0.0165} &0.0208  \\
+SEASuddenAN05 &83.6874 &\textbf{87.5283} & \textbf{0.0165} &0.0284  \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Average &91.3093 &\textbf{93.4148} & \textbf{0.0069} &0.0210  \\
+Rank &1.9118 &\textbf{1.0882} &1.0000 &2.0000  \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\end{tabularx}}
+\end{table}
+
 \section{Experimental Environment}
+MOA is mostly concerned with the problem of classification and clustering (see Subsections 2.2.1 and 2.2.2) for elements of a data stream. MOA algorithms assume that the number of attributes is fixed. According to [9, 27], the main approaches and methods for stream classification are:
+1. Bayesian classifiers: these methods are based on the Bayes theorem. MOA’s classifiers include Naive Bayes and Naive Bayes Multinomial methods. Naive Bayes methods are simple and require little memory. The main assumption is independence of the stream instances. However, Naive Bayes models are usually less accurate than more involved models.
+2. Decision trees classifiers for streaming data: include decision trees of one level (Decision Stump) and several variations of Hoeffding Trees. The methods are applicable when the distribution of the stream instances does not change over time.
+3. Meta classifiers: wrap around other methods for data stream classification. MOA’s collection include various online modifications of bagging and boosting. More elaborate versions are available for the case of evolving streams.
+4. Function classifiers: include related methods based on neural network and sup- port vector machines. Support vector machines (SVM) offer better flexibility, while neural networks are often straightforward to use.
+5. Drift classifier: handles concept drift detection. The idea is to control the number of errors produced during classification prediction. An increase in the error may signify changes in distribution of incoming stream instances.
+MOA offers several algorithm for online clustering including methods based on k-means, micro-clusters, classification trees and others. More details can be found in [27].
+Furthermore, MOA includes methods to test and evaluate the accuracy and effectiveness of data stream algorithms. What is more important for us, MOA contains several data stream generators, that can be used to produce data streams for testing.
+
+
+\subsection{Datasets}
+Here we shortly describe the generators presented in the current version of MOA [9].
+1. Random Tree Generator is based on the generator proposed by Domingos and Hulten [12]. It produces concepts that should theoretically prefer decision tree learners. The generator chooses attributes at random to split and assigns a random class label to each leaf, thus constructing a decision tree. When such a tree is built, the generator produces new examples by assigning uniformly distributed random values to attributes. This determines the class label via the tree.
+
+2. Random RBF (Radial Basis Function) Generator aims to construct a more sophisticated type of concept. It should not be easily captured with a decision tree model. The generator produces a fixed number of random centroids. Each center is positioned randomly, has a single standard deviation, class label and weight. To produce new examples, a center is chosen at random but according to weights, i.e., centers with higher weight are chosen with higher probability. A random direction is chosen and a random length of displacement is chosen according to a Gaussian distribution corresponding to the centroid. This allows the generator to offset the attribute values from the center. Moreover, the class label is also determined by the centroid. The constructed examples form a normally distributed hypersphere that surrounds each centers with varying densities.
+This generator also has a modification suitable to model data evolution. Drift is introduced by moving the centroids with constant speed. The speed is initialized by a drift parameter.
+
+3. LED Generator was described in the CART book [10]. The goal is to predict the digit displayed on a seven-segment LED display, where each attribute has a 10% chance of being inverted.
+4. Waveform Generator also comes from [10]. The generator constructs three types of waveforms as a combination of two or three base waves. The goal is to determine the wave type.
+5. Function Generator was introduced by Agrawal et al. in [4]. The gener- ated stream should model loan application profiles. The generator produces a stream, each instance of which consists of nine attributes: six numeric and three categorical.
+6. SEA Concepts Generator [36] contains abrupt concept shift. It is generated using three attributes, but the relevant attributes are only the first two of them. All the attributes have values between 0 and 10.
+7. STAGGER Concepts Generator was described by Schlimmer and Granger in [34]. The concept is described by a collection of elements, where every element is a Boolean function of attribute-valued pairs and is represented by a disjunct of conjuncts.
+
+8. Rotating Hyperplane was used in [19]. Hyperplanes are helpful for simulation of time-changing concepts. Their orientation and position may be smoothly changed by modifying the relative size of the weights.
+9. The newest release of MOA also contains a multi-label data stream genera- tor [26], not described in [9].
+
+
+\begin{table}[t!]
+\caption{Static Streamed Datasets}
+\footnotesize
+\centering
+\label{tab:dsStaticDataset}
+\begin{tabularx}{0.7\textwidth}{l@{\extracolsep{\fill}}rrr}
+\hline\noalign{\smallskip}
+Dataset & \# Samples & \# Attributes & \# Classes \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+spamCorpus	     & 	 9,324	     & 	39,917	         & 	2 \\
+shuttle 	         		& 	 57,999	   & 	10	           & 	7 \\
+powersupply	     	& 	 29,928	   & 	3	             & 	24 \\
+poker-lsn 	       		& 	 829,201	   & 	11	           & 	10 \\
+IntelLabSensors 	 & 	 2,313,153	 & 	6	             & 	58 \\
+gasSensor 	     	& 	 13,910	   & 	129	           & 	1 \\
+elecNormNew 	     & 	 45,312	   & 	9	             & 	2 \\
+ecoli	           			& 	 336	     & 	8	             & 	8 \\
+dj30	           			& 	 138,166	   & 	8	             & 	30 \\
+covtypeNorm 	     & 	 581,012	   & 	55	           & 	7 \\
+connect-4 	      		 & 	 67,557	   & 	43	           & 	3 \\
+census 	         		& 	 299,284	   & 	42	           & 	2 \\
+BNGzoo 	         & 	 1,000,000	 & 	18	           & 	7 \\
+BNGwine 	       		& 	 1,000,000	 & 	14	           & 	3 \\
+BNGlymph	       & 	 1,000,000	 & 	19	           & 	4 \\
+BNGhypothyroid 	 & 	 1,000,000	 & 	30	           & 	4 \\
+BNGhepatitis 	   & 	 1,000,000	 & 	20	           & 	2 \\
+\noalign{\smallskip}\hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[t!]
+\caption{Generator Datasets}
+\footnotesize
+\centering
+\label{tab:dsgeneratorDataset}
+\begin{tabularx}{0.9\textwidth}{l@{\extracolsep{\fill}}rrr}
+\hline\noalign{\smallskip}
+Dataset & \# Samples & \# Attributes & \# Classes \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+HyperplaneGenerator 	         & 	 1,000,000	 & 	10	           & 	2 \\ %
+RandomRBFGenerator 	       	 & 	 1,000,000	 & 	10	           & 	2 \\ %moa
+SEAGenerator	       				 & 	 1,000,000	 & 	2	          	    & 	2 \\ %A streaming ensemble algorithm (SEA) for large-scale classification
+STAGGERGenerator 	 			 & 	 1,000,000	 & 	3	              & 	2 \\ %Incremental Learning from Noisy Data
+RandomTreeGenerator 	   	 & 	 1,000,000	 & 	5	              & 	2 \\
+LEDGenerator 						 & 	 1,000,000	 & 	7	              & 	2 \\
+MixedGenerator 					 & 	 1,000,000	 & 	4	              & 	2 \\%Learning with drift detection.
+AssetNegotiationGenerator 	 & 	 1,000,000	 & 	18	           & 	7 \\
+\noalign{\smallskip}\hline
+\end{tabularx}
+\end{table}
 
 \section{Results \& Analysis}
+% CD for 0.05 alpha is 2.789
+\begin{table}[t!]
+\caption{Accuracy (\%) Comparison for Data Stream Classifiers}
+\scriptsize
+\centering
+\label{tab:DSResultsacc}
+\resizebox{\textwidth}{!}{\begin{tabularx}{1.55\textwidth}{l@{\extracolsep{\fill}}ccccccccccccccc}
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Dataset & OLLAWV & HT & AdaHT & Naive Bayes & $k$NNPAW &SCD & RC &RCNB & SAE2 & LearnNSE &DWM &DACC &OCBoost &\\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+CovType &\textbf{90.2822} &85.3405 &86.2222 &60.0371 &87.8893 &59.5562 &60.3240 &75.5822 &76.2069 &69.9669 &71.9559 &61.7002 &71.2860 &  \\
+census &93.7574 &94.6946 &\textbf{94.7352} &87.0188 &93.6456 &91.8530 &93.6477 &84.0601 &90.1319 &84.1443 &91.4037 &90.3708 &93.4695 &  \\
+shuttle &98.6536 &98.1750 &98.5214 &90.0161 &\textbf{99.2643} &98.4893 &88.3982 &96.0571 &90.2429 &93.7893 &89.9125 &92.0268 &74.2107 &  \\
+RBFNoDrift &\textbf{94.2117} &92.9410 &92.9598 &71.9924 &93.7469 &92.4787 &77.5293 &81.7067 &89.1612 &70.2820 &70.4251 &65.0084 &92.0836 &  \\
+LEDNoDrift &73.8281 &73.8508 &73.8349 &\textbf{73.9421} &65.8277 &73.6379 &41.1618 &73.7521 &67.5965 &67.8404 &71.1464 &48.2683 &17.4397 &  \\
+HyperplaneSlow &\textbf{90.0913} &82.0965 &82.4205 &77.6904 &84.0264 &81.5657 &68.8829 &85.1884 &82.6670 &86.2044 &88.0601 &80.6617 &85.7758 &  \\
+HyperplaneFaster &\textbf{89.5092} &82.7166 &85.3419 &77.2308 &84.2722 &84.3261 &78.6329 &85.1810 &83.0129 &86.4991 &86.7611 &81.1543 &87.7953 &  \\
+RBFGradualRecurring &98.4136 &94.6248 &94.4420 &58.3269 &\textbf{98.4261} &93.4687 &60.0797 &86.1603 &88.4771 &72.8730 &74.9565 &61.9133 &49.6157 &  \\
+RBFBlips &\textbf{99.0651} &95.6659 &95.6028 &60.8269 &98.9389 &94.9151 &66.8955 &88.3527 &89.0376 &77.5314 &79.9797 &68.2728 &47.4572 &  \\
+WaveformGenerator &83.9375 &82.9866 &\textbf{84.1385} &80.4105 &80.1250 &83.6086 &63.8796 &75.8405 &80.1837 &80.1908 &78.3940 &73.5897 &55.0493 &  \\
+STAGGERGeneratorF1 &\textbf{100.0000} &99.9887 &99.9887 &\textbf{100.0000} &\textbf{100.0000} &\textbf{100.0000} &99.9140 &\textbf{100.0000} &95.0427 &89.8206 &\textbf{100.0000} &99.9564 &\textbf{100.0000} &  \\
+HyperplaneFaster0.2 &\textbf{89.4911} &82.7744 &85.3603 &77.2520 &84.2736 &87.6381 &78.8852 &85.1126 &83.0403 &86.5075 &86.7563 &81.2289 &87.5864 &  \\
+RBFGradualRecurringv2 &\textbf{97.1781} &93.2890 &93.0019 &57.4707 &95.7334 &93.1871 &57.9634 &80.7124 &84.4510 &62.4141 &63.7931 &49.4211 &48.8806 &  \\
+MixedGeneratorBT &97.9969 &99.1064 &\textbf{99.3219} &91.9333 &97.6650 &99.1067 &83.1220 &93.2806 &93.1578 &90.9064 &91.1943 &89.1559 &98.9794 &  \\
+MixedGeneratorBF &98.0284 &99.1773 &\textbf{99.3600} &92.0423 &97.5911 &99.2032 &89.9633 &94.3045 &93.4079 &90.7614 &91.4588 &88.6093 &98.9444 &  \\
+RandomRBFGeneratorC4A25 &\textbf{99.1244} &97.4330 &97.1381 &81.5943 &98.6904 &96.8900 &72.3260 &89.0275 &90.6129 &78.2290 &79.6715 &63.0206 &52.1561 &  \\
+RandomRBFGeneratorC4A50 &\textbf{99.7429} &99.1592 &99.1373 &91.9012 &99.1654 &98.9934 &80.6333 &95.6272 &92.0019 &86.0263 &90.4494 &73.7765 &50.6618 &  \\
+SineGeneratorF1BF &97.7909 &\textbf{99.7491} &99.7276 &93.5510 &95.5395 &99.6634 &94.8262 &95.9013 &94.5098 &92.5533 &93.3025 &92.1967 &99.5085 &  \\
+SineGeneratorF2BF &97.7909 &\textbf{99.7464} &99.7264 &93.5510 &95.4139 &99.6620 &95.2625 &96.0973 &94.5689 &92.5533 &93.3383 &92.1967 &99.4790 &  \\
+STAGGERGeneratorF1BF &\textbf{100.0000} &99.9887 &99.9887 &\textbf{100.0000} &\textbf{100.0000} &\textbf{100.0000} &99.9140 &\textbf{100.0000} &95.0427 &89.8206 &\textbf{100.0000} &99.9564 &\textbf{100.0000} &  \\
+STAGGERGeneratorF2BF &\textbf{100.0000} &99.9774 &99.9774 &\textbf{100.0000} &\textbf{100.0000} &99.9774 &99.8683 &\textbf{100.0000} &95.0189 &44.4047 &\textbf{100.0000} &\textbf{100.0000} &0.6121 &  \\
+RBFGradualRecurringCN0 &98.4136 &94.6248 &94.4420 &58.3269 &\textbf{98.4261} &93.4687 &60.0797 &86.1603 &88.4771 &72.8730 &74.9565 &61.9133 &49.6157 &  \\
+RBFGradualRecurringACN0 &98.4136 &94.6248 &94.4420 &49.6157 &\textbf{98.4261} &93.4687 &60.0797 &85.9703 &88.4771 &72.8730 &74.9565 &61.9133 &49.6157 &  \\
+HyperplaneFasterAN0 &\textbf{89.5092} &82.7166 &85.3419 &87.7953 &84.2722 &84.3261 &78.6329 &85.1810 &83.0129 &86.4991 &86.7611 &81.1543 &87.7953 &  \\
+HyperplaneFasterAN5 &\textbf{89.2898} &82.6891 &85.2441 &87.3759 &84.1852 &88.7366 &79.1352 &84.8853 &82.9208 &86.4050 &86.6744 &81.1184 &87.3759 &  \\
+HyperplaneFasterCN0 &\textbf{89.5092} &82.7166 &85.3419 &87.7953 &84.2722 &84.3261 &78.6329 &85.1810 &83.0129 &86.4991 &86.7611 &81.1543 &87.7953 &  \\
+HyperplaneFasterACN0 &\textbf{89.5092} &82.7166 &85.3419 &87.7953 &84.2722 &84.3261 &78.6329 &85.1810 &83.0129 &86.4991 &86.7611 &81.1543 &87.7953 &  \\
+SEASuddenAN0 &87.7956 &84.9212 &85.1746 &88.2325 &87.2164 &\textbf{88.9726} &81.5637 &85.1719 &85.1104 &85.7668 &86.9326 &83.7264 &88.2325 &  \\
+SEASuddenAN05 &87.5283 &84.5692 &84.8189 &87.5277 &86.9567 &\textbf{88.2862} &81.5456 &85.1097 &84.5655 &85.6288 &86.5414 &83.5301 &87.5277 &  \\
+CovTypeAN0 &\textbf{90.2822} &85.3405 &86.2222 &71.2860 &87.8893 &59.5562 &60.3240 &75.5822 &76.2069 &69.9669 &71.9559 &61.7002 &71.2860 &  \\
+CovTypeCN0 &\textbf{90.2822} &85.3405 &86.2222 &71.2860 &87.8893 &59.5562 &60.3240 &75.5822 &76.2069 &69.9669 &71.9559 &61.7002 &71.2860 &  \\
+CovTypeACN0 &\textbf{90.2822} &85.3405 &86.2222 &71.2860 &87.8893 &59.5562 &60.3240 &75.5822 &76.2069 &69.9669 &71.9559 &61.7002 &71.2860 &  \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Average &\textbf{93.4284} &90.5963 &91.2426 &80.1597 &91.3103 &87.9000 &75.9808 &86.6104 &86.0870 &80.1957 &83.7241 &76.6640 &73.4563 &  \\
+Rank &\textbf{2.2031} &5.6562 &4.5000 &7.9531 &4.7031 &5.7500 &11.2500 &6.7344 &8.1250 &8.7500 &6.9844 &10.9531 &7.4375 &  \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\end{tabularx}}
+\begin{minipage}{0.9\textwidth}
+\centering
+\resizebox{\textwidth}{!}{\begin{tikzpicture}
+\draw (1,0) -- (12,0);
+\foreach \x in {1,2,3,4,5,6,7,8,9,10,11,12} {
+\draw (\x, 0) -- ++(0,.1) node [above,scale=0.7] {\tiny \x};
+\ifthenelse{\x < 12}{\draw (\x+.5, 0) -- ++(0,.03);}{}
+}
+
+\coordinate (c0) at (2.2031,0);
+\coordinate (c1) at (5.6562,0);
+\coordinate (c2) at (4.5,0);
+\coordinate (c3) at (7.9531,0);
+\coordinate (c4) at (4.7031,0);
+\coordinate (c5) at (5.75,0);
+\coordinate (c6) at (11.25,0);
+\coordinate (c7) at (6.7344,0);
+\coordinate (c8) at (8.125,0);
+\coordinate (c9) at (8.75,0);
+\coordinate (c10) at (6.9844,0);
+\coordinate (c11) at (10.9531,0);
+\coordinate (c12) at (7.4375,0);
+
+\node (l0) at (c0) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny \textbf{OLLAWV}};
+\node (l1) at (c1) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny HT};
+\node (l2) at (c2) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny AdaHT};
+\node (l3) at (c3) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny NaiveBayes};
+\node (l4) at (c4) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny $k$NNPAW};
+\node (l5) at (c5) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny SCD};
+\node (l6) at (c6) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny RC};
+\node (l7) at (c7) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny RCNB};
+\node (l8) at (c8) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny SAE2};
+\node (l9) at (c9) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny LearnNSE};
+\node (l10) at (c10) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny DWM};
+\node (l11) at (c11) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny DACC};
+\node (l12) at (c12) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny OCBoost};
+
+\fill[fill=gray,fill opacity=0.5] (2.2031,-0.1) rectangle (4.99,0.1);
+
+\foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11,12} {
+\draw (l\x) -| (c\x);
+};
+\end{tikzpicture}}\vspace{-2em}
+\captionsetup{width=\linewidth}
+\captionof{figure}{Bonferroni-Dunn test for Accuracy}\label{fig:BonfDunnaccDS}
+\end{minipage}
+\end{table}
+
+
+
+\begin{table}[t!]
+\caption{Cohen's Kappa (\%) Comparison for Data Stream Classifiers}
+\scriptsize
+\centering
+\label{tab:DSResultskappa}
+\resizebox{\textwidth}{!}{\begin{tabularx}{1.55\textwidth}{l@{\extracolsep{\fill}}ccccccccccccccc}
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Dataset & OLLAWV & HT & AdaHT & Naive Bayes & $k$NNPAW &SCD & RC &RCNB & SAE2 & LearnNSE &DWM &DACC &OCBoost &\\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+CovType &\textbf{84.2997} &76.4406 &77.6946 &40.1567 &80.4264 &34.1059 &31.4704 &61.1629 &62.9842 &50.6291 &55.5296 &36.6365 &48.2357 &  \\
+census &5.0601 &34.3735 &\textbf{37.3923} &35.9631 &22.1060 &20.3869 &6.9733 &18.9029 &18.6604 &17.4783 &36.1846 &16.6752 &33.6569 &  \\
+shuttle &96.1715 &94.9072 &95.8499 &75.0367 &\textbf{97.9178} &95.7487 &60.8151 &89.5257 &75.3213 &81.5605 &75.1038 &74.9782 &36.6910 &  \\
+RBFNoDrift &\textbf{88.4224} &85.8825 &85.9195 &43.9848 &87.4934 &84.9571 &55.0695 &63.4111 &78.3215 &40.5704 &40.8376 &30.0155 &84.1671 &  \\
+LEDNoDrift &70.9202 &70.9448 &70.9273 &\textbf{71.0466} &62.0311 &70.7085 &34.6226 &70.8356 &63.9960 &64.2672 &67.9406 &42.5203 &8.2749 &  \\
+HyperplaneSlow &\textbf{80.1826} &64.1930 &64.8410 &55.3808 &68.0514 &63.1314 &37.7662 &70.3768 &66.9693 &72.4088 &76.1199 &61.3233 &71.5516 &  \\
+HyperplaneFaster &\textbf{79.0184} &65.4333 &70.6839 &54.4616 &68.5439 &68.6522 &57.2656 &70.3619 &67.6281 &72.9982 &73.5220 &62.3085 &75.5906 &  \\
+RBFGradualRecurring &97.8807 &92.8205 &92.5769 &44.2773 &\textbf{97.8977} &91.2740 &46.6574 &81.5090 &84.6106 &63.7269 &66.5421 &49.0047 &31.4648 &  \\
+RBFBlips &\textbf{98.7358} &94.1422 &94.0557 &46.9730 &98.5651 &93.1254 &55.0797 &84.2691 &85.2017 &69.5671 &72.8462 &56.9876 &32.7263 &  \\
+WaveformGenerator &75.9070 &74.4807 &\textbf{76.2084} &70.6198 &70.1883 &75.4134 &45.8181 &63.7626 &70.2764 &70.2900 &67.5944 &60.3864 &32.6201 &  \\
+STAGGERGeneratorF1 &\textbf{100.0000} &99.9429 &99.9429 &\textbf{100.0000} &\textbf{100.0000} &\textbf{100.0000} &99.5649 &\textbf{100.0000} &78.2768 &14.6120 &\textbf{100.0000} &99.7795 &\textbf{100.0000} &  \\
+HyperplaneFaster0.2 &\textbf{78.9822} &65.5488 &70.7205 &54.5039 &68.5467 &75.2763 &57.7700 &70.2251 &67.6807 &73.0150 &73.5124 &62.4578 &75.1728 &  \\
+RBFGradualRecurringv2 &\textbf{96.2323} &91.0414 &90.6582 &43.1602 &94.3039 &90.9059 &43.9448 &74.2539 &79.2448 &49.7920 &51.6529 &32.3653 &30.8075 &  \\
+MixedGeneratorBT &95.9938 &98.2128 &\textbf{98.6438} &83.8667 &95.3299 &98.2134 &66.2440 &86.5611 &86.3155 &81.8128 &82.3886 &78.3117 &97.9588 &  \\
+MixedGeneratorBF &96.0417 &98.3495 &\textbf{98.7154} &83.9979 &95.1582 &98.4008 &79.8200 &88.5565 &86.7861 &81.4176 &82.8106 &77.0956 &97.8810 &  \\
+RandomRBFGeneratoC4A25 &\textbf{98.8172} &96.5331 &96.1343 &75.2231 &98.2308 &95.7997 &62.3923 &85.1851 &87.3386 &70.6112 &72.5571 &49.6768 &36.2515 &  \\
+RandomRBFGeneratorC4A50 &\textbf{99.6519} &98.8615 &98.8319 &89.0625 &98.8693 &98.6371 &73.7051 &94.0710 &89.1866 &81.1006 &87.0871 &64.3007 &35.4000 &  \\
+SineGeneratorF1BF &95.5500 &\textbf{99.4950} &99.4517 &86.9837 &91.0397 &99.3224 &89.5374 &91.7509 &88.9544 &84.9693 &86.4903 &84.2484 &99.0107 &  \\
+SineGeneratorF2BF &95.5500 &\textbf{99.4896} &99.4493 &86.9837 &90.7381 &99.3195 &90.4504 &92.1487 &89.0741 &84.9693 &86.5495 &84.2484 &98.9512 &  \\
+STAGGERGeneratoF1BF &\textbf{100.0000} &99.9429 &99.9429 &\textbf{100.0000} &\textbf{100.0000} &\textbf{100.0000} &99.5649 &\textbf{100.0000} &78.2768 &14.6120 &\textbf{100.0000} &99.7795 &\textbf{100.0000} &  \\
+STAGGERGeneratorF2BF &\textbf{100.0000} &99.9542 &99.9542 &\textbf{100.0000} &\textbf{100.0000} &99.9542 &99.7331 &\textbf{100.0000} &89.9239 &0.0000 &\textbf{100.0000} &\textbf{100.0000} &-96.4666 &  \\
+RBFGradualRecurringCN0 &97.8807 &92.8205 &92.5769 &44.2773 &\textbf{97.8977} &91.2740 &46.6574 &81.5090 &84.6106 &63.7269 &66.5421 &49.0047 &31.4648 &  \\
+RBFGradualRecurringACN0 &97.8807 &92.8205 &92.5769 &31.4648 &\textbf{97.8977} &91.2740 &46.6574 &81.2726 &84.6106 &63.7269 &66.5421 &49.0047 &31.4648 &  \\
+HyperplaneFasterAN0 &\textbf{79.0184} &65.4333 &70.6839 &75.5906 &68.5439 &68.6522 &57.2656 &70.3619 &67.6281 &72.9982 &73.5220 &62.3085 &75.5906 &  \\
+HyperplaneFasterAN5 &\textbf{78.5796} &65.3782 &70.4883 &74.7517 &68.3699 &77.4733 &58.2704 &69.7705 &67.4541 &72.8100 &73.3486 &62.2368 &74.7517 &  \\
+HyperplaneFasterCN0 &\textbf{79.0184} &65.4333 &70.6839 &75.5906 &68.5439 &68.6522 &57.2656 &70.3619 &67.6281 &72.9982 &73.5220 &62.3085 &75.5906 &  \\
+HyperplaneFasterACN0 &\textbf{79.0184} &65.4333 &70.6839 &75.5906 &68.5439 &68.6522 &57.2656 &70.3619 &67.6281 &72.9982 &73.5220 &62.3085 &75.5906 &  \\
+SEASuddenAN0 &73.8014 &67.6140 &68.1883 &74.8009 &72.7554 &\textbf{76.3943} &59.8618 &68.0628 &68.2933 &69.2729 &72.0454 &64.9863 &74.8009 &  \\
+SEASuddenAN05 &73.1889 &66.8436 &67.4079 &73.2812 &72.2042 &\textbf{74.9242} &59.9057 &67.9381 &67.1285 &68.9706 &71.2053 &64.5598 &73.2812 &  \\
+CovTypeAN0 &\textbf{84.2997} &76.4406 &77.6946 &48.2357 &80.4264 &34.1059 &31.4704 &61.1629 &62.9842 &50.6291 &55.5296 &36.6365 &48.2357 &  \\
+CovTypeCN0 &\textbf{84.2997} &76.4406 &77.6946 &48.2357 &80.4264 &34.1059 &31.4704 &61.1629 &62.9842 &50.6291 &55.5296 &36.6365 &48.2357 &  \\
+CovTypeACN0 &\textbf{84.2997} &76.4406 &77.6946 &48.2357 &80.4264 &34.1059 &31.4704 &61.1629 &62.9842 &50.6291 &55.5296 &36.6365 &48.2357 &  \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Average &\textbf{85.7720} &81.6278 &82.9678 &65.9918 &82.5460 &77.2796 &57.2445 &75.6249 &73.7176 &60.9312 &71.6284 &59.6790 &55.8496 &  \\
+Rank &\textbf{2.5781} &5.7500 &4.5312 &7.7031 &4.7344 &5.6250 &11.6562 &6.6094 &7.9688 &8.4688 &6.7344 &11.1406 &7.5000 &  \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\end{tabularx}}
+\begin{minipage}{0.9\textwidth}
+\centering
+\resizebox{\textwidth}{!}{\begin{tikzpicture}
+\draw (1,0) -- (13,0);
+\foreach \x in {1,2,3,4,5,6,7,8,9,10,11,12,13} {
+\draw (\x, 0) -- ++(0,.1) node [above,scale=0.7] {\tiny \x};
+\ifthenelse{\x < 13}{\draw (\x+.5, 0) -- ++(0,.03);}{}
+}
+
+\coordinate (c0) at (2.5781,0);
+\coordinate (c1) at (5.75,0);
+\coordinate (c2) at (4.5312,0);
+\coordinate (c3) at (7.7031,0);
+\coordinate (c4) at (4.7344,0);
+\coordinate (c5) at (5.625,0);
+\coordinate (c6) at (11.6562,0);
+\coordinate (c7) at (6.6094,0);
+\coordinate (c8) at (7.9688,0);
+\coordinate (c9) at (8.4688,0);
+\coordinate (c10) at (6.7344,0);
+\coordinate (c11) at (11.1406,0);
+\coordinate (c12) at (7.5,0);
+
+\node (l0) at (c0) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny OLLAWV};
+\node (l1) at (c1) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny HT};
+\node (l2) at (c2) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny AdaHT};
+\node (l3) at (c3) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny NaiveBayes};
+\node (l4) at (c4) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny $k$NNPAW};
+\node (l5) at (c5) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny SCD};
+\node (l6) at (c6) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny RC};
+\node (l7) at (c7) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny RCNB};
+\node (l8) at (c8) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny SAE2};
+\node (l9) at (c9) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny LearnNSE};
+\node (l10) at (c10) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny DWM};
+\node (l11) at (c11) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny DACC};
+\node (l12) at (c12) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny OCBoost};
+
+\fill[fill=gray,fill opacity=0.5] (2.5781,-0.1) rectangle (5.367,0.1);
+
+\foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11,12} {
+\draw (l\x) -| (c\x);
+};
+\end{tikzpicture}}\vspace{-2em}
+\captionsetup{width=\linewidth}
+\captionof{figure}{Bonferroni-Dunn test for Cohen's Kappa}\label{fig:BonfDunnkappaDS}
+\end{minipage}
+\end{table}
+
+
+\begin{table}[t!]
+\caption{Training Time (seconds) Comparison for Data Stream Classifiers}
+\scriptsize
+\centering
+\label{tab:DSResultsTrain}
+\resizebox{\textwidth}{!}{\begin{tabularx}{1.55\textwidth}{l@{\extracolsep{\fill}}ccccccccccccccc}
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Dataset & OLLAWV & HT & AdaHT & Naive Bayes & $k$NNPAW &SCD & RC &RCNB & SAE2 & LearnNSE &DWM &DACC &OCBoost &\\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+CovType &0.0451 &0.0765 &0.0909 &\textbf{0.0009} &0.0387 &0.0577 &0.0371 &0.0445 &0.1121 &6.2806 &0.0419 &0.0357 &0.0984 &  \\
+census &0.1684 &0.1040 &0.1162 &\textbf{0.0007} &0.0386 &0.0345 &0.0735 &0.0458 &0.0363 &0.9368 &0.0156 &0.0175 &0.0543 &  \\
+shuttle &0.0103 &0.0276 &0.0298 &\textbf{0.0004} &0.0386 &0.0069 &0.0108 &0.0069 &0.0217 &0.2692 &0.0104 &0.0186 &0.0581 &  \\
+RBFNoDrift &0.0329 &0.0174 &0.0247 &\textbf{0.0002} &0.0383 &0.0828 &0.4267 &0.3172 &0.0491 &3.4029 &0.0104 &0.0137 &0.0402 &  \\
+LEDNoDrift &0.0697 &0.0373 &0.0649 &\textbf{0.0003} &0.0389 &0.0245 &0.0097 &0.0082 &0.0694 &5.4734 &0.0175 &0.0290 &0.0547 &  \\
+HyperplaneSlow &0.0353 &0.0094 &0.0142 &\textbf{0.0002} &0.0389 &0.1405 &0.1871 &0.3006 &0.0473 &3.3734 &0.0091 &0.0142 &0.0389 &  \\
+HyperplaneFaster &0.0263 &0.0295 &0.0416 &\textbf{0.0002} &0.0384 &0.1231 &0.3016 &0.3784 &0.0424 &3.2991 &0.0098 &0.0143 &0.0376 &  \\
+RBFGradualRecurring &0.0456 &0.0316 &0.0369 &\textbf{0.0003} &0.0389 &0.0391 &1.1284 &0.9295 &0.1004 &11.7980 &0.0335 &0.0474 &0.1070 &  \\
+RBFBlips &0.0396 &0.0243 &0.0299 &\textbf{0.0003} &0.0384 &0.0278 &0.7587 &0.8342 &0.0948 &11.9934 &0.0342 &0.0473 &0.1050 &  \\
+WaveformGenerator &0.0394 &0.0751 &0.0965 &\textbf{0.0006} &0.0390 &0.1847 &0.9670 &0.9271 &0.1715 &17.9675 &0.0511 &0.0743 &0.1318 &  \\
+STAGGERGeneratorF1 &0.0021 &0.0006 &0.0007 &\textbf{0.0001} &0.0389 &0.0005 &0.0013 &0.0007 &0.0018 &0.5517 &0.0003 &0.0020 &0.0113 &  \\
+HyperplaneFaster0.2 &0.0268 &0.0302 &0.0465 &\textbf{0.0002} &0.0388 &0.0260 &0.3192 &0.3010 &0.0456 &3.2893 &0.0095 &0.0141 &0.0372 &  \\
+RBFGradualRecurringv2 &0.0545 &0.0169 &0.0203 &\textbf{0.0003} &0.0383 &0.0859 &0.7622 &0.7634 &0.0552 &12.0529 &0.0367 &0.0464 &0.1053 &  \\
+MixedGeneratorBT &0.0205 &0.0027 &0.0026 &\textbf{0.0001} &0.0336 &0.0071 &1.7640 &1.5534 &0.0086 &0.9761 &0.0024 &0.0052 &0.0204 &  \\
+MixedGeneratorBF &0.0299 &0.0024 &0.0024 &\textbf{0.0001} &0.0334 &0.0065 &1.1035 &1.0924 &0.0093 &0.8971 &0.0024 &0.0058 &0.0209 &  \\
+RandomRBFGeneratorC4A25 &0.0200 &0.0441 &0.0407 &\textbf{0.0003} &0.0358 &0.0730 &1.7831 &1.6927 &0.1245 &13.9876 &0.0395 &0.0719 &0.1580 &  \\
+RandomRBFGeneratorC4A25 &0.0157 &0.0333 &0.0337 &\textbf{0.0007} &0.0350 &0.0909 &2.8802 &2.5559 &0.1917 &27.8456 &0.0752 &0.1432 &0.2974 &  \\
+SineGeneratorF1BF &0.0122 &0.0056 &0.0056 &\textbf{0.0001} &0.0334 &0.0073 &1.9301 &2.9169 &0.0127 &1.3768 &0.0034 &0.0071 &0.0235 &  \\
+SineGeneratorF2BF &0.0121 &0.0051 &0.0053 &\textbf{0.0001} &0.0314 &0.0077 &5.0598 &5.9477 &0.0117 &1.3996 &0.0027 &0.0074 &0.0236 &  \\
+STAGGERGeneratorF1BF &0.0021 &0.0006 &0.0006 &\textbf{0.0001} &0.0323 &0.0005 &0.0006 &0.0005 &0.0015 &0.6175 &0.0003 &0.0022 &0.0143 &  \\
+STAGGERGeneratorF2BF &0.0022 &0.0010 &0.0009 &\textbf{0.0001} &0.0340 &0.0006 &0.0005 &0.0005 &0.0017 &0.6752 &0.0003 &0.0020 &0.0139 &  \\
+RBFGradualRecurringCN0 &0.0457 &0.0304 &0.0304 &\textbf{0.0003} &0.0352 &0.0319 &0.8493 &0.8675 &0.0933 &10.9096 &0.0323 &0.0595 &0.1689 &  \\
+RBFGradualRecurringACN0 &0.0458 &0.0395 &0.0398 &0.1359 &\textbf{0.0313} &0.0457 &1.0166 &0.8629 &0.1209 &12.1337 &0.0356 &0.0592 &0.1646 &  \\
+HyperplaneFasterAN0 &0.0263 &0.0206 &0.0213 &0.0446 &0.0263 &0.0841 &0.1776 &0.1865 &0.0281 &2.3635 &\textbf{0.0080} &0.0154 &0.0715 &  \\
+HyperplaneFasterAN5 &0.0264 &0.0200 &0.0200 &0.0440 &0.0269 &0.0115 &0.2298 &0.2417 &0.0312 &2.5014 &\textbf{0.0080} &0.0147 &0.0740 &  \\
+HyperplaneFasterCN0 &0.0263 &0.0323 &0.0209 &0.0406 &3.1129 &0.0968 &0.2061 &175.2788 &0.0309 &2.5008 &\textbf{0.0072} &0.0658 &0.0697 &  \\
+HyperplaneFasterACN0 &0.0263 &0.0398 &0.0400 &0.0503 &0.0313 &0.1149 &0.2727 &0.2797 &0.0469 &3.4281 &\textbf{0.0097} &0.0175 &0.0697 &  \\
+SEASuddenAN0 &0.0208 &0.0051 &0.0052 &0.0268 &0.0312 &0.0099 &0.0370 &0.0373 &0.0176 &1.3545 &\textbf{0.0032} &0.0059 &0.0335 &  \\
+SEASuddenAN05 &0.0284 &0.0055 &0.0055 &0.0257 &0.0309 &0.0095 &0.0321 &0.0334 &0.0167 &1.3365 &\textbf{0.0032} &0.0061 &0.0326 &  \\
+CovTypeAN0 &0.0444 &0.0873 &0.0897 &0.1579 &\textbf{0.0315} &0.0585 &0.0383 &0.0375 &0.1208 &6.5487 &0.0425 &0.0554 &0.1953 &  \\
+CovTypeCN0 &0.0450 &0.0456 &0.0447 &0.0951 &0.0270 &0.0276 &\textbf{0.0227} &0.0229 &0.0696 &3.9599 &0.0261 &0.0338 &0.1610 &  \\
+CovTypeACN0 &0.0450 &0.0451 &0.0455 &0.1001 &0.0267 &0.0280 &\textbf{0.0236} &0.0240 &0.0689 &3.9489 &0.0254 &0.0341 &0.1613 &  \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Average &0.0341 &0.0296 &0.0334 &0.0227 &0.1307 &0.0483 &0.7003 &6.2028 &0.0579 &5.6078 &\textbf{0.0190} &0.0308 &0.0829 &  \\
+Rank &6.5938 &4.9062 &5.6875 &3.4375 &6.9688 &6.2500 &9.2188 &9.2188 &8.2188 &12.6875 &\textbf{2.7188} &5.5000 &9.5938 &  \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\end{tabularx}}
+\begin{minipage}{0.9\textwidth}
+\centering
+\resizebox{\textwidth}{!}{\begin{tikzpicture}
+\draw (1,0) -- (14,0);
+\foreach \x in {1,2,3,4,5,6,7,8,9,10,11,12,13,14} {
+\draw (\x, 0) -- ++(0,.1) node [above,scale=0.7] {\tiny \x};
+\ifthenelse{\x < 14}{\draw (\x+.5, 0) -- ++(0,.03);}{}
+}
+
+\coordinate (c0) at (6.5938,0);
+\coordinate (c1) at (4.9062,0);
+\coordinate (c2) at (5.6875,0);
+\coordinate (c3) at (3.4375,0);
+\coordinate (c4) at (6.9688,0);
+\coordinate (c5) at (6.25,0);
+\coordinate (c6) at (9.2188,0);
+\coordinate (c7) at (9.2188,0);
+\coordinate (c8) at (8.2188,0);
+\coordinate (c9) at (12.6875,0);
+\coordinate (c10) at (2.7188,0);
+\coordinate (c11) at (5.5,0);
+\coordinate (c12) at (9.5938,0);
+
+\node (l0) at (c0) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny OLLAWV};
+\node (l1) at (c1) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny HT};
+\node (l2) at (c2) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny AdaHT};
+\node (l3) at (c3) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny NaiveBayes};
+\node (l4) at (c4) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny $k$NNPAW};
+\node (l5) at (c5) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny SCD};
+\node (l6) at (c6) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny RC};
+\node (l7) at (c7) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny RCNB};
+\node (l8) at (c8) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny SAE2};
+\node (l9) at (c9) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny LearnNSE};
+\node (l10) at (c10) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny DWM};
+\node (l11) at (c11) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny DACC};
+\node (l12) at (c12) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny OCBoost};
+
+\fill[fill=gray,fill opacity=0.5] (2.7188,-0.1) rectangle (5.5078,0.1);
+
+\foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11,12} {
+\draw (l\x) -| (c\x);
+};
+\end{tikzpicture}}\vspace{-2em}
+\captionsetup{width=\linewidth}
+\captionof{figure}{Bonferroni-Dunn test for Training Time}\label{fig:BonfDunnTrainDS}
+\end{minipage}
+\end{table}
+
+
+\begin{table}[t!]
+\caption{Testing Time (seconds) Comparison for Data Stream Classifiers}
+\scriptsize
+\centering
+\label{tab:DSResultsTestTime}
+\resizebox{\textwidth}{!}{\begin{tabularx}{1.5\textwidth}{l@{\extracolsep{\fill}}ccccccccccccccc}
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Dataset & OLLAWV & HT & AdaHT & Naive Bayes & $k$NNPAW &SCD & RC &RCNB & SAE2 & LearnNSE &DWM &DACC &OCBoost &\\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+CovType &0.0391 &0.0256 &0.0321 &0.0089 &1.3744 &0.0041 &\textbf{0.0010} &0.0304 &0.0493 &0.1896 &0.0358 &0.0170 &0.0325 &  \\
+census &0.2235 &0.0082 &0.0095 &0.0033 &2.2826 &0.0014 &\textbf{0.0012} &0.0082 &0.0048 &0.1052 &0.0125 &0.0076 &0.0099 &  \\
+shuttle &0.0072 &0.0054 &0.0060 &0.0051 &0.3265 &0.0017 &\textbf{0.0012} &0.0105 &0.0092 &0.1228 &0.0096 &0.0108 &0.0176 &  \\
+RBFNoDrift &0.0372 &0.0051 &0.0065 &0.0016 &0.4792 &\textbf{0.0014} &0.0196 &0.0180 &0.0168 &0.0322 &0.0084 &0.0021 &0.0102 &  \\
+LEDNoDrift &0.0927 &0.0014 &0.0021 &0.0027 &1.6070 &0.0018 &\textbf{0.0010} &0.0190 &0.0302 &0.0603 &0.0148 &0.0050 &0.0105 &  \\
+HyperplaneSlow &0.0407 &0.0029 &0.0038 &0.0016 &0.5687 &0.0020 &\textbf{0.0004} &0.0048 &0.0220 &0.0814 &0.0080 &0.0037 &0.0095 &  \\
+HyperplaneFaster &0.0273 &0.0088 &0.0113 &0.0019 &0.5691 &\textbf{0.0016} &0.0020 &0.0051 &0.0164 &0.0794 &0.0085 &0.0038 &0.0083 &  \\
+RBFGradualRecurring &0.0436 &0.0141 &0.0154 &0.0060 &0.7791 &\textbf{0.0040} &0.0067 &0.0171 &0.0485 &0.2963 &0.0301 &0.0103 &0.0448 &  \\
+RBFBlips &0.0370 &0.0106 &0.0127 &0.0061 &0.7407 &\textbf{0.0032} &0.0039 &0.0148 &0.0464 &0.5582 &0.0312 &0.0133 &0.0457 &  \\
+WaveformGenerator &0.0604 &0.0231 &0.0291 &0.0094 &2.4650 &0.0053 &\textbf{0.0033} &0.0207 &0.0671 &0.3095 &0.0454 &0.0142 &0.0400 &  \\
+STAGGERGeneratorF1 &0.0018 &\textbf{0.0002} &0.0003 &\textbf{0.0002} &0.1834 &\textbf{0.0002} &0.0004 &0.0006 &0.0004 &0.2034 &\textbf{0.0002} &0.0012 &0.0005 &  \\
+HyperplaneFaster0.2 &0.0272 &0.0088 &0.0118 &0.0016 &0.5671 &\textbf{0.0012} &0.0019 &0.0048 &0.0174 &0.0790 &0.0081 &0.0037 &0.0085 &  \\
+RBFGradualRecurringv2 &0.0551 &0.0067 &0.0078 &0.0064 &0.8919 &0.0039 &\textbf{0.0035} &0.0158 &0.0259 &0.0853 &0.0322 &0.0059 &0.0452 &  \\
+MixedGeneratorBT &0.0202 &0.0012 &0.0012 &0.0004 &0.1348 &\textbf{0.0003} &0.0008 &0.0018 &0.0029 &0.0371 &0.0018 &0.0018 &0.0028 &  \\
+MixedGeneratorBF &0.0330 &0.0010 &0.0011 &0.0004 &0.1372 &\textbf{0.0003} &0.0017 &0.0028 &0.0032 &0.0316 &0.0019 &0.0020 &0.0030 &  \\
+RandomRBFGeneratorC4A25 &0.0218 &0.0153 &0.0145 &0.0072 &0.6871 &0.0030 &\textbf{0.0027} &0.0158 &0.0559 &0.1909 &0.0356 &0.0135 &0.0690 &  \\
+RandomRBFGeneratorC4A50 &0.0204 &0.0115 &0.0117 &0.0137 &1.2234 &0.0036 &\textbf{0.0015} &0.0234 &0.0848 &1.0711 &0.0687 &0.0443 &0.1373 &  \\
+SineGeneratorF1BF &0.0111 &0.0025 &0.0025 &0.0006 &0.1586 &\textbf{0.0003} &\textbf{0.0003} &0.0016 &0.0042 &0.0938 &0.0028 &0.0027 &0.0035 &  \\
+SineGeneratorF2BF &0.0111 &0.0023 &0.0025 &0.0006 &0.1500 &\textbf{0.0003} &\textbf{0.0003} &0.0016 &0.0041 &0.0655 &0.0022 &0.0029 &0.0036 &  \\
+STAGGERGeneratorF1BF &0.0018 &\textbf{0.0002} &0.0003 &\textbf{0.0002} &0.1150 &\textbf{0.0002} &\textbf{0.0002} &0.0006 &0.0004 &0.1853 &\textbf{0.0002} &0.0013 &0.0007 &  \\
+STAGGERGeneratorF2BF &0.0019 &0.0004 &0.0004 &0.0002 &0.1232 &0.0002 &\textbf{0.0001} &0.0011 &0.0004 &0.2370 &0.0002 &0.0012 &0.0011 &  \\
+RBFGradualRecurringCN0 &0.0438 &0.0133 &0.0135 &0.0058 &0.5329 &\textbf{0.0030} &0.0046 &0.0155 &0.0461 &0.2819 &0.0290 &0.0127 &0.0707 &  \\
+RBFGradualRecurringACN0 &0.0437 &0.0155 &0.0155 &0.0571 &0.6604 &\textbf{0.0042} &0.0060 &0.0191 &0.0571 &0.3078 &0.0320 &0.0127 &0.0685 &  \\
+HyperplaneFasterAN0 &0.0289 &0.0059 &0.0062 &0.0091 &0.2573 &\textbf{0.0010} &0.0012 &0.0034 &0.0117 &0.0546 &0.0067 &0.0040 &0.0151 &  \\
+HyperplaneFasterAN5 &0.0290 &0.0058 &0.0059 &0.0091 &0.2602 &\textbf{0.0009} &0.0016 &0.0041 &0.0129 &0.0573 &0.0068 &0.0039 &0.0153 &  \\
+HyperplaneFasterCN0 &0.0272 &5.8051 &0.0061 &0.0083 &877.2892 &0.3783 &\textbf{0.0016} &942.6669 &0.0127 &0.0557 &0.0061 &34.3009 &0.0153 &  \\
+HyperplaneFasterACN0 &0.0272 &0.0100 &0.0103 &0.0110 &0.4614 &\textbf{0.0014} &0.0019 &0.0049 &0.0174 &0.0807 &0.0081 &0.0047 &0.0147 &  \\
+SEASuddenAN0 &0.0212 &0.0009 &0.0009 &0.0044 &0.1736 &\textbf{0.0004} &0.0118 &0.0129 &0.0045 &0.0326 &0.0026 &0.0021 &0.0055 &  \\
+SEASuddenAN05 &0.0325 &0.0009 &0.0009 &0.0041 &0.1673 &\textbf{0.0004} &0.0106 &0.0119 &0.0044 &0.0321 &0.0025 &0.0022 &0.0053 &  \\
+CovTypeAN0 &0.0387 &0.0302 &0.0312 &0.0546 &1.1519 &0.0041 &\textbf{0.0010} &0.0292 &0.0529 &0.1946 &0.0362 &0.0241 &0.0649 &  \\
+CovTypeCN0 &0.0389 &0.0173 &0.0175 &0.0317 &0.6655 &0.0026 &\textbf{0.0005} &0.0201 &0.0320 &0.1209 &0.0219 &0.0152 &0.0544 &  \\
+CovTypeACN0 &0.0389 &0.0175 &0.0173 &0.0331 &0.6416 &0.0027 &\textbf{0.0005} &0.0222 &0.0315 &0.1211 &0.0215 &0.0155 &0.0550 &  \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Average &0.0370 &0.1899 &0.0096 &0.0096 &28.0570 &0.0137 &\textbf{0.0030} &29.4697 &0.0248 &0.1704 &0.0166 &1.0802 &0.0278 &  \\
+Rank &10.1250 &4.9688 &5.5000 &4.3281 &12.8750 &\textbf{1.8281} &2.5000 &6.8438 &8.9062 &11.8125 &6.8125 &5.4062 &9.0938 &  \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\end{tabularx}}
+\begin{minipage}{0.9\textwidth}
+\centering
+\resizebox{\textwidth}{!}{\begin{tikzpicture}
+\draw (1,0) -- (14,0);
+\foreach \x in {1,2,3,4,5,6,7,8,9,10,11,12,13,14} {
+\draw (\x, 0) -- ++(0,.1) node [above,scale=0.7] {\tiny \x};
+\ifthenelse{\x < 14}{\draw (\x+.5, 0) -- ++(0,.03);}{}
+}
+
+\coordinate (c0) at (10.125,0);
+\coordinate (c1) at (4.9688,0);
+\coordinate (c2) at (5.5,0);
+\coordinate (c3) at (4.3281,0);
+\coordinate (c4) at (12.875,0);
+\coordinate (c5) at (1.8281,0);
+\coordinate (c6) at (2.5,0);
+\coordinate (c7) at (6.8438,0);
+\coordinate (c8) at (8.9062,0);
+\coordinate (c9) at (11.8125,0);
+\coordinate (c10) at (6.8125,0);
+\coordinate (c11) at (5.4062,0);
+\coordinate (c12) at (9.0938,0);
+
+\node (l0) at (c0) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny OLLAWV};
+\node (l1) at (c1) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny HT};
+\node (l2) at (c2) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny AdaHT};
+\node (l3) at (c3) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny NaiveBayes};
+\node (l4) at (c4) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny $k$NNPAW};
+\node (l5) at (c5) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny SCD};
+\node (l6) at (c6) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny RC};
+\node (l7) at (c7) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny RCNB};
+\node (l8) at (c8) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny SAE2};
+\node (l9) at (c9) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny LearnNSE};
+\node (l10) at (c10) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny DWM};
+\node (l11) at (c11) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny DACC};
+\node (l12) at (c12) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny OCBoost};
+
+\fill[fill=gray,fill opacity=0.5] (1.8281,-0.1) rectangle (4.6171,0.1);
+
+\foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11,12} {
+\draw (l\x) -| (c\x);
+};
+\end{tikzpicture}}\vspace{-2em}
+\captionsetup{width=\linewidth}
+\captionof{figure}{Bonferroni-Dunn test for Testing Time}\label{fig:BonfDunnTestDS}
+\end{minipage}
+\end{table}
+
+
+\begin{table}[t!]
+\caption{Meta-Ranks Comparison for Data Stream Classifiers}
+\scriptsize
+\centering
+\label{tab:DSResultsacc}
+\resizebox{\textwidth}{!}{\begin{tabularx}{1.28\textwidth}{l@{\extracolsep{\fill}}cccccccccccccc}
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Metric & OLLAWV & HT & AdaHT & NaiveBayes & $k$NNPAW & SCD & RC & RCNB & SAE2 & LearnNSE &DWM &DACC &OCBoost \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+accuracy &2.2031 &5.6562 &4.5000 &7.9531 &4.7031 &5.7500 &\textbf{11.2500} &6.7344 &8.1250 &8.7500 &6.9844 &10.9531 &7.4375 &  \\
+kappa &2.5781 &5.7500 &4.5312 &7.7031 &4.7344 &5.6250 &\textbf{11.6562} &6.6094 &7.9688 &8.4688 &6.7344 &11.1406 &7.5000 &  \\
+training time &6.5938 &4.9062 &5.6875 &3.4375 &6.9688 &6.2500 &9.2188 &9.2188 &8.2188 &\textbf{12.6875} &2.7188 &5.5000 &9.5938 &  \\
+testing time &10.1250 &4.9688 &5.5000 &4.3281 &\textbf{12.8750} &1.8281 &2.5000 &6.8438 &8.9062 &11.8125 &6.8125 &5.4062 &9.0938 &  \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Average &5.3750 &5.3203 &5.0547 &5.8555 &7.3203 &4.8633 &8.6562 &7.3516 &8.3047 &\textbf{10.4297} &5.8125 &8.2500 &8.4062 &  \\
+Rank &5.0000 &4.0000 &\textbf{3.7500} &5.7500 &6.7500 &4.0000 &9.6250 &7.6250 &9.5000 &11.7500 &5.5000 &8.2500 &9.5000 &  \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\end{tabularx}}
+\begin{minipage}{0.9\textwidth}
+\centering
+\resizebox{\textwidth}{!}{\begin{tikzpicture}
+\draw (1,0) -- (13,0);
+\foreach \x in {1,2,3,4,5,6,7,8,9,10,11,12,13} {
+\draw (\x, 0) -- ++(0,.1) node [above,scale=0.7] {\tiny \x};
+\ifthenelse{\x < 13}{\draw (\x+.5, 0) -- ++(0,.03);}{}
+}
+
+\coordinate (c0) at (5,0);
+\coordinate (c1) at (4,0);
+\coordinate (c2) at (3.75,0);
+\coordinate (c3) at (5.75,0);
+\coordinate (c4) at (6.75,0);
+\coordinate (c5) at (4,0);
+\coordinate (c6) at (9.625,0);
+\coordinate (c7) at (7.625,0);
+\coordinate (c8) at (9.5,0);
+\coordinate (c9) at (11.75,0);
+\coordinate (c10) at (5.5,0);
+\coordinate (c11) at (8.25,0);
+\coordinate (c12) at (9.5,0);
+
+\node (l0) at (c0) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny OLLAWV};
+\node (l1) at (c1) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny HT};
+\node (l2) at (c2) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny AdaHT};
+\node (l3) at (c3) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny NaiveBayes};
+\node (l4) at (c4) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny $k$NNPAW};
+\node (l5) at (c5) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny SCD};
+\node (l6) at (c6) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny RC};
+\node (l7) at (c7) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny RCNB};
+\node (l8) at (c8) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny SAE2};
+\node (l9) at (c9) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny LearnNSE};
+\node (l10) at (c10) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny DWM};
+\node (l11) at (c11) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny DACC};
+\node (l12) at (c12) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny OCBoost};
+
+\fill[fill=gray,fill opacity=0.5] (3.75,-0.1) rectangle (6.539,0.1);
+
+\foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11,12} {
+\draw (l\x) -| (c\x);
+};
+\end{tikzpicture}}\vspace{-2em}
+\captionsetup{width=\linewidth}
+\captionof{figure}{Bonferroni-Dunn test for Meta-Ranks}\label{fig:BonfDunnmetaDS}
+\end{minipage}
+\end{table}
 
 \section{Conclusions}
 
