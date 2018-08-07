@@ -2662,6 +2662,7 @@ Aside from the issue of concept drift, many other issues arise in data stream cl
 \section{DSOLLAWV}
 
 \begin{algorithm}
+\centering \small
 \caption{List 2 L1-SVM}
 \label{alg:List2L1SVM} 
 \begin{algorithmic}[1]
@@ -2674,7 +2675,11 @@ Aside from the issue of concept drift, many other issues arise in data stream cl
 \While{$i < max\_iter$}
 \State $\eta \leftarrow \frac{2}{\sqrt{i}}$
 \If{$yo \leq 1$}
-\State $\lambda \leftarrow \eta\,C\,Y_i$, $\alpha_i \leftarrow \alpha_i + \lambda$, $b \leftarrow b + \lambda\,\beta$, $\bm I_{nsv} \leftarrow i$, $nsv \leftarrow nsv + 1$
+\State $\lambda \leftarrow \eta\,C\,Y_i$
+\State $\alpha_i \leftarrow \alpha_i + \lambda$
+\State $b \leftarrow b + \lambda\,\beta$
+\State $\bm I_{nsv} \leftarrow i$
+\State $nsv \leftarrow nsv + 1$
 \EndIf
 \State $i \leftarrow i + 1$
 \State $o_i \leftarrow \bm{K}(\bm x_i,\, \bm x_{\bm I})\, \bm \alpha_{\bm I} + b$
@@ -2684,6 +2689,7 @@ Aside from the issue of concept drift, many other issues arise in data stream cl
 \end{algorithm}
 
 \begin{algorithm}
+\centering \small
 \caption{Evaluate Interleaved Chunks}
 \label{alg:evalChunk} 
 \begin{algorithmic}[1]
@@ -2772,50 +2778,24 @@ This generator also has a modification suitable to model data evolution. Drift i
 
 
 \begin{table}[t!]
-\caption{Static Streamed Datasets}
+\caption{Base Streamed Datasets \& Generators}
 \footnotesize
 \centering
-\label{tab:dsStaticDataset}
-\begin{tabularx}{0.7\textwidth}{l@{\extracolsep{\fill}}rrr}
-\hline\noalign{\smallskip}
-Dataset & \# Samples & \# Attributes & \# Classes \\
-\noalign{\smallskip}\hline\noalign{\smallskip}
-spamCorpus	     & 	 9,324	     & 	39,917	         & 	2 \\
-shuttle 	         		& 	 57,999	   & 	10	           & 	7 \\
-powersupply	     	& 	 29,928	   & 	3	             & 	24 \\
-poker-lsn 	       		& 	 829,201	   & 	11	           & 	10 \\
-IntelLabSensors 	 & 	 2,313,153	 & 	6	             & 	58 \\
-gasSensor 	     	& 	 13,910	   & 	129	           & 	1 \\
-elecNormNew 	     & 	 45,312	   & 	9	             & 	2 \\
-ecoli	           			& 	 336	     & 	8	             & 	8 \\
-dj30	           			& 	 138,166	   & 	8	             & 	30 \\
-covtypeNorm 	     & 	 581,012	   & 	55	           & 	7 \\
-connect-4 	      		 & 	 67,557	   & 	43	           & 	3 \\
-census 	         		& 	 299,284	   & 	42	           & 	2 \\
-BNGzoo 	         & 	 1,000,000	 & 	18	           & 	7 \\
-BNGwine 	       		& 	 1,000,000	 & 	14	           & 	3 \\
-BNGlymph	       & 	 1,000,000	 & 	19	           & 	4 \\
-BNGhypothyroid 	 & 	 1,000,000	 & 	30	           & 	4 \\
-BNGhepatitis 	   & 	 1,000,000	 & 	20	           & 	2 \\
-\noalign{\smallskip}\hline
-\end{tabularx}
-\end{table}
-
-\begin{table}[t!]
-\caption{Generator Datasets}
-\footnotesize
-\centering
-\label{tab:dsgeneratorDataset}
+\label{tab:dsDataset}
 \begin{tabularx}{0.9\textwidth}{l@{\extracolsep{\fill}}rrr}
 \hline\noalign{\smallskip}
 Dataset & \# Samples & \# Attributes & \# Classes \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
+\textbf{\textit{Static}} 			  &						&							& \\
+Shuttle 								  &    57,999		&   10 					& 7 \\
+Census									  &   299,284      &  42					& 2 \\
+CovType		 						  &   581,012      & 55						& 7 \\
+\textbf{\textit{Generators}} 			  &						&							& \\
 HyperplaneGenerator 	         & 	 1,000,000	 & 	10	           & 	2 \\ %
 RandomRBFGenerator 	       	 & 	 1,000,000	 & 	10	           & 	2 \\ %moa
 SEAGenerator	       				 & 	 1,000,000	 & 	2	          	    & 	2 \\ %A streaming ensemble algorithm (SEA) for large-scale classification
 STAGGERGenerator 	 			 & 	 1,000,000	 & 	3	              & 	2 \\ %Incremental Learning from Noisy Data
 RandomTreeGenerator 	   	 & 	 1,000,000	 & 	5	              & 	2 \\
-LEDGenerator 						 & 	 1,000,000	 & 	7	              & 	2 \\
 MixedGenerator 					 & 	 1,000,000	 & 	4	              & 	2 \\%Learning with drift detection.
 AssetNegotiationGenerator 	 & 	 1,000,000	 & 	18	           & 	7 \\
 \noalign{\smallskip}\hline
