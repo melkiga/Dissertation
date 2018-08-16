@@ -2661,7 +2661,10 @@ Aside from the issue of concept drift, many other issues arise in data stream cl
 \section{OnLine Learning Algorithms for Batched Data Streams}
 Two online, iterative learning algorithms, OLLA-L2~\cite{kecman2016fast} and OLLAWV~\cite{melki2018ollawv}, are implemented and tested within the context of a batched data stream environment. 
 
-OLLA-L2 stems from the same core algorithm as OLLAWV, OLLA~\cite{kecman2016fast}, a generic stochastic learning algorithm tailored for solving various risk functions, regularized or not. The implementation used in this Chapter minimizes the primal L1-SVM cost function, as done in OLLAWV, and is listed in Algorithm~\ref{alg:List2L1SVM}. At every iteration, the algorithm proceeds cyclically over the data, updating the model if the sample, $i$, chosen is a violator, i.e. has an error ($y_i o_i \leq 1$). If the sample has no error ($y_i o_i > 1$), the model remains the same. In the context of batched streams, the algorithm cycles through the current batch and for a pure online scenario, the algorithm proceeds and updates as long as there are samples provided by the stream. 
+OLLA-L2 stems from the same core algorithm as OLLAWV, OLLA~\cite{kecman2016fast}, a generic stochastic learning algorithm tailored for solving various risk functions, regularized or not. The implementation used in this Chapter minimizes the primal L1-SVM cost function, as done in OLLAWV, and is listed in Algorithm~\ref{alg:List2L1SVM}. At every iteration, the algorithm proceeds cyclically over the data, updating the model if the sample, $i$, chosen is a violator, i.e. has an error ($y_i o_i \leq 1$). If the sample has no error ($y_i o_i > 1$), the model remains the same. In the context of batched streams, the algorithm cycles through the current batch and for a pure online scenario, the algorithm proceeds and updates as long as there are samples provided by the stream. The quantity of iterations can be controlled by the parameter $e$ representing the number of epochs. As mentioned previously, early stopping acts as a regularization technique~\cite{collobert2004links}, and this can be controlled through setting the number of epochs to be less than the number of samples.
+
+
+When $e \leq 1$, the parameter $\Rho$ is always 0. 
 
 \begin{algorithm}[H]
 \centering \small
@@ -2673,13 +2676,12 @@ OLLA-L2 stems from the same core algorithm as OLLAWV, OLLA~\cite{kecman2016fast}
 \Require $\bm X, \bm Y, \beta, n, e$
 \Ensure  $\bm \alpha$, $b$, $\bm S$
 \State $\bm \alpha \leftarrow \bm 0, b \leftarrow 0, \bm S \leftarrow \bm 0$
-\State $\bm o \leftarrow \bm 0$
-\State $i \leftarrow 0, yo \leftarrow Y_i \bm o_i,\, max\_iter \leftarrow e*n$ 
-\While{$t < 1, \ldots, max\_iter$}
+\State $\bm o \leftarrow \bm 0,\, i \leftarrow 0$
+\For{$t = 1, \ldots, n*e$}
 \State $\eta \leftarrow 2/\sqrt{t}$
-\If{$yo \leq 1$}
+\If{$Y_i\, o_i \leq 1$}
 \State \textit{Calculate $\Lambda$ and $\Rho$}
-\State $\bm S \leftarrow [\bm S i]$
+\State $\bm S \leftarrow [\bm S \cup i]$
 \State $\alpha_i \leftarrow \alpha_i + (\Lambda - \Rho)$
 \State $b \leftarrow b + (\Lambda - \Rho)\beta$
 \EndIf
@@ -2688,14 +2690,11 @@ OLLA-L2 stems from the same core algorithm as OLLAWV, OLLA~\cite{kecman2016fast}
 \State $i = 0$
 \EndIf
 \State $o_i \leftarrow \bm{K}(\bm x_i,\, \bm x_{\bm S})\, \bm \alpha_{\bm S} + b$
-\State $yo \leftarrow Y_i\, o_i$
-\EndWhile
+\EndFor
 \end{algorithmic} 
 \end{algorithm}
 
-The update parameters $\Lambda \in \reals$ (lambda) and $\Rho \in \reals$ (rho) describe scalars which are used for updating the output vector $\bm o \in \reals^n$, the weight vector in kernel feature space $\bm \alpha \in \reals^n$, and the bias term $b \in \reals$, if it is used. The input parameter $\beta \in \set{0,1}$ describes whether the bias term will be used ($\beta = 1$) or not ($\beta = 0$). 
-
-The update parameters for $\Lambda$ and $\Rho$ for the L1-SVM with regularizer $||\bm w||^2$ are given by:
+The update parameters $\Lambda \in \reals$ (lambda) and $\Rho \in \reals$ (rho) describe scalars which are used for updating the output vector $\bm o \in \reals^n$, the weight vector in kernel feature space $\bm \alpha \in \reals^n$, and the bias term $b \in \reals$, if it is used. The input parameter $\beta \in \set{0,1}$ describes whether the bias term will be used ($\beta = 1$) or not ($\beta = 0$). The update parameters for $\Lambda$ and $\Rho$ for the L1-SVM with regularizer $||\bm w||^2$ are given by:
 \begin{table}[H]
 \centering \small
 \begin{tabular}{cc}
@@ -2740,26 +2739,26 @@ $\Lambda = \eta C y_i$ & $\Rho = \eta \alpha_i$
 \cmidrule(lr){4-5}
  & DSL2SVM & OLLAWV & DSL2SVM & OLLAWV \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
-RBFNoDrift &93.0663 &\textbf{94.2117} &\textbf{0.0073} &0.0329 \\
-HyperplaneSlow &87.4016 &\textbf{90.0913} &\textbf{0.0087} &0.0353 \\
-HyperplaneFaster &87.4033 &\textbf{89.5092} &\textbf{0.0085} &0.0263  \\
-STAGGERGeneratorF1 &\textbf{100.000} &\textbf{100.000} &\textbf{0.0011} &0.0021  \\
-HyperplaneFaster0.2 &87.4047 &\textbf{89.4911} &\textbf{0.0086} &0.0268  \\
-MixedGeneratorBT &92.4990 &\textbf{97.9969} &\textbf{0.0036} &0.0205  \\
-MixedGeneratorBF &92.5537 &\textbf{98.0284} &\textbf{0.0036} &0.0299  \\
-SineGeneratorF1BF &97.3659 &\textbf{97.7909} &\textbf{0.0030} &0.0122  \\
-SineGeneratorF2BF &97.3659 &\textbf{97.7909} &\textbf{0.0030} &0.0121  \\
-STAGGERGeneratorF1BF &\textbf{100.000} &\textbf{100.000} &\textbf{0.0012} &0.0021  \\
-STAGGERGeneratorF2BF &\textbf{100.000} &\textbf{100.000} &\textbf{0.0013} &0.0022  \\
-HyperplaneFasterAN0 &87.4033 &\textbf{89.5092} &\textbf{0.0085} &0.0263  \\
-HyperplaneFasterAN5 &87.2912 &\textbf{89.2898} &\textbf{0.0086} &0.0264   \\
-HyperplaneFasterCN0 &87.4033 &\textbf{89.5092} &\textbf{0.0086} &0.0263   \\
-HyperplaneFasterACN0 &87.4033 &\textbf{89.5092} & \textbf{0.0086} &0.0263   \\
-SEASuddenAN0 &84.0088 &\textbf{87.7956} & \textbf{0.0165} &0.0208  \\
-SEASuddenAN05 &83.6874 &\textbf{87.5283} & \textbf{0.0165} &0.0284  \\
+RBFNoDrift &93.0663 &\textbf{94.2117} &\textbf{0.0218} &0.0329   \\
+HyperplaneSlow &87.4016 &\textbf{90.0913} &\textbf{0.0261} &0.0353   \\
+HyperplaneFaster &87.4033 &\textbf{89.5092} &\textbf{0.0256} &0.0263   \\
+STAGGERGeneratorF1 &\textbf{100.0000} &\textbf{100.0000} &0.0034 &\textbf{0.0021}  \\
+HyperplaneFaster0.2 &87.4047 &\textbf{89.4911} &\textbf{0.0257} &0.0268   \\
+MixedGeneratorBT &92.4990 &\textbf{97.9969} &\textbf{0.0108} &0.0205  \\
+MixedGeneratorBF &92.5537 &\textbf{98.0284} &\textbf{0.0107} &0.0299   \\
+SineGeneratorF1BF &97.3659 &\textbf{97.7909} &\textbf{0.0091} &0.0122   \\
+SineGeneratorF2BF &97.3659 &\textbf{97.7909} &\textbf{0.0091} &0.0121   \\
+STAGGERGeneratorF1BF &\textbf{100.0000} &\textbf{100.0000} &0.0035 &\textbf{0.0021}   \\
+STAGGERGeneratorF2BF &\textbf{100.0000} &\textbf{100.0000} &0.0039 &\textbf{0.0022}  \\
+HyperplaneFasterAN0 &87.4033 &\textbf{89.5092} &\textbf{0.0255} &0.0263   \\
+HyperplaneFasterAN5 &87.2912 &\textbf{89.2898} &\textbf{0.0258} &0.0264   \\
+HyperplaneFasterCN0 &87.4033 &\textbf{89.5092} &\textbf{0.0257} &0.0263   \\
+HyperplaneFasterACN0 &87.4033 &\textbf{89.5092} &\textbf{0.0257} &0.0263   \\
+SEASuddenAN0 &84.0088 &\textbf{87.7956} &0.0494 &\textbf{0.0208}   \\
+SEASuddenAN05 &83.6874 &\textbf{87.5283} &0.0494 &\textbf{0.0284}  \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
-Average &91.3093 &\textbf{93.4148} & \textbf{0.0069} &0.0210  \\
-Rank &1.9118 &\textbf{1.0882} &1.0000 &2.0000  \\
+Average &91.3093 &\textbf{93.4148} & \textbf{0.0207} & 0.0210 \\
+Rank &1.9118 &\textbf{1.0882} &\textbf{1.2941} & 1.7059  \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
 \end{tabularx}}
 \end{table}
