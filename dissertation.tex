@@ -2130,7 +2130,7 @@ The experimental study showed the better performance of MIRSVM compared with exi
 Due to the ever-growing nature of dataset sizes, the need for scalable and accurate machine learning algorithms has become evident. Stochastic gradient descent methods are popular tools used to optimize large-scale learning problems because of their generalization performance, simplicity, and scalability. This chapter proposes a novel stochastic, also known as online, learning algorithm for solving the L1 support vector machine (SVM) problem, named \textit{OnLine Learning Algorithm using Worst-Violators} (OLLAWV). The scope of this chapter is concerned with developing a unique learning algorithm for large data problems without the use of parallelization techniques and distributed systems. Unlike other stochastic methods, OLLAWV eliminates the need for specifying the maximum number of iterations and the use of a regularization term. OLLAWV uses early stopping for controlling the size of the margin instead of the regularization term. The experimental study, performed under very strict nested cross-validation (a.k.a., double resampling), evaluates and compares the performance of this proposal with state-of-the-art SVM kernel methods that have been shown to outperform traditional and widely used approaches for solving L1-SVMs such as \textit{Sequential Minimal Optimization}. OLLAWV is also compared to $5$ other traditional non-SVM algorithms. The results over $23$ datasets show OLLAWV's superior performance in terms of accuracy, scalability, and model sparseness, making it suitable for large-scale learning.
 
 \section{Online Learning Background}
-Since a comprehensive overview of contemporary online learning algorithms were presented in Chapter~\ref{chap:background}, this section will present the concept of Stochastic (sub)Gradient Descent (SGD) for the unconstrained primal L1-SVM optimization problem, given by Equation~\ref{eqn:reghingeloss}. First, the notation that will be used througout the chapter is introduced, then a brief background on stochastic (sub)gradient descent is given, and finally, related works on using SGD for the L1-SVM problem are described.
+Since a comprehensive overview of contemporary online learning algorithms were presented in Chapter~\ref{chap:background}, this section will present the concept of Stochastic (sub)Gradient Descent (SGD) for the unconstrained primal L1-SVM optimization problem, given by Equation~\ref{eqn:reghingeloss}. First, the notation that will be used througout the chapter is introduced, then a brief background on stochastic (sub)gradient descent will be given.
 
 \subsection{Notation}\label{subsec:notation}
 \begin{table}[t!]
@@ -2168,7 +2168,7 @@ After $T$ iterations, the algorithm returns the averaged weight vector $\bm{\bar
 The stochastic gradient descent algorithm is a simplification of that of gradient descent. Rather than computing the gradient of $f$ exactly, at each iteration it is instead an estimation of the gradient on the basis of a single, randomly picked sample $\bm x_i,\, \forall i \in \{1, \ldots, n\}$. The update then becomes,
 \begin{equation}
 \bm{w}^{(t+1)} \leftarrow \bm{w}^{(t)} - \eta\bigtriangledown_w f_i(\bm{w}^{(t)}).
-\label{eqn:gradientupdate}
+\label{eqn:gradientupdateo}
 \end{equation}
 Thus, each iteration of SGD is very cheap in terms of computation since it only deals with the gradient at one sample. Note, the iterative sequence is not determined uniquely by the optimization function, starting point of $\bm w_0$, and sequence of step sizes; rather, it is a stochastic process whose behavior is determined by the sequence of random examples chosen at each iteration~\cite{bottou2010large,bottou2018optimization}.
 
@@ -2641,7 +2641,7 @@ Table~\ref{tab:OtherResultsacc} displays the accuracy results for OLLAWV and fiv
 \section{Conclusions}\label{sec:ollawvconclusion}
 This paper proposed a novel online learning procedure and algorithm for solving the L1-SVM problem, which is a unique method in terms of both iterating over samples and updating the model. A new stopping criterion for the stochastic gradient procedure is also proposed. The model is updated by changing the weight $\alpha_i$ of a single worst-violator per iteration and stops when all violating samples i.e., support vectors, are found. Finding the \textit{worst-violators} is done without replacement. Such an approach results in a significant shortening of training time, as well as in a huge decrease in the resulting model size. The key features of the proposed algorithm, OLLAWV, stem from it's implicit ability of finding support vectors and it's self-stopping condition. This design was devised to address the limitations presented by current SVM solvers. 
 
-The first experimental study demonstrates the better performance of OLLAWV compared with state-of-the-art SVM solvers (MNSVM and NNISDA) which have been shown to outperform the popular SMO implementation in the LIBSVM package. The results for accuracy, runtime, and percentage of support-vectors, obtained by the strict nested cross-validation procedure, were compared and further validated using statistical analysis with non-parametric tests. They highlighted the advantages and major speedup achieved by OLLAWV against the competing MNSVM and NNISDA. The second, supplemental experimental study evaluated the performance of OLLAWV against $5$ popular non-SVM methods, showing the better performance of OLLAWV against all five non-SVM algorithms ($k$-Nearest Neighbors ($k$-NN), J48, JRip, Na\"ive Bayes, and Logistic). The proposal, OLLAWV, performs statistically better in terms of runtime and model size across all $23$ evaluated benchmark datasets, without compromising accuracy.
+The first experimental study demonstrates the better performance of OLLAWV compared with state-of-the-art SVM solvers (MNSVM and NNISDA) which have been shown to outperform the popular SMO implementation in the LIBSVM package. The results for accuracy, runtime, and percentage of support-vectors, obtained by the strict nested cross-validation procedure, were compared and further validated using statistical analysis with non-parametric tests. They highlighted the advantages and major speedup achieved by OLLAWV against the competing MNSVM and NNISDA. The second, supplemental experimental study evaluated the performance of OLLAWV against $5$ popular non-SVM methods, showing the better performance of OLLAWV against all five non-SVM algorithms ($k$-Nearest Neighbors ($k$-NN), J48, JRip, Na\"ive Bayes, and Logistic). The proposal, OLLAWV, performs statistically better in terms of runtime and model size across all $23$ evaluated benchmark datasets, without compromising accuracy. The research outcomes of this chapter have been published in~\cite{melki2018ollawv}.
 
 \chapter{OLLAWV for Batched Data Streams}
 Due to advances in hardware and software technologies, data generation and automated storage has become fast, voluminous, and continuous; usually referred to as streams of data. Nowadays, data streams are ubiquitous and notoriously difficult to store, analyze, visualize, and learn from. Most traditional machine learning techniques need to be adapted to accommodate the streamed, also known as online, environment due to underlying resource constraints, i.e. memory consumption and runtime, as well as the possibility of concept drift. This chapter presents a novel implementation and experimental environment for two novel online support vector machines (SVMs) in the batched data stream setting. Unlike other existing methods, these two online algorithms were chosen because their characteristics are a natural remedy for the time and memory constraints that come with the data stream problem. The first algorithms' low memory complexity deals with the memory constraints, and the second methods' fast runtime and self-stopping capability remedies the time constraint. The results for the latter, \textit{OnLine Learning Algorithm using Worst-Violators} (OLLAWV), showed a superior performance to the former, \textit{OnLine Learning Algorithm - List 2} (OLLA-L2). OLLAWV was then compared to 12 popular data stream algorithms against 32 datasets and stream generators. The results and statistical analysis showed OLLAWV's better performance, making it suitable for streamed learning. 
@@ -2658,34 +2658,50 @@ Aside from the issue of concept drift, many other issues arise in data stream cl
 • Inmanycases,theentirestreammaynotbeavailableatasingleprocessororlocation.Insuch cases, distributed mining of data streams becomes extremely important.
 
 
-\section{DSOLLAWV}
+\section{OnLine Learning Algorithms for Batched Data Streams}
+Two online, iterative learning algorithms, OLLA-L2~\cite{kecman2016fast} and OLLAWV~\cite{melki2018ollawv}, are implemented and tested within the context of a batched data stream environment. 
 
-\begin{algorithm}
+OLLA-L2 stems from the same core algorithm as OLLAWV, OLLA~\cite{kecman2016fast}, a generic stochastic learning algorithm tailored for solving various risk functions, regularized or not. The implementation used in this Chapter minimizes the primal L1-SVM cost function, as done in OLLAWV, and is listed in Algorithm~\ref{alg:List2L1SVM}. At every iteration, the algorithm proceeds cyclically over the data, updating the model if the sample, $i$, chosen is a violator, i.e. has an error ($y_i o_i \leq 1$). If the sample has no error ($y_i o_i > 1$), the model remains the same. In the context of batched streams, the algorithm cycles through the current batch and for a pure online scenario, the algorithm proceeds and updates as long as there are samples provided by the stream. 
+
+\begin{algorithm}[H]
 \centering \small
-\caption{List 2 L1-SVM}
+\caption{OnLine Learning Algorithm - List 2 (OLLA-L2)}
 \label{alg:List2L1SVM} 
 \begin{algorithmic}[1]
 \renewcommand{\algorithmicrequire}{\textbf{Input:}}
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
-\Require $\bm X, \bm Y, C, \sigma, n, e, \beta$
-\Ensure  $\bm \alpha$, $b$, $\bm I$
-\State $\bm \alpha \leftarrow \bm 0,\, \bm o \leftarrow \bm 0,\, b \leftarrow 0,\, i \leftarrow 0$
-\State $yo \leftarrow 0,\, max\_iter \leftarrow e*n,\, nsv \leftarrow 0$ 
-\While{$i < max\_iter$}
-\State $\eta \leftarrow \frac{2}{\sqrt{i}}$
+\Require $\bm X, \bm Y, \beta, n, e$
+\Ensure  $\bm \alpha$, $b$, $\bm S$
+\State $\bm \alpha \leftarrow \bm 0, b \leftarrow 0, \bm S \leftarrow \bm 0$
+\State $\bm o \leftarrow \bm 0$
+\State $i \leftarrow 0, yo \leftarrow Y_i \bm o_i,\, max\_iter \leftarrow e*n$ 
+\While{$t < 1, \ldots, max\_iter$}
+\State $\eta \leftarrow 2/\sqrt{t}$
 \If{$yo \leq 1$}
-\State $\lambda \leftarrow \eta\,C\,Y_i$
-\State $\alpha_i \leftarrow \alpha_i + \lambda$
-\State $b \leftarrow b + \lambda\,\beta$
-\State $\bm I_{nsv} \leftarrow i$
-\State $nsv \leftarrow nsv + 1$
+\State \textit{Calculate $\Lambda$ and $\Rho$}
+\State $\bm S \leftarrow [\bm S i]$
+\State $\alpha_i \leftarrow \alpha_i + (\Lambda - \Rho)$
+\State $b \leftarrow b + (\Lambda - \Rho)\beta$
 \EndIf
 \State $i \leftarrow i + 1$
-\State $o_i \leftarrow \bm{K}(\bm x_i,\, \bm x_{\bm I})\, \bm \alpha_{\bm I} + b$
+\If{$i = n$}
+\State $i = 0$
+\EndIf
+\State $o_i \leftarrow \bm{K}(\bm x_i,\, \bm x_{\bm S})\, \bm \alpha_{\bm S} + b$
 \State $yo \leftarrow Y_i\, o_i$
 \EndWhile
 \end{algorithmic} 
 \end{algorithm}
+
+The update parameters $\Lambda \in \reals$ (lambda) and $\Rho \in \reals$ (rho) describe scalars which are used for updating the output vector $\bm o \in \reals^n$, the weight vector in kernel feature space $\bm \alpha \in \reals^n$, and the bias term $b \in \reals$, if it is used. The input parameter $\beta \in \set{0,1}$ describes whether the bias term will be used ($\beta = 1$) or not ($\beta = 0$). 
+
+The update parameters for $\Lambda$ and $\Rho$ for the L1-SVM with regularizer $||\bm w||^2$ are given by:
+\begin{table}[H]
+\centering \small
+\begin{tabular}{cc}
+$\Lambda = \eta C y_i$ & $\Rho = \eta \alpha_i$
+\end{tabular}
+\end{table}
 
 \begin{algorithm}
 \centering \small

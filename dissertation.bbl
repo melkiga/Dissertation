@@ -2779,6 +2779,49 @@
     \field{year}{2017}
   \endentry
 
+  \entry{melki2018ollawv}{article}{}
+    \name{author}{4}{}{%
+      {{hash=MG}{%
+         family={Melki},
+         familyi={M\bibinitperiod},
+         given={Gabriella},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=KV}{%
+         family={Kecman},
+         familyi={K\bibinitperiod},
+         given={Vojislav},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=VS}{%
+         family={Ventura},
+         familyi={V\bibinitperiod},
+         given={Sebasti{\'a}n},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=CA}{%
+         family={Cano},
+         familyi={C\bibinitperiod},
+         given={Alberto},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier}%
+    }
+    \strng{namehash}{MG+2}
+    \strng{fullhash}{MGKVVSCA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{pages}{384\bibrangedash 393}
+    \field{title}{OLLAWV: OnLine Learning Algorithm using Worst-Violators}
+    \field{volume}{66}
+    \field{journaltitle}{Applied Soft Computing}
+    \field{year}{2018}
+  \endentry
+
   \entry{oza2001online}{book}{}
     \name{author}{2}{}{%
       {{hash=ONC}{%
