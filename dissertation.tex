@@ -2647,6 +2647,18 @@ The first experimental study demonstrates the better performance of OLLAWV compa
 Due to advances in hardware and software technologies, data generation and automated storage has become fast, voluminous, and continuous; usually referred to as streams of data. Nowadays, data streams are ubiquitous and notoriously difficult to store, analyze, visualize, and learn from. Most traditional machine learning techniques need to be adapted to accommodate the streamed, also known as online, environment due to underlying resource constraints, i.e. memory consumption and runtime, as well as the possibility of concept drift. This chapter presents a novel implementation and experimental environment for two novel online support vector machines (SVMs) in the batched data stream setting. Unlike other existing methods, these two online algorithms were chosen because their characteristics are a natural remedy for the time and memory constraints that come with the data stream problem. The first algorithms' low memory complexity deals with the memory constraints, and the second methods' fast runtime and self-stopping capability remedies the time constraint. The results for the latter, \textit{OnLine Learning Algorithm using Worst-Violators} (OLLAWV), showed a superior performance to the former, \textit{OnLine Learning Algorithm - List 2} (OLLA-L2). OLLAWV was then compared to 12 popular data stream algorithms against 32 datasets and stream generators. The results and statistical analysis showed OLLAWV's better performance, making it suitable for streamed learning. 
 
 \section{Background}
+MOA is mostly concerned with the problem of classification and clustering (see Subsections 2.2.1 and 2.2.2) for elements of a data stream. MOA algorithms assume that the number of attributes is fixed. According to [9, 27], the main approaches and methods for stream classification are:
+
+1. Bayesian classifiers: these methods are based on the Bayes theorem. MOA’s classifiers include Naive Bayes and Naive Bayes Multinomial methods. Naive Bayes methods are simple and require little memory. The main assumption is independence of the stream instances. However, Naive Bayes models are usually less accurate than more involved models.
+
+2. Decision trees classifiers for streaming data: include decision trees of one level (Decision Stump) and several variations of Hoeffding Trees. The methods are applicable when the distribution of the stream instances does not change over time.
+
+3. Meta classifiers: wrap around other methods for data stream classification. MOA’s collection include various online modifications of bagging and boosting. More elaborate versions are available for the case of evolving streams.
+
+4. Function classifiers: include related methods based on neural network and support vector machines. Support vector machines (SVM) offer better flexibility, while neural networks are often straightforward to use.
+
+5. Drift classifier: handles concept drift detection. The idea is to control the number of errors produced during classification prediction. An increase in the error may signify changes in distribution of incoming stream instances.
+
 Advances in hardware technology have led to the increasing popularity of data streams [1]. Many simple operations of everyday life, such as using a credit card or the phone, often lead to automated creation of data. Since these operations often scale over large numbers of participants, they lead to massive data streams. Similarly, telecommunications and social networks often contain large amounts of network or text data streams. The problem of learning from such data streams presents unprecedented challenges, especially in resource-constrained scenarios.
 An important problem in the streaming scenario is that of data classification. In this problem, the data instances are associated with labels, and it is desirable to determine the labels on the test instances. Typically, it is assumed that both the training data and the test data may arrive in the form of a stream. In the most general case, the two types of instances are mixed with one another. Since the test instances are classified independently of one another, it is usually not difficult to perform the real-time classification of the test stream. The problems arise because of the fact that the training model is always based on the aggregate properties of multiple records. These aggregate properties may change over time. This phenomenon is referred to as concept drift. All streaming models need to account for concept drift in the model construction process. Therefore, the construction of a training model in a streaming and evolving scenarios can often be very challenging.
 Aside from the issue of concept drift, many other issues arise in data stream classification, which are specific to the problem at hand. These issues are dependent on the nature of the application in which streaming classification is used. A single approach may not work well in all scenarios. This diversity in problem scenarios is discussed below:
@@ -2702,32 +2714,7 @@ $\Lambda = \eta C y_i$ & $\Rho = \eta \alpha_i$
 \end{tabular}
 \end{table}
 
-\begin{algorithm}
-\centering \small
-\caption{Evaluate Interleaved Chunks}
-\label{alg:evalChunk} 
-\begin{algorithmic}[1]
-\renewcommand{\algorithmicrequire}{\textbf{Input:}}
-\renewcommand{\algorithmicensure}{\textbf{Output:}}
-\Require $\proc = \set{\mathcal{S}_1,\ldots,\mathcal{S}_T}$
-\Ensure  ?
-\State $\mathtt{firstChunk =\,TRUE}$
-\State Initialize $\mathtt{learner.setModelContext(InstancesHeader\,\,header)}$
-\While{stream has more instances}
-\State Generate new batch of instances, $\mathcal{S}_t$
-\If{!$\mathtt{firstChunk}$}
-\For{each test instance}
-\State $\mathtt{double[]\,\,pred = learner.getVotesForInstance(Instance\,\,instance)}$ 
-\EndFor
-\Else 
-\State $\mathtt{firstChunk =\,FALSE}$
-\EndIf
-\State $\mathtt{learner.trainOnInstances(Instances\,\,chunk)}$
-\EndWhile
-\end{algorithmic} 
-\end{algorithm}
-
-\begin{table}[t!]
+\begin{table}[th!]
 \centering
 \caption{Comparison of OLLAWV vs. DSL2SVM}
 \scriptsize
@@ -2763,34 +2750,58 @@ Rank &1.9118 &\textbf{1.0882} &\textbf{1.2941} & 1.7059  \\
 \end{tabularx}}
 \end{table}
 
-\section{Experimental Environment}
-MOA is mostly concerned with the problem of classification and clustering (see Subsections 2.2.1 and 2.2.2) for elements of a data stream. MOA algorithms assume that the number of attributes is fixed. According to [9, 27], the main approaches and methods for stream classification are:
-1. Bayesian classifiers: these methods are based on the Bayes theorem. MOA’s classifiers include Naive Bayes and Naive Bayes Multinomial methods. Naive Bayes methods are simple and require little memory. The main assumption is independence of the stream instances. However, Naive Bayes models are usually less accurate than more involved models.
-2. Decision trees classifiers for streaming data: include decision trees of one level (Decision Stump) and several variations of Hoeffding Trees. The methods are applicable when the distribution of the stream instances does not change over time.
-3. Meta classifiers: wrap around other methods for data stream classification. MOA’s collection include various online modifications of bagging and boosting. More elaborate versions are available for the case of evolving streams.
-4. Function classifiers: include related methods based on neural network and sup- port vector machines. Support vector machines (SVM) offer better flexibility, while neural networks are often straightforward to use.
-5. Drift classifier: handles concept drift detection. The idea is to control the number of errors produced during classification prediction. An increase in the error may signify changes in distribution of incoming stream instances.
-MOA offers several algorithm for online clustering including methods based on k-means, micro-clusters, classification trees and others. More details can be found in [27].
-Furthermore, MOA includes methods to test and evaluate the accuracy and effectiveness of data stream algorithms. What is more important for us, MOA contains several data stream generators, that can be used to produce data streams for testing.
+\newpage
+\section{Experimental Environment, Results, and Analysis}
+This section presents the experimental setup and comparison of our contribution against 12 popular data stream algorithms on 32 different benchmark datasets and stream generators. The experimental setup is first described, the contemporary comparison methods are then listed, then a brief description of the datasets and stream generators is presented. The results over several metrics, as well as statistical analyses are then shown and the overall performance of the algorithms are discussed. The main purpose of OLLAWV's implementation in a data stream environment and the following experiments was to investigate whether it is capable of learning from streams efficiently, ensuring a strong base algorithm before tackling streams with concept drift. 
 
+\subsection{Experimental Environment}
+\begin{algorithm}[t]
+\centering \small
+\caption{Evaluate Interleaved Chunks}
+\label{alg:evalChunk} 
+\begin{algorithmic}[1]
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\Require $\proc = \set{\mathcal{S}_1,\ldots,\mathcal{S}_T}$
+\Ensure  ?
+\State $\mathtt{firstChunk =\,TRUE}$
+\State Initialize $\mathtt{learner.setModelContext(InstancesHeader\,\,header)}$
+\While{stream has more instances}
+\State Generate new batch of instances, $\mathcal{S}_t$
+\If{!$\mathtt{firstChunk}$}
+\For{each test instance}
+\State $\mathtt{double[]\,\,pred = learner.getVotesForInstance(Instance\,\,instance)}$ 
+\EndFor
+\Else 
+\State $\mathtt{firstChunk =\,FALSE}$
+\EndIf
+\State $\mathtt{learner.trainOnInstances(Instances\,\,chunk)}$
+\EndWhile
+\end{algorithmic} 
+\end{algorithm}
+The experimental environment was designed to test the difference in performance of the proposed method against 12 contemporary algorithms belonging to two categories: those with and without concept drift detectors. The majority of the classifiers used in the experimental environment are without a concept drift detector because OLLAWV was implemented without one, ensuring a fair comparison. However, classifiers with a drift detector were included for a more comprehensive understanding of how OLLAWV will compare when a concept drift arises. 
+
+The algorithms without a drift detector are as follows: \textit{Hoeffding Option Tree} (HT)~\cite{hulten2001mining}, \textit{Adaptive Hoeffding Option Tree} (AdaHT)~\cite{bifet2009adaptive}, \textit{Na\"ive Bayes}, \textit{Rule Classifier} (RC) and \textit{Rule Classifier Na\"ive Bayes} (RCNB)~\cite{gama2011learning}, \textit{Social Adaptive Ensemble Classifier} (SAE2)~\cite{gomes2014sae2}, and \textit{Online Coordinate Boosting} (OCBoost)~\cite{pelossof2009online}. Those with a drift detector are: \textit{$k$-Nearest Neighbors with Probabilistic Adaptive Window} ($k$NNPAW), \textit{Single Classifier Drift} (SCD)~\cite{baena2006early} using the \textit{Hoeffding Tree} as a base, \textit{Learning in Non-Stationary Environments} (LearnNSE)~\cite{elwell2011incremental}, \textit{Dynamic Weighted Majority} (DWM)~\cite{kolter2007dynamic}, \textit{Dynmic Adaptation to Concept Changes} (DACC)~\cite{jaber2013new}. These algorithms were chosen because they have shown considerable performance in learning in a stream environment, while also being readily available for use and reproducing their results through MOA, Massive Online Analysis\footnote{https://moa.cms.waikato.ac.nz/}~\cite{moacite}. Experiments were run on an \textbf{Intel i7-6700k CPU with 32GB RAM}. OLLAWV was implemented in Java within the MOA framework. 
+
+The experiments were performed using the evaluation method named \textit{Interleaved Test-Then-Train}, also known as \textit{Prequential}~\cite{moacite}, listed in Algorithm~\ref{alg:evalChunk}, which is used to describe the accuracy (or any other evaluation metric) of algorithms over time. In this procedure, each sample can be used to test the model before it is used during training, and using this, the evaluation metric can be incrementally updated. Using this order, the algorithms are always being tested on unseen samples. This scheme ensures that no hold-out test set is needed, thus utilizing all available data. It also provides a smooth plot of the evaluation metric over time, where each sample becomes increasingly less significant to the overall average. 
+
+The cross-validation strategy used in these experiments was a little different than how it is performed traditionally, since the experimental environment was non-static. Once a new batch is received by the algorithm, nested $5$-fold cross validation for parameter selection is performed, and once the best parameters are chosen, those will be used for the remaining batches. The best hyper-parameters were chosen from the following $6 \times 7$ possible combinations, shown in Equations~\eqref{eq:paramCollads} and~\eqref{eq:paramGollads}. 
+\begin{subequations}
+\label{eq:hyperparamollads}
+\begin{align}
+C \in \set{0.01, 0.1, 1.0, 10.0, 100.0, 1,000.0} \label{eq:paramCollads}\\
+\gamma \in \set{0.01, 0.1, 0.5, 1.0, 2.0, 4.0, 16.0} \label{eq:paramGollads}
+\end{align}
+\end{subequations}
+The $\gamma$ parameter refers to that of the Gaussian RBF kernel, given by:
+\begin{equation}
+\label{eq:rbfds}
+\mathcal{K}(\bm{x_i},\bm{x_j}) = e^{-\gamma\norm{\bm{x_i} - \bm{x_j}}^2}.
+\end{equation}
+
+Each batch of samples is normalized by linear transformation of the feature values to the range [0,1]. To deal with multi-class classification problems, the one-vs-one, or pairwise, approach was used. 
 
 \subsection{Datasets}
-Here we shortly describe the generators presented in the current version of MOA [9].
-1. Random Tree Generator is based on the generator proposed by Domingos and Hulten [12]. It produces concepts that should theoretically prefer decision tree learners. The generator chooses attributes at random to split and assigns a random class label to each leaf, thus constructing a decision tree. When such a tree is built, the generator produces new examples by assigning uniformly distributed random values to attributes. This determines the class label via the tree.
-
-2. Random RBF (Radial Basis Function) Generator aims to construct a more sophisticated type of concept. It should not be easily captured with a decision tree model. The generator produces a fixed number of random centroids. Each center is positioned randomly, has a single standard deviation, class label and weight. To produce new examples, a center is chosen at random but according to weights, i.e., centers with higher weight are chosen with higher probability. A random direction is chosen and a random length of displacement is chosen according to a Gaussian distribution corresponding to the centroid. This allows the generator to offset the attribute values from the center. Moreover, the class label is also determined by the centroid. The constructed examples form a normally distributed hypersphere that surrounds each centers with varying densities.
-This generator also has a modification suitable to model data evolution. Drift is introduced by moving the centroids with constant speed. The speed is initialized by a drift parameter.
-
-3. LED Generator was described in the CART book [10]. The goal is to predict the digit displayed on a seven-segment LED display, where each attribute has a 10% chance of being inverted.
-4. Waveform Generator also comes from [10]. The generator constructs three types of waveforms as a combination of two or three base waves. The goal is to determine the wave type.
-5. Function Generator was introduced by Agrawal et al. in [4]. The gener- ated stream should model loan application profiles. The generator produces a stream, each instance of which consists of nine attributes: six numeric and three categorical.
-6. SEA Concepts Generator [36] contains abrupt concept shift. It is generated using three attributes, but the relevant attributes are only the first two of them. All the attributes have values between 0 and 10.
-7. STAGGER Concepts Generator was described by Schlimmer and Granger in [34]. The concept is described by a collection of elements, where every element is a Boolean function of attribute-valued pairs and is represented by a disjunct of conjuncts.
-
-8. Rotating Hyperplane was used in [19]. Hyperplanes are helpful for simulation of time-changing concepts. Their orientation and position may be smoothly changed by modifying the relative size of the weights.
-9. The newest release of MOA also contains a multi-label data stream genera- tor [26], not described in [9].
-
-
 \begin{table}[t!]
 \caption{Base Streamed Datasets \& Generators}
 \footnotesize
@@ -2800,23 +2811,60 @@ This generator also has a modification suitable to model data evolution. Drift i
 \hline\noalign{\smallskip}
 Dataset & \# Samples & \# Attributes & \# Classes \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
-\textbf{\textit{Static}} 			  &						&							& \\
-Shuttle 								  &    57,999		&   10 					& 7 \\
-Census									  &   299,284      &  42					& 2 \\
-CovType		 						  &   581,012      & 55						& 7 \\
-\textbf{\textit{Generators}} 			  &						&							& \\
-HyperplaneGenerator 	         & 	 1,000,000	 & 	10	           & 	2 \\ %
-RandomRBFGenerator 	       	 & 	 1,000,000	 & 	10	           & 	2 \\ %moa
-SEAGenerator	       				 & 	 1,000,000	 & 	2	          	    & 	2 \\ %A streaming ensemble algorithm (SEA) for large-scale classification
-STAGGERGenerator 	 			 & 	 1,000,000	 & 	3	              & 	2 \\ %Incremental Learning from Noisy Data
-RandomTreeGenerator 	   	 & 	 1,000,000	 & 	5	              & 	2 \\
-MixedGenerator 					 & 	 1,000,000	 & 	4	              & 	2 \\%Learning with drift detection.
-AssetNegotiationGenerator 	 & 	 1,000,000	 & 	18	           & 	7 \\
+\textbf{\textit{Static}} 		&				&				& 		\\
+Shuttle 						&    57,999		&   10 			& 	7 \\
+Census							&   299,284     &  	42			& 	2 \\
+CovType		 					&   581,012     & 	55			& 	7 \\
+\textbf{\textit{Generators}} 	&				&				& 		\\
+RandomRBFGenerator 	       	 	& 	1,000,000	& 	10	        & 	2 \\ %moa
+LEDGenerator	 	       	 	& 	1,000,000	& 	2	        & 	10 \\ %moa
+HyperplaneGenerator 	        & 	1,000,000	& 	10	        & 	2 \\ %
+WaveformGenerator 	       	 	& 	1,000,000	& 	40	        & 	3 \\ %moa
+STAGGERGenerator 	 			& 	1,000,000	& 	3	        & 	2 \\ %Incremental Learning from Noisy Data
+MixedGenerator 					& 	1,000,000	& 	4	        & 	2 \\%Learning with drift detection.
+SineGenerator 					& 	1,000,000	& 	2	        & 	2 \\%Learning with drift detection.
+SEAGenerator	       			& 	1,000,000	& 	2	        & 	2 \\ %A streaming ensemble algorithm (SEA) for large-scale classification
 \noalign{\smallskip}\hline
 \end{tabularx}
 \end{table}
+Table~\ref{tab:dsDataset} presents a summary of the static datasets and the stream generators used throughout the experiments, where the number of attributes, classes, and samples are shown. Both the static datasets and the generators provided 1000-sample sized batches to the algorithms. The static datasets were obtained from the UCI Machine Learning repository\footnote{http://archive.ics.uci.edu/ml/index.php}~\cite{Lichman:2013} and were simulated as streams using a stream generator from the MOA framework. The stream generators were also used within the MOA~\cite{moacite} framework. The following are descriptions of the types of generators used as base generators throughout the experimental study. Variations of the generators were also used to simulate slow and abrupt concept drifts.
+\begin{itemize}
+\iitem \textbf{Random RBF (Radial Basis Function) Generator}: This generator produces samples that form normally distributed hyperspheres surrounding randomly selected centroids, with varying densities. This generator also has the option to simulate data evolution, i.e. concept drift. 
+
+\iitem  \textbf{LED Generator}: This stream generator's goal is to predict the digit displayed on a seven-segment LED display, where each segment has a 10\% chance of being inverted.
+
+\iitem \textbf{Rotating Hyperplane}: This generator produces samples of different classes that are separated by a hyperplane. Their orientation and position may be smoothly changed by modifying the size of the weights.
+
+\iitem \textbf{Waveform Generator}: This generator constructs three different types of waves which are combinations of two or three base waveforms. The goal is to determine the final wave type.
+
+\iitem \textbf{STAGGER Concepts Generator}: This generator creates a concepts which are described by a collection of samples, where each sample is a boolean function of attribute-valued pairs and is described by a disjunct of conjuncts.
+
+\iitem \textbf{MIXED Concepts Generator}: This stream generator has an abrupt concept drift, where the class label is selected based on some functional conditional, and is reversed after a context change.
+
+\iitem \textbf{Sine Concepts Generator}: This generator involves two relevant attributes, each having values uniformly distributed between [0,1], with an abrupt concept drift change. In the first context, all samples below a sine curve are classified as positive. However, after the context change, the class label is reversed. 
+
+\iitem \textbf{SEA Concepts Generator}: This generator involves an abrupt concept drift change and three attributes, of which only two are relevant, ranging between [0, 10]. Samples belong to a certain class label if the sum of the relevant attributes is less than or equal to some threshold value, which varies based on the concept. 
+
+\end{itemize}
+
+
 
 \section{Results \& Analysis}
+The classification performance was measured using 2 metrics: Accuracy and Cohen’s kappa rate, and the results are shown in Tables~\ref{tab:DSResultsacc} and~\ref{tab:DSResultskappa} respectively. The metrics are calculated as shown in Equations~\ref{eq:accuracyds} and~\ref{eq:kappads}, where TP is the true positive value, TN is the true negative value, FP is the false positive value, and FN is the false negative value.
+\begin{subequations}
+\label{eq:metricsds}
+\begin{align}
+\text{Accuracy} \tab \tab &\dfrac{TP+TN}{n^\prime} \label{eq:accuracyds}\\[10pt]
+\text{Cohen's Kappa Rate} \tab \tab &\dfrac{n^\prime - \dfrac{(TP+FN)*(TP+FP)}{n^\prime}}{1 - \dfrac{(TP+FN)*(TP+FP)}{n^\prime}} \label{eq:kappads}
+\end{align}
+\end{subequations}
+The training and testing times of each algorithm are also given in Tables~\ref{tab:DSResultsTrain} and~\ref{tab:DSResultsTestTime} to analyze the scalability and speed of each of the algorithms. These metrics were all recorded using the Test-Then-Train procedure. 
+
+In order to analyze the performances of the multiple models, non-parametric statistical tests are used to validate the experimental results obtained. The Iman-Davenport non-parametric test is run to investigate whether significant differences exist among the performance of the algorithms by ranking them over the datasets used, using the Friedman test. The algorithm ranks for each metric in Equations~\eqref{eq:metrics} are presented in the last row of the results tables, and the lowest (best) rank value is typeset in bold. Table~\ref{tab:DSResultsmeta} contains the ranks and meta-rank of all methods, which helps determine and visualize the best performing algorithms across all datasets and metrics. 
+
+After the Iman-Davenport test indicates significant differences, the Bonferroni-Dunn post-hoc test~\cite{Dunn1961} is then used to find where they occur between algorithms by assuming the classifiers' performances are different by at least some critical value. Below each result table, a figure highlighting the critical distance (in gray), from the best ranking algorithm to the rest, is shown. The algorithms to the right of the critical distance bar perform statistically significantly worse than the control algorithm, OLLAWV. Figures \ref{fig:BonfDunnaccDS}, \ref{fig:BonfDunnkappaDS}, \ref{fig:BonfDunnTrainDS}, and \ref{fig:BonfDunnTestDS} show the results of the Bonferroni-Dunn post-hoc procedure over the metrics in~\eqref{eq:metricsds}, as well as the meta-rank results in Table~\ref{tab:DSResultsmeta}.
+
+\subsection{Accuracy}
 % CD for 0.05 alpha is 2.789
 \begin{table}[t!]
 \caption{Accuracy (\%) Comparison for Data Stream Classifiers}
@@ -2889,31 +2937,31 @@ Rank &\textbf{2.2031} &5.6562 &4.5000 &7.9531 &4.7031 &5.7500 &11.2500 &6.7344 &
 
 \node (l0) at (c0) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny \textbf{OLLAWV}};
 \node (l1) at (c1) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny HT};
-\node (l2) at (c2) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny AdaHT};
-\node (l3) at (c3) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny NaiveBayes};
+\node (l2) at (c2) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny AdaHT};
+\node (l3) at (c3) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny NaiveBayes};
 \node (l4) at (c4) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny $k$NNPAW};
-\node (l5) at (c5) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny SCD};
-\node (l6) at (c6) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny RC};
+\node (l5) at (c5) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny SCD};
+\node (l6) at (c6) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny RC};
 \node (l7) at (c7) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny RCNB};
-\node (l8) at (c8) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny SAE2};
-\node (l9) at (c9) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny LearnNSE};
-\node (l10) at (c10) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny DWM};
-\node (l11) at (c11) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny DACC};
-\node (l12) at (c12) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny OCBoost};
+\node (l8) at (c8) [above right=.1cm and 0cm, align=right,scale=0.7] {\tiny SAE2};
+\node (l9) at (c9) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny LearnNSE};
+\node (l10) at (c10) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny DWM};
+\node (l11) at (c11) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny DACC};
+\node (l12) at (c12) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny OCBoost};
 
 \fill[fill=gray,fill opacity=0.5] (2.2031,-0.1) rectangle (4.99,0.1);
 
 \foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11,12} {
 \draw (l\x) -| (c\x);
 };
-\end{tikzpicture}}\vspace{-2em}
+\end{tikzpicture}}\vspace{-1em}
 \captionsetup{width=\linewidth}
 \captionof{figure}{Bonferroni-Dunn test for Accuracy}\label{fig:BonfDunnaccDS}
 \end{minipage}
 \end{table}
 
 
-
+\subsection{Cohen's Kappa Rate}
 \begin{table}[t!]
 \caption{Cohen's Kappa (\%) Comparison for Data Stream Classifiers}
 \scriptsize
@@ -2983,32 +3031,32 @@ Rank &\textbf{2.5781} &5.7500 &4.5312 &7.7031 &4.7344 &5.6250 &11.6562 &6.6094 &
 \coordinate (c11) at (11.1406,0);
 \coordinate (c12) at (7.5,0);
 
-\node (l0) at (c0) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny OLLAWV};
-\node (l1) at (c1) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny HT};
-\node (l2) at (c2) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny AdaHT};
-\node (l3) at (c3) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny NaiveBayes};
+\node (l0) at (c0) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny \textbf{OLLAWV}};
+\node (l1) at (c1) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny HT};
+\node (l2) at (c2) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny AdaHT};
+\node (l3) at (c3) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny NaiveBayes};
 \node (l4) at (c4) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny $k$NNPAW};
-\node (l5) at (c5) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny SCD};
+\node (l5) at (c5) [above left=.2cm and 0cm, align=right,scale=0.7] {\tiny SCD};
 \node (l6) at (c6) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny RC};
-\node (l7) at (c7) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny RCNB};
-\node (l8) at (c8) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny SAE2};
-\node (l9) at (c9) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny LearnNSE};
+\node (l7) at (c7) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny RCNB};
+\node (l8) at (c8) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny SAE2};
+\node (l9) at (c9) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny LearnNSE};
 \node (l10) at (c10) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny DWM};
-\node (l11) at (c11) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny DACC};
-\node (l12) at (c12) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny OCBoost};
+\node (l11) at (c11) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny DACC};
+\node (l12) at (c12) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny OCBoost};
 
 \fill[fill=gray,fill opacity=0.5] (2.5781,-0.1) rectangle (5.367,0.1);
 
 \foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11,12} {
 \draw (l\x) -| (c\x);
 };
-\end{tikzpicture}}\vspace{-2em}
+\end{tikzpicture}}\vspace{-1em}
 \captionsetup{width=\linewidth}
 \captionof{figure}{Bonferroni-Dunn test for Cohen's Kappa}\label{fig:BonfDunnkappaDS}
 \end{minipage}
 \end{table}
 
-
+\subsection{Scalability}
 \begin{table}[t!]
 \caption{Training Time (seconds) Comparison for Data Stream Classifiers}
 \scriptsize
@@ -3078,26 +3126,26 @@ Rank &6.5938 &4.9062 &5.6875 &3.4375 &6.9688 &6.2500 &9.2188 &9.2188 &8.2188 &12
 \coordinate (c11) at (5.5,0);
 \coordinate (c12) at (9.5938,0);
 
-\node (l0) at (c0) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny OLLAWV};
-\node (l1) at (c1) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny HT};
-\node (l2) at (c2) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny AdaHT};
-\node (l3) at (c3) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny NaiveBayes};
-\node (l4) at (c4) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny $k$NNPAW};
-\node (l5) at (c5) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny SCD};
-\node (l6) at (c6) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny RC};
-\node (l7) at (c7) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny RCNB};
-\node (l8) at (c8) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny SAE2};
-\node (l9) at (c9) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny LearnNSE};
-\node (l10) at (c10) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny DWM};
-\node (l11) at (c11) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny DACC};
-\node (l12) at (c12) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny OCBoost};
+\node (l0) at (c0) [above right=.3cm and 0cm, align=right,scale=0.7] {\tiny \textbf{OLLAWV}};
+\node (l1) at (c1) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny HT};
+\node (l2) at (c2) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny AdaHT};
+\node (l3) at (c3) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny NaiveBayes};
+\node (l4) at (c4) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny $k$NNPAW};
+\node (l5) at (c5) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny SCD};
+\node (l6) at (c6) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny RC};
+\node (l7) at (c7) [above right=.1cm and 0cm, align=right,scale=0.7] {\tiny RCNB};
+\node (l8) at (c8) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny SAE2};
+\node (l9) at (c9) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny LearnNSE};
+\node (l10) at (c10) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny DWM};
+\node (l11) at (c11) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny DACC};
+\node (l12) at (c12) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny OCBoost};
 
 \fill[fill=gray,fill opacity=0.5] (2.7188,-0.1) rectangle (5.5078,0.1);
 
 \foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11,12} {
 \draw (l\x) -| (c\x);
 };
-\end{tikzpicture}}\vspace{-2em}
+\end{tikzpicture}}\vspace{-1em}
 \captionsetup{width=\linewidth}
 \captionof{figure}{Bonferroni-Dunn test for Training Time}\label{fig:BonfDunnTrainDS}
 \end{minipage}
@@ -3173,16 +3221,16 @@ Rank &10.1250 &4.9688 &5.5000 &4.3281 &12.8750 &\textbf{1.8281} &2.5000 &6.8438 
 \coordinate (c11) at (5.4062,0);
 \coordinate (c12) at (9.0938,0);
 
-\node (l0) at (c0) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny OLLAWV};
+\node (l0) at (c0) [above right=.1cm and 0cm, align=right,scale=0.7] {\tiny \textbf{OLLAWV}};
 \node (l1) at (c1) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny HT};
 \node (l2) at (c2) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny AdaHT};
 \node (l3) at (c3) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny NaiveBayes};
-\node (l4) at (c4) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny $k$NNPAW};
+\node (l4) at (c4) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny $k$NNPAW};
 \node (l5) at (c5) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny SCD};
 \node (l6) at (c6) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny RC};
 \node (l7) at (c7) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny RCNB};
 \node (l8) at (c8) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny SAE2};
-\node (l9) at (c9) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny LearnNSE};
+\node (l9) at (c9) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny LearnNSE};
 \node (l10) at (c10) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny DWM};
 \node (l11) at (c11) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny DACC};
 \node (l12) at (c12) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny OCBoost};
@@ -3192,18 +3240,19 @@ Rank &10.1250 &4.9688 &5.5000 &4.3281 &12.8750 &\textbf{1.8281} &2.5000 &6.8438 
 \foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11,12} {
 \draw (l\x) -| (c\x);
 };
-\end{tikzpicture}}\vspace{-2em}
+\end{tikzpicture}}\vspace{-1em}
 \captionsetup{width=\linewidth}
 \captionof{figure}{Bonferroni-Dunn test for Testing Time}\label{fig:BonfDunnTestDS}
 \end{minipage}
 \end{table}
 
 
+\subsection{Overall Comparison}
 \begin{table}[t!]
 \caption{Meta-Ranks Comparison for Data Stream Classifiers}
 \scriptsize
 \centering
-\label{tab:DSResultsacc}
+\label{tab:DSResultsmeta}
 \resizebox{\textwidth}{!}{\begin{tabularx}{1.28\textwidth}{l@{\extracolsep{\fill}}cccccccccccccc}
 \noalign{\smallskip}\hline\noalign{\smallskip}
 Metric & OLLAWV & HT & AdaHT & NaiveBayes & $k$NNPAW & SCD & RC & RCNB & SAE2 & LearnNSE &DWM &DACC &OCBoost \\
