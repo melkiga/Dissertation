@@ -2850,7 +2850,7 @@ Table~\ref{tab:dsDataset} presents a summary of the static datasets and the stre
 
 
 \section{Results \& Analysis}
-The classification performance was measured using 2 metrics: Accuracy and Cohen’s kappa rate, and the results are shown in Tables~\ref{tab:DSResultsacc} and~\ref{tab:DSResultskappa} respectively. The metrics are calculated as shown in Equations~\ref{eq:accuracyds} and~\ref{eq:kappads}, where TP is the true positive value, TN is the true negative value, FP is the false positive value, and FN is the false negative value.
+The classification performance was measured using 2 metrics: Accuracy and Cohen’s kappa rate, and the results are shown in Tables~\ref{tab:DSResultsacc} and~\ref{tab:DSResultskappa} respectively. The metrics are calculated as shown in Equations~\ref{eq:accuracyds} and~\ref{eq:kappads}, where TP is the true positive value, TN is the true negative value, FP is the false positive value, FN is the false negative value, and $n^\prime = TP + FP + TN + FN$.
 \begin{subequations}
 \label{eq:metricsds}
 \begin{align}
@@ -2858,11 +2858,11 @@ The classification performance was measured using 2 metrics: Accuracy and Cohen�
 \text{Cohen's Kappa Rate} \tab \tab &\dfrac{n^\prime - \dfrac{(TP+FN)*(TP+FP)}{n^\prime}}{1 - \dfrac{(TP+FN)*(TP+FP)}{n^\prime}} \label{eq:kappads}
 \end{align}
 \end{subequations}
-The training and testing times of each algorithm are also given in Tables~\ref{tab:DSResultsTrain} and~\ref{tab:DSResultsTestTime} to analyze the scalability and speed of each of the algorithms. These metrics were all recorded using the Test-Then-Train procedure. 
+The training times of each algorithm are also given in Table~\ref{tab:DSResultsTrain} to analyze the scalability and speed of each of the algorithms. These metrics were all recorded using the Test-Then-Train procedure. 
 
 In order to analyze the performances of the multiple models, non-parametric statistical tests are used to validate the experimental results obtained. The Iman-Davenport non-parametric test is run to investigate whether significant differences exist among the performance of the algorithms by ranking them over the datasets used, using the Friedman test. The algorithm ranks for each metric in Equations~\eqref{eq:metrics} are presented in the last row of the results tables, and the lowest (best) rank value is typeset in bold. Table~\ref{tab:DSResultsmeta} contains the ranks and meta-rank of all methods, which helps determine and visualize the best performing algorithms across all datasets and metrics. 
 
-After the Iman-Davenport test indicates significant differences, the Bonferroni-Dunn post-hoc test~\cite{Dunn1961} is then used to find where they occur between algorithms by assuming the classifiers' performances are different by at least some critical value. Below each result table, a figure highlighting the critical distance (in gray), from the best ranking algorithm to the rest, is shown. The algorithms to the right of the critical distance bar perform statistically significantly worse than the control algorithm, OLLAWV. Figures \ref{fig:BonfDunnaccDS}, \ref{fig:BonfDunnkappaDS}, \ref{fig:BonfDunnTrainDS}, and \ref{fig:BonfDunnTestDS} show the results of the Bonferroni-Dunn post-hoc procedure over the metrics in~\eqref{eq:metricsds}, as well as the meta-rank results in Table~\ref{tab:DSResultsmeta}.
+After the Iman-Davenport test indicates significant differences, the Bonferroni-Dunn post-hoc test~\cite{Dunn1961} is then used to find where they occur between algorithms by assuming the classifiers' performances are different by at least some critical value. Below each result table, a figure highlighting the critical distance (in gray), from the best ranking algorithm to the rest, is shown. The algorithms to the right of the critical distance bar perform statistically significantly worse than the control algorithm, OLLAWV. Figures \ref{fig:BonfDunnaccDS}, \ref{fig:BonfDunnkappaDS}, and \ref{fig:BonfDunnTrainDS} show the results of the Bonferroni-Dunn post-hoc procedure over the metrics in~\eqref{eq:metricsds}, as well as the meta-rank results in Table~\ref{tab:DSResultsmeta}.
 
 \subsection{Accuracy}
 % CD for 0.05 alpha is 2.789
@@ -3056,7 +3056,7 @@ Rank &\textbf{2.5781} &5.7500 &4.5312 &7.7031 &4.7344 &5.6250 &11.6562 &6.6094 &
 \end{minipage}
 \end{table}
 
-\subsection{Scalability}
+\subsection{Training Time}
 \begin{table}[t!]
 \caption{Training Time (seconds) Comparison for Data Stream Classifiers}
 \scriptsize
@@ -3148,101 +3148,6 @@ Rank &6.5938 &4.9062 &5.6875 &3.4375 &6.9688 &6.2500 &9.2188 &9.2188 &8.2188 &12
 \end{tikzpicture}}\vspace{-1em}
 \captionsetup{width=\linewidth}
 \captionof{figure}{Bonferroni-Dunn test for Training Time}\label{fig:BonfDunnTrainDS}
-\end{minipage}
-\end{table}
-
-
-\begin{table}[t!]
-\caption{Testing Time (seconds) Comparison for Data Stream Classifiers}
-\scriptsize
-\centering
-\label{tab:DSResultsTestTime}
-\resizebox{\textwidth}{!}{\begin{tabularx}{1.5\textwidth}{l@{\extracolsep{\fill}}ccccccccccccccc}
-\noalign{\smallskip}\hline\noalign{\smallskip}
-Dataset & OLLAWV & HT & AdaHT & Naive Bayes & $k$NNPAW &SCD & RC &RCNB & SAE2 & LearnNSE &DWM &DACC &OCBoost &\\
-\noalign{\smallskip}\hline\noalign{\smallskip}
-CovType &0.0391 &0.0256 &0.0321 &0.0089 &1.3744 &0.0041 &\textbf{0.0010} &0.0304 &0.0493 &0.1896 &0.0358 &0.0170 &0.0325 &  \\
-census &0.2235 &0.0082 &0.0095 &0.0033 &2.2826 &0.0014 &\textbf{0.0012} &0.0082 &0.0048 &0.1052 &0.0125 &0.0076 &0.0099 &  \\
-shuttle &0.0072 &0.0054 &0.0060 &0.0051 &0.3265 &0.0017 &\textbf{0.0012} &0.0105 &0.0092 &0.1228 &0.0096 &0.0108 &0.0176 &  \\
-RBFNoDrift &0.0372 &0.0051 &0.0065 &0.0016 &0.4792 &\textbf{0.0014} &0.0196 &0.0180 &0.0168 &0.0322 &0.0084 &0.0021 &0.0102 &  \\
-LEDNoDrift &0.0927 &0.0014 &0.0021 &0.0027 &1.6070 &0.0018 &\textbf{0.0010} &0.0190 &0.0302 &0.0603 &0.0148 &0.0050 &0.0105 &  \\
-HyperplaneSlow &0.0407 &0.0029 &0.0038 &0.0016 &0.5687 &0.0020 &\textbf{0.0004} &0.0048 &0.0220 &0.0814 &0.0080 &0.0037 &0.0095 &  \\
-HyperplaneFaster &0.0273 &0.0088 &0.0113 &0.0019 &0.5691 &\textbf{0.0016} &0.0020 &0.0051 &0.0164 &0.0794 &0.0085 &0.0038 &0.0083 &  \\
-RBFGradualRecurring &0.0436 &0.0141 &0.0154 &0.0060 &0.7791 &\textbf{0.0040} &0.0067 &0.0171 &0.0485 &0.2963 &0.0301 &0.0103 &0.0448 &  \\
-RBFBlips &0.0370 &0.0106 &0.0127 &0.0061 &0.7407 &\textbf{0.0032} &0.0039 &0.0148 &0.0464 &0.5582 &0.0312 &0.0133 &0.0457 &  \\
-WaveformGenerator &0.0604 &0.0231 &0.0291 &0.0094 &2.4650 &0.0053 &\textbf{0.0033} &0.0207 &0.0671 &0.3095 &0.0454 &0.0142 &0.0400 &  \\
-STAGGERGeneratorF1 &0.0018 &\textbf{0.0002} &0.0003 &\textbf{0.0002} &0.1834 &\textbf{0.0002} &0.0004 &0.0006 &0.0004 &0.2034 &\textbf{0.0002} &0.0012 &0.0005 &  \\
-HyperplaneFaster0.2 &0.0272 &0.0088 &0.0118 &0.0016 &0.5671 &\textbf{0.0012} &0.0019 &0.0048 &0.0174 &0.0790 &0.0081 &0.0037 &0.0085 &  \\
-RBFGradualRecurringv2 &0.0551 &0.0067 &0.0078 &0.0064 &0.8919 &0.0039 &\textbf{0.0035} &0.0158 &0.0259 &0.0853 &0.0322 &0.0059 &0.0452 &  \\
-MixedGeneratorBT &0.0202 &0.0012 &0.0012 &0.0004 &0.1348 &\textbf{0.0003} &0.0008 &0.0018 &0.0029 &0.0371 &0.0018 &0.0018 &0.0028 &  \\
-MixedGeneratorBF &0.0330 &0.0010 &0.0011 &0.0004 &0.1372 &\textbf{0.0003} &0.0017 &0.0028 &0.0032 &0.0316 &0.0019 &0.0020 &0.0030 &  \\
-RandomRBFGeneratorC4A25 &0.0218 &0.0153 &0.0145 &0.0072 &0.6871 &0.0030 &\textbf{0.0027} &0.0158 &0.0559 &0.1909 &0.0356 &0.0135 &0.0690 &  \\
-RandomRBFGeneratorC4A50 &0.0204 &0.0115 &0.0117 &0.0137 &1.2234 &0.0036 &\textbf{0.0015} &0.0234 &0.0848 &1.0711 &0.0687 &0.0443 &0.1373 &  \\
-SineGeneratorF1BF &0.0111 &0.0025 &0.0025 &0.0006 &0.1586 &\textbf{0.0003} &\textbf{0.0003} &0.0016 &0.0042 &0.0938 &0.0028 &0.0027 &0.0035 &  \\
-SineGeneratorF2BF &0.0111 &0.0023 &0.0025 &0.0006 &0.1500 &\textbf{0.0003} &\textbf{0.0003} &0.0016 &0.0041 &0.0655 &0.0022 &0.0029 &0.0036 &  \\
-STAGGERGeneratorF1BF &0.0018 &\textbf{0.0002} &0.0003 &\textbf{0.0002} &0.1150 &\textbf{0.0002} &\textbf{0.0002} &0.0006 &0.0004 &0.1853 &\textbf{0.0002} &0.0013 &0.0007 &  \\
-STAGGERGeneratorF2BF &0.0019 &0.0004 &0.0004 &0.0002 &0.1232 &0.0002 &\textbf{0.0001} &0.0011 &0.0004 &0.2370 &0.0002 &0.0012 &0.0011 &  \\
-RBFGradualRecurringCN0 &0.0438 &0.0133 &0.0135 &0.0058 &0.5329 &\textbf{0.0030} &0.0046 &0.0155 &0.0461 &0.2819 &0.0290 &0.0127 &0.0707 &  \\
-RBFGradualRecurringACN0 &0.0437 &0.0155 &0.0155 &0.0571 &0.6604 &\textbf{0.0042} &0.0060 &0.0191 &0.0571 &0.3078 &0.0320 &0.0127 &0.0685 &  \\
-HyperplaneFasterAN0 &0.0289 &0.0059 &0.0062 &0.0091 &0.2573 &\textbf{0.0010} &0.0012 &0.0034 &0.0117 &0.0546 &0.0067 &0.0040 &0.0151 &  \\
-HyperplaneFasterAN5 &0.0290 &0.0058 &0.0059 &0.0091 &0.2602 &\textbf{0.0009} &0.0016 &0.0041 &0.0129 &0.0573 &0.0068 &0.0039 &0.0153 &  \\
-HyperplaneFasterCN0 &0.0272 &5.8051 &0.0061 &0.0083 &877.2892 &0.3783 &\textbf{0.0016} &942.6669 &0.0127 &0.0557 &0.0061 &34.3009 &0.0153 &  \\
-HyperplaneFasterACN0 &0.0272 &0.0100 &0.0103 &0.0110 &0.4614 &\textbf{0.0014} &0.0019 &0.0049 &0.0174 &0.0807 &0.0081 &0.0047 &0.0147 &  \\
-SEASuddenAN0 &0.0212 &0.0009 &0.0009 &0.0044 &0.1736 &\textbf{0.0004} &0.0118 &0.0129 &0.0045 &0.0326 &0.0026 &0.0021 &0.0055 &  \\
-SEASuddenAN05 &0.0325 &0.0009 &0.0009 &0.0041 &0.1673 &\textbf{0.0004} &0.0106 &0.0119 &0.0044 &0.0321 &0.0025 &0.0022 &0.0053 &  \\
-CovTypeAN0 &0.0387 &0.0302 &0.0312 &0.0546 &1.1519 &0.0041 &\textbf{0.0010} &0.0292 &0.0529 &0.1946 &0.0362 &0.0241 &0.0649 &  \\
-CovTypeCN0 &0.0389 &0.0173 &0.0175 &0.0317 &0.6655 &0.0026 &\textbf{0.0005} &0.0201 &0.0320 &0.1209 &0.0219 &0.0152 &0.0544 &  \\
-CovTypeACN0 &0.0389 &0.0175 &0.0173 &0.0331 &0.6416 &0.0027 &\textbf{0.0005} &0.0222 &0.0315 &0.1211 &0.0215 &0.0155 &0.0550 &  \\
-\noalign{\smallskip}\hline\noalign{\smallskip}
-Average &0.0370 &0.1899 &0.0096 &0.0096 &28.0570 &0.0137 &\textbf{0.0030} &29.4697 &0.0248 &0.1704 &0.0166 &1.0802 &0.0278 &  \\
-Rank &10.1250 &4.9688 &5.5000 &4.3281 &12.8750 &\textbf{1.8281} &2.5000 &6.8438 &8.9062 &11.8125 &6.8125 &5.4062 &9.0938 &  \\
-\noalign{\smallskip}\hline\noalign{\smallskip}
-\end{tabularx}}
-\begin{minipage}{0.9\textwidth}
-\centering
-\resizebox{\textwidth}{!}{\begin{tikzpicture}
-\draw (1,0) -- (14,0);
-\foreach \x in {1,2,3,4,5,6,7,8,9,10,11,12,13,14} {
-\draw (\x, 0) -- ++(0,.1) node [above,scale=0.7] {\tiny \x};
-\ifthenelse{\x < 14}{\draw (\x+.5, 0) -- ++(0,.03);}{}
-}
-
-\coordinate (c0) at (10.125,0);
-\coordinate (c1) at (4.9688,0);
-\coordinate (c2) at (5.5,0);
-\coordinate (c3) at (4.3281,0);
-\coordinate (c4) at (12.875,0);
-\coordinate (c5) at (1.8281,0);
-\coordinate (c6) at (2.5,0);
-\coordinate (c7) at (6.8438,0);
-\coordinate (c8) at (8.9062,0);
-\coordinate (c9) at (11.8125,0);
-\coordinate (c10) at (6.8125,0);
-\coordinate (c11) at (5.4062,0);
-\coordinate (c12) at (9.0938,0);
-
-\node (l0) at (c0) [above right=.1cm and 0cm, align=right,scale=0.7] {\tiny \textbf{OLLAWV}};
-\node (l1) at (c1) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny HT};
-\node (l2) at (c2) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny AdaHT};
-\node (l3) at (c3) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny NaiveBayes};
-\node (l4) at (c4) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny $k$NNPAW};
-\node (l5) at (c5) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny SCD};
-\node (l6) at (c6) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny RC};
-\node (l7) at (c7) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny RCNB};
-\node (l8) at (c8) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny SAE2};
-\node (l9) at (c9) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny LearnNSE};
-\node (l10) at (c10) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny DWM};
-\node (l11) at (c11) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny DACC};
-\node (l12) at (c12) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny OCBoost};
-
-\fill[fill=gray,fill opacity=0.5] (1.8281,-0.1) rectangle (4.6171,0.1);
-
-\foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11,12} {
-\draw (l\x) -| (c\x);
-};
-\end{tikzpicture}}\vspace{-1em}
-\captionsetup{width=\linewidth}
-\captionof{figure}{Bonferroni-Dunn test for Testing Time}\label{fig:BonfDunnTestDS}
 \end{minipage}
 \end{table}
 
