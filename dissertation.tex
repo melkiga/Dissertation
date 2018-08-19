@@ -37,6 +37,7 @@
 \newcommand\tab[1][1cm]{\hspace*{#1}}
 \newcommand{\Rho}{\mathrm{P}}
 \newcommand{\proc}{{\mathcal P}}
+\newcommand{\tup}[1]{\left(#1\right)}
 
 %%%%%%%%%%%
 \overfullrule=5pt
@@ -1332,7 +1333,7 @@ Full Multi-Instance Training Dataset & $\mathcal{D} = \{(\mathcal{B}_1,Y_1), \ld
 \end{tabularx}
 \end{table}
 
-\subsection{Multi-Instance Classification}
+\subsection{Multi-Instance Classification Methods}
 The difference between MIL and traditional learning lies in the nature of the data. In the traditional binary classification setting, the goal is to learn a model that maps input samples to labels, $f: \reals^{m \times d} \rightarrow Y^m \in \set{-1,\,+1}$. In the multi-instance setting, samples are called \textit{bags} and each bag contains one or more input instances and is assigned a single bag-level label. Input instances, $\set{\bm x_1,\, \bm x_2,\, \ldots,\, \bm x_m}$, are grouped into bags with unique identifiers, $\mathcal{B} = \set{\mathcal{B}_1,\, \mathcal{B}_2,\, \ldots,\, \mathcal{B}_n \st \mathcal{B}_I = \set{\bm x_i \st \forall i \in I},\, \forall I \in \set{1, \ldots, n}}$ and assigned a label, $Y_I$. The individual instance labels within a bag are unknown. Traditionally, MIL has focused on binary classification problems, however, there are cases where the number of classes can be larger, i.e. $\bm Y \in \ints^n$. The scope of this chapter will consist of binary multiple instance classification problems. 
 
 Using the training dataset $\mathcal{D} = \{(\mathcal{B}_1,Y_1), \ldots, (\mathcal{B}_n,Y_n)\}$, the goal is to train a classifier that predicts the label of an unseen bag, $f(\mathcal{B}_{n+1}) \rightarrow Y_{n+1}$~\cite{Amores2013}. In order to build a classifier without any knowledge of the individual training instance labels, Dietterich et. al.~\cite{Dietterich1997} proposed the \textit{standard MI} (SMI) hypothesis, shown in Equation~\eqref{eqn:stas}, which states that a bag is labeled positive if and only if at least one of the instances in the bag is positive, and is labeled negative otherwise.
@@ -2139,7 +2140,7 @@ Since a comprehensive overview of contemporary online learning algorithms were p
 \subsection{Notation}\label{subsec:notation}
 \begin{table}[t!]
 \small \centering
-\caption{Summary of notation used throughout the paper}\label{tab:Notation}
+\caption{Summary of Online Learning Notation}\label{tab:Notation}
 \begin{tabularx}{\textwidth}{l@{\extracolsep{\fill}}l}
 \hline\noalign{\smallskip}
 Definition & Notation\\ 
@@ -2648,11 +2649,36 @@ This paper proposed a novel online learning procedure and algorithm for solving 
 The first experimental study demonstrates the better performance of OLLAWV compared with state-of-the-art SVM solvers (MNSVM and NNISDA) which have been shown to outperform the popular SMO implementation in the LIBSVM package. The results for accuracy, runtime, and percentage of support-vectors, obtained by the strict nested cross-validation procedure, were compared and further validated using statistical analysis with non-parametric tests. They highlighted the advantages and major speedup achieved by OLLAWV against the competing MNSVM and NNISDA. The second, supplemental experimental study evaluated the performance of OLLAWV against $5$ popular non-SVM methods, showing the better performance of OLLAWV against all five non-SVM algorithms ($k$-Nearest Neighbors ($k$-NN), J48, JRip, Na\"ive Bayes, and Logistic). The proposal, OLLAWV, performs statistically better in terms of runtime and model size across all $23$ evaluated benchmark datasets, without compromising accuracy. The research outcomes of this chapter have been published in~\cite{melki2018ollawv}.
 
 \chapter{OLLAWV for Batched Data Streams}
-\textit{Applications that generate data from nonstationary environments, where the underlying phenomena change over time, are becoming increasingly prevalent.}
-
 Due to advances in hardware and software technologies, data generation and automated storage has become fast, voluminous, and continuous; usually referred to as streams of data. Nowadays, data streams are ubiquitous and notoriously difficult to store, analyze, visualize, and learn from. Most traditional machine learning techniques need to be adapted to accommodate the streamed, also known as online, environment due to underlying resource constraints, i.e. memory consumption and runtime, as well as the possibility of concept drift. This chapter presents a novel implementation and experimental environment for two novel online support vector machines (SVMs) in the batched data stream setting. Unlike other existing methods, these two online algorithms were chosen because their characteristics are a natural remedy for the time and memory constraints that come with the data stream problem. The first algorithms' low memory complexity deals with the memory constraints, and the second methods' fast runtime and self-stopping capability remedies the time constraint. The results for the latter, \textit{OnLine Learning Algorithm using Worst-Violators} (OLLAWV), showed a superior performance to the former, \textit{OnLine Learning Algorithm - List 2} (OLLA-L2). OLLAWV was then compared to 12 popular data stream algorithms against 32 datasets and stream generators. The results and statistical analysis showed OLLAWV's better performance, making it suitable for streamed learning. 
 
-\section{Background}
+\section{Data Stream Classification Background}
+This section first defines the notation that will be used throughout the chapter, and then formally describes the data stream classification problem along with relevant popular algorithms used within this paradigm.
+
+\subsection{Notation}
+\begin{table}[t!]
+\small \centering
+\caption{Summary of Data Stream Notation}\label{tab:NotationDS}
+\begin{tabularx}{\textwidth}{l@{\extracolsep{\fill}}l}
+\hline\noalign{\smallskip}
+Definition & Notation\\ 
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Number of Samples & $n$ \\
+Number of Input Attributes & $d$ \\
+Time Step & $t$ \\
+Input Space & $\bm{X} \in \mathbb{R}^{n \times d}$ \\
+Labels & $\bm{Y} \in \ints^n$ \\
+Sample $i$ & $\bm{x}_i = (x_{i1}, \ldots, x_{id}),\, \forall i \in \set{1,\ldots,n}$ \\
+Sample Label $i$ & $y_i \in \set{-1,1},\, \forall i \in \set{1,\ldots,n}$ \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Data Generating Process & $\proc = \set{(\bm x_1,y_1), (\bm x_2,y_2), \ldots, (\bm x_t,y_t), \ldots}$ \\
+Set of Samples Provided to the Algorithm & $\mathcal{S}_t = \set{\tup{\bm x_t^1,y_t^1},\ldots,\tup{\bm x_t^n,y_t^n}}$ \\
+\noalign{\smallskip}\hline
+\end{tabularx}
+\end{table}
+
+Let $\proc$ be a data generating process which provides a sequence of tuples $\mathcal{S}_t = \set{\tup{\bm x_t,y_t}}^n$ that are sampled from an unknown probability distribution at some arbitrary time $t$, where $n$ is the number of tuples. The sub-script, time $t$, is used to explicitly assert the data's time-varying nature. $\bm x_t \in \reals^d$ represents a feature vector, and $y_t \in \ints$ is its discrete class label (in the non-binary classification case), both at time time $t$. The data may arrive to the algorithm in an online manner, i.e. one sample at a time: $\mathcal{S}_t = \set{\tup{\bm x_t,y_t}}$, or in a batch setting: $\mathcal{S}_t = \set{\tup{\bm x_t^1,y_t^1},\ldots,\tup{\bm x_t^n,y_t^n}}$. The single-sample setting occurs when $n = 1$.
+
+\subsection{Data Stream Classification Methods}
 MOA is mostly concerned with the problem of classification and clustering (see Subsections 2.2.1 and 2.2.2) for elements of a data stream. MOA algorithms assume that the number of attributes is fixed. According to [9, 27], the main approaches and methods for stream classification are:
 
 1. Bayesian classifiers: these methods are based on the Bayes theorem. MOA’s classifiers include Naive Bayes and Naive Bayes Multinomial methods. Naive Bayes methods are simple and require little memory. The main assumption is independence of the stream instances. However, Naive Bayes models are usually less accurate than more involved models.
