@@ -1653,38 +1653,6 @@
     \field{year}{2013}
   \endentry
 
-  \entry{cover1967nearest}{article}{}
-    \name{author}{2}{}{%
-      {{hash=CT}{%
-         family={Cover},
-         familyi={C\bibinitperiod},
-         given={T.},
-         giveni={T\bibinitperiod},
-      }}%
-      {{hash=HP}{%
-         family={Hart},
-         familyi={H\bibinitperiod},
-         given={P.},
-         giveni={P\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {IEEE}%
-    }
-    \strng{namehash}{CTHP1}
-    \strng{fullhash}{CTHP1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{sortinit}{C}
-    \field{sortinithash}{C}
-    \field{number}{1}
-    \field{pages}{21\bibrangedash 27}
-    \field{title}{Nearest neighbor pattern classification}
-    \field{volume}{13}
-    \field{journaltitle}{IEEE transactions on information theory}
-    \field{year}{1967}
-  \endentry
-
   \entry{de2002multivariate}{article}{}
     \name{author}{1}{}{%
       {{hash=DG}{%
@@ -2973,6 +2941,37 @@
     \field{pages}{169\bibrangedash 184}
     \field{title}{Advances in Kernel Methods}
     \field{year}{1999}
+  \endentry
+
+  \entry{john1995estimating}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=JGH}{%
+         family={John},
+         familyi={J\bibinitperiod},
+         given={G.\bibnamedelima H.},
+         giveni={G\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+      {{hash=LP}{%
+         family={Langley},
+         familyi={L\bibinitperiod},
+         given={P.},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {Morgan Kaufmann Publishers Inc.}%
+    }
+    \strng{namehash}{JGHLP1}
+    \strng{fullhash}{JGHLP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{J}
+    \field{sortinithash}{J}
+    \field{booktitle}{Proceedings of the 11th conference on uncertainty in
+  artificial intelligence}
+    \field{pages}{338\bibrangedash 345}
+    \field{title}{Estimating continuous distributions in Bayesian classifiers}
+    \field{year}{1995}
   \endentry
 
   \entry{kargupta2002mobimine}{article}{}
@@ -4844,6 +4843,32 @@
     \field{volume}{36}
     \field{journaltitle}{IFAC Proceedings Volumes}
     \field{year}{2003}
+  \endentry
+
+  \entry{vitter1985random}{article}{}
+    \name{author}{1}{}{%
+      {{hash=VJS}{%
+         family={Vitter},
+         familyi={V\bibinitperiod},
+         given={J.\bibnamedelima S.},
+         giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {ACM}%
+    }
+    \strng{namehash}{VJS1}
+    \strng{fullhash}{VJS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{V}
+    \field{sortinithash}{V}
+    \field{number}{1}
+    \field{pages}{37\bibrangedash 57}
+    \field{title}{Random sampling with a reservoir}
+    \field{volume}{11}
+    \field{journaltitle}{Transactions on Mathematical Software}
+    \field{year}{1985}
   \endentry
 
   \entry{Wang2000}{inproceedings}{}
