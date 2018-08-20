@@ -2465,6 +2465,37 @@
     \field{year}{2004}
   \endentry
 
+  \entry{gomes2013sae}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=GHM}{%
+         family={Gomes},
+         familyi={G\bibinitperiod},
+         given={H.\bibnamedelima M.},
+         giveni={H\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+      {{hash=EF}{%
+         family={Enembreck},
+         familyi={E\bibinitperiod},
+         given={F.},
+         giveni={F\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{GHMEF1}
+    \strng{fullhash}{GHMEF1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{G}
+    \field{sortinithash}{G}
+    \field{booktitle}{IEEE Symposium on Computational Intelligence and Data
+  Mining}
+    \field{pages}{199\bibrangedash 206}
+    \field{title}{Sae: Social adaptive ensemble classifier for data streams}
+    \field{year}{2013}
+  \endentry
+
   \entry{gomes2014sae2}{inproceedings}{}
     \name{author}{2}{}{%
       {{hash=GHM}{%
@@ -3836,6 +3867,37 @@
     \field{volume}{66}
     \field{journaltitle}{Applied Soft Computing}
     \field{year}{2018}
+  \endentry
+
+  \entry{oza2001onlinebb}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=ONC}{%
+         family={Oza},
+         familyi={O\bibinitperiod},
+         given={N.\bibnamedelima C.},
+         giveni={N\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+      {{hash=RO}{%
+         family={Russel},
+         familyi={R\bibinitperiod},
+         given={O.},
+         giveni={O\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Morgan Kaufmann}%
+    }
+    \strng{namehash}{ONCRO1}
+    \strng{fullhash}{ONCRO1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{O}
+    \field{sortinithash}{O}
+    \field{booktitle}{Proceedings of the 8th international workshop on
+  artiﬁcial intelligence and statistics}
+    \field{pages}{105\bibrangedash 112}
+    \field{title}{Online bagging and boosting}
+    \field{year}{2001}
   \endentry
 
   \entry{oza2001online}{book}{}
