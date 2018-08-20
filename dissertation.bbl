@@ -17,6 +17,29 @@
 \endgroup
 
 \datalist[entry]{nty/global//global/global}
+  \entry{aggarwal}{incollection}{}
+    \name{author}{1}{}{%
+      {{hash=AC}{%
+         family={Aggarwal},
+         familyi={A\bibinitperiod},
+         given={C.},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {CRC Press}%
+    }
+    \strng{namehash}{AC1}
+    \strng{fullhash}{AC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{booktitle}{Data Classification: Algorithms and Applications}
+    \field{title}{A survey of stream classification algorithms}
+    \field{year}{2014}
+  \endentry
+
   \entry{Aizerman67theoretical}{inproceedings}{}
     \name{author}{3}{}{%
       {{hash=AMA}{%
@@ -124,8 +147,8 @@
     \list{publisher}{1}{%
       {Springer}%
     }
-    \strng{namehash}{AC1}
-    \strng{fullhash}{AC1}
+    \strng{namehash}{AC2}
+    \strng{fullhash}{AC2}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
     \field{sortinit}{A}
@@ -1662,30 +1685,6 @@
     \field{year}{1967}
   \endentry
 
-  \entry{dawid1984present}{article}{}
-    \name{author}{1}{}{%
-      {{hash=DAP}{%
-         family={Dawid},
-         familyi={D\bibinitperiod},
-         given={A.\bibnamedelima P.},
-         giveni={A\bibinitperiod\bibinitdelim P\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {JSTOR}%
-    }
-    \strng{namehash}{DAP1}
-    \strng{fullhash}{DAP1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{sortinit}{D}
-    \field{sortinithash}{D}
-    \field{pages}{278\bibrangedash 292}
-    \field{title}{Statistical theory: The prequential approach}
-    \field{journaltitle}{Journal of the Royal Statistical Society}
-    \field{year}{1984}
-  \endentry
-
   \entry{de2002multivariate}{article}{}
     \name{author}{1}{}{%
       {{hash=DG}{%
@@ -2279,6 +2278,80 @@
     \field{journaltitle}{{IEEE Transactions on Pattern Analysis and Machine
   Intelligence}}
     \field{year}{2011}
+  \endentry
+
+  \entry{gaber2007survey}{incollection}{}
+    \name{author}{3}{}{%
+      {{hash=GMM}{%
+         family={Gaber},
+         familyi={G\bibinitperiod},
+         given={M.\bibnamedelima M.},
+         giveni={M\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+      {{hash=ZA}{%
+         family={Zaslavsky},
+         familyi={Z\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=KS}{%
+         family={Krishnaswamy},
+         familyi={K\bibinitperiod},
+         given={S.},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{GMMZAKS1}
+    \strng{fullhash}{GMMZAKS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{G}
+    \field{sortinithash}{G}
+    \field{booktitle}{Data streams}
+    \field{pages}{39\bibrangedash 59}
+    \field{title}{A survey of classification methods in data streams}
+    \field{year}{2007}
+  \endentry
+
+  \entry{gama2006decision}{article}{}
+    \name{author}{3}{}{%
+      {{hash=GJ}{%
+         family={Gama},
+         familyi={G\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=FR}{%
+         family={Fernandes},
+         familyi={F\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=RR}{%
+         family={Rocha},
+         familyi={R\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IOS Press}%
+    }
+    \strng{namehash}{GJFRRR1}
+    \strng{fullhash}{GJFRRR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{G}
+    \field{sortinithash}{G}
+    \field{number}{1}
+    \field{pages}{23\bibrangedash 45}
+    \field{title}{Decision trees for mining data streams}
+    \field{volume}{10}
+    \field{journaltitle}{Intelligent Data Analysis}
+    \field{year}{2006}
   \endentry
 
   \entry{gama2011learning}{inproceedings}{}
@@ -3458,6 +3531,55 @@
     \field{volume}{8}
     \field{journaltitle}{Journal of Machine Learning Research}
     \field{year}{2007}
+  \endentry
+
+  \entry{krawczyk2017ensemble}{article}{}
+    \name{author}{5}{}{%
+      {{hash=KB}{%
+         family={Krawczyk},
+         familyi={K\bibinitperiod},
+         given={B.},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=MLL}{%
+         family={Minku},
+         familyi={M\bibinitperiod},
+         given={L.\bibnamedelima L.},
+         giveni={L\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+      {{hash=GJ}{%
+         family={Gama},
+         familyi={G\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=SJ}{%
+         family={Stefanowski},
+         familyi={S\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=WM}{%
+         family={Wo{\'z}niak},
+         familyi={W\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier}%
+    }
+    \strng{namehash}{KB+1}
+    \strng{fullhash}{KBMLLGJSJWM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{pages}{132\bibrangedash 156}
+    \field{title}{Ensemble learning for data stream analysis: A survey}
+    \field{volume}{37}
+    \field{journaltitle}{Information Fusion}
+    \field{year}{2017}
   \endentry
 
   \entry{Lui2010}{article}{}
@@ -4779,6 +4901,56 @@
     \field{sortinithash}{W}
     \field{title}{Solving multiple-instance problem: A lazy learning approach}
     \field{year}{2000}
+  \endentry
+
+  \entry{webb2016characterizing}{article}{}
+    \name{author}{5}{}{%
+      {{hash=WGI}{%
+         family={Webb},
+         familyi={W\bibinitperiod},
+         given={G.\bibnamedelima I.},
+         giveni={G\bibinitperiod\bibinitdelim I\bibinitperiod},
+      }}%
+      {{hash=HR}{%
+         family={Hyde},
+         familyi={H\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=CH}{%
+         family={Cao},
+         familyi={C\bibinitperiod},
+         given={H.},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=NHL}{%
+         family={Nguyen},
+         familyi={N\bibinitperiod},
+         given={H.\bibnamedelima L.},
+         giveni={H\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+      {{hash=PF}{%
+         family={Petitjean},
+         familyi={P\bibinitperiod},
+         given={F.},
+         giveni={F\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{WGI+1}
+    \strng{fullhash}{WGIHRCHNHLPF1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{W}
+    \field{sortinithash}{W}
+    \field{number}{4}
+    \field{pages}{964\bibrangedash 994}
+    \field{title}{Characterizing concept drift}
+    \field{volume}{30}
+    \field{journaltitle}{Data Mining and Knowledge Discovery}
+    \field{year}{2016}
   \endentry
 
   \entry{Weidmann2003}{inproceedings}{}
