@@ -457,6 +457,47 @@
   \field{year}{2010}
 \endentry
 
+\entry{bifet2009new}{inproceedings}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Bifet}{B.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Holmes}{H.}%
+     {G.}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Pfahringer}{P.}%
+     {B.}{B.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kirkby}{K.}%
+     {R.}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Gavald{\`a}}{G.}%
+     {R.}{R.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{organization}{1}{%
+    {ACM}%
+  }
+  \strng{namehash}{BA+1}
+  \strng{fullhash}{BAHGPBKRGR1}
+  \field{sortinit}{B}
+  \field{booktitle}{Proceedings of the 15th SIGKDD international conference on
+  knowledge discovery and data mining}
+  \field{pages}{139\bibrangedash 148}
+  \field{title}{New ensemble methods for evolving data streams}
+  \field{year}{2009}
+\endentry
+
 \entry{Bjerring2011}{inproceedings}{}
   \name{author}{2}{}{%
     {{}%
@@ -1270,6 +1311,26 @@
   \field{sortinit}{C}
   \field{title}{Frontiers in massive data analysis}
   \field{year}{2013}
+\endentry
+
+\entry{dawid1984present}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Dawid}{D.}%
+     {A.~P.}{A.~P.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {JSTOR}%
+  }
+  \strng{namehash}{DAP1}
+  \strng{fullhash}{DAP1}
+  \field{sortinit}{D}
+  \field{pages}{278\bibrangedash 292}
+  \field{title}{Statistical theory: The prequential approach}
+  \field{journaltitle}{Journal of the Royal Statistical Society}
+  \field{year}{1984}
 \endentry
 
 \entry{de2002multivariate}{article}{}
@@ -3033,6 +3094,44 @@
   \field{year}{1998}
 \endentry
 
+\entry{polikar2001learn}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Polikar}{P.}%
+     {R.}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Upda}{U.}%
+     {L.}{L.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Upda}{U.}%
+     {S.~S.}{S.~S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Honavar}{H.}%
+     {V.}{V.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {IEEE}%
+  }
+  \strng{namehash}{PR+2}
+  \strng{fullhash}{PRULUSSHV1}
+  \field{sortinit}{P}
+  \field{number}{4}
+  \field{pages}{497\bibrangedash 508}
+  \field{title}{Learn++: An incremental learning algorithm for supervised
+  neural networks}
+  \field{volume}{31}
+  \field{journaltitle}{IEEE Transactions on systems, man, and cybernetics}
+  \field{year}{2001}
+\endentry
+
 \entry{Ray2005}{inproceedings}{}
   \name{author}{2}{}{%
     {{}%
@@ -3946,6 +4045,44 @@
   \field{volume}{53}
   \field{journaltitle}{Pattern Recognition}
   \field{year}{2016}
+\endentry
+
+\entry{zang2014comparative}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Zang}{Z.}%
+     {W.}{W.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Zhang}{Z.}%
+     {P.}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Zhou}{Z.}%
+     {C.}{C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Guo}{G.}%
+     {L.}{L.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Nature Publishing Group}%
+  }
+  \strng{namehash}{ZW+1}
+  \strng{fullhash}{ZWZPZCGL1}
+  \field{sortinit}{Z}
+  \field{number}{1}
+  \field{pages}{5}
+  \field{title}{Comparative study between incremental and ensemble learning on
+  data streams: Case study}
+  \field{volume}{1}
+  \field{journaltitle}{Journal Of Big Data}
+  \field{year}{2014}
 \endentry
 
 \entry{zhang2006multiple}{inproceedings}{}
