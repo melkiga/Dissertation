@@ -836,6 +836,46 @@
     \field{year}{2015}
   \endentry
 
+  \entry{bordes2005fast}{article}{}
+    \name{author}{4}{}{%
+      {{hash=BA}{%
+         family={Bordes},
+         familyi={B\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=ES}{%
+         family={Ertekin},
+         familyi={E\bibinitperiod},
+         given={S.},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=WJ}{%
+         family={Weston},
+         familyi={W\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=BL}{%
+         family={Bottou},
+         familyi={B\bibinitperiod},
+         given={L.},
+         giveni={L\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BA+2}
+    \strng{fullhash}{BAESWJBL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{pages}{1579\bibrangedash 1619}
+    \field{title}{Fast kernel classifiers with online and active learning}
+    \field{volume}{6}
+    \field{journaltitle}{Journal of Machine Learning Research}
+    \field{year}{2005}
+  \endentry
+
   \entry{boser1992training}{inproceedings}{}
     \name{author}{3}{}{%
       {{hash=BBE}{%
