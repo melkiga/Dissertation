@@ -2481,6 +2481,44 @@
     \field{year}{2011}
   \endentry
 
+  \entry{gama2013evaluating}{article}{}
+    \name{author}{3}{}{%
+      {{hash=GJ}{%
+         family={Gama},
+         familyi={G\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=SR}{%
+         family={Sebasti{\~a}o},
+         familyi={S\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=RPP}{%
+         family={Rodrigues},
+         familyi={R\bibinitperiod},
+         given={P.\bibnamedelima P.},
+         giveni={P\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{GJSRRPP1}
+    \strng{fullhash}{GJSRRPP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{G}
+    \field{sortinithash}{G}
+    \field{number}{3}
+    \field{pages}{317\bibrangedash 346}
+    \field{title}{On evaluating stream learning algorithms}
+    \field{volume}{90}
+    \field{journaltitle}{Machine learning}
+    \field{year}{2013}
+  \endentry
+
   \entry{gama2004learning}{inproceedings}{}
     \name{author}{4}{}{%
       {{hash=GJ}{%
@@ -3127,6 +3165,37 @@
     \field{pages}{217\bibrangedash 226}
     \field{title}{Training linear SVMs in linear time}
     \field{year}{2006}
+  \endentry
+
+  \entry{john1995estimating}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=JGH}{%
+         family={John},
+         familyi={J\bibinitperiod},
+         given={G.\bibnamedelima H.},
+         giveni={G\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+      {{hash=LP}{%
+         family={Langley},
+         familyi={L\bibinitperiod},
+         given={P.},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {Morgan Kaufmann Publishers Inc.}%
+    }
+    \strng{namehash}{JGHLP1}
+    \strng{fullhash}{JGHLP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{J}
+    \field{sortinithash}{J}
+    \field{booktitle}{Proceedings of the 11th conference on uncertainty in
+  artificial intelligence}
+    \field{pages}{338\bibrangedash 345}
+    \field{title}{Estimating continuous distributions in Bayesian classifiers}
+    \field{year}{1995}
   \endentry
 
   \entry{kargupta2002mobimine}{article}{}
