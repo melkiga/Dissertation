@@ -1391,6 +1391,33 @@
     \field{year}{1998}
   \endentry
 
+  \entry{cauwenberghs2001incremental}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=CG}{%
+         family={Cauwenberghs},
+         familyi={C\bibinitperiod},
+         given={G.},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=PT}{%
+         family={Poggio},
+         familyi={P\bibinitperiod},
+         given={T.},
+         giveni={T\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{CGPT1}
+    \strng{fullhash}{CGPT1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{booktitle}{Advances in Neural Information Processing Systems}
+    \field{pages}{409\bibrangedash 415}
+    \field{title}{Incremental and decremental support vector machine learning}
+    \field{year}{2001}
+  \endentry
+
   \entry{CC01a}{article}{}
     \name{author}{2}{}{%
       {{hash=CCC}{%
@@ -1800,6 +1827,37 @@
     \field{volume}{10}
     \field{journaltitle}{Computational Intelligence Magazine}
     \field{year}{2015}
+  \endentry
+
+  \entry{domeniconi2001incremental}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=DC}{%
+         family={Domeniconi},
+         familyi={D\bibinitperiod},
+         given={C.},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=GD}{%
+         family={Gunopulos},
+         familyi={G\bibinitperiod},
+         given={D.},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{DCGD1}
+    \strng{fullhash}{DCGD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{D}
+    \field{sortinithash}{D}
+    \field{booktitle}{Proceedings of the IEEE International Conference on Data
+  Mining}
+    \field{pages}{589\bibrangedash 592}
+    \field{title}{Incremental support vector machine construction}
+    \field{year}{2001}
   \endentry
 
   \entry{domingos2000mining}{inproceedings}{}
@@ -2248,6 +2306,37 @@
     \field{year}{2011}
   \endentry
 
+  \entry{fung2002incremental}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=FG}{%
+         family={Fung},
+         familyi={F\bibinitperiod},
+         given={G.},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=MOL}{%
+         family={Mangasarian},
+         familyi={M\bibinitperiod},
+         given={O.\bibnamedelima L.},
+         giveni={O\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {SIAM}%
+    }
+    \strng{namehash}{FGMOL1}
+    \strng{fullhash}{FGMOL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{F}
+    \field{sortinithash}{F}
+    \field{booktitle}{Proceedings of the International Conference on Data
+  Mining}
+    \field{pages}{247\bibrangedash 260}
+    \field{title}{Incremental support vector machine classification}
+    \field{year}{2002}
+  \endentry
+
   \entry{gaber2007survey}{incollection}{}
     \name{author}{3}{}{%
       {{hash=GMM}{%
@@ -2388,7 +2477,8 @@
     \field{labeltitlesource}{title}
     \field{sortinit}{G}
     \field{sortinithash}{G}
-    \field{booktitle}{Brazilian symposium on artificial intelligence}
+    \field{booktitle}{Proceedings of the 7th Brazilian symposium on artificial
+  intelligence, lecture notes in computer science}
     \field{pages}{286\bibrangedash 295}
     \field{title}{Learning with drift detection}
     \field{year}{2004}
@@ -2970,39 +3060,33 @@
     \field{chapter}{Making Large-scale Support Vector Machine Learning
   Practical}
     \field{pages}{169\bibrangedash 184}
-    \field{title}{Advances in Kernel Methods}
+    \field{title}{Advances in Kernel Methods - Support Vector Learning}
     \field{year}{1999}
   \endentry
 
-  \entry{john1995estimating}{inproceedings}{}
-    \name{author}{2}{}{%
-      {{hash=JGH}{%
-         family={John},
+  \entry{joachims2006training}{inproceedings}{}
+    \name{author}{1}{}{%
+      {{hash=JT}{%
+         family={Joachims},
          familyi={J\bibinitperiod},
-         given={G.\bibnamedelima H.},
-         giveni={G\bibinitperiod\bibinitdelim H\bibinitperiod},
-      }}%
-      {{hash=LP}{%
-         family={Langley},
-         familyi={L\bibinitperiod},
-         given={P.},
-         giveni={P\bibinitperiod},
+         given={T.},
+         giveni={T\bibinitperiod},
       }}%
     }
     \list{organization}{1}{%
-      {Morgan Kaufmann Publishers Inc.}%
+      {ACM}%
     }
-    \strng{namehash}{JGHLP1}
-    \strng{fullhash}{JGHLP1}
+    \strng{namehash}{JT1}
+    \strng{fullhash}{JT1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
     \field{sortinit}{J}
     \field{sortinithash}{J}
-    \field{booktitle}{Proceedings of the 11th conference on uncertainty in
-  artificial intelligence}
-    \field{pages}{338\bibrangedash 345}
-    \field{title}{Estimating continuous distributions in Bayesian classifiers}
-    \field{year}{1995}
+    \field{booktitle}{Proceedings of the 12th SIGKDD international conference
+  on knowledge discovery and data mining}
+    \field{pages}{217\bibrangedash 226}
+    \field{title}{Training linear SVMs in linear time}
+    \field{year}{2006}
   \endentry
 
   \entry{kargupta2002mobimine}{article}{}
@@ -3397,6 +3481,34 @@
     \field{volume}{52}
     \field{journaltitle}{IEEE Transactions on Signal Processing}
     \field{year}{2004}
+  \endentry
+
+  \entry{klinkenberg2000detecting}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=KR}{%
+         family={Klinkenberg},
+         familyi={K\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=JT}{%
+         family={Joachims},
+         familyi={J\bibinitperiod},
+         given={T.},
+         giveni={T\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KRJT1}
+    \strng{fullhash}{KRJT1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{booktitle}{Proceedings of the 17th international conference on
+  machine learning}
+    \field{pages}{487\bibrangedash 494}
+    \field{title}{Detecting Concept Drift with Support Vector Machines.}
+    \field{year}{2000}
   \endentry
 
   \entry{Kocev2007}{inproceedings}{}
@@ -4102,6 +4214,39 @@
     \field{year}{2001}
   \endentry
 
+  \entry{ralaivola2001incremental}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=RL}{%
+         family={Ralaivola},
+         familyi={R\bibinitperiod},
+         given={L.},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=dBF}{%
+         prefix={d’Alch{\'e}},
+         prefixi={d\bibinitperiod},
+         family={Buc},
+         familyi={B\bibinitperiod},
+         given={F.},
+         giveni={F\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{RLBFd1}
+    \strng{fullhash}{RLBFd1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{booktitle}{International Conference on Artificial Neural Networks}
+    \field{pages}{322\bibrangedash 330}
+    \field{title}{Incremental support vector machine learning: A local
+  approach}
+    \field{year}{2001}
+  \endentry
+
   \entry{Ray2005}{inproceedings}{}
     \name{author}{2}{}{%
       {{hash=RS}{%
@@ -4200,6 +4345,31 @@
     \field{volume}{65}
     \field{journaltitle}{Psychological Review}
     \field{year}{1958}
+  \endentry
+
+  \entry{ruping2001incremental}{inproceedings}{}
+    \name{author}{1}{}{%
+      {{hash=RS}{%
+         family={Ruping},
+         familyi={R\bibinitperiod},
+         given={S.},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{RS1}
+    \strng{fullhash}{RS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{booktitle}{Proceedings of the IEEE International Conference on Data
+  Mining}
+    \field{pages}{641\bibrangedash 642}
+    \field{title}{Incremental learning with support vector machines}
+    \field{year}{2001}
   \endentry
 
   \entry{schapire1999improved}{article}{}
@@ -4404,6 +4574,50 @@
     \field{year}{2011}
   \endentry
 
+  \entry{shilton2005incremental}{article}{}
+    \name{author}{4}{}{%
+      {{hash=SA}{%
+         family={Shilton},
+         familyi={S\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=PM}{%
+         family={Palaniswami},
+         familyi={P\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=RD}{%
+         family={Ralph},
+         familyi={R\bibinitperiod},
+         given={D.},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=TAC}{%
+         family={Tsoi},
+         familyi={T\bibinitperiod},
+         given={A.\bibnamedelima C.},
+         giveni={A\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{SA+1}
+    \strng{fullhash}{SAPMRDTAC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{number}{1}
+    \field{pages}{114\bibrangedash 131}
+    \field{title}{Incremental training of support vector machines}
+    \field{volume}{16}
+    \field{journaltitle}{IEEE transactions on neural networks}
+    \field{year}{2005}
+  \endentry
+
   \entry{simila2007input}{article}{}
     \name{author}{2}{}{%
       {{hash=ST}{%
@@ -4572,6 +4786,44 @@
     \field{title}{Constraint based induction of multi-objective regression
   trees}
     \field{year}{2005}
+  \endentry
+
+  \entry{syed1999handling}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=SNA}{%
+         family={Syed},
+         familyi={S\bibinitperiod},
+         given={N.\bibnamedelima A.},
+         giveni={N\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+      {{hash=LH}{%
+         family={Liu},
+         familyi={L\bibinitperiod},
+         given={H.},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=SKK}{%
+         family={Sung},
+         familyi={S\bibinitperiod},
+         given={K.\bibnamedelima K.},
+         giveni={K\bibinitperiod\bibinitdelim K\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {ACM}%
+    }
+    \strng{namehash}{SNALHSKK1}
+    \strng{fullhash}{SNALHSKK1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{booktitle}{Proceedings of the 5th SIGKDD international conference on
+  knowledge discovery and data mining}
+    \field{pages}{317\bibrangedash 321}
+    \field{title}{Handling concept drifts in incremental learning with support
+  vector machines}
+    \field{year}{1999}
   \endentry
 
   \entry{thrun1996learning}{inproceedings}{}
