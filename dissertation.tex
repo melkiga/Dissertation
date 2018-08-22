@@ -2943,7 +2943,7 @@ Dataset & OLLAWV & HOT & AdaHOT & NB & $k$-NNPAW & EDDM & VFDR & VFDR-NB & SAE2 
 \noalign{\smallskip}\hline\noalign{\smallskip}
 CovType &\textbf{90.2820} &85.3410 &86.2220 &60.0370 &87.8890 &59.5560 &60.3240 &75.5820 &76.2070 &69.9670 &71.9560 &61.7000 &71.2860 &  \\
 census &93.7570 &94.6950 &\textbf{94.7350} &87.0190 &93.6460 &91.8530 &93.6480 &84.0600 &90.1320 &84.1440 &91.4040 &90.3710 &93.4690 &  \\
-shuttle &98.6540 &98.1750 &98.5210 &90.0160 &\textbf{99.2640} &98.4890 &88.3980 &96.0570 &90.2430 &93.7890 &89.9120 &92.0270 &74.2110 &  \\
+shuttle &\textbf{99.6700} &98.1750 &98.5210 &90.0160 & 99.2640 &98.4890 &88.3980 &96.0570 &90.2430 &93.7890 &89.9120 &92.0270 &74.2110 &  \\
 RBFNoDrift &\textbf{94.2120} &92.9410 &92.9600 &71.9920 &93.7470 &92.4790 &77.5290 &81.7070 &89.1610 &70.2820 &70.4250 &65.0080 &92.0840 &  \\
 LEDNoDrift &73.8280 &73.8510 &73.8350 &\textbf{73.9420} &65.8280 &73.6380 &41.1620 &73.7520 &67.5960 &67.8400 &71.1460 &48.2680 &17.4400 &  \\
 HyperplaneSlow &\textbf{90.0910} &82.0960 &82.4210 &77.6900 &84.0260 &81.5660 &68.8830 &85.1880 &82.6670 &86.2040 &88.0600 &80.6620 &85.7760 &  \\
@@ -2966,8 +2966,8 @@ HyperplaneFasterAN5 &\textbf{89.2900} &82.6890 &85.2440 &87.3760 &84.1850 &88.73
 SEASuddenAN0 &87.7960 &84.9210 &85.1750 &88.2330 &87.2160 &\textbf{88.9730} &81.5640 &85.1720 &85.1100 &85.7670 &86.9330 &83.7260 &88.2330 &  \\
 SEASuddenAN05 &87.5280 &84.5690 &84.8190 &87.5280 &86.9570 &\textbf{88.2860} &81.5460 &85.1100 &84.5650 &85.6290 &86.5410 &83.5300 &87.5280 &  \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
-Average &\textbf{93.8961} &91.9025 &92.3411 &82.4968 &92.0247 &91.4257 &78.9314 &88.2130 &87.5071 &81.2966 &85.5460 &79.2024 &73.9220 &  \\
-Rank &\textbf{2.5625} &5.4167 &4.5417 &8.1875 &4.8125 &4.6250 &10.9583 &6.7708 &8.4583 &9.0417 &7.2708 &10.8958 &7.4583 &  \\
+Average &\textbf{93.9385} &91.9025 &92.3411 &82.4968 &92.0247 &91.4257 &78.9314 &88.2130 &87.5071 &81.2966 &85.5460 &79.2024 &73.9220 &  \\
+Rank &\textbf{2.5208} &5.4167 &4.5417 &8.1875 &4.8542 &4.6250 &10.9583 &6.7708 &8.4583 &9.0417 &7.2708 &10.8958 &7.4583 &  \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
 \end{tabularx}}
 \begin{minipage}{0.9\textwidth}
@@ -2979,11 +2979,11 @@ Rank &\textbf{2.5625} &5.4167 &4.5417 &8.1875 &4.8125 &4.6250 &10.9583 &6.7708 &
 \ifthenelse{\x < 12}{\draw (\x+.5, 0) -- ++(0,.03);}{}
 }
 
-\coordinate (c0) at (2.5625,0);
+\coordinate (c0) at (2.5208,0);
 \coordinate (c1) at (5.4167,0);
 \coordinate (c2) at (4.5417,0);
 \coordinate (c3) at (8.1875,0);
-\coordinate (c4) at (4.8125,0);
+\coordinate (c4) at (4.8542,0);
 \coordinate (c5) at (4.625,0);
 \coordinate (c6) at (10.9583,0);
 \coordinate (c7) at (6.7708,0);
@@ -3007,7 +3007,7 @@ Rank &\textbf{2.5625} &5.4167 &4.5417 &8.1875 &4.8125 &4.6250 &10.9583 &6.7708 &
 \node (l11) at (c11) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny DACC};
 \node (l12) at (c12) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny OCBoost};
 
-\fill[fill=gray,fill opacity=0.5] (2.5625,-0.1) rectangle (5.3,0.1);
+\fill[fill=gray,fill opacity=0.5] (2.5208,-0.1) rectangle (5.48,0.1);
 
 \foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11,12} {
 \draw (l\x) -| (c\x);
@@ -3018,12 +3018,10 @@ Rank &\textbf{2.5625} &5.4167 &4.5417 &8.1875 &4.8125 &4.6250 &10.9583 &6.7708 &
 \end{minipage}
 \end{table}
 \subsection{Accuracy}
-% CD for 0.05 alpha is 2.789
-Table~\ref{tab:DSResultsacc} shows the accuracy results of the 13 algorithms over 24 data streams along with their average and rank. %The results indicate that classifiers that used a passive approach to concept drift performed better overall than those that utilized an active change-detector.
-Specifically, OLLAWV achieves the best accuracy over 13 of the 24 datasets, with a competitive average against $k$-NNwPAW and AdaHOT. Note that OLLAWV performs competitively with the algorithms that employ a change-detector on faster drifting streams. Friedman statistic (distributed according to chi-square with 12 degrees of freedom): 122.7239
+% CD for 0.05 alpha is 2.96
+Table~\ref{tab:DSResultsacc} shows the accuracy results of the 13 algorithms over 24 data streams, along with their average and rank. Specifically, OLLAWV achieves the best accuracy over 14 of the 24 datasets, with a competitive average against $k$-NNPAW, AdaHOT, EDDM, and HOT. Note that OLLAWV performs competitively with the algorithms that employ some form of change detection/adaptation, even on more sudden drifting streams, indicating its value (without a detection/adaptation mechanism) as a base-line stream learning algorithm.
 
-Figure~\ref{fig:BonfDunnaccDS} show the results for the statistical analysis on the accuracy results. The algorithms with rank higher than $4.99$ (OLLAWV rank + Bonferroni-Dunn critical value), to the right of the gray bar in Figure~\ref{fig:BonfDunnaccDS}, perform statistically worse than OLLAWV. 
-
+Figure~\ref{fig:BonfDunnaccDS} shows the results for the statistical analysis on the accuracy results. The algorithms with rank higher than $5.48$ (OLLAWV rank + Bonferroni-Dunn critical value), to the right of the gray bar in Figure~\ref{fig:BonfDunnaccDS}, perform statistically worse than OLLAWV. 
 
 \begin{table}[b!]
 \caption{Cohen's Kappa (\%) Comparison for Data Stream Classifiers}
@@ -3100,7 +3098,7 @@ Rank &\textbf{3.0208} &5.5417 &4.5833 &7.7500 &4.8542 &4.5833 &11.3750 &6.6042 &
 \node (l11) at (c11) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny DACC};
 \node (l12) at (c12) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny OCBoost};
 
-\fill[fill=gray,fill opacity=0.5] (3.0208,-0.1) rectangle (5.9,0.1);
+\fill[fill=gray,fill opacity=0.5] (3.0208,-0.1) rectangle (5.98,0.1);
 
 \foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11,12} {
 \draw (l\x) -| (c\x);
@@ -3111,7 +3109,7 @@ Rank &\textbf{3.0208} &5.5417 &4.5833 &7.7500 &4.8542 &4.5833 &11.3750 &6.6042 &
 \end{minipage}
 \end{table}
 \subsection{Cohen's Kappa Rate}
-Table~\ref{tab:DSResultskappa} shows the Cohen's Kappa rate results obtained by the algorithms. These results complement the accuracy results achieved by the algorithms, in the sense that... OLLAWV's kappa values all fall within the ($50\%$, $100\%$] range, with the exception of the census dataset, indicating that its merit as a classifier agrees with the class distribution, and is not random. Concerning the census dataset, the best result, achieved by AdaHOT, was $37.3923\%$, meaning all algorithms performed approximately randomly. Classifiers OCBoost, DACC, Learn++.NSE, and VFDR all achieved the lowest rates on average. Note, Learn++.NSE obtained a 0, indicating complete random classifier behavior.
+Table~\ref{tab:DSResultskappa} shows the Cohen's Kappa rate results obtained by the algorithms. These results complement the accuracy results achieved by the algorithms, where OLLAWV outperforms all compared classifiers on 13 out of the 24 datasets, and is competitive with the popular algorithms: AdaHOT, EDDM, $k$-NNPAW, and HOT. OLLAWV's kappa values all fall within the ($50\%$, $100\%$] range, with the exception of the census dataset, indicating that its merit as a classifier agrees with the class distribution, and is not random. Concerning the census dataset, the best result, achieved by AdaHOT, was $37.3923\%$, meaning all algorithms performed approximately randomly. Classifiers OCBoost, DACC, Learn++.NSE, and VFDR all achieved the lowest rates on average. Note, for STAGGERGeneratorF2BF, Learn++.NSE obtained $0\%$ indicating complete random classifier behavior, and OCBoost obtained $-96.4666$ indicating a performance worse than the default-hypothesis. Figure~\ref{fig:BonfDunnkappaDS} show the results of the statistical analysis on the Cohen's Kappa rate results. They show that OLLAWV performs significantly better than $8$ out of the $12$ competing classifiers. These results also support OLLAWV's performance as a competitive base classifier.
 
 \subsection{Training Time}
 \begin{table}[t!]
@@ -3200,7 +3198,11 @@ Rank &6.5833 &4.7917 &5.7917 &\textbf{1.8750} &7.7500 &6.0833 &9.8333 &9.5833 &8
 \end{minipage}
 \end{table}
 
+
+
 \section{Conclusions}
+
+
 
 
 \chapter{Conclusions}
