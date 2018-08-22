@@ -2802,12 +2802,10 @@ Rank & 1.9 &\textbf{1.1} &\textbf{1.3333} & 1.6667  \\
 Preliminary experiments were conducted to test the capabilities of both approaches, and the results for percent accuracy and runtime are listed in Table~\ref{tab:dslvsolla}. The results show the better performance of OLLAWV in terms of accuracy. Both algorithms scale similarly in terms of runtime. The fast comparative runtime of OLLAWV-L2 is dependent on its change detection mechanism, since models have the opportunity to be minimally updated, or even remain the same over new incoming batches of data. However, OLLAWV achieves a competitive runtime without the use of a change detector. The main bottleneck in terms of runtime for OLLAWV is the kernel vector calculation needed for calculating the model output $\bm o$, i.e. current decision function output. Only non-support vector output values are calculated per iteration because samples are only allowed to be updated once. Therefore, the number of kernel calculations decreases by 1 per iteration. This phenomenon, as well as early stopping are contributing factors to OLLAWV's competitive runtime and model sparsity. These characteristics motivated OLLAWV's implementation and further experimentation in the context of batch data streams.
 
 \section{Experimental Environment, Results, and Analysis}
-This section presents the experimental setup and comparison of OLLAWV against 12 popular data stream algorithms on 24 different benchmark datasets and stream generators. The experimental setup is first described, the contemporary comparison methods are then listed, then a brief description of the datasets and stream generators is presented. The results over several metrics, as well as statistical analyses are then shown and the overall performance of the algorithms are discussed. The main purpose of OLLAWV's implementation in a data stream environment and the following experiments was to investigate whether it is capable of learning from streams efficiently, ensuring a strong base algorithm before tackling streams with abrupt concept drift. 
+This section presents the experimental setup and comparison of OLLAWV against 12 popular data stream algorithms on 24 different benchmark datasets and stream generators. The experimental setup is first described, the contemporary comparison methods are then listed, then a brief description of the datasets and stream generators is presented. The results over several metrics, as well as statistical analyses are then shown and the overall performance of the algorithms are discussed. The main purpose of these experiments was to investigate whether OLLAWV is capable of learning from streams efficiently, ensuring a strong base algorithm before tackling streams with abrupt concept drift. 
 
-\subsection{Experimental Environment} %The experiments were conducted over 24 different data streams. 
-The experimental environment was designed to test the difference in performance of the proposed method against 12 contemporary algorithms which are designed to handle stationary and non-stationary data streams. Some use explicit drift-detector mechanisms and others take a passive approach. The majority of the classifiers used in the experiments are without an explicit concept-drift detector because OLLAWV was implemented without one, ensuring a fair comparison. However, classifiers with a drift detector were included for a more comprehensive understanding of how OLLAWV will compare. 
-
-\begin{table}
+\subsection{Experimental Environment}
+\begin{table}[b!]
 \caption{Data Stream Algorithm Summary} \centering \footnotesize
 \label{tab:dsalgs}
 \begin{tabularx}{\textwidth}{l@{\extracolsep{\fill}}lcc}
@@ -2815,13 +2813,13 @@ The experimental environment was designed to test the difference in performance 
 Algorithm 	& Description 									&    Passive	&   Active  		\\
 \noalign{\smallskip}\hline\noalign{\smallskip}
 HOT~\cite{pfahringer2007new} 	& Hoeffding Option Tree 	&	\checkmark	&					\\
-AdaHOT~\cite{pfahringer2007new} & AdaHoeffding Option Tree 	&	\checkmark	&					\\
+AdaHOT~\cite{pfahringer2007new} & Adaptive Hoeffding Option Tree 	&	\checkmark	&					\\
 NB~\cite{john1995estimating}	& Na\"{i}ve Bayes 			&	\checkmark	&					\\
 $k$-NNPAW~\cite{bifet2013efficient}	& $k$-NN with Probabilistic Adaptive Windows & \checkmark & \\
 EDDM~\cite{baena2006early} 		& Early Drift Detection Method  &			&	\checkmark		\\
 VFDR~\cite{gama2011learning} 	& Very Fast Decision Rules 	&	\checkmark	&					\\
 VFDR-NB~\cite{gama2011learning} & VFDR with Na\"{i}ve Bayes	&	\checkmark	&					\\
-SAE2~\cite{gomes2014sae2}		& Social Adaptive Ensemble 	&	\checkmark	&					\\
+SAE2~\cite{gomes2014sae2}		& Social Adaptive Ensemble 2	&	\checkmark	&					\\
 Learn++.NSE~\cite{elwell2011incremental} & Learning in Non-Stationary Environments &\checkmark &\\
 DWM~\cite{kolter2007dynamic} 	& Dynamic Weighted Majority &				&	\checkmark		\\
 DACC~\cite{jaber2013new}		& Dynamic Adaptation to Concept Changes  	& &	\checkmark		\\
@@ -2829,11 +2827,11 @@ OCBoost~\cite{pelossof2009online} & Online Coordinate Boosting 	&	\checkmark	&		
 \noalign{\smallskip}\hline
 \end{tabularx}
 \end{table}
+The experimental environment was designed to test the difference in performance of the proposed method against 12 contemporary algorithms which are designed to handle stationary and non-stationary data streams. Some use explicit drift-detector mechanisms and others take a passive approach. The majority of the classifiers used in the experiments are without an explicit concept-drift detector because OLLAWV was implemented without one, ensuring a fair comparison. However, classifiers with a drift detector were included for a more comprehensive understanding of how OLLAWV will compare. 
 
-%\textit{The algorithms without a drift detector are as follows: \textit{Hoeffding Option Tree} (HOT)~\cite{pfahringer2007new}, \textit{Adaptive Hoeffding Option Tree} (AdaHOT)~\cite{pfahringer2007new}, \textit{Na\"ive Bayes}, \textit{Rule Classifier} (RC) and \textit{Rule Classifier Na\"ive Bayes} (RCNB)~\cite{gama2011learning}, \textit{Social Adaptive Ensemble Classifier} (SAE2)~\cite{gomes2014sae2}, and \textit{Online Coordinate Boosting} (OCBoost)~\cite{pelossof2009online}. Those with a drift detector are: \textit{$k$-Nearest Neighbors with Probabilistic Adaptive Window} ($k$-NNPAW), \textit{Single Classifier Drift} (SCD)~\cite{baena2006early} using the \textit{Hoeffding Tree} as a base, \textit{Learning in Non-Stationary Environments} (Learn++.NSE)~\cite{elwell2011incremental}, \textit{Dynamic Weighted Majority} (DWM)~\cite{kolter2007dynamic}, \textit{Dynmic Adaptation to Concept Changes} (DACC)~\cite{jaber2013new}.}
+The $12$ competing algorithms used are the following: \textit{Hoeffding Option Tree}, \textit{Adaptive Hoeffding Option Tree}, \textit{Na\"{i}ve Bayes}, \textit{$k$-NN with Probabilistic Adaptive Windows}, \textit{Early Drift Detection Method}, \textit{Very Fast Decision Rules}, \textit{VFDR with Na\"{i}ve Bayes}, \textit{Social Adaptive Ensemble 2}, \textit{Learning in Non-Stationary Environments}, \textit{Dynamic Weighted Majority}, \textit{Dynamic Adaptation to Concept Changes}, and \textit{Online Coordinate Boosting}. A high-level summary of their approach to data streams is given in Table~\ref{tab:dsalgs}. These algorithms were chosen because they have shown considerable performance in learning in a stream environment, while also being readily available for use and reproducing their results through MOA, \textit{Massive Online Analysis}\footnote{https://moa.cms.waikato.ac.nz/}~\cite{moacite} framework. The experiments were run on a server with 2 Intel Xeon CPU E5-2690v4 with 28 cores (56 threads), 128 GB of memory, and CentOS 7.4. OLLAWV was also implemented in Java within MOA framework. 
 
-These algorithms were chosen because they have shown considerable performance in learning in a stream environment, while also being readily available for use and reproducing their results through MOA, \textit{Massive Online Analysis}\footnote{https://moa.cms.waikato.ac.nz/}~\cite{moacite} framework. The experiments were run on a server with 2 Intel Xeon CPU E5-2690v4 with 28 cores (56 threads), 128 GB of memory, and CentOS 7.4. OLLAWV was also implemented in Java within MOA framework. 
-
+In the context of traditional batch learning, the most popular and unbiased method for estimating the performance of an algorithm is the \textit{nested cross-validation} procedure. However, in the online learning setting which has computationally strict requirements and drifting concepts, the nested cross-validation procedure is not straightforwardly applicable. The approach taken for this experimental environment is the evaluation method named \textit{Interleaved Test-Then-Train}, also known as \textit{Prequential}~\cite{gama2013evaluating} (predictive sequential evaluation), listed in Algorithm~\ref{alg:evalChunk}. It is used to describe the change in accuracy (or any other evaluation metric) of algorithms over time. It follows the online learning protocol: when a sample is received, the current model makes a prediction, and when the system receives the sample's true label, the classifier's loss can be computed. In other words, each sample can be used to test the model before it is used during training, and using this, the evaluation metric can be incrementally updated. Using this order, the algorithms are always being tested on unseen samples. This scheme ensures that no hold-out test set is needed, thus utilizing all available data. It also provides a smooth and unbiased plot of the evaluation metric over time, where each sample becomes increasingly less significant to the overall average. 
 \begin{algorithm}[t!]
 \centering \small
 \caption{Evaluate Interleaved Chunks}
@@ -2859,13 +2857,12 @@ These algorithms were chosen because they have shown considerable performance in
 \EndWhile
 \end{algorithmic} 
 \end{algorithm}
-In the context of traditional batch learning, the most popular and unbiased method for estimating the performance of an algorithm is the \textit{nested cross-validation} procedure. However, in the online learning setting which has computationally strict requirements and drifting concepts, the nested cross-validation procedure is not straightforwardly applicable. The approach taken for this experimental environment is the evaluation method named \textit{Interleaved Test-Then-Train}, also known as \textit{Prequential}~\cite{gama2013evaluating} (predictive sequential evaluation), listed in Algorithm~\ref{alg:evalChunk}. It is used to describe the change in accuracy (or any other evaluation metric) of algorithms over time. It follows the online learning protocol: when a sample is received, the current model makes a prediction, and when the system receives the sample's true label, the classifier's loss can be computed. In other words, each sample can be used to test the model before it is used during training, and using this, the evaluation metric can be incrementally updated. Using this order, the algorithms are always being tested on unseen samples. This scheme ensures that no hold-out test set is needed, thus utilizing all available data. It also provides a smooth and unbiased plot of the evaluation metric over time, where each sample becomes increasingly less significant to the overall average. 
 
-Along with the prequential evaluation method, traditional $k$-fold cross-validation was used in the OLLAWV experiments for the purpose of model selection. Once a new batch is received by the algorithm, $5$-fold cross validation is performed to select the best representative parameters for the current batch, and once they are chosen, they will be used for the remaining batches. This rigorous procedure is computationally expensive, however, the goal is to optimally and fairly find the best representative SVM parameters for the incoming stream. First, each batch of samples is normalized by linear transformation of the feature values to the range [0,1]. Then the training process, also involving cross-validation and prequential evaluation, was performed. To deal with multi-class classification problems, the one-vs-one, or pairwise, approach was used. The best hyper-parameters were chosen from the following $6 \times 7$ possible combinations, shown in Equations~\eqref{eq:paramCollads} and~\eqref{eq:paramGollads}. 
+Along with the prequential evaluation method, traditional $k$-fold cross-validation was used in the OLLAWV experiments for the purpose of model selection. Once the first batch is received by the algorithm, $5$-fold cross validation is performed to select the best representative parameters for the current batch, and once they are chosen, they will be used for the remaining batches. This rigorous procedure is computationally expensive, however, the goal is to optimally and fairly find the best representative SVM parameters for the incoming stream. Each batch of samples is first normalized by linear transformation of the feature values to the range [0,1]. Then the training process, also involving cross-validation and prequential evaluation, are performed. To deal with multi-class classification problems, the one-vs-one, or pairwise, approach was used. The best hyper-parameters were chosen from the following $6 \times 7$ possible combinations, shown in Equations~\eqref{eq:paramCollads} and~\eqref{eq:paramGollads}. 
 \begin{subequations}
 \label{eq:hyperparamollads}
 \begin{align}
-C \in \set{0.01, 0.1, 1.0, 10.0, 100.0, 1,000.0} \label{eq:paramCollads}\\
+C \in \set{0.01, 0.1, 1.0, 10.0, 100.0, 1000.0} \label{eq:paramCollads}\\
 \gamma \in \set{0.01, 0.1, 0.5, 1.0, 2.0, 4.0, 16.0} \label{eq:paramGollads}
 \end{align}
 \end{subequations}
@@ -2875,9 +2872,7 @@ The $\gamma$ parameter refers to that of the Gaussian RBF kernel, given by:
 \mathcal{K}(\bm{x_i},\bm{x_j}) = e^{-\gamma\norm{\bm{x_i} - \bm{x_j}}^2}.
 \end{equation}
 
-
-\subsection{Datasets}
-\begin{table}[t!]
+\begin{table}[H]
 \caption{Base Streamed Datasets \& Generators}
 \footnotesize
 \centering
@@ -2902,7 +2897,8 @@ SEAGenerator	       			& 	1,000,000	& 	2	        & 	2 \\ %A streaming ensemble a
 \noalign{\smallskip}\hline
 \end{tabularx}
 \end{table}
-Table~\ref{tab:dsDataset} presents a summary of the static datasets and the stream generators used throughout the experiments, where the number of attributes, classes, and samples are shown. Both the static datasets and the generators provided 1000-sample sized batches to the algorithms. The static datasets were obtained from the UCI Machine Learning repository\footnote{http://archive.ics.uci.edu/ml/index.php}~\cite{Lichman:2013} and were simulated as streams using a stream simulator from the MOA framework. The stream generators listed were also used within the MOA~\cite{moacite} framework. The following are descriptions of the types of generators used as base generators throughout the experimental study. Variations of the generators were also used to simulate the concept drift rate, as well as varying number of attributes, classes, and functions (pertaining to the functional generators). These variations are suffixed with the generator name in the results tables.
+\subsection{Datasets}
+Table~\ref{tab:dsDataset} presents a summary of the static datasets and the stream generators used throughout the experiments, where the number of attributes, classes, and samples are shown. The static datasets were obtained from the UCI Machine Learning repository\footnote{http://archive.ics.uci.edu/ml/index.php}~\cite{Lichman:2013} and were simulated as streams using a stream simulator from the MOA framework. The stream generators listed were also provided by the MOA~\cite{moacite} framework. Both the streamed-static data and the generators provided 1000-sample sized batches to the algorithms. Variations of the generators were also used to simulate the concept drift rate, as well as varying number of attributes, classes, and functions (pertaining to the functional generators). These variations are suffixed with the generator name in the results tables. The following are descriptions of the types of base generators used throughout the experimental study:
 \begin{itemize}
 \iitem \textbf{Random RBF Generator}: This generator produces samples that form normally distributed hyperspheres surrounding randomly selected centroids, with varying densities. This generator also has the option to simulate data evolution, i.e. concept drift. 
 
@@ -2923,15 +2919,14 @@ Table~\ref{tab:dsDataset} presents a summary of the static datasets and the stre
 \end{itemize}
 
 \section{Results \& Analysis}
-The classification performance was measured using two metrics: Accuracy and Cohen's kappa rate, and the results are shown in Tables~\ref{tab:DSResultsacc} and~\ref{tab:DSResultskappa}, respectively. The metrics are calculated as shown in Equations~\ref{eq:accuracyds} and~\ref{eq:kappads}, where TP is the true positive value, TN is the true negative value, FP is the false positive value, FN is the false negative value, and $n^\prime = TP + FP + TN + FN$.
-\begin{subequations}
+The classification performance was measured using two metrics: Accuracy and Cohen's kappa rate, and the results are shown in Tables~\ref{tab:DSResultsacc} and~\ref{tab:DSResultskappa}, respectively. The metrics are calculated as shown in Equations~\ref{eq:accuracyds} and~\ref{eq:kappads}, where TP is the true positive value, TN is the true negative value, FP is the false positive value, FN is the false negative value, and $n^\prime = TP + FP + TN + FN$. The training times of each algorithm are also given in Table~\ref{tab:DSResultsTrain} to analyze the their scalability. All metrics were calculated using the prequential procedure. 
+\begin{subequations}\vspace{-1.8em}
 \label{eq:metricsds}
 \begin{align}
 \text{Accuracy} \tab \tab &\dfrac{TP+TN}{n^\prime} \label{eq:accuracyds}\\[10pt]
 \text{Cohen's Kappa Rate} \tab \tab &\dfrac{n^\prime - \dfrac{(TP+FN)*(TP+FP)}{n^\prime}}{1 - \dfrac{(TP+FN)*(TP+FP)}{n^\prime}} \label{eq:kappads}
 \end{align}
 \end{subequations}
-The training times of each algorithm are also given in Table~\ref{tab:DSResultsTrain} to analyze the scalability of each of the algorithms. All metrics were calculated using the prequential procedure. 
 
 In order to analyze the performances of the multiple models, non-parametric statistical tests are used to validate the experimental results obtained. The Iman-Davenport non-parametric test is run to investigate whether significant differences exist among the performance of the algorithms by ranking them over the datasets used, using the Friedman test. The algorithm ranks for each metric in Equations~\eqref{eq:metrics} are presented in the last row of the results tables, and the lowest (best) rank value is typeset in bold. 
 
@@ -3025,7 +3020,7 @@ Rank &\textbf{2.5625} &5.4167 &4.5417 &8.1875 &4.8125 &4.6250 &10.9583 &6.7708 &
 \subsection{Accuracy}
 % CD for 0.05 alpha is 2.789
 Table~\ref{tab:DSResultsacc} shows the accuracy results of the 13 algorithms over 24 data streams along with their average and rank. %The results indicate that classifiers that used a passive approach to concept drift performed better overall than those that utilized an active change-detector.
-Specifically, OLLAWV achieves the best accuracy over 19 of the 24 datasets, with a competitive average against $k$-NNwPAW and AdaHOT. Note that OLLAWV performs competitively with the algorithms that employ a change-detector on faster drifting streams. Friedman statistic (distributed according to chi-square with 12 degrees of freedom): 122.7239
+Specifically, OLLAWV achieves the best accuracy over 13 of the 24 datasets, with a competitive average against $k$-NNwPAW and AdaHOT. Note that OLLAWV performs competitively with the algorithms that employ a change-detector on faster drifting streams. Friedman statistic (distributed according to chi-square with 12 degrees of freedom): 122.7239
 
 Figure~\ref{fig:BonfDunnaccDS} show the results for the statistical analysis on the accuracy results. The algorithms with rank higher than $4.99$ (OLLAWV rank + Bonferroni-Dunn critical value), to the right of the gray bar in Figure~\ref{fig:BonfDunnaccDS}, perform statistically worse than OLLAWV. 
 
@@ -3205,11 +3200,8 @@ Rank &6.5833 &4.7917 &5.7917 &\textbf{1.8750} &7.7500 &6.0833 &9.8333 &9.5833 &8
 \end{minipage}
 \end{table}
 
-
-\subsection{Overall Comparison}
-
-
 \section{Conclusions}
+
 
 \chapter{Conclusions}
 This thesis introduced several novel SVM algorithms for learning from the following diverse learning paradigms: multi-target regression, multi-instance classification, data stream classification, and traditional supervised classification.
