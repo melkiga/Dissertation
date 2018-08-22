@@ -2142,7 +2142,7 @@ This proposal consisted of a novel formulation and algorithm for the multiple-in
 
 The experimental study showed the better performance of MIRSVM compared with existing multi-instance support vector machines, traditional multi-instance learners, as well as ensemble methods. The results, according to a variety of performance metrics, were compared and further validated using statistical analysis with non-parametric tests which highlight the advantages of using bag-level based and ensemble learners, such as miGraph, Bagging, and Stacking, while showing the instance-level based learners performed poorly in comparison or were deemed as strongly biased and unstable classifiers. Our proposal, MIRSVM, performs statistically better, neither compromising accuracy nor run-time while displaying a robust performance across all of the evaluated datasets. The research outcomes of this chapter have been published in~\cite{melki2018mirsvm}.
 
-\chapter{Novel OnLine SVM using Worst-Violators}
+\chapter{Novel OnLine SVM using Worst-Violators}\label{chap:ollawv}
 Due to the ever-growing nature of dataset sizes, the need for scalable and accurate learning algorithms has become evident. Stochastic gradient descent methods are popular tools used to optimize large-scale learning problems because of their generalizability, simplicity, and scalability. This chapter proposes a novel stochastic, i.e. online, learning algorithm for solving the L1 support vector machine (SVM) problem: \textit{OnLine Learning Algorithm using Worst-Violators} (OLLAWV). This Chapter's scope is concerned with developing a unique algorithm for large data problems without the use of parallelization and distributed techniques. Unlike other stochastic methods, OLLAWV eliminates the need for specifying a maximum number of iterations and the use of a regularization term. Rather than using a regularizer, OLLAWV uses early stopping for controlling the size of the margin. The experimental study, performed under strict nested cross-validation, evaluates and compares the performance of the proposal with $2$ modern SVM kernel methods that have been shown to outperform traditional and widely used approaches for solving L1-SVMs, such as \textit{Sequential Minimal Optimization}. OLLAWV is also compared to $5$ classic non-SVM algorithms. The results over $23$ datasets show OLLAWV's superior performance in terms of accuracy, scalability, and model sparseness, making it suitable for large-scale learning.
 
 \section{Online Learning Background}
@@ -2721,12 +2721,17 @@ However, the biggest issue with these algorithms is that most were not designed 
 These computational, spacial, and time complexities are what prompted researchers to investigate large-scale learning solutions using \textit{Stochastic Gradient Descent} (SGD) before investigating how to deal with concept-drifts and their detection~\cite{herbrich2016learning,kivinen2002large,rosenblatt1958perceptron,Schoelkopf2002,Shalev2014,shalev2011pegasos}. Stochastic algorithms can be both the fastest and have superior generalization performances~\cite{kivinen2004online,bousquet2008tradeoffs} against batch methods. This prompted the investigation of the novel \textit{OnLine Learning Algorithm} (OLLA)~\cite{kecman2016fast} and its counterpart \textit{OnLine Learning Algorithm using Worst-Violators} (OLLAWV)~\cite{melki2018ollawv} under a stationary and non-stationary data stream environment. Due to their online, iterative nature, and that they have shown significant improvements over popular solvers in terms of speed, memory consumption, and accuracy, OLLA and OLLAWV are a natural extension for SVMs to the data stream environment.
 
 \section{OnLine Learning Algorithms for Batched Data Streams}
-Two online, iterative learning algorithms, OLLA-L2~\cite{kecman2016fast} and OLLAWV~\cite{melki2018ollawv}, are implemented and tested within the context of a batched data stream environment. 
+OLLA-L2~\cite{kecman2016fast} and OLLAWV~\cite{melki2018ollawv}, two online, iterative learning algorithms are implemented and investigated within the context of a batched, stationary and non-stationary, data stream environment. OLLA-L2 stems from the same core algorithm as OLLAWV, simply named \textit{OnLine Learning Algorithm} (OLLA)~\cite{kecman2016fast}. It is a generic stochastic learning algorithm, in the primal domain, tailored and designed for various non-linear (i.e. kernel) classifiers. In this implementation of OLLA-L2, similar to the implementation of OLALWV described in Chapter~\ref{chap:ollawv}, the online learning algorithm is derived and used for solving the primal L1-SVM cost function, and is listed in Algorithm~\ref{alg:List2L1SVM}. The online nature of the core OLLA algorithm and its competitive performance in terms of speed and accuracy against popular and widely used SVM solvers merited investigation in the data stream setting. \textit{The implementation and experiments conducted with OLLA-L2 will first be discussed, before moving onto the final contribution OLLAWV.}
 
-OLLA-L2 stems from the same core algorithm as OLLAWV, OLLA~\cite{kecman2016fast}, a generic stochastic learning algorithm tailored for solving various risk functions, regularized or not. The implementation used in this Chapter minimizes the primal L1-SVM cost function, as done in OLLAWV, and is listed in Algorithm~\ref{alg:List2L1SVM}. At every iteration, the algorithm proceeds cyclically over the data, updating the model if the sample, $i$, chosen is a violator, i.e. has an error ($y_i o_i \leq 1$). If the sample has no error ($y_i o_i > 1$), the model remains the same. In the context of batched streams, the algorithm cycles through the current batch and for a pure online scenario, the algorithm proceeds and updates as long as there are samples provided by the stream. The quantity of iterations can be controlled by the parameter $e$ representing the number of epochs. As mentioned previously, early stopping acts as a regularization technique~\cite{collobert2004links}, and this can be controlled through setting the number of epochs to be less than the number of samples.
+At every iteration, OLLA-L2 proceeds cyclically over the data, updating the model if the chosen sample, $i$, is a violator, i.e. has an error ($y_i o_i \leq 1$). If the sample has no error ($y_i o_i > 1$), the model remains the same and no update is performed. The update parameters $\Lambda \in \reals$ (lambda) and $\Rho \in \reals$ (rho), as seen in Algorithm~\ref{alg:List2L1SVM}, describe scalars which are used for updating the output vector $\bm o \in \reals^n$, the weight vector in kernel feature space $\bm \alpha \in \reals^n$, and the bias term $b \in \reals$, if it is used. The input parameter $\beta \in \set{0,1}$ describes whether the bias term will be used ($\beta = 1$) or not ($\beta = 0$). The update parameters for $\Lambda$ and $\Rho$ for the L1-SVM with regularizer $||\bm w||^2$ are given by:
+\begin{table}[H]
+\centering \small
+\begin{tabular}{cc}
+$\Lambda = \eta C y_i$ & $\Rho = \eta \alpha_i$
+\end{tabular}
+\end{table}
 
-
-When $e \leq 1$, the parameter $\Rho$ is always 0. 
+In the context of batched streams, the algorithm would cycle through the samples in each arriving batch. For a pure online scenario, the algorithm would proceed with its updates, as long as samples are provided by the stream. In the batch setting, the quantity of iterations can be controlled by the parameter $e$, which represents the number of epochs, or cycles, over the data. As mentioned in the previous chapter, early stopping acts as a regularization technique~\cite{collobert2004links}, and this can be controlled through setting the number of epochs to be less than the number of samples. It is worth noting that, if the number if epochs is set to be less than the number of samples, or in the pure online data stream learning setting where samples arrive one at a time with no cycling involved, the parameter $\Rho$ is always equal to 0. $\Rho > 0$ only if the algorithm cycles over already updated samples since $\bm \alpha$ is initialized to 0. 
 
 \begin{algorithm}[H]
 \centering \small
@@ -2756,15 +2761,6 @@ When $e \leq 1$, the parameter $\Rho$ is always 0.
 \end{algorithmic} 
 \end{algorithm}
 
-The update parameters $\Lambda \in \reals$ (lambda) and $\Rho \in \reals$ (rho) describe scalars which are used for updating the output vector $\bm o \in \reals^n$, the weight vector in kernel feature space $\bm \alpha \in \reals^n$, and the bias term $b \in \reals$, if it is used. The input parameter $\beta \in \set{0,1}$ describes whether the bias term will be used ($\beta = 1$) or not ($\beta = 0$). The update parameters for $\Lambda$ and $\Rho$ for the L1-SVM with regularizer $||\bm w||^2$ are given by:
-\begin{table}[H]
-\centering \small
-\begin{tabular}{cc}
-$\Lambda = \eta C y_i$ & $\Rho = \eta \alpha_i$
-\end{tabular}
-\end{table}
-
-\textbf{Discuss drift detection mechanism a bit.}
 
 \begin{table}[th!]
 \centering
