@@ -2806,11 +2806,11 @@ This section presents the experimental setup and comparison of OLLAWV against 12
 
 \subsection{Experimental Environment}
 \begin{table}[b!]
-\caption{Data Stream Algorithm Summary} \centering \footnotesize
+\caption{Data Stream Algorithm Summary} \centering \small
 \label{tab:dsalgs}
-\begin{tabularx}{\textwidth}{l@{\extracolsep{\fill}}lcc}
+\resizebox{\textwidth}{!}{\begin{tabularx}{1.1\textwidth}{l@{\extracolsep{\fill}}lcc}
 \hline\noalign{\smallskip}
-Algorithm 	& Description 									&    Passive	&   Active  		\\
+Algorithm 	& Description 						&    No Drift-Detector	&   Drift-Detector	\\
 \noalign{\smallskip}\hline\noalign{\smallskip}
 HOT~\cite{pfahringer2007new} 	& Hoeffding Option Tree 	&	\checkmark	&					\\
 AdaHOT~\cite{pfahringer2007new} & Adaptive Hoeffding Option Tree 	&	\checkmark	&					\\
@@ -2821,11 +2821,11 @@ VFDR~\cite{gama2011learning} 	& Very Fast Decision Rules 	&	\checkmark	&					\\
 VFDR-NB~\cite{gama2011learning} & VFDR with Na\"{i}ve Bayes	&	\checkmark	&					\\
 SAE2~\cite{gomes2014sae2}		& Social Adaptive Ensemble 2	&	\checkmark	&					\\
 Learn++.NSE~\cite{elwell2011incremental} & Learning in Non-Stationary Environments &\checkmark &\\
-DWM~\cite{kolter2007dynamic} 	& Dynamic Weighted Majority &				&	\checkmark		\\
-DACC~\cite{jaber2013new}		& Dynamic Adaptation to Concept Changes  	& &	\checkmark		\\
+DWM~\cite{kolter2007dynamic} 	& Dynamic Weighted Majority &		\checkmark	&	\\
+DACC~\cite{jaber2013new}		& Dynamic Adaptation to Concept Changes  	& \checkmark &			\\
 OCBoost~\cite{pelossof2009online} & Online Coordinate Boosting 	&	\checkmark	&			\\
 \noalign{\smallskip}\hline
-\end{tabularx}
+\end{tabularx}}
 \end{table}
 The experimental environment was designed to test the difference in performance of the proposed method against 12 contemporary algorithms which are designed to handle stationary and non-stationary data streams. Some use explicit drift-detector mechanisms and others take a passive approach. The majority of the classifiers used in the experiments are without an explicit concept-drift detector because OLLAWV was implemented without one, ensuring a fair comparison. However, classifiers with a drift detector were included for a more comprehensive understanding of how OLLAWV will compare. 
 
