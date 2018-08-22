@@ -2764,8 +2764,7 @@ The advantage of using OLLA-L2's update procedure is most apparent in lines 8 an
 \end{algorithm}
 
 Although OLLA-L2 has many advantages, it also has its complexities, some of which are shared by other stochastic solvers. One example would be how/what to set the algorithm's maximum number of iterations, i.e. the model's optimal point to stop training. \textit{Stopping the training too early might cause missed opportunity for finding all the support vectors. Stopping too late might cause the algorithm to diverge from its optimum point.} This complexity inspired the work in Chapter~\ref{chap:ollawv} on OLLAWV. The novelty and advantage of OLLAWV resides in the way it iterates and updates the model. At each step, the algorithm chooses and updates the most violating sample, i.e. \textit{worst-violator}. A worst-violator is defined as the sample that produces the largest error with respect to the current decision function. Rather than shuffling the data and cycling through each sample, as done in OLLA-L2, OLLAWV selects (without replacement) the most incorrectly classified sample and updates the model accordingly. This procedure is essentially finding the model's support vectors and implicitly defining a stopping criterion. If there are no more violating samples, that algorithm terminates. \textit{These characteristics are especially useful in the context of learning from a streamed environment. continue about why, then segway to the comparison on L2 and OLLAWV...}
-
-\begin{table}[th!]
+\begin{table}[b!]
 \centering
 \caption{Comparison of OLLAWV vs. OLLA-L2}
 \scriptsize
@@ -2798,6 +2797,10 @@ Rank & 1.9 &\textbf{1.1} &\textbf{1.3333} & 1.6667  \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
 \end{tabularx}}
 \end{table}
+Preliminary experiments were conducted to test the capabilities of both algorithm approaches. The results in Table~\ref{tab:dslvsolla} show the better performance of OLLAWV in terms of accuracy. Both algorithms scale similarly in terms of runtime. The main bottleneck in terms of runtime for OLLAWV is an $n \times 1$ sized vector (which decreases) calculation per iteration. However, the time is regained by the algorithm early stopping. 
+
+The better accuracy results motivated OLLAWV's implementation and further experimentation in the context of batch data streams. 
+
 
 \newpage
 \section{Experimental Environment, Results, and Analysis}
