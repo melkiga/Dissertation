@@ -3030,9 +3030,9 @@ Figure~\ref{fig:BonfDunnaccDS} show the results for the statistical analysis on 
 \scriptsize
 \centering
 \label{tab:DSResultskappa}
-\resizebox{\textwidth}{!}{\begin{tabularx}{1.55\textwidth}{l@{\extracolsep{\fill}}ccccccccccccccc}
+\resizebox{\textwidth}{!}{\begin{tabularx}{1.5\textwidth}{l@{\extracolsep{\fill}}ccccccccccccccc}
 \noalign{\smallskip}\hline\noalign{\smallskip}
-Dataset & OLLAWV & HOT & AdaHOT & NB & $k$-NNPAW & EDDM & VFDR & VFDRNB & SAE2 & LearnNSE &DWM &DACC &OCBoost &\\
+Dataset & OLLAWV & HOT & AdaHOT & NB & $k$-NNPAW & EDDM & VFDR & VFDR-NB & SAE2 & LearnNSE &DWM &DACC &OCBoost &\\
 \noalign{\smallskip}\hline\noalign{\smallskip}
 CovType &\textbf{84.2997} &76.4406 &77.6946 &40.1567 &80.4264 &34.1059 &31.4704 &61.1629 &62.9842 &50.6291 &55.5296 &36.6365 &48.2357 &  \\
 census &5.0601 &34.3735 &\textbf{37.3923} &35.9631 &22.1060 &20.3869 &6.9733 &18.9029 &18.6604 &17.4783 &36.1846 &16.6752 &33.6569 &  \\
@@ -3044,7 +3044,7 @@ HyperplaneFaster &\textbf{79.0184} &65.4333 &70.6839 &54.4616 &68.5439 &68.6522 
 RBFGradualRecurring &97.8807 &92.8205 &92.5769 &44.2773 &\textbf{97.8977} &91.2740 &46.6574 &81.5090 &84.6106 &63.7269 &66.5421 &49.0047 &31.4648 &  \\
 RBFBlips &\textbf{98.7358} &94.1422 &94.0557 &46.9730 &98.5651 &93.1254 &55.0797 &84.2691 &85.2017 &69.5671 &72.8462 &56.9876 &32.7263 &  \\
 WaveformGenerator &75.9070 &74.4807 &\textbf{76.2084} &70.6198 &70.1883 &75.4134 &45.8181 &63.7626 &70.2764 &70.2900 &67.5944 &60.3864 &32.6201 &  \\
-STAGGERGeneratorF1 &\textbf{100.0000} &99.9429 &99.9429 &\textbf{100.0000} &\textbf{100.0000} &\textbf{100.0000} &99.5649 &\textbf{100.0000} &78.2768 &14.6120 &\textbf{100.0000} &99.7795 &\textbf{100.0000} &  \\
+STAGGERGeneratorF1 &\textbf{100.000} &99.9429 &99.9429 &\textbf{100.000} &\textbf{100.000} &\textbf{100.000} &99.5649 &\textbf{100.000} &78.2768 &14.6120 &\textbf{100.000} &99.7795 &\textbf{100.000} &  \\
 HyperplaneFaster0.2 &\textbf{78.9822} &65.5488 &70.7205 &54.5039 &68.5467 &75.2763 &57.7700 &70.2251 &67.6807 &73.0150 &73.5124 &62.4578 &75.1728 &  \\
 RBFGradualRecurringv2 &\textbf{96.2323} &91.0414 &90.6582 &43.1602 &94.3039 &90.9059 &43.9448 &74.2539 &79.2448 &49.7920 &51.6529 &32.3653 &30.8075 &  \\
 MixedGeneratorBT &95.9938 &98.2128 &\textbf{98.6438} &83.8667 &95.3299 &98.2134 &66.2440 &86.5611 &86.3155 &81.8128 &82.3886 &78.3117 &97.9588 &  \\
@@ -3053,8 +3053,8 @@ RandomRBFGeneratorC4A25 &\textbf{98.8172} &96.5331 &96.1343 &75.2231 &98.2308 &9
 RandomRBFGeneratorC4A50 &\textbf{99.6519} &98.8615 &98.8319 &89.0625 &98.8693 &98.6371 &73.7051 &94.0710 &89.1866 &81.1006 &87.0871 &64.3007 &35.4000 &  \\
 SineGeneratorF1BF &95.5500 &\textbf{99.4950} &99.4517 &86.9837 &91.0397 &99.3224 &89.5374 &91.7509 &88.9544 &84.9693 &86.4903 &84.2484 &99.0107 &  \\
 SineGeneratoF2BF &95.5500 &\textbf{99.4896} &99.4493 &86.9837 &90.7381 &99.3195 &90.4504 &92.1487 &89.0741 &84.9693 &86.5495 &84.2484 &98.9512 &  \\
-STAGGERGeneratorF1BF &\textbf{100.0000} &99.9429 &99.9429 &\textbf{100.0000} &\textbf{100.0000} &\textbf{100.0000} &99.5649 &\textbf{100.0000} &78.2768 &14.6120 &\textbf{100.0000} &99.7795 &\textbf{100.0000} &  \\
-STAGGERGeneratorF2BF &\textbf{100.0000} &99.9542 &99.9542 &\textbf{100.0000} &\textbf{100.0000} &99.9542 &99.7331 &\textbf{100.0000} &89.9239 &0.0000 &\textbf{100.0000} &\textbf{100.0000} &-96.4666 &  \\
+STAGGERGeneratorF1BF &\textbf{100.000} &99.9429 &99.9429 &\textbf{100.000} &\textbf{100.000} &\textbf{100.000} &99.5649 &\textbf{100.000} &78.2768 &14.6120 &\textbf{100.000} &99.7795 &\textbf{100.000} &  \\
+STAGGERGeneratorF2BF &\textbf{100.000} &99.9542 &99.9542 &\textbf{100.000} &\textbf{100.000} &99.9542 &99.7331 &\textbf{100.000} &89.9239 &0.0000 &\textbf{100.000} &\textbf{100.000} &-96.4666 &  \\
 HyperplaneFasterAN5 &\textbf{78.5796} &65.3782 &70.4883 &74.7517 &68.3699 &77.4733 &58.2704 &69.7705 &67.4541 &72.8100 &73.3486 &62.2368 &74.7517 &  \\
 SEASuddenAN0 &73.8014 &67.6140 &68.1883 &74.8009 &72.7554 &\textbf{76.3943} &59.8618 &68.0628 &68.2933 &69.2729 &72.0454 &64.9863 &74.8009 &  \\
 SEASuddenAN05 &73.1889 &66.8436 &67.4079 &73.2812 &72.2042 &\textbf{74.9242} &59.9057 &67.9381 &67.1285 &68.9706 &71.2053 &64.5598 &73.2812 &  \\
@@ -3119,7 +3119,7 @@ Table~\ref{tab:DSResultskappa} shows the Cohen's Kappa rate results obtained by 
 \scriptsize
 \centering
 \label{tab:DSResultsTrain}
-\resizebox{\textwidth}{!}{\begin{tabularx}{1.55\textwidth}{l@{\extracolsep{\fill}}ccccccccccccccc}
+\resizebox{\textwidth}{!}{\begin{tabularx}{1.42\textwidth}{l@{\extracolsep{\fill}}ccccccccccccccc}
 \noalign{\smallskip}\hline\noalign{\smallskip}
 Dataset & OLLAWV & HOT & AdaHOT & NB & $k$-NNPAW & EDDM & VFDR & VFDR-NB & SAE2 & LearnNSE &DWM &DACC &OCBoost &\\
 \noalign{\smallskip}\hline\noalign{\smallskip}
