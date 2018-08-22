@@ -2742,20 +2742,20 @@ The advantage of using OLLA-L2's update procedure is most apparent in lines 8 an
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
 \Require $\bm X, \bm Y, \beta, n, e$
 \Ensure  $\bm \alpha$, $b$, $\bm S$
-\State $\bm \alpha \leftarrow \bm 0, b \leftarrow 0, \bm S \leftarrow \bm 0,\, \bm o \leftarrow \bm 0,\, i \leftarrow 0$
+\State $\bm \alpha \leftarrow \bm 0, b \leftarrow 0, \bm S \leftarrow \bm 0,\, \bm o \leftarrow \bm 0,\, i \leftarrow 0$ \Comment{Initialize model and algorithm parameters}
 \For{$t = 1, \ldots, n*e$}
-\State $\eta \leftarrow 2/\sqrt{t}$
-\If{$Y_i\, o_i \leq 1$}
-\State \textit{Calculate $\Lambda$ and $\Rho$}
-\State $\bm S \leftarrow [\bm S \cup i]$
-\State $\alpha_i \leftarrow \alpha_i + (\Lambda - \Rho)$
-\State $b \leftarrow b + (\Lambda - \Rho)\beta$
+\State $\eta \leftarrow 2/\sqrt{t}$ \Comment{Learning rate in function of time}
+\If{$y_i\, o_i \leq 1$} \Comment{Check if current sample is a violator}
+\State \textit{Calculate $\Lambda$ and $\Rho$} \Comment{Calculate update parameters}
+\State $\bm S \leftarrow [\bm S \cup i]$ \Comment{Save index of current violator}
+\State $\alpha_i \leftarrow \alpha_i + (\Lambda - \Rho)$ \Comment{Update violator's alpha value}
+\State $b \leftarrow b + (\Lambda - \Rho)\beta$ \Comment{Update bias term}
 \EndIf
-\State $i \leftarrow i + 1$
-\If{$i = n$}
-\State $i = 0$
+\State $i \leftarrow i + 1$ \Comment{Get new sample}
+\If{$i = n$} \Comment{If the sample index exceeds the number of samples}
+\State $i = 0$ \Comment{Reset sample index}
 \EndIf
-\State $o_i \leftarrow \bm{K}(\bm x_i,\, \bm x_{\bm S})\, \bm \alpha_{\bm S} + b$
+\State $o_i \leftarrow \bm{K}(\bm x_i,\, \bm x_{\bm S})\, \bm \alpha_{\bm S} + b$ \Comment{Calculate the new sample's output value}
 \EndFor
 \end{algorithmic} 
 \end{algorithm}
@@ -2801,8 +2801,6 @@ Rank & 1.9 &\textbf{1.1} &\textbf{1.3333} & 1.6667  \\
 
 Preliminary experiments were conducted to test the capabilities of both approaches, and the results for percent accuracy and runtime are listed in Table~\ref{tab:dslvsolla}. The results show the better performance of OLLAWV in terms of accuracy. Both algorithms scale similarly in terms of runtime. The fast comparative runtime of OLLAWV-L2 is dependent on its change detection mechanism, since models have the opportunity to be minimally updated, or even remain the same over new incoming batches of data. However, OLLAWV achieves a competitive runtime without the use of a change detector. The main bottleneck in terms of runtime for OLLAWV is the kernel vector calculation needed for calculating the model output $\bm o$, i.e. current decision function output. Only non-support vector output values are calculated per iteration because samples are only allowed to be updated once. Therefore, the number of kernel calculations decreases by 1 per iteration. This phenomenon, as well as early stopping are contributing factors to OLLAWV's competitive runtime and model sparsity. These characteristics motivated OLLAWV's implementation and further experimentation in the context of batch data streams.
 
-
-\newpage
 \section{Experimental Environment, Results, and Analysis}
 This section presents the experimental setup and comparison of OLLAWV against 12 popular data stream algorithms on 24 different benchmark datasets and stream generators. The experimental setup is first described, the contemporary comparison methods are then listed, then a brief description of the datasets and stream generators is presented. The results over several metrics, as well as statistical analyses are then shown and the overall performance of the algorithms are discussed. The main purpose of OLLAWV's implementation in a data stream environment and the following experiments was to investigate whether it is capable of learning from streams efficiently, ensuring a strong base algorithm before tackling streams with abrupt concept drift. 
 
