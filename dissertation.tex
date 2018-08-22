@@ -2768,7 +2768,7 @@ $\Lambda = \eta C y_i$ & $\Rho = \eta \alpha_i$
 
 \begin{table}[th!]
 \centering
-\caption{Comparison of OLLAWV vs. DSL2SVM}
+\caption{Comparison of OLLAWV vs. OLLA-L2}
 \scriptsize
 \label{tab:dslvsolla}
 \resizebox{\textwidth}{!}{\begin{tabularx}{\textwidth}{l@{\extracolsep{\fill}}cccc}
@@ -2776,28 +2776,26 @@ $\Lambda = \eta C y_i$ & $\Rho = \eta \alpha_i$
 \multicolumn{1}{l}{Dataset} & \multicolumn{2}{c}{Accuracy (\%)} & \multicolumn{2}{c}{Runtime (s)} \\
 \cmidrule(lr){2-3}
 \cmidrule(lr){4-5}
- & DSL2SVM & OLLAWV & DSL2SVM & OLLAWV \\
+ & OLLA-L2 & OLLAWV & OLLA-L2 & OLLAWV \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
-RBFNoDrift &93.0663 &\textbf{94.2117} &\textbf{0.0218} &0.0329   \\
+RBFNoDrift &93.0663 &\textbf{94.2117} &\textbf{0.02379} &0.0329   \\
 HyperplaneSlow &87.4016 &\textbf{90.0913} &\textbf{0.0261} &0.0353   \\
 HyperplaneFaster &87.4033 &\textbf{89.5092} &\textbf{0.0256} &0.0263   \\
-STAGGERGeneratorF1 &\textbf{100.0000} &\textbf{100.0000} &0.0034 &\textbf{0.0021}  \\
-HyperplaneFaster0.2 &87.4047 &\textbf{89.4911} &\textbf{0.0257} &0.0268   \\
+STAGGERGeneratorF1 &\textbf{100.000} &\textbf{100.000} &0.0034 &\textbf{0.0021}  \\
+HyperplaneFaster02 &87.4047 &\textbf{89.4911} &\textbf{0.0257} &0.0268   \\
 MixedGeneratorBT &92.4990 &\textbf{97.9969} &\textbf{0.0108} &0.0205  \\
 MixedGeneratorBF &92.5537 &\textbf{98.0284} &\textbf{0.0107} &0.0299   \\
 SineGeneratorF1BF &97.3659 &\textbf{97.7909} &\textbf{0.0091} &0.0122   \\
 SineGeneratorF2BF &97.3659 &\textbf{97.7909} &\textbf{0.0091} &0.0121   \\
-STAGGERGeneratorF1BF &\textbf{100.0000} &\textbf{100.0000} &0.0035 &\textbf{0.0021}   \\
-STAGGERGeneratorF2BF &\textbf{100.0000} &\textbf{100.0000} &0.0039 &\textbf{0.0022}  \\
+STAGGERGeneratorF1BF &\textbf{100.000} &\textbf{100.000} &0.0035 &\textbf{0.0021}   \\
+STAGGERGeneratorF2BF &\textbf{100.000} &\textbf{100.000} &0.0039 &\textbf{0.0022}  \\
 HyperplaneFasterAN0 &87.4033 &\textbf{89.5092} &\textbf{0.0255} &0.0263   \\
 HyperplaneFasterAN5 &87.2912 &\textbf{89.2898} &\textbf{0.0258} &0.0264   \\
-HyperplaneFasterCN0 &87.4033 &\textbf{89.5092} &\textbf{0.0257} &0.0263   \\
-HyperplaneFasterACN0 &87.4033 &\textbf{89.5092} &\textbf{0.0257} &0.0263   \\
 SEASuddenAN0 &84.0088 &\textbf{87.7956} &0.0494 &\textbf{0.0208}   \\
 SEASuddenAN05 &83.6874 &\textbf{87.5283} &0.0494 &\textbf{0.0284}  \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
-Average &91.3093 &\textbf{93.4148} & \textbf{0.0207} & 0.0210 \\
-Rank &1.9118 &\textbf{1.0882} &\textbf{1.2941} & 1.7059  \\
+Average &91.8300 &\textbf{93.9356} & \textbf{0.0201} & 0.0203 \\
+Rank & 1.9 &\textbf{1.1} &\textbf{1.3333} & 1.6667  \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
 \end{tabularx}}
 \end{table}
