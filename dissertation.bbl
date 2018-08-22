@@ -475,36 +475,6 @@
     \field{year}{2000}
   \endentry
 
-  \entry{bifet2009adaptive}{inproceedings}{}
-    \name{author}{2}{}{%
-      {{hash=BA}{%
-         family={Bifet},
-         familyi={B\bibinitperiod},
-         given={A.},
-         giveni={A\bibinitperiod},
-      }}%
-      {{hash=GR}{%
-         family={Gavald{\`a}},
-         familyi={G\bibinitperiod},
-         given={R.},
-         giveni={R\bibinitperiod},
-      }}%
-    }
-    \list{organization}{1}{%
-      {Springer}%
-    }
-    \strng{namehash}{BAGR2}
-    \strng{fullhash}{BAGR2}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{sortinit}{B}
-    \field{sortinithash}{B}
-    \field{booktitle}{International Symposium on Intelligent Data Analysis}
-    \field{pages}{249\bibrangedash 260}
-    \field{title}{Adaptive learning from evolving data streams}
-    \field{year}{2009}
-  \endentry
-
   \entry{bifet2007learning}{inproceedings}{}
     \name{author}{2}{}{%
       {{hash=BA}{%
@@ -4052,32 +4022,32 @@
       {{hash=MG}{%
          family={Melki},
          familyi={M\bibinitperiod},
-         given={Gabriella},
+         given={G.},
          giveni={G\bibinitperiod},
       }}%
       {{hash=KV}{%
          family={Kecman},
          familyi={K\bibinitperiod},
-         given={Vojislav},
+         given={V.},
          giveni={V\bibinitperiod},
       }}%
       {{hash=VS}{%
          family={Ventura},
          familyi={V\bibinitperiod},
-         given={Sebasti{\'a}n},
+         given={S.},
          giveni={S\bibinitperiod},
       }}%
       {{hash=CA}{%
          family={Cano},
          familyi={C\bibinitperiod},
-         given={Alberto},
+         given={A.},
          giveni={A\bibinitperiod},
       }}%
     }
     \list{publisher}{1}{%
       {Elsevier}%
     }
-    \strng{namehash}{MG+2}
+    \strng{namehash}{MG+1}
     \strng{fullhash}{MGKVVSCA1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}

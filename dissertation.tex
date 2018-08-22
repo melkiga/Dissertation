@@ -1704,7 +1704,7 @@ Wilcoxon R$^-$ &21.500 & 0.0000 &1.0000 & 0.0000 &0.0000 &0.0000 &0.0000 &0.0000
 \subsection{Accuracy}
 The results for accuracy indicate that the bag-based and ensemble learners perform better than the instance-based and wrapper methods. MIRSVM achieves the best accuracy over $5$ of the $15$ datasets with a competitive average against miGraph, Bagging, Stacking, and TLC. Note that MIRSVM performs better than MISVM for all datasets, indicating that using representatives from each bag and limiting the number of support vectors per negative bag improves the classification performance. The instance-level classifiers and wrapper methods, such as MIBoost, MIWrapper, and SimpleMI perform the worst. This behavior emphasizes the importance of not making prior assumptions about the positive bags' distributions. 
 
-Figure~\ref{fig:BonfDunnacc} and Table~\ref{tab:statacc} show the results for the statistical analysis on the accuracy results. The algorithms with ranking higher than $5.63$ (MIRSVM rank + Bonferroni-Dunn critical value), to the right of the grey bar in Figure~\ref{fig:BonfDunnacc}, perform statistically worse than MIRSVM. Table~\ref{tab:statacc} shows the $p$-values of the Holm and Wilcoxon tests and their results complement one another. Holm's procedure rejects those hypotheses having a $p$-value $\leq 0.01$, thus indicating that MIRSVM performs significantly better than all methods except miGraph, Bagging, Stacking, and TLC. The Wilcoxon $p$-values show significant differences exist among all algorithms except miGraph, Bagging, and Stacking. They also show that MIRSVM has significantly better accuracy than MIBoost, MIOptimalBall, MIDD, MIWrapper, MISMO, MISVM, and SimpleMI, each having respectively small $p$-values, highlighting MIRSVM's superior classification accuracy. 
+Figure~\ref{fig:BonfDunnacc} and Table~\ref{tab:statacc} show the results for the statistical analysis on the accuracy results. The algorithms with ranking higher than $5.63$ (MIRSVM rank + Bonferroni-Dunn critical value), to the right of the gray bar in Figure~\ref{fig:BonfDunnacc}, perform statistically worse than MIRSVM. Table~\ref{tab:statacc} shows the $p$-values of the Holm and Wilcoxon tests and their results complement one another. Holm's procedure rejects those hypotheses having a $p$-value $\leq 0.01$, thus indicating that MIRSVM performs significantly better than all methods except miGraph, Bagging, Stacking, and TLC. The Wilcoxon $p$-values show significant differences exist among all algorithms except miGraph, Bagging, and Stacking. They also show that MIRSVM has significantly better accuracy than MIBoost, MIOptimalBall, MIDD, MIWrapper, MISMO, MISVM, and SimpleMI, each having respectively small $p$-values, highlighting MIRSVM's superior classification accuracy. 
 
 \subsection{Precision \& Recall}
 Precision and recall are conflicting metrics that must be evaluated together in order to observe their behavior, since they are both used to measure relevance. The results for MIWrapper and SimpleMI indicate that they are unstable classifiers, exhibiting extreme variance in behavior, making them unsuitable for real-world applications. It is also interesting to analyze the performance on the mutagenesis datasets which have a larger number of positive bags than negative, where MISVM, MIBoost, MIWrapper, and SimpleMI predict all bags as negative. Additionally, while MISMO obtains unbiased results on these datasets, MIRSVM significantly outperforms it over both precision and recall, achieving a better trade-off.  
@@ -2659,7 +2659,7 @@ This paper proposed a novel online learning procedure and algorithm for solving 
 The first experimental study demonstrates the better performance of OLLAWV compared with state-of-the-art SVM solvers (MNSVM and NNISDA) which have been shown to outperform the popular SMO implementation in the LIBSVM package. The results for accuracy, runtime, and percentage of support-vectors, obtained by the strict nested cross-validation procedure, were compared and further validated using statistical analysis with non-parametric tests. They highlighted the advantages and major speedup achieved by OLLAWV against the competing MNSVM and NNISDA. The second, supplemental experimental study evaluated the performance of OLLAWV against $5$ popular non-SVM methods, showing the better performance of OLLAWV against all five non-SVM algorithms ($k$-Nearest Neighbors ($k$-NN), J48, JRip, Na\"ive Bayes, and Logistic). The proposal, OLLAWV, performs statistically better in terms of runtime and model size across all $23$ evaluated benchmark datasets, without compromising accuracy. The research outcomes of this chapter have been published in~\cite{melki2018ollawv}.
 
 \chapter{OLLAWV for Batched Data Streams}
-Due to advances in hardware and software technologies, data generation and automated storage has become fast, voluminous, and continuous; usually referred to as streams of data. Nowadays, data streams are ubiquitous and notoriously difficult to store, analyze, visualize, and learn from. Most traditional machine learning techniques need to be adapted to accommodate the streamed, also known as online, environment due to underlying resource constraints, i.e. memory consumption and runtime, as well as the possibility of concept drift. This chapter presents a novel implementation and experimental environment for two online support vector machines (SVMs) in the batched data stream setting. Unlike other existing methods, these two online algorithms were chosen because their characteristics are a natural remedy for the time and memory constraints that come with the data stream problem. The first algorithm's low memory complexity deals with the memory constraints, and the second methods' fast runtime and self-stopping capability remedies the time constraint. The results for the latter, \textit{OnLine Learning Algorithm using Worst-Violators} (OLLAWV), showed a superior performance to the former, \textit{OnLine Learning Algorithm - List 2} (OLLA-L2). OLLAWV was then compared to 12 popular data stream algorithms against 32 datasets and stream generators. The results and statistical analysis showed OLLAWV's better performance, making it suitable for streamed learning. 
+Due to advances in hardware and software technologies, data generation and automated storage has become fast, voluminous, and continuous; usually referred to as streams of data. Nowadays, data streams are ubiquitous and notoriously difficult to store, analyze, visualize, and learn from. Most traditional machine learning techniques need to be adapted to accommodate the streamed, also known as online, environment due to underlying resource constraints, i.e. memory consumption and runtime, as well as the possibility of concept drift. This chapter presents a novel implementation and experimental environment for two online support vector machines (SVMs) in the batched data stream setting. Unlike other existing methods, these two online algorithms were chosen because their characteristics are a natural remedy for the time and memory constraints that come with the data stream problem. The first algorithm's low memory complexity deals with the memory constraints, and the second methods' fast runtime and self-stopping capability remedies the time constraint. The results for the latter, \textit{OnLine Learning Algorithm using Worst-Violators} (OLLAWV), showed a superior performance to the former, \textit{OnLine Learning Algorithm - List 2} (OLLA-L2). OLLAWV was then compared to 12 popular data stream algorithms against 24 datasets and stream generators. The results and statistical analysis showed OLLAWV's better performance, making it suitable for streamed learning. 
 
 \section{Data Stream Classification Background}
 This section first defines the notation that will be used throughout the chapter, and then formally describes the data stream classification problem along with relevant popular algorithms used within this paradigm.
@@ -2804,10 +2804,10 @@ Rank &1.9118 &\textbf{1.0882} &\textbf{1.2941} & 1.7059  \\
 
 \newpage
 \section{Experimental Environment, Results, and Analysis}
-This section presents the experimental setup and comparison of OLLAWV against 12 popular data stream algorithms on 32 different benchmark datasets and stream generators. The experimental setup is first described, the contemporary comparison methods are then listed, then a brief description of the datasets and stream generators is presented. The results over several metrics, as well as statistical analyses are then shown and the overall performance of the algorithms are discussed. The main purpose of OLLAWV's implementation in a data stream environment and the following experiments was to investigate whether it is capable of learning from streams efficiently, ensuring a strong base algorithm before tackling streams with abrupt concept drift. 
+This section presents the experimental setup and comparison of OLLAWV against 12 popular data stream algorithms on 24 different benchmark datasets and stream generators. The experimental setup is first described, the contemporary comparison methods are then listed, then a brief description of the datasets and stream generators is presented. The results over several metrics, as well as statistical analyses are then shown and the overall performance of the algorithms are discussed. The main purpose of OLLAWV's implementation in a data stream environment and the following experiments was to investigate whether it is capable of learning from streams efficiently, ensuring a strong base algorithm before tackling streams with abrupt concept drift. 
 
-\subsection{Experimental Environment}
-The experimental environment was designed to test the difference in performance of the proposed method against 12 contemporary algorithms which are designed to handle stationary and non-stationary data streams. Some use explicit drift-detector mechanisms and others take a passive approach. The majority of the classifiers used in the experiments are without an explicit concept-drift detector because OLLAWV was implemented without one, ensuring a fair comparison. However, classifiers with a drift detector were included for a more comprehensive understanding of how OLLAWV will compare when a concept drift arises. 
+\subsection{Experimental Environment} %The experiments were conducted over 24 different data streams. 
+The experimental environment was designed to test the difference in performance of the proposed method against 12 contemporary algorithms which are designed to handle stationary and non-stationary data streams. Some use explicit drift-detector mechanisms and others take a passive approach. The majority of the classifiers used in the experiments are without an explicit concept-drift detector because OLLAWV was implemented without one, ensuring a fair comparison. However, classifiers with a drift detector were included for a more comprehensive understanding of how OLLAWV will compare. 
 
 \begin{table}
 \caption{Data Stream Algorithm Summary} \centering \footnotesize
@@ -2818,11 +2818,11 @@ Algorithm 	& Description 									&    Passive	&   Active  		\\
 \noalign{\smallskip}\hline\noalign{\smallskip}
 HOT~\cite{pfahringer2007new} 	& Hoeffding Option Tree 	&	\checkmark	&					\\
 AdaHOT~\cite{pfahringer2007new} & AdaHoeffding Option Tree 	&	\checkmark	&					\\
-NB~\cite{john1995estimating}	& Na\:{i}ve Bayes 			&	\checkmark	&					\\
-$k$-NNwPAW 						& $k$-NN with Probabilistic Adaptive Windows & & \checkmark		\\
+NB~\cite{john1995estimating}	& Na\"{i}ve Bayes 			&	\checkmark	&					\\
+$k$-NNPAW~\cite{bifet2013efficient}	& $k$-NN with Probabilistic Adaptive Windows & \checkmark & \\
 EDDM~\cite{baena2006early} 		& Early Drift Detection Method  &			&	\checkmark		\\
 VFDR~\cite{gama2011learning} 	& Very Fast Decision Rules 	&	\checkmark	&					\\
-VFDR-NB~\cite{gama2011learning} & VFDR with Na\:{i}ve Bayes	&	\checkmark	&					\\
+VFDR-NB~\cite{gama2011learning} & VFDR with Na\"{i}ve Bayes	&	\checkmark	&					\\
 SAE2~\cite{gomes2014sae2}		& Social Adaptive Ensemble 	&	\checkmark	&					\\
 Learn++.NSE~\cite{elwell2011incremental} & Learning in Non-Stationary Environments &\checkmark &\\
 DWM~\cite{kolter2007dynamic} 	& Dynamic Weighted Majority &				&	\checkmark		\\
@@ -2832,7 +2832,7 @@ OCBoost~\cite{pelossof2009online} & Online Coordinate Boosting 	&	\checkmark	&		
 \end{tabularx}
 \end{table}
 
-\textit{The algorithms without a drift detector are as follows: \textit{Hoeffding Option Tree} (HOT)~\cite{pfahringer2007new}, \textit{Adaptive Hoeffding Option Tree} (AdaHOT)~\cite{pfahringer2007new}, \textit{Na\"ive Bayes}, \textit{Rule Classifier} (RC) and \textit{Rule Classifier Na\"ive Bayes} (RCNB)~\cite{gama2011learning}, \textit{Social Adaptive Ensemble Classifier} (SAE2)~\cite{gomes2014sae2}, and \textit{Online Coordinate Boosting} (OCBoost)~\cite{pelossof2009online}. Those with a drift detector are: \textit{$k$-Nearest Neighbors with Probabilistic Adaptive Window} ($k$-NNPAW), \textit{Single Classifier Drift} (SCD)~\cite{baena2006early} using the \textit{Hoeffding Tree} as a base, \textit{Learning in Non-Stationary Environments} (Learn++.NSE)~\cite{elwell2011incremental}, \textit{Dynamic Weighted Majority} (DWM)~\cite{kolter2007dynamic}, \textit{Dynmic Adaptation to Concept Changes} (DACC)~\cite{jaber2013new}.}
+%\textit{The algorithms without a drift detector are as follows: \textit{Hoeffding Option Tree} (HOT)~\cite{pfahringer2007new}, \textit{Adaptive Hoeffding Option Tree} (AdaHOT)~\cite{pfahringer2007new}, \textit{Na\"ive Bayes}, \textit{Rule Classifier} (RC) and \textit{Rule Classifier Na\"ive Bayes} (RCNB)~\cite{gama2011learning}, \textit{Social Adaptive Ensemble Classifier} (SAE2)~\cite{gomes2014sae2}, and \textit{Online Coordinate Boosting} (OCBoost)~\cite{pelossof2009online}. Those with a drift detector are: \textit{$k$-Nearest Neighbors with Probabilistic Adaptive Window} ($k$-NNPAW), \textit{Single Classifier Drift} (SCD)~\cite{baena2006early} using the \textit{Hoeffding Tree} as a base, \textit{Learning in Non-Stationary Environments} (Learn++.NSE)~\cite{elwell2011incremental}, \textit{Dynamic Weighted Majority} (DWM)~\cite{kolter2007dynamic}, \textit{Dynmic Adaptation to Concept Changes} (DACC)~\cite{jaber2013new}.}
 
 These algorithms were chosen because they have shown considerable performance in learning in a stream environment, while also being readily available for use and reproducing their results through MOA, \textit{Massive Online Analysis}\footnote{https://moa.cms.waikato.ac.nz/}~\cite{moacite} framework. The experiments were run on a server with 2 Intel Xeon CPU E5-2690v4 with 28 cores (56 threads), 128 GB of memory, and CentOS 7.4. OLLAWV was also implemented in Java within MOA framework. 
 
@@ -2863,7 +2863,7 @@ These algorithms were chosen because they have shown considerable performance in
 \end{algorithm}
 In the context of traditional batch learning, the most popular and unbiased method for estimating the performance of an algorithm is the \textit{nested cross-validation} procedure. However, in the online learning setting which has computationally strict requirements and drifting concepts, the nested cross-validation procedure is not straightforwardly applicable. The approach taken for this experimental environment is the evaluation method named \textit{Interleaved Test-Then-Train}, also known as \textit{Prequential}~\cite{gama2013evaluating} (predictive sequential evaluation), listed in Algorithm~\ref{alg:evalChunk}. It is used to describe the change in accuracy (or any other evaluation metric) of algorithms over time. It follows the online learning protocol: when a sample is received, the current model makes a prediction, and when the system receives the sample's true label, the classifier's loss can be computed. In other words, each sample can be used to test the model before it is used during training, and using this, the evaluation metric can be incrementally updated. Using this order, the algorithms are always being tested on unseen samples. This scheme ensures that no hold-out test set is needed, thus utilizing all available data. It also provides a smooth and unbiased plot of the evaluation metric over time, where each sample becomes increasingly less significant to the overall average. 
 
-Along with the prequential evaluation method, traditional $k$-fold cross-validation was used in the OLLAWV experiments for the purpose of model selection. Once a new batch is received by the algorithm, $5$-fold cross validation is performed to select the best representative parameters for the current batch, and once they are chosen, they will be used for the remaining batches. The best hyper-parameters were chosen from the following $6 \times 7$ possible combinations, shown in Equations~\eqref{eq:paramCollads} and~\eqref{eq:paramGollads}. 
+Along with the prequential evaluation method, traditional $k$-fold cross-validation was used in the OLLAWV experiments for the purpose of model selection. Once a new batch is received by the algorithm, $5$-fold cross validation is performed to select the best representative parameters for the current batch, and once they are chosen, they will be used for the remaining batches. This rigorous procedure is computationally expensive, however, the goal is to optimally and fairly find the best representative SVM parameters for the incoming stream. First, each batch of samples is normalized by linear transformation of the feature values to the range [0,1]. Then the training process, also involving cross-validation and prequential evaluation, was performed. To deal with multi-class classification problems, the one-vs-one, or pairwise, approach was used. The best hyper-parameters were chosen from the following $6 \times 7$ possible combinations, shown in Equations~\eqref{eq:paramCollads} and~\eqref{eq:paramGollads}. 
 \begin{subequations}
 \label{eq:hyperparamollads}
 \begin{align}
@@ -2877,7 +2877,6 @@ The $\gamma$ parameter refers to that of the Gaussian RBF kernel, given by:
 \mathcal{K}(\bm{x_i},\bm{x_j}) = e^{-\gamma\norm{\bm{x_i} - \bm{x_j}}^2}.
 \end{equation}
 
-Each batch of samples is normalized by linear transformation of the feature values to the range [0,1]. To deal with multi-class classification problems, the one-vs-one, or pairwise, approach was used. 
 
 \subsection{Datasets}
 \begin{table}[t!]
@@ -2905,15 +2904,15 @@ SEAGenerator	       			& 	1,000,000	& 	2	        & 	2 \\ %A streaming ensemble a
 \noalign{\smallskip}\hline
 \end{tabularx}
 \end{table}
-Table~\ref{tab:dsDataset} presents a summary of the static datasets and the stream generators used throughout the experiments, where the number of attributes, classes, and samples are shown. Both the static datasets and the generators provided 1000-sample sized batches to the algorithms. The static datasets were obtained from the UCI Machine Learning repository\footnote{http://archive.ics.uci.edu/ml/index.php}~\cite{Lichman:2013} and were simulated as streams using a stream generator from the MOA framework. The stream generators were also used within the MOA~\cite{moacite} framework. The following are descriptions of the types of generators used as base generators throughout the experimental study. Variations of the generators were also used to simulate slow and abrupt concept drifts.
+Table~\ref{tab:dsDataset} presents a summary of the static datasets and the stream generators used throughout the experiments, where the number of attributes, classes, and samples are shown. Both the static datasets and the generators provided 1000-sample sized batches to the algorithms. The static datasets were obtained from the UCI Machine Learning repository\footnote{http://archive.ics.uci.edu/ml/index.php}~\cite{Lichman:2013} and were simulated as streams using a stream simulator from the MOA framework. The stream generators listed were also used within the MOA~\cite{moacite} framework. The following are descriptions of the types of generators used as base generators throughout the experimental study. Variations of the generators were also used to simulate the concept drift rate, as well as varying number of attributes, classes, and functions (pertaining to the functional generators). These variations are suffixed with the generator name in the results tables.
 \begin{itemize}
-\iitem \textbf{Random RBF (Radial Basis Function) Generator}: This generator produces samples that form normally distributed hyperspheres surrounding randomly selected centroids, with varying densities. This generator also has the option to simulate data evolution, i.e. concept drift. 
+\iitem \textbf{Random RBF Generator}: This generator produces samples that form normally distributed hyperspheres surrounding randomly selected centroids, with varying densities. This generator also has the option to simulate data evolution, i.e. concept drift. 
 
 \iitem  \textbf{LED Generator}: This stream generator's goal is to predict the digit displayed on a seven-segment LED display, where each segment has a 10\% chance of being inverted.
 
 \iitem \textbf{Rotating Hyperplane}: This generator produces samples of different classes that are separated by a hyperplane. Their orientation and position may be smoothly changed by modifying the size of the weights.
 
-\iitem \textbf{Waveform Generator}: This generator constructs three different types of waves which are combinations of two or three base waveforms. The goal is to determine the final wave type.
+\iitem \textbf{Waveform Generator}: This generator constructs three different types of waves which are combinations of two/three base waveforms. The goal is to find the final wave type.
 
 \iitem \textbf{STAGGER Concepts Generator}: This generator creates a concepts which are described by a collection of samples, where each sample is a boolean function of attribute-valued pairs and is described by a disjunct of conjuncts.
 
@@ -2925,10 +2924,8 @@ Table~\ref{tab:dsDataset} presents a summary of the static datasets and the stre
 
 \end{itemize}
 
-
-
 \section{Results \& Analysis}
-The classification performance was measured using 2 metrics: Accuracy and Cohenâ€™s kappa rate, and the results are shown in Tables~\ref{tab:DSResultsacc} and~\ref{tab:DSResultskappa} respectively. The metrics are calculated as shown in Equations~\ref{eq:accuracyds} and~\ref{eq:kappads}, where TP is the true positive value, TN is the true negative value, FP is the false positive value, FN is the false negative value, and $n^\prime = TP + FP + TN + FN$.
+The classification performance was measured using two metrics: Accuracy and Cohen's kappa rate, and the results are shown in Tables~\ref{tab:DSResultsacc} and~\ref{tab:DSResultskappa}, respectively. The metrics are calculated as shown in Equations~\ref{eq:accuracyds} and~\ref{eq:kappads}, where TP is the true positive value, TN is the true negative value, FP is the false positive value, FN is the false negative value, and $n^\prime = TP + FP + TN + FN$.
 \begin{subequations}
 \label{eq:metricsds}
 \begin{align}
@@ -2936,58 +2933,48 @@ The classification performance was measured using 2 metrics: Accuracy and Cohenâ
 \text{Cohen's Kappa Rate} \tab \tab &\dfrac{n^\prime - \dfrac{(TP+FN)*(TP+FP)}{n^\prime}}{1 - \dfrac{(TP+FN)*(TP+FP)}{n^\prime}} \label{eq:kappads}
 \end{align}
 \end{subequations}
-The training times of each algorithm are also given in Table~\ref{tab:DSResultsTrain} to analyze the scalability and speed of each of the algorithms. These metrics were all recorded using the Test-Then-Train procedure. 
+The training times of each algorithm are also given in Table~\ref{tab:DSResultsTrain} to analyze the scalability of each of the algorithms. All metrics were calculated using the prequential procedure. 
 
-In order to analyze the performances of the multiple models, non-parametric statistical tests are used to validate the experimental results obtained. The Iman-Davenport non-parametric test is run to investigate whether significant differences exist among the performance of the algorithms by ranking them over the datasets used, using the Friedman test. The algorithm ranks for each metric in Equations~\eqref{eq:metrics} are presented in the last row of the results tables, and the lowest (best) rank value is typeset in bold. Table~\ref{tab:DSResultsmeta} contains the ranks and meta-rank of all methods, which helps determine and visualize the best performing algorithms across all datasets and metrics. 
+In order to analyze the performances of the multiple models, non-parametric statistical tests are used to validate the experimental results obtained. The Iman-Davenport non-parametric test is run to investigate whether significant differences exist among the performance of the algorithms by ranking them over the datasets used, using the Friedman test. The algorithm ranks for each metric in Equations~\eqref{eq:metrics} are presented in the last row of the results tables, and the lowest (best) rank value is typeset in bold. 
 
-After the Iman-Davenport test indicates significant differences, the Bonferroni-Dunn post-hoc test~\cite{Dunn1961} is then used to find where they occur between algorithms by assuming the classifiers' performances are different by at least some critical value. Below each result table, a figure highlighting the critical distance (in gray), from the best ranking algorithm to the rest, is shown. The algorithms to the right of the critical distance bar perform statistically significantly worse than the control algorithm, OLLAWV. Figures \ref{fig:BonfDunnaccDS}, \ref{fig:BonfDunnkappaDS}, and \ref{fig:BonfDunnTrainDS} show the results of the Bonferroni-Dunn post-hoc procedure over the metrics in~\eqref{eq:metricsds}, as well as the meta-rank results in Table~\ref{tab:DSResultsmeta}.
+After the Iman-Davenport test indicates significant differences, the Bonferroni-Dunn post-hoc test~\cite{Dunn1961} is then used to find where they occur between algorithms by assuming the classifiers' performances are different by at least some critical value. Below each result table, a figure highlighting the critical distance (in gray), from the best ranking algorithm to the rest, is shown. The algorithms to the right of the critical distance bar perform statistically significantly worse than the control algorithm, OLLAWV. Figures \ref{fig:BonfDunnaccDS}, \ref{fig:BonfDunnkappaDS}, and \ref{fig:BonfDunnTrainDS} show the results of the Bonferroni-Dunn post-hoc procedure over the metrics in Equation~\eqref{eq:metricsds}.
 
-\subsection{Accuracy}
-% CD for 0.05 alpha is 2.789
-\begin{table}[t!]
+\begin{table}[H]
 \caption{Accuracy (\%) Comparison for Data Stream Classifiers}
 \scriptsize
 \centering
 \label{tab:DSResultsacc}
 \resizebox{\textwidth}{!}{\begin{tabularx}{1.55\textwidth}{l@{\extracolsep{\fill}}ccccccccccccccc}
 \noalign{\smallskip}\hline\noalign{\smallskip}
-Dataset & OLLAWV & HT & AdaHT & Naive Bayes & $k$-NNPAW &SCD & RC &RCNB & SAE2 & LearnNSE &DWM &DACC &OCBoost &\\
+Dataset & OLLAWV & HOT & AdaHOT & NB & $k$-NNPAW & EDDM & VFDR & VFDR-NB & SAE2 & LearnNSE &DWM &DACC &OCBoost &\\
 \noalign{\smallskip}\hline\noalign{\smallskip}
-CovType &\textbf{90.2822} &85.3405 &86.2222 &60.0371 &87.8893 &59.5562 &60.3240 &75.5822 &76.2069 &69.9669 &71.9559 &61.7002 &71.2860 &  \\
-census &93.7574 &94.6946 &\textbf{94.7352} &87.0188 &93.6456 &91.8530 &93.6477 &84.0601 &90.1319 &84.1443 &91.4037 &90.3708 &93.4695 &  \\
-shuttle &98.6536 &98.1750 &98.5214 &90.0161 &\textbf{99.2643} &98.4893 &88.3982 &96.0571 &90.2429 &93.7893 &89.9125 &92.0268 &74.2107 &  \\
-RBFNoDrift &\textbf{94.2117} &92.9410 &92.9598 &71.9924 &93.7469 &92.4787 &77.5293 &81.7067 &89.1612 &70.2820 &70.4251 &65.0084 &92.0836 &  \\
-LEDNoDrift &73.8281 &73.8508 &73.8349 &\textbf{73.9421} &65.8277 &73.6379 &41.1618 &73.7521 &67.5965 &67.8404 &71.1464 &48.2683 &17.4397 &  \\
-HyperplaneSlow &\textbf{90.0913} &82.0965 &82.4205 &77.6904 &84.0264 &81.5657 &68.8829 &85.1884 &82.6670 &86.2044 &88.0601 &80.6617 &85.7758 &  \\
-HyperplaneFaster &\textbf{89.5092} &82.7166 &85.3419 &77.2308 &84.2722 &84.3261 &78.6329 &85.1810 &83.0129 &86.4991 &86.7611 &81.1543 &87.7953 &  \\
-RBFGradualRecurring &98.4136 &94.6248 &94.4420 &58.3269 &\textbf{98.4261} &93.4687 &60.0797 &86.1603 &88.4771 &72.8730 &74.9565 &61.9133 &49.6157 &  \\
-RBFBlips &\textbf{99.0651} &95.6659 &95.6028 &60.8269 &98.9389 &94.9151 &66.8955 &88.3527 &89.0376 &77.5314 &79.9797 &68.2728 &47.4572 &  \\
-WaveformGenerator &83.9375 &82.9866 &\textbf{84.1385} &80.4105 &80.1250 &83.6086 &63.8796 &75.8405 &80.1837 &80.1908 &78.3940 &73.5897 &55.0493 &  \\
-STAGGERGeneratorF1 &\textbf{100.0000} &99.9887 &99.9887 &\textbf{100.0000} &\textbf{100.0000} &\textbf{100.0000} &99.9140 &\textbf{100.0000} &95.0427 &89.8206 &\textbf{100.0000} &99.9564 &\textbf{100.0000} &  \\
-HyperplaneFaster0.2 &\textbf{89.4911} &82.7744 &85.3603 &77.2520 &84.2736 &87.6381 &78.8852 &85.1126 &83.0403 &86.5075 &86.7563 &81.2289 &87.5864 &  \\
-RBFGradualRecurringv2 &\textbf{97.1781} &93.2890 &93.0019 &57.4707 &95.7334 &93.1871 &57.9634 &80.7124 &84.4510 &62.4141 &63.7931 &49.4211 &48.8806 &  \\
-MixedGeneratorBT &97.9969 &99.1064 &\textbf{99.3219} &91.9333 &97.6650 &99.1067 &83.1220 &93.2806 &93.1578 &90.9064 &91.1943 &89.1559 &98.9794 &  \\
-MixedGeneratorBF &98.0284 &99.1773 &\textbf{99.3600} &92.0423 &97.5911 &99.2032 &89.9633 &94.3045 &93.4079 &90.7614 &91.4588 &88.6093 &98.9444 &  \\
-RandomRBFGeneratorC4A25 &\textbf{99.1244} &97.4330 &97.1381 &81.5943 &98.6904 &96.8900 &72.3260 &89.0275 &90.6129 &78.2290 &79.6715 &63.0206 &52.1561 &  \\
-RandomRBFGeneratorC4A50 &\textbf{99.7429} &99.1592 &99.1373 &91.9012 &99.1654 &98.9934 &80.6333 &95.6272 &92.0019 &86.0263 &90.4494 &73.7765 &50.6618 &  \\
-SineGeneratorF1BF &97.7909 &\textbf{99.7491} &99.7276 &93.5510 &95.5395 &99.6634 &94.8262 &95.9013 &94.5098 &92.5533 &93.3025 &92.1967 &99.5085 &  \\
-SineGeneratorF2BF &97.7909 &\textbf{99.7464} &99.7264 &93.5510 &95.4139 &99.6620 &95.2625 &96.0973 &94.5689 &92.5533 &93.3383 &92.1967 &99.4790 &  \\
-STAGGERGeneratorF1BF &\textbf{100.0000} &99.9887 &99.9887 &\textbf{100.0000} &\textbf{100.0000} &\textbf{100.0000} &99.9140 &\textbf{100.0000} &95.0427 &89.8206 &\textbf{100.0000} &99.9564 &\textbf{100.0000} &  \\
-STAGGERGeneratorF2BF &\textbf{100.0000} &99.9774 &99.9774 &\textbf{100.0000} &\textbf{100.0000} &99.9774 &99.8683 &\textbf{100.0000} &95.0189 &44.4047 &\textbf{100.0000} &\textbf{100.0000} &0.6121 &  \\
-RBFGradualRecurringCN0 &98.4136 &94.6248 &94.4420 &58.3269 &\textbf{98.4261} &93.4687 &60.0797 &86.1603 &88.4771 &72.8730 &74.9565 &61.9133 &49.6157 &  \\
-RBFGradualRecurringACN0 &98.4136 &94.6248 &94.4420 &49.6157 &\textbf{98.4261} &93.4687 &60.0797 &85.9703 &88.4771 &72.8730 &74.9565 &61.9133 &49.6157 &  \\
-HyperplaneFasterAN0 &\textbf{89.5092} &82.7166 &85.3419 &87.7953 &84.2722 &84.3261 &78.6329 &85.1810 &83.0129 &86.4991 &86.7611 &81.1543 &87.7953 &  \\
-HyperplaneFasterAN5 &\textbf{89.2898} &82.6891 &85.2441 &87.3759 &84.1852 &88.7366 &79.1352 &84.8853 &82.9208 &86.4050 &86.6744 &81.1184 &87.3759 &  \\
-HyperplaneFasterCN0 &\textbf{89.5092} &82.7166 &85.3419 &87.7953 &84.2722 &84.3261 &78.6329 &85.1810 &83.0129 &86.4991 &86.7611 &81.1543 &87.7953 &  \\
-HyperplaneFasterACN0 &\textbf{89.5092} &82.7166 &85.3419 &87.7953 &84.2722 &84.3261 &78.6329 &85.1810 &83.0129 &86.4991 &86.7611 &81.1543 &87.7953 &  \\
-SEASuddenAN0 &87.7956 &84.9212 &85.1746 &88.2325 &87.2164 &\textbf{88.9726} &81.5637 &85.1719 &85.1104 &85.7668 &86.9326 &83.7264 &88.2325 &  \\
-SEASuddenAN05 &87.5283 &84.5692 &84.8189 &87.5277 &86.9567 &\textbf{88.2862} &81.5456 &85.1097 &84.5655 &85.6288 &86.5414 &83.5301 &87.5277 &  \\
-CovTypeAN0 &\textbf{90.2822} &85.3405 &86.2222 &71.2860 &87.8893 &59.5562 &60.3240 &75.5822 &76.2069 &69.9669 &71.9559 &61.7002 &71.2860 &  \\
-CovTypeCN0 &\textbf{90.2822} &85.3405 &86.2222 &71.2860 &87.8893 &59.5562 &60.3240 &75.5822 &76.2069 &69.9669 &71.9559 &61.7002 &71.2860 &  \\
-CovTypeACN0 &\textbf{90.2822} &85.3405 &86.2222 &71.2860 &87.8893 &59.5562 &60.3240 &75.5822 &76.2069 &69.9669 &71.9559 &61.7002 &71.2860 &  \\
+CovType &\textbf{90.2820} &85.3410 &86.2220 &60.0370 &87.8890 &59.5560 &60.3240 &75.5820 &76.2070 &69.9670 &71.9560 &61.7000 &71.2860 &  \\
+census &93.7570 &94.6950 &\textbf{94.7350} &87.0190 &93.6460 &91.8530 &93.6480 &84.0600 &90.1320 &84.1440 &91.4040 &90.3710 &93.4690 &  \\
+shuttle &98.6540 &98.1750 &98.5210 &90.0160 &\textbf{99.2640} &98.4890 &88.3980 &96.0570 &90.2430 &93.7890 &89.9120 &92.0270 &74.2110 &  \\
+RBFNoDrift &\textbf{94.2120} &92.9410 &92.9600 &71.9920 &93.7470 &92.4790 &77.5290 &81.7070 &89.1610 &70.2820 &70.4250 &65.0080 &92.0840 &  \\
+LEDNoDrift &73.8280 &73.8510 &73.8350 &\textbf{73.9420} &65.8280 &73.6380 &41.1620 &73.7520 &67.5960 &67.8400 &71.1460 &48.2680 &17.4400 &  \\
+HyperplaneSlow &\textbf{90.0910} &82.0960 &82.4210 &77.6900 &84.0260 &81.5660 &68.8830 &85.1880 &82.6670 &86.2040 &88.0600 &80.6620 &85.7760 &  \\
+HyperplaneFaster &\textbf{89.5090} &82.7170 &85.3420 &77.2310 &84.2720 &84.3260 &78.6330 &85.1810 &83.0130 &86.4990 &86.7610 &81.1540 &87.7950 &  \\
+RBFGradualRecurring &98.4140 &94.6250 &94.4420 &58.3270 &\textbf{98.4260} &93.4690 &60.0800 &86.1600 &88.4770 &72.8730 &74.9560 &61.9130 &49.6160 &  \\
+RBFBlips &\textbf{99.0651} &95.6660 &95.6030 &60.8270 &98.9390 &94.9150 &66.8950 &88.3530 &89.0380 &77.5310 &79.9800 &68.2730 &47.4570 &  \\
+WaveformGenerator &83.9380 &82.9870 &\textbf{84.1390} &80.4110 &80.1250 &83.6090 &63.8800 &75.8410 &80.1840 &80.1910 &78.3940 &73.5900 &55.0490 &  \\
+STAGGERGeneratorF1 &\textbf{100.000} &99.9890 &99.9890 &\textbf{100.000} &\textbf{100.000} &\textbf{100.000} &99.9140 &\textbf{100.000} &95.0430 &89.8210 &\textbf{100.000} &99.9560 &\textbf{100.000} &  \\
+HyperplaneFaster0.2 &\textbf{89.4910} &82.7740 &85.3600 &77.2520 &84.2740 &87.6380 &78.8850 &85.1130 &83.0400 &86.5080 &86.7560 &81.2290 &87.5860 &  \\
+RBFGradualRecurringv2 &\textbf{97.1780} &93.2890 &93.0020 &57.4710 &95.7330 &93.1870 &57.9630 &80.7120 &84.4510 &62.4140 &63.7930 &49.4210 &48.8810 &  \\
+MixedGeneratorBT &97.9970 &99.1060 &\textbf{99.3220} &91.9330 &97.6650 &99.1070 &83.1220 &93.2810 &93.1580 &90.9060 &91.1940 &89.1560 &98.9790 &  \\
+MixedGeneratorBF &98.0280 &99.1770 &\textbf{99.3600} &92.0420 &97.5910 &99.2030 &89.9630 &94.3040 &93.4080 &90.7610 &91.4590 &88.6090 &98.9440 &  \\
+RandomRBFGeneratorC4A25 &\textbf{99.1240} &97.4330 &97.1380 &81.5940 &98.6900 &96.8900 &72.3260 &89.0280 &90.6130 &78.2290 &79.6710 &63.0210 &52.1560 &  \\
+RandomRBFGeneratorC4A50 &\textbf{99.7430} &99.1590 &99.1370 &91.9010 &99.1650 &98.9930 &80.6330 &95.6270 &92.0020 &86.0260 &90.4490 &73.7760 &50.6620 &  \\
+SineGeneratorF1BF &97.7910 &\textbf{99.7490} &99.7280 &93.5510 &95.5400 &99.6630 &94.8260 &95.9010 &94.5100 &92.5530 &93.3030 &92.1970 &99.5090 &  \\
+SineGeneratoF2BF &97.7910 &\textbf{99.7460} &99.7260 &93.5510 &95.4140 &99.6620 &95.2620 &96.0970 &94.5690 &92.5530 &93.3380 &92.1970 &99.4790 &  \\
+STAGGERGeneratorF1BF &\textbf{100.000} &99.9890 &99.9890 &\textbf{100.000} &\textbf{100.000} &\textbf{100.000} &99.9140 &\textbf{100.000} &95.0430 &89.8210 &\textbf{100.000} &99.9560 &\textbf{100.000} &  \\
+STAGGERGeneratorF2BF &\textbf{100.000} &99.9770 &99.9770 &\textbf{100.000} &\textbf{100.000} &99.9770 &99.8680 &\textbf{100.000} &95.0190 &44.4050 &\textbf{100.000} &\textbf{100.000} &0.6121 &  \\
+HyperplaneFasterAN5 &\textbf{89.2900} &82.6890 &85.2440 &87.3760 &84.1850 &88.7370 &79.1350 &84.8850 &82.9210 &86.4050 &86.6740 &81.1180 &87.3760 &  \\
+SEASuddenAN0 &87.7960 &84.9210 &85.1750 &88.2330 &87.2160 &\textbf{88.9730} &81.5640 &85.1720 &85.1100 &85.7670 &86.9330 &83.7260 &88.2330 &  \\
+SEASuddenAN05 &87.5280 &84.5690 &84.8190 &87.5280 &86.9570 &\textbf{88.2860} &81.5460 &85.1100 &84.5650 &85.6290 &86.5410 &83.5300 &87.5280 &  \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
-Average &\textbf{93.4284} &90.5963 &91.2426 &80.1597 &91.3103 &87.9000 &75.9808 &86.6104 &86.0870 &80.1957 &83.7241 &76.6640 &73.4563 &  \\
-Rank &\textbf{2.2031} &5.6562 &4.5000 &7.9531 &4.7031 &5.7500 &11.2500 &6.7344 &8.1250 &8.7500 &6.9844 &10.9531 &7.4375 &  \\
+Average &\textbf{93.8961} &91.9025 &92.3411 &82.4968 &92.0247 &91.4257 &78.9314 &88.2130 &87.5071 &81.2966 &85.5460 &79.2024 &73.9220 &  \\
+Rank &\textbf{2.5625} &5.4167 &4.5417 &8.1875 &4.8125 &4.6250 &10.9583 &6.7708 &8.4583 &9.0417 &7.2708 &10.8958 &7.4583 &  \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
 \end{tabularx}}
 \begin{minipage}{0.9\textwidth}
@@ -2999,35 +2986,35 @@ Rank &\textbf{2.2031} &5.6562 &4.5000 &7.9531 &4.7031 &5.7500 &11.2500 &6.7344 &
 \ifthenelse{\x < 12}{\draw (\x+.5, 0) -- ++(0,.03);}{}
 }
 
-\coordinate (c0) at (2.2031,0);
-\coordinate (c1) at (5.6562,0);
-\coordinate (c2) at (4.5,0);
-\coordinate (c3) at (7.9531,0);
-\coordinate (c4) at (4.7031,0);
-\coordinate (c5) at (5.75,0);
-\coordinate (c6) at (11.25,0);
-\coordinate (c7) at (6.7344,0);
-\coordinate (c8) at (8.125,0);
-\coordinate (c9) at (8.75,0);
-\coordinate (c10) at (6.9844,0);
-\coordinate (c11) at (10.9531,0);
-\coordinate (c12) at (7.4375,0);
+\coordinate (c0) at (2.5625,0);
+\coordinate (c1) at (5.4167,0);
+\coordinate (c2) at (4.5417,0);
+\coordinate (c3) at (8.1875,0);
+\coordinate (c4) at (4.8125,0);
+\coordinate (c5) at (4.625,0);
+\coordinate (c6) at (10.9583,0);
+\coordinate (c7) at (6.7708,0);
+\coordinate (c8) at (8.4583,0);
+\coordinate (c9) at (9.0417,0);
+\coordinate (c10) at (7.2708,0);
+\coordinate (c11) at (10.8958,0);
+\coordinate (c12) at (7.4583,0);
 
 \node (l0) at (c0) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny \textbf{OLLAWV}};
-\node (l1) at (c1) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny HT};
-\node (l2) at (c2) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny AdaHT};
-\node (l3) at (c3) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny NaiveBayes};
-\node (l4) at (c4) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny $k$-NNPAW};
-\node (l5) at (c5) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny SCD};
-\node (l6) at (c6) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny RC};
-\node (l7) at (c7) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny RCNB};
-\node (l8) at (c8) [above right=.1cm and 0cm, align=right,scale=0.7] {\tiny SAE2};
+\node (l1) at (c1) [above right=.1cm and 0cm, align=right,scale=0.7] {\tiny HOT};
+\node (l2) at (c2) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny AdaHOT};
+\node (l3) at (c3) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny NB};
+\node (l4) at (c4) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny $k$-NNPAW};
+\node (l5) at (c5) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny EDDM};
+\node (l6) at (c6) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny VFDR};
+\node (l7) at (c7) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny VFDR-NB};
+\node (l8) at (c8) [above right=.2cm and 0cm, align=right,scale=0.7] {\tiny SAE2};
 \node (l9) at (c9) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny LearnNSE};
 \node (l10) at (c10) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny DWM};
 \node (l11) at (c11) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny DACC};
 \node (l12) at (c12) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny OCBoost};
 
-\fill[fill=gray,fill opacity=0.5] (2.2031,-0.1) rectangle (4.99,0.1);
+\fill[fill=gray,fill opacity=0.5] (2.5625,-0.1) rectangle (5.3,0.1);
 
 \foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11,12} {
 \draw (l\x) -| (c\x);
@@ -3037,17 +3024,22 @@ Rank &\textbf{2.2031} &5.6562 &4.5000 &7.9531 &4.7031 &5.7500 &11.2500 &6.7344 &
 \captionof{figure}{Bonferroni-Dunn test for Accuracy}\label{fig:BonfDunnaccDS}
 \end{minipage}
 \end{table}
+\subsection{Accuracy}
+% CD for 0.05 alpha is 2.789
+Table~\ref{tab:DSResultsacc} shows the accuracy results of the 13 algorithms over 24 data streams along with their average and rank. %The results indicate that classifiers that used a passive approach to concept drift performed better overall than those that utilized an active change-detector.
+Specifically, OLLAWV achieves the best accuracy over 19 of the 24 datasets, with a competitive average against $k$-NNwPAW and AdaHOT. Note that OLLAWV performs competitively with the algorithms that employ a change-detector on faster drifting streams. Friedman statistic (distributed according to chi-square with 12 degrees of freedom): 122.7239
+
+Figure~\ref{fig:BonfDunnaccDS} show the results for the statistical analysis on the accuracy results. The algorithms with rank higher than $4.99$ (OLLAWV rank + Bonferroni-Dunn critical value), to the right of the gray bar in Figure~\ref{fig:BonfDunnaccDS}, perform statistically worse than OLLAWV. 
 
 
-\subsection{Cohen's Kappa Rate}
-\begin{table}[t!]
+\begin{table}[b!]
 \caption{Cohen's Kappa (\%) Comparison for Data Stream Classifiers}
 \scriptsize
 \centering
 \label{tab:DSResultskappa}
 \resizebox{\textwidth}{!}{\begin{tabularx}{1.55\textwidth}{l@{\extracolsep{\fill}}ccccccccccccccc}
 \noalign{\smallskip}\hline\noalign{\smallskip}
-Dataset & OLLAWV & HT & AdaHT & Naive Bayes & $k$-NNPAW &SCD & RC &RCNB & SAE2 & LearnNSE &DWM &DACC &OCBoost &\\
+Dataset & OLLAWV & HOT & AdaHOT & NB & $k$-NNPAW & EDDM & VFDR & VFDRNB & SAE2 & LearnNSE &DWM &DACC &OCBoost &\\
 \noalign{\smallskip}\hline\noalign{\smallskip}
 CovType &\textbf{84.2997} &76.4406 &77.6946 &40.1567 &80.4264 &34.1059 &31.4704 &61.1629 &62.9842 &50.6291 &55.5296 &36.6365 &48.2357 &  \\
 census &5.0601 &34.3735 &\textbf{37.3923} &35.9631 &22.1060 &20.3869 &6.9733 &18.9029 &18.6604 &17.4783 &36.1846 &16.6752 &33.6569 &  \\
@@ -3064,26 +3056,18 @@ HyperplaneFaster0.2 &\textbf{78.9822} &65.5488 &70.7205 &54.5039 &68.5467 &75.27
 RBFGradualRecurringv2 &\textbf{96.2323} &91.0414 &90.6582 &43.1602 &94.3039 &90.9059 &43.9448 &74.2539 &79.2448 &49.7920 &51.6529 &32.3653 &30.8075 &  \\
 MixedGeneratorBT &95.9938 &98.2128 &\textbf{98.6438} &83.8667 &95.3299 &98.2134 &66.2440 &86.5611 &86.3155 &81.8128 &82.3886 &78.3117 &97.9588 &  \\
 MixedGeneratorBF &96.0417 &98.3495 &\textbf{98.7154} &83.9979 &95.1582 &98.4008 &79.8200 &88.5565 &86.7861 &81.4176 &82.8106 &77.0956 &97.8810 &  \\
-RandomRBFGeneratoC4A25 &\textbf{98.8172} &96.5331 &96.1343 &75.2231 &98.2308 &95.7997 &62.3923 &85.1851 &87.3386 &70.6112 &72.5571 &49.6768 &36.2515 &  \\
+RandomRBFGeneratorC4A25 &\textbf{98.8172} &96.5331 &96.1343 &75.2231 &98.2308 &95.7997 &62.3923 &85.1851 &87.3386 &70.6112 &72.5571 &49.6768 &36.2515 &  \\
 RandomRBFGeneratorC4A50 &\textbf{99.6519} &98.8615 &98.8319 &89.0625 &98.8693 &98.6371 &73.7051 &94.0710 &89.1866 &81.1006 &87.0871 &64.3007 &35.4000 &  \\
 SineGeneratorF1BF &95.5500 &\textbf{99.4950} &99.4517 &86.9837 &91.0397 &99.3224 &89.5374 &91.7509 &88.9544 &84.9693 &86.4903 &84.2484 &99.0107 &  \\
-SineGeneratorF2BF &95.5500 &\textbf{99.4896} &99.4493 &86.9837 &90.7381 &99.3195 &90.4504 &92.1487 &89.0741 &84.9693 &86.5495 &84.2484 &98.9512 &  \\
-STAGGERGeneratoF1BF &\textbf{100.0000} &99.9429 &99.9429 &\textbf{100.0000} &\textbf{100.0000} &\textbf{100.0000} &99.5649 &\textbf{100.0000} &78.2768 &14.6120 &\textbf{100.0000} &99.7795 &\textbf{100.0000} &  \\
+SineGeneratoF2BF &95.5500 &\textbf{99.4896} &99.4493 &86.9837 &90.7381 &99.3195 &90.4504 &92.1487 &89.0741 &84.9693 &86.5495 &84.2484 &98.9512 &  \\
+STAGGERGeneratorF1BF &\textbf{100.0000} &99.9429 &99.9429 &\textbf{100.0000} &\textbf{100.0000} &\textbf{100.0000} &99.5649 &\textbf{100.0000} &78.2768 &14.6120 &\textbf{100.0000} &99.7795 &\textbf{100.0000} &  \\
 STAGGERGeneratorF2BF &\textbf{100.0000} &99.9542 &99.9542 &\textbf{100.0000} &\textbf{100.0000} &99.9542 &99.7331 &\textbf{100.0000} &89.9239 &0.0000 &\textbf{100.0000} &\textbf{100.0000} &-96.4666 &  \\
-RBFGradualRecurringCN0 &97.8807 &92.8205 &92.5769 &44.2773 &\textbf{97.8977} &91.2740 &46.6574 &81.5090 &84.6106 &63.7269 &66.5421 &49.0047 &31.4648 &  \\
-RBFGradualRecurringACN0 &97.8807 &92.8205 &92.5769 &31.4648 &\textbf{97.8977} &91.2740 &46.6574 &81.2726 &84.6106 &63.7269 &66.5421 &49.0047 &31.4648 &  \\
-HyperplaneFasterAN0 &\textbf{79.0184} &65.4333 &70.6839 &75.5906 &68.5439 &68.6522 &57.2656 &70.3619 &67.6281 &72.9982 &73.5220 &62.3085 &75.5906 &  \\
 HyperplaneFasterAN5 &\textbf{78.5796} &65.3782 &70.4883 &74.7517 &68.3699 &77.4733 &58.2704 &69.7705 &67.4541 &72.8100 &73.3486 &62.2368 &74.7517 &  \\
-HyperplaneFasterCN0 &\textbf{79.0184} &65.4333 &70.6839 &75.5906 &68.5439 &68.6522 &57.2656 &70.3619 &67.6281 &72.9982 &73.5220 &62.3085 &75.5906 &  \\
-HyperplaneFasterACN0 &\textbf{79.0184} &65.4333 &70.6839 &75.5906 &68.5439 &68.6522 &57.2656 &70.3619 &67.6281 &72.9982 &73.5220 &62.3085 &75.5906 &  \\
 SEASuddenAN0 &73.8014 &67.6140 &68.1883 &74.8009 &72.7554 &\textbf{76.3943} &59.8618 &68.0628 &68.2933 &69.2729 &72.0454 &64.9863 &74.8009 &  \\
 SEASuddenAN05 &73.1889 &66.8436 &67.4079 &73.2812 &72.2042 &\textbf{74.9242} &59.9057 &67.9381 &67.1285 &68.9706 &71.2053 &64.5598 &73.2812 &  \\
-CovTypeAN0 &\textbf{84.2997} &76.4406 &77.6946 &48.2357 &80.4264 &34.1059 &31.4704 &61.1629 &62.9842 &50.6291 &55.5296 &36.6365 &48.2357 &  \\
-CovTypeCN0 &\textbf{84.2997} &76.4406 &77.6946 &48.2357 &80.4264 &34.1059 &31.4704 &61.1629 &62.9842 &50.6291 &55.5296 &36.6365 &48.2357 &  \\
-CovTypeACN0 &\textbf{84.2997} &76.4406 &77.6946 &48.2357 &80.4264 &34.1059 &31.4704 &61.1629 &62.9842 &50.6291 &55.5296 &36.6365 &48.2357 &  \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
-Average &\textbf{85.7720} &81.6278 &82.9678 &65.9918 &82.5460 &77.2796 &57.2445 &75.6249 &73.7176 &60.9312 &71.6284 &59.6790 &55.8496 &  \\
-Rank &\textbf{2.5781} &5.7500 &4.5312 &7.7031 &4.7344 &5.6250 &11.6562 &6.6094 &7.9688 &8.4688 &6.7344 &11.1406 &7.5000 &  \\
+Average &\textbf{85.7911} &83.3677 &84.3616 &69.3548 &83.2820 &82.5885 &61.3460 &77.6101 &74.9127 &60.4776 &73.8278 &63.1201 &56.3658 &  \\
+Rank &\textbf{3.0208} &5.5417 &4.5833 &7.7500 &4.8542 &4.5833 &11.3750 &6.6042 &8.2500 &8.9167 &6.9375 &11.1458 &7.4375 &  \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
 \end{tabularx}}
 \begin{minipage}{0.9\textwidth}
@@ -3095,35 +3079,35 @@ Rank &\textbf{2.5781} &5.7500 &4.5312 &7.7031 &4.7344 &5.6250 &11.6562 &6.6094 &
 \ifthenelse{\x < 13}{\draw (\x+.5, 0) -- ++(0,.03);}{}
 }
 
-\coordinate (c0) at (2.5781,0);
-\coordinate (c1) at (5.75,0);
-\coordinate (c2) at (4.5312,0);
-\coordinate (c3) at (7.7031,0);
-\coordinate (c4) at (4.7344,0);
-\coordinate (c5) at (5.625,0);
-\coordinate (c6) at (11.6562,0);
-\coordinate (c7) at (6.6094,0);
-\coordinate (c8) at (7.9688,0);
-\coordinate (c9) at (8.4688,0);
-\coordinate (c10) at (6.7344,0);
-\coordinate (c11) at (11.1406,0);
-\coordinate (c12) at (7.5,0);
+\coordinate (c0) at (3.0208,0);
+\coordinate (c1) at (5.5417,0);
+\coordinate (c2) at (4.5833,0);
+\coordinate (c3) at (7.75,0);
+\coordinate (c4) at (4.8542,0);
+\coordinate (c5) at (4.5833,0);
+\coordinate (c6) at (11.375,0);
+\coordinate (c7) at (6.6042,0);
+\coordinate (c8) at (8.25,0);
+\coordinate (c9) at (8.9167,0);
+\coordinate (c10) at (6.9375,0);
+\coordinate (c11) at (11.1458,0);
+\coordinate (c12) at (7.4375,0);
 
 \node (l0) at (c0) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny \textbf{OLLAWV}};
-\node (l1) at (c1) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny HT};
-\node (l2) at (c2) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny AdaHT};
-\node (l3) at (c3) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny NaiveBayes};
+\node (l1) at (c1) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny HOT};
+\node (l2) at (c2) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny AdaHOT};
+\node (l3) at (c3) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny NB};
 \node (l4) at (c4) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny $k$-NNPAW};
-\node (l5) at (c5) [above left=.2cm and 0cm, align=right,scale=0.7] {\tiny SCD};
-\node (l6) at (c6) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny RC};
-\node (l7) at (c7) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny RCNB};
+\node (l5) at (c5) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny EDDM};
+\node (l6) at (c6) [above right=.1cm and 0cm, align=right,scale=0.7] {\tiny VFDR};
+\node (l7) at (c7) [below left=.25cm and 0cm, align=right,scale=0.7] {\tiny VFDR-NB};
 \node (l8) at (c8) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny SAE2};
 \node (l9) at (c9) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny LearnNSE};
 \node (l10) at (c10) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny DWM};
 \node (l11) at (c11) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny DACC};
 \node (l12) at (c12) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny OCBoost};
 
-\fill[fill=gray,fill opacity=0.5] (2.5781,-0.1) rectangle (5.367,0.1);
+\fill[fill=gray,fill opacity=0.5] (3.0208,-0.1) rectangle (5.9,0.1);
 
 \foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11,12} {
 \draw (l\x) -| (c\x);
@@ -3133,6 +3117,8 @@ Rank &\textbf{2.5781} &5.7500 &4.5312 &7.7031 &4.7344 &5.6250 &11.6562 &6.6094 &
 \captionof{figure}{Bonferroni-Dunn test for Cohen's Kappa}\label{fig:BonfDunnkappaDS}
 \end{minipage}
 \end{table}
+\subsection{Cohen's Kappa Rate}
+Table~\ref{tab:DSResultskappa} shows the Cohen's Kappa rate results obtained by the algorithms. These results complement the accuracy results achieved by the algorithms, in the sense that... OLLAWV's kappa values all fall within the ($50\%$, $100\%$] range, with the exception of the census dataset, indicating that its merit as a classifier agrees with the class distribution, and is not random. Concerning the census dataset, the best result, achieved by AdaHOT, was $37.3923\%$, meaning all algorithms performed approximately randomly. Classifiers OCBoost, DACC, Learn++.NSE, and VFDR all achieved the lowest rates on average. Note, Learn++.NSE obtained a 0, indicating complete random classifier behavior.
 
 \subsection{Training Time}
 \begin{table}[t!]
@@ -3142,10 +3128,10 @@ Rank &\textbf{2.5781} &5.7500 &4.5312 &7.7031 &4.7344 &5.6250 &11.6562 &6.6094 &
 \label{tab:DSResultsTrain}
 \resizebox{\textwidth}{!}{\begin{tabularx}{1.55\textwidth}{l@{\extracolsep{\fill}}ccccccccccccccc}
 \noalign{\smallskip}\hline\noalign{\smallskip}
-Dataset & OLLAWV & HT & AdaHT & Naive Bayes & $k$-NNPAW &SCD & RC &RCNB & SAE2 & LearnNSE &DWM &DACC &OCBoost &\\
+Dataset & OLLAWV & HOT & AdaHOT & NB & $k$-NNPAW & EDDM & VFDR & VFDR-NB & SAE2 & LearnNSE &DWM &DACC &OCBoost &\\
 \noalign{\smallskip}\hline\noalign{\smallskip}
 CovType &0.0451 &0.0765 &0.0909 &\textbf{0.0009} &0.0387 &0.0577 &0.0371 &0.0445 &0.1121 &6.2806 &0.0419 &0.0357 &0.0984 &  \\
-census &0.1684 &0.1040 &0.1162 &\textbf{0.0007} &0.0386 &0.0345 &0.0735 &0.0458 &0.0363 &0.9368 &0.0156 &0.0175 &0.0543 &  \\
+census &0.0168 &0.1040 &0.1162 &\textbf{0.0007} &0.0386 &0.0345 &0.0735 &0.0458 &0.0363 &0.9368 &0.0156 &0.0175 &0.0543 &  \\
 shuttle &0.0103 &0.0276 &0.0298 &\textbf{0.0004} &0.0386 &0.0069 &0.0108 &0.0069 &0.0217 &0.2692 &0.0104 &0.0186 &0.0581 &  \\
 RBFNoDrift &0.0329 &0.0174 &0.0247 &\textbf{0.0002} &0.0383 &0.0828 &0.4267 &0.3172 &0.0491 &3.4029 &0.0104 &0.0137 &0.0402 &  \\
 LEDNoDrift &0.0697 &0.0373 &0.0649 &\textbf{0.0003} &0.0389 &0.0245 &0.0097 &0.0082 &0.0694 &5.4734 &0.0175 &0.0290 &0.0547 &  \\
@@ -3160,25 +3146,17 @@ RBFGradualRecurringv2 &0.0545 &0.0169 &0.0203 &\textbf{0.0003} &0.0383 &0.0859 &
 MixedGeneratorBT &0.0205 &0.0027 &0.0026 &\textbf{0.0001} &0.0336 &0.0071 &1.7640 &1.5534 &0.0086 &0.9761 &0.0024 &0.0052 &0.0204 &  \\
 MixedGeneratorBF &0.0299 &0.0024 &0.0024 &\textbf{0.0001} &0.0334 &0.0065 &1.1035 &1.0924 &0.0093 &0.8971 &0.0024 &0.0058 &0.0209 &  \\
 RandomRBFGeneratorC4A25 &0.0200 &0.0441 &0.0407 &\textbf{0.0003} &0.0358 &0.0730 &1.7831 &1.6927 &0.1245 &13.9876 &0.0395 &0.0719 &0.1580 &  \\
-RandomRBFGeneratorC4A25 &0.0157 &0.0333 &0.0337 &\textbf{0.0007} &0.0350 &0.0909 &2.8802 &2.5559 &0.1917 &27.8456 &0.0752 &0.1432 &0.2974 &  \\
+RandomRBFGeneratorC4A50 &0.0157 &0.0333 &0.0337 &\textbf{0.0007} &0.0350 &0.0909 &2.8802 &2.5559 &0.1917 &27.8456 &0.0752 &0.1432 &0.2974 &  \\
 SineGeneratorF1BF &0.0122 &0.0056 &0.0056 &\textbf{0.0001} &0.0334 &0.0073 &1.9301 &2.9169 &0.0127 &1.3768 &0.0034 &0.0071 &0.0235 &  \\
-SineGeneratorF2BF &0.0121 &0.0051 &0.0053 &\textbf{0.0001} &0.0314 &0.0077 &5.0598 &5.9477 &0.0117 &1.3996 &0.0027 &0.0074 &0.0236 &  \\
+SineGeneratoF2BF &0.0121 &0.0051 &0.0053 &\textbf{0.0001} &0.0314 &0.0077 &5.0598 &5.9477 &0.0117 &1.3996 &0.0027 &0.0074 &0.0236 &  \\
 STAGGERGeneratorF1BF &0.0021 &0.0006 &0.0006 &\textbf{0.0001} &0.0323 &0.0005 &0.0006 &0.0005 &0.0015 &0.6175 &0.0003 &0.0022 &0.0143 &  \\
 STAGGERGeneratorF2BF &0.0022 &0.0010 &0.0009 &\textbf{0.0001} &0.0340 &0.0006 &0.0005 &0.0005 &0.0017 &0.6752 &0.0003 &0.0020 &0.0139 &  \\
-RBFGradualRecurringCN0 &0.0457 &0.0304 &0.0304 &\textbf{0.0003} &0.0352 &0.0319 &0.8493 &0.8675 &0.0933 &10.9096 &0.0323 &0.0595 &0.1689 &  \\
-RBFGradualRecurringACN0 &0.0458 &0.0395 &0.0398 &0.1359 &\textbf{0.0313} &0.0457 &1.0166 &0.8629 &0.1209 &12.1337 &0.0356 &0.0592 &0.1646 &  \\
-HyperplaneFasterAN0 &0.0263 &0.0206 &0.0213 &0.0446 &0.0263 &0.0841 &0.1776 &0.1865 &0.0281 &2.3635 &\textbf{0.0080} &0.0154 &0.0715 &  \\
 HyperplaneFasterAN5 &0.0264 &0.0200 &0.0200 &0.0440 &0.0269 &0.0115 &0.2298 &0.2417 &0.0312 &2.5014 &\textbf{0.0080} &0.0147 &0.0740 &  \\
-HyperplaneFasterCN0 &0.0263 &0.0323 &0.0209 &0.0406 &3.1129 &0.0968 &0.2061 &175.2788 &0.0309 &2.5008 &\textbf{0.0072} &0.0658 &0.0697 &  \\
-HyperplaneFasterACN0 &0.0263 &0.0398 &0.0400 &0.0503 &0.0313 &0.1149 &0.2727 &0.2797 &0.0469 &3.4281 &\textbf{0.0097} &0.0175 &0.0697 &  \\
 SEASuddenAN0 &0.0208 &0.0051 &0.0052 &0.0268 &0.0312 &0.0099 &0.0370 &0.0373 &0.0176 &1.3545 &\textbf{0.0032} &0.0059 &0.0335 &  \\
 SEASuddenAN05 &0.0284 &0.0055 &0.0055 &0.0257 &0.0309 &0.0095 &0.0321 &0.0334 &0.0167 &1.3365 &\textbf{0.0032} &0.0061 &0.0326 &  \\
-CovTypeAN0 &0.0444 &0.0873 &0.0897 &0.1579 &\textbf{0.0315} &0.0585 &0.0383 &0.0375 &0.1208 &6.5487 &0.0425 &0.0554 &0.1953 &  \\
-CovTypeCN0 &0.0450 &0.0456 &0.0447 &0.0951 &0.0270 &0.0276 &\textbf{0.0227} &0.0229 &0.0696 &3.9599 &0.0261 &0.0338 &0.1610 &  \\
-CovTypeACN0 &0.0450 &0.0451 &0.0455 &0.1001 &0.0267 &0.0280 &\textbf{0.0236} &0.0240 &0.0689 &3.9489 &0.0254 &0.0341 &0.1613 &  \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
-Average &0.0341 &0.0296 &0.0334 &0.0227 &0.1307 &0.0483 &0.7003 &6.2028 &0.0579 &5.6078 &\textbf{0.0190} &0.0308 &0.0829 &  \\
-Rank &6.5938 &4.9062 &5.6875 &3.4375 &6.9688 &6.2500 &9.2188 &9.2188 &8.2188 &12.6875 &\textbf{2.7188} &5.5000 &9.5938 &  \\
+Average &0.0264 &0.0252 &0.0307 &\textbf{0.0043} &0.0359 &0.0441 &0.8252 &0.8721 &0.0531 &5.5690 &0.0175 &0.0269 &0.0663 &  \\
+Rank &6.5833 &4.7917 &5.7917 &\textbf{1.8750} &7.7500 &6.0833 &9.8333 &9.5833 &8.2917 &12.6667 &2.7917 &5.5417 &9.4167 &  \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
 \end{tabularx}}
 \begin{minipage}{0.9\textwidth}
@@ -3190,35 +3168,35 @@ Rank &6.5938 &4.9062 &5.6875 &3.4375 &6.9688 &6.2500 &9.2188 &9.2188 &8.2188 &12
 \ifthenelse{\x < 14}{\draw (\x+.5, 0) -- ++(0,.03);}{}
 }
 
-\coordinate (c0) at (6.5938,0);
-\coordinate (c1) at (4.9062,0);
-\coordinate (c2) at (5.6875,0);
-\coordinate (c3) at (3.4375,0);
-\coordinate (c4) at (6.9688,0);
-\coordinate (c5) at (6.25,0);
-\coordinate (c6) at (9.2188,0);
-\coordinate (c7) at (9.2188,0);
-\coordinate (c8) at (8.2188,0);
-\coordinate (c9) at (12.6875,0);
-\coordinate (c10) at (2.7188,0);
-\coordinate (c11) at (5.5,0);
-\coordinate (c12) at (9.5938,0);
+\coordinate (c0) at (6.5833,0);
+\coordinate (c1) at (4.7917,0);
+\coordinate (c2) at (5.7917,0);
+\coordinate (c3) at (1.875,0);
+\coordinate (c4) at (7.75,0);
+\coordinate (c5) at (6.0833,0);
+\coordinate (c6) at (9.8333,0);
+\coordinate (c7) at (9.5833,0);
+\coordinate (c8) at (8.2917,0);
+\coordinate (c9) at (12.6667,0);
+\coordinate (c10) at (2.7917,0);
+\coordinate (c11) at (5.5417,0);
+\coordinate (c12) at (9.4167,0);
 
 \node (l0) at (c0) [above right=.3cm and 0cm, align=right,scale=0.7] {\tiny \textbf{OLLAWV}};
-\node (l1) at (c1) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny HT};
-\node (l2) at (c2) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny AdaHT};
-\node (l3) at (c3) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny NaiveBayes};
+\node (l1) at (c1) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny HOT};
+\node (l2) at (c2) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny AdaHOT};
+\node (l3) at (c3) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny NB};
 \node (l4) at (c4) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny $k$-NNPAW};
-\node (l5) at (c5) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny SCD};
-\node (l6) at (c6) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny RC};
-\node (l7) at (c7) [above right=.1cm and 0cm, align=right,scale=0.7] {\tiny RCNB};
-\node (l8) at (c8) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny SAE2};
+\node (l5) at (c5) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny EDDM};
+\node (l6) at (c6) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny VFDR};
+\node (l7) at (c7) [above right=.4cm and 0cm, align=right,scale=0.7] {\tiny VFDR-NB};
+\node (l8) at (c8) [above right=.1cm and 0cm, align=right,scale=0.7] {\tiny SAE2};
 \node (l9) at (c9) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny LearnNSE};
 \node (l10) at (c10) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny DWM};
-\node (l11) at (c11) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny DACC};
+\node (l11) at (c11) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny DACC};
 \node (l12) at (c12) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny OCBoost};
 
-\fill[fill=gray,fill opacity=0.5] (2.7188,-0.1) rectangle (5.789,0.1);
+\fill[fill=gray,fill opacity=0.5] (1.875,-0.1) rectangle (4.835,0.1);
 
 \foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11,12} {
 \draw (l\x) -| (c\x);
@@ -3231,70 +3209,7 @@ Rank &6.5938 &4.9062 &5.6875 &3.4375 &6.9688 &6.2500 &9.2188 &9.2188 &8.2188 &12
 
 
 \subsection{Overall Comparison}
-\begin{table}[t!]
-\caption{Meta-Ranks Comparison for Data Stream Classifiers}
-\scriptsize
-\centering
-\label{tab:DSResultsmeta}
-\resizebox{\textwidth}{!}{\begin{tabularx}{1.28\textwidth}{l@{\extracolsep{\fill}}cccccccccccccc}
-\noalign{\smallskip}\hline\noalign{\smallskip}
-Metric & OLLAWV & HT & AdaHT & NaiveBayes & $k$-NNPAW & SCD & RC & RCNB & SAE2 & LearnNSE &DWM &DACC &OCBoost \\
-\noalign{\smallskip}\hline\noalign{\smallskip}
-Accuracy &\textbf{2.2031} &5.6562 &4.5000 &7.9531 &4.7031 &5.7500 &11.2500 &6.7344 &8.1250 &8.7500 &6.9844 &10.9531 &7.4375 &  \\
-Cohen's Kappa Rate &\textbf{2.5781} &5.7500 &4.5312 &7.7031 &4.7344 &5.6250 &11.6562 &6.6094 &7.9688 &8.4688 &6.7344 &11.1406 &7.5000 &  \\
-Training Time &6.5938 &4.9062 &5.6875 &3.4375 &6.9688 &6.2500 &9.2188 &9.2188 &8.2188 &12.6875 &\textbf{2.7188} &5.5000 &9.5938 &  \\
-\noalign{\smallskip}\hline\noalign{\smallskip}
-Average &\textbf{3.7917} &5.4375 &4.9062 &6.3646 &5.4688 &5.8750 &10.7083 &7.5208 &8.1042 &9.9688 &5.4792 &9.1979 &8.1771 &  \\
-Rank &\textbf{3.0000} &4.0000 &\textbf{3.0000} &6.6667 &4.6667 &5.0000 &12.1667 &7.5000 &9.6667 &11.6667 &5.0000 &9.3333 &9.3333 &  \\
-\noalign{\smallskip}\hline\noalign{\smallskip}
-\end{tabularx}}
-\begin{minipage}{0.9\textwidth}
-\centering
-\resizebox{\textwidth}{!}{\begin{tikzpicture}
-\draw (1,0) -- (13,0);
-\foreach \x in {1,2,3,4,5,6,7,8,9,10,11,12,13} {
-\draw (\x, 0) -- ++(0,.1) node [above,scale=0.7] {\tiny \x};
-\ifthenelse{\x < 13}{\draw (\x+.5, 0) -- ++(0,.03);}{}
-}
 
-\coordinate (c0) at (3,0);
-\coordinate (c1) at (4,0);
-\coordinate (c2) at (3,0);
-\coordinate (c3) at (6.6667,0);
-\coordinate (c4) at (4.6667,0);
-\coordinate (c5) at (5,0);
-\coordinate (c6) at (12.1667,0);
-\coordinate (c7) at (7.5,0);
-\coordinate (c8) at (9.6667,0);
-\coordinate (c9) at (11.6667,0);
-\coordinate (c10) at (5,0);
-\coordinate (c11) at (9.3333,0);
-\coordinate (c12) at (9.3333,0);
-
-\node (l0) at (c0) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny \textbf{OLLAWV}};
-\node (l1) at (c1) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny HT};
-\node (l2) at (c2) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny AdaHT};
-\node (l3) at (c3) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny NaiveBayes};
-\node (l4) at (c4) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny kNNPAW};
-\node (l5) at (c5) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny SCD};
-\node (l6) at (c6) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny RC};
-\node (l7) at (c7) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny RCNB};
-\node (l8) at (c8) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny SAE2};
-\node (l9) at (c9) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny LearnNSE};
-\node (l10) at (c10) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny DWM};
-\node (l11) at (c11) [above right=.1cm and 0cm, align=right,scale=0.7] {\tiny DACC};
-\node (l12) at (c12) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny OCBoost};
-
-\fill[fill=gray,fill opacity=0.5] (3,-0.1) rectangle (5.789,0.1);
-
-\foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11,12} {
-\draw (l\x) -| (c\x);
-};
-\end{tikzpicture}}\vspace{-2em}
-\captionsetup{width=\linewidth}
-\captionof{figure}{Bonferroni-Dunn test for Meta-Ranks}\label{fig:BonfDunnmetaDS}
-\end{minipage}
-\end{table}
 
 \section{Conclusions}
 
