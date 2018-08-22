@@ -2722,7 +2722,9 @@ These computational, spacial, and time complexities are what prompted researcher
 \section{OnLine Learning Algorithms for Batched Data Streams}
 OLLA-L2~\cite{kecman2016fast} and its successor OLLAWV~\cite{melki2018ollawv} are two online, iterative learning algorithms that are implemented and investigated within the context of a batched, stationary and non-stationary, data stream environment. OLLA-L2 stems from the same core algorithm as OLLAWV, named \textit{OnLine Learning Algorithm} (OLLA)~\cite{kecman2016fast}. It is a generic stochastic learning algorithm tailored and designed for various non-linear (i.e. kernel) classifiers in the primal domain. In this implementation of OLLA-L2, similar to that of OLALWV described in Chapter~\ref{chap:ollawv}, the online learning algorithm is derived and used for solving the primal L1-SVM cost function, given by Equation~\ref{eqn:reghingeloss}. The online nature of the core OLLA algorithm and its superior performance in terms of speed and accuracy against popular and widely used SVM solvers merited investigation in the data stream setting. The main objective is to design a novel base-line incremental support vector machine that is capable of handling large volumes of streamed data in a short amount of time, while maintaining a competitive accuracy. By beginning with this approach, in the event of a concept drift, the classifier would simply be able to rebuild itself, without violating any time constraints. 
 
-The algorithm that was first implemented and investigated under the data stream environment was OLLA-L2, listed in Algorithm~\ref{alg:List2L1SVM}. At every iteration, OLLA-L2 proceeds cyclically over the data, updating the model if the chosen sample, $i$, is a violator, i.e. has an error $y_i o_i \leq 1$, where $y_i$ and $o_i$ are sample $i$'s class label and corresponding model output respectively. If the sample has no error ($y_i o_i > 1$), the model remains the same and no update is performed. Note, this error rule is that of the hinge loss, shown in Equation~\ref{eqn:hingeloss}. The update parameters $\Lambda \in \reals$ (lambda) and $\Rho \in \reals$ (rho), as seen in Algorithm~\ref{alg:List2L1SVM}, describe scalars which are used for updating the output vector $\bm o \in \reals^n$, the weight vector in kernel feature space $\bm \alpha \in \reals^n$, and the bias term $b \in \reals$, if used. The input parameter $\beta \in \set{0,1}$ describes whether the bias term will be used ($\beta = 1$) or not ($\beta = 0$). The update parameters for $\Lambda$ and $\Rho$ for the L1-SVM with regularizer $||\bm w||^2$ are given by:
+The algorithm that was first implemented and investigated under the data stream environment was OLLA-L2, listed in Algorithm~\ref{alg:List2L1SVM}. At every iteration, OLLA-L2 proceeds cyclically over the data, updating the model if the chosen sample, $i$, is a violator, i.e. has an error $y_i o_i \leq 1$, where $y_i$ and $o_i$ are the sample's class label and corresponding model output, respectively. If the sample has no error ($y_i o_i > 1$), the model remains the same and no update is performed. Note, this error rule is that of the Hinge loss, shown in Equation~\ref{eqn:hingeloss}. In the context of batched streams, the algorithm would cycle through the samples in each arriving batch. For a pure online scenario, the algorithm would proceed with its updates, as long as samples are provided by the stream. 
+
+The update parameters $\Lambda \in \reals$ (lambda) and $\Rho \in \reals$ (rho), as seen in Algorithm~\ref{alg:List2L1SVM}, describe scalars which are used for updating the output vector $\bm o \in \reals^n$, the weight vector in kernel feature space $\bm \alpha \in \reals^n$, and the bias term $b \in \reals$, if used. The input parameter $\beta \in \set{0,1}$ describes whether the bias term will be used ($\beta = 1$) or not ($\beta = 0$). The update parameters for $\Lambda$ and $\Rho$ for the L1-SVM with regularizer $||\bm w||^2$ are given by:
 \begin{table}[H]
 \centering \small
 \begin{tabular}{cc}
@@ -2730,11 +2732,7 @@ $\Lambda = \eta C y_i$ & $\Rho = \eta \alpha_i$
 \end{tabular}
 \end{table}
 
-In the context of batched streams, the algorithm would cycle through the samples in each arriving batch. For a pure online scenario, the algorithm would proceed with its updates, as long as samples are provided by the stream. In the batch setting, the quantity of iterations can be controlled by the parameter $e$, which represents the number of epochs, or cycles, over the data. As mentioned in the previous chapter, early stopping acts as a regularization technique~\cite{collobert2004links}, and this can be controlled through setting the number of epochs to be less than the number of samples. It is worth noting that, if the number if epochs is set to be less than the number of samples, or in the pure online data stream learning setting where samples arrive one at a time with no cycling involved, the parameter $\Rho$ is always equal to 0 because $\bm \alpha$ is initialized to 0. $\Rho > 0$ only if the algorithm cycles over samples that have already had their respective $\bm \alpha$ updated.
-
-The advantage of using OLLA-L2's update procedure is most apparent in lines 8 and 15 in Algorithm~\ref{alg:List2L1SVM}. The model's $\bm \alpha$ parameter update is simply the sum of two scalars values: the previous value of $\bm \alpha$ and $\Lambda$. Then, to determine whether an update is even needed, the next sample's output value, $o_i$, is needed. It is obtained by using the scalar product of kernel values and weight vector $\bm \alpha$ for support vectors (stored in $\bm S$) only. Hence, the parser the model, the more OLLA-L2 exhibits a speed-up~\cite{kecman2016fast}. 
-
-
+The advantage of using OLLA-L2's update procedure is most apparent in lines 8 and 15 in Algorithm~\ref{alg:List2L1SVM}. The model's $\bm \alpha$ parameter update is simply the sum of two scalars values: the previous value of $\bm \alpha$ and $\Lambda$. Then, to determine whether an update is even needed, the next sample's output value, $o_i$, is needed. It is obtained by using the scalar product of kernel values and weight vector $\bm \alpha$ for support vectors (stored in $\bm S$) only. Hence, the sparser the model, the more OLLA-L2 exhibits a speed-up~\cite{kecman2016fast}. 
 \begin{algorithm}[t!]
 \centering \small
 \caption{OnLine Learning Algorithm - List 2 (OLLA-L2)}
@@ -2744,8 +2742,7 @@ The advantage of using OLLA-L2's update procedure is most apparent in lines 8 an
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
 \Require $\bm X, \bm Y, \beta, n, e$
 \Ensure  $\bm \alpha$, $b$, $\bm S$
-\State $\bm \alpha \leftarrow \bm 0, b \leftarrow 0, \bm S \leftarrow \bm 0$
-\State $\bm o \leftarrow \bm 0,\, i \leftarrow 0$
+\State $\bm \alpha \leftarrow \bm 0, b \leftarrow 0, \bm S \leftarrow \bm 0,\, \bm o \leftarrow \bm 0,\, i \leftarrow 0$
 \For{$t = 1, \ldots, n*e$}
 \State $\eta \leftarrow 2/\sqrt{t}$
 \If{$Y_i\, o_i \leq 1$}
@@ -2762,6 +2759,20 @@ The advantage of using OLLA-L2's update procedure is most apparent in lines 8 an
 \EndFor
 \end{algorithmic} 
 \end{algorithm}
+
+In the batch setting, the quantity of iterations can be controlled by the parameter $e$, which represents the number of epochs, or cycles, over the data. As mentioned in the previous chapter, early stopping acts as a regularization technique~\cite{collobert2004links}. It is worth noting that, if the number if epochs is set to be less than the number of samples, or in the pure online stream learning setting, where samples arrive one at a time with no cycling involved, the parameter $\Rho$ is always equal to 0 because $\bm \alpha$ is initialized to 0. $\Rho > 0$ only if the algorithm cycles over samples that have already had their respective $\bm \alpha$ updated.
+
+To try and maintain a sparse model, especially with evolving data streams, is a difficult task. In the context of batch data streams, building a new model from scratch might be too expensive, especially if there are many support vectors. The sample principle applies to the pure online scenario. Because of these issues, a simple change detection mechanism was designed and tested. 
+
+
+
+
+
+
+
+
+
+
 
 Although OLLA-L2 has many advantages, it also has its complexities, some of which are shared by other stochastic solvers. One example would be how/what to set the algorithm's maximum number of iterations, i.e. the model's optimal point to stop training. \textit{Stopping the training too early might cause missed opportunity for finding all the support vectors. Stopping too late might cause the algorithm to diverge from its optimum point.} This complexity inspired the work in Chapter~\ref{chap:ollawv} on OLLAWV. The novelty and advantage of OLLAWV resides in the way it iterates and updates the model. At each step, the algorithm chooses and updates the most violating sample, i.e. \textit{worst-violator}. A worst-violator is defined as the sample that produces the largest error with respect to the current decision function. Rather than shuffling the data and cycling through each sample, as done in OLLA-L2, OLLAWV selects (without replacement) the most incorrectly classified sample and updates the model accordingly. This procedure is essentially finding the model's support vectors and implicitly defining a stopping criterion. If there are no more violating samples, that algorithm terminates. \textit{These characteristics are especially useful in the context of learning from a streamed environment. continue about why, then segway to the comparison on L2 and OLLAWV...}
 \begin{table}[b!]
