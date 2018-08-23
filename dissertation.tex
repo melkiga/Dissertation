@@ -1422,16 +1422,19 @@ At optimality~\cite{Boyd2004}, $\bigtriangledown_{w,b,\xi}\mathcal{L}(\bm{w},b,\
 &\frac{\partial\mathcal{L}}{\partial b}: \sum_I{\alpha_IY_I} = 0,\label{eqn:optcond2}\\
 &\frac{\partial\mathcal{L}}{\partial\xi_I}: \alpha_I + \beta_I = C,\,\forall I \in \set{1,\ldots,n}\label{eqn:optcond3} 
 \end{align}
+and the KKT complementary conditions below,
+\begin{align}
+& \alpha_I ( Y_I (\langle \bm w,\, \bm x_{s_I}\rangle + b) -1 + \xi_I ) = 0,\, \forall I \in \set{1,\ldots,n} \label{eqn:kkt1}\\
+& \beta_I \xi_I = (C - \alpha_I)\xi_I = 0,\, \forall I \in \set{1,\ldots,n}. \label{eqn:kkt2}
+\end{align}
 
-By substituting Equations~\eqref{eqn:optcond1},~\eqref{eqn:optcond2}, and~\eqref{eqn:optcond3} into the Lagrangian in~\eqref{eqn:svmlagrangian}, the dual MIRSVM formulation becomes the following:
+At the optimal solution, where Equations~\eqref{eqn:optcond1},~\eqref{eqn:optcond2}, and~\eqref{eqn:optcond3} apply, and due to the KKT conditions~\ref{eqn:kkt1} and~\ref{eqn:kkt2}, the dual Lagrangian~\eqref{eqn:svmlagrangian} only becomes in terms of $\bm \alpha$, and the dual MIRSVM formulation becomes the following:
 \begin{subequations} 
 \label{eq:dualmirsvm1}
 \begin{alignat}{2}
-\max\limits_{\bm \alpha,\bm \beta}& \sum_I \alpha_I -\frac{1}{2}\sum_I \sum_{K\in I} \sum_{j=1}^d \alpha_I \alpha_K Y_I Y_K  x_{s_I j} x_{s_K j} \tag{\ref{eq:dualmirsvm1}}\\
+\max\limits_{\bm \alpha}& \sum_I \alpha_I -\frac{1}{2}\sum_I \sum_{K\in I} \sum_{j=1}^d \alpha_I \alpha_K Y_I Y_K  x_{s_I j} x_{s_K j} \tag{\ref{eq:dualmirsvm1}}\\
 \text{s.t.}&  \sum_I{\alpha_IY_I} = 0\, \\
-{} & \alpha_I + \beta_I = C,\,\forall I \in \set{1,\ldots,n}   \label{eq:implicit1}\\
-{} & \alpha_I \geq 0,\, \forall I \in \set{1,\ldots,n}  \label{eq:implicit2} \\
-{} & \beta_I \geq 0,\, \forall I \in \set{1,\ldots,n},  \label{eq:implicit3}
+{} & 0 \leq \alpha_I \leq C,\, \forall I \in \set{1,\ldots,n}  \label{eq:implicit2} \\
 \end{alignat}
 \end{subequations} 
 where $s_I$ is computed for each bag, as shown in Equation~\eqref{eq:si}:
@@ -1441,11 +1444,11 @@ where $s_I$ is computed for each bag, as shown in Equation~\eqref{eq:si}:
 s_I = \underset{i \in I}{\text{argmax}}(\sum_{K\in I} \sum_{j=1}^d \alpha_K Y_K x_{s_K j} x_{ij} + b),\, \forall I \in \set{1,\ldots,n}.
 \end{equation}
 
-The implicit constraints~\eqref{eq:implicit1} through~\eqref{eq:implicit3} imply three possible cases for $\alpha_I$ values:
+Equations~\eqref{eqn:kkt1} and~\eqref{eqn:kkt2} imply three possible solutions for $\alpha_I$ values:
 \begin{itemize}
-\item[1.] If $\alpha_I = 0$, then $\beta_I = 0$ and $\xi_I = 0$, implying the instance is correctly classified and outside the margin. 
-\item[2.] If $0 < \alpha_I < C$, then $\xi_I  = 0$, and the instance is a support vector and site on the margin boundary, i.e. is an \textit{bounded support vector}.
-\item[3.] If $\alpha_I = C$, then there is no restriction for $\xi_I > 0$. This also indicates that the instance is a support vector, but one that is \textit{unbounded}. If $0 < \xi_I < 1$, then the instance is correctly classified, and is misclassified if $\xi \geq 1$. 
+\item[1.] If $\alpha_I = 0$ and $\xi_I = 0$, then the instance is correctly classified and outside the margin. 
+\item[2.] If $0 < \alpha_I < C$, then, from the complementary conditions, $Y_I(\langle\bm{w},\bm x_{s_I}\rangle + b) -1 + \xi_I = 0$ and $\xi_I  = 0$. Thus $Y_I(\langle\bm{w},\bm x_{s_I}\rangle + b) = 1$, and the instance is a support vector. Support vectors with $0 < \alpha_I < C$ are called \textit{unbounded} support vectors and lie on the margins.
+\item[3.] If $\alpha_I = C$, then there is no restriction for $\xi_I > 0$. This also indicates that the instance is a support vector, but one that is \textit{bounded}. If $0 \leq \xi_I < 1$, then the instance is correctly classified, and is misclassified if $\xi \geq 1$. 
 \end{itemize}
 
 The dual is then kernelized by replacing the inner product of samples in feature space with their corresponding kernel value, $\spa{K}\left(\bm{x}_{s_I},\bm{x}_{s_K}\right)$. The dual function is now written as:
