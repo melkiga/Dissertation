@@ -968,6 +968,36 @@
     \field{year}{2018}
   \endentry
 
+  \entry{bottou2002stochastic}{book}{}
+    \name{author}{2}{}{%
+      {{hash=BL}{%
+         family={Bottou},
+         familyi={B\bibinitperiod},
+         given={L.},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=MN}{%
+         family={Murata},
+         familyi={M\bibinitperiod},
+         given={N.},
+         giveni={N\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {The MIT Press}%
+    }
+    \strng{namehash}{BLMN1}
+    \strng{fullhash}{BLMN1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{booktitle}{The Handbook of Brain Theory and Neural Networks, Second
+  edition}
+    \field{title}{Stochastic approximations and efficient learning}
+    \field{year}{2002}
+  \endentry
+
   \entry{bottou2007large}{book}{}
     \name{author}{4}{}{%
       {{hash=BL}{%
@@ -4399,6 +4429,35 @@
     \field{year}{2011}
   \endentry
 
+  \entry{robbins1951textordfemininea}{article}{}
+    \name{author}{2}{}{%
+      {{hash=RH}{%
+         family={Robbins},
+         familyi={R\bibinitperiod},
+         given={H.},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=MS}{%
+         family={Monro},
+         familyi={M\bibinitperiod},
+         given={S.},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{RHMS1}
+    \strng{fullhash}{RHMS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{number}{3}
+    \field{pages}{400\bibrangedash 407}
+    \field{title}{A Stochastic Approximation Method}
+    \field{volume}{22}
+    \field{journaltitle}{The Annals of Mathematical Statistics}
+    \field{year}{1951}
+  \endentry
+
   \entry{rosenblatt1958perceptron}{article}{}
     \name{author}{1}{}{%
       {{hash=RF}{%
@@ -5406,6 +5465,35 @@
     \field{title}{A two-level learning method for generalized multi-instance
   problems}
     \field{year}{2003}
+  \endentry
+
+  \entry{widrow1960adaptive}{report}{}
+    \name{author}{2}{}{%
+      {{hash=WB}{%
+         family={Widrow},
+         familyi={W\bibinitperiod},
+         given={B.},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=HME}{%
+         family={Hoff},
+         familyi={H\bibinitperiod},
+         given={M.\bibnamedelima E.},
+         giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{WBHME1}
+    \strng{fullhash}{WBHME1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{W}
+    \field{sortinithash}{W}
+    \field{title}{Adaptive switching circuits}
+    \list{institution}{1}{%
+      {University of California}%
+    }
+    \field{type}{techreport}
+    \field{year}{1960}
   \endentry
 
   \entry{Wilcoxon1945}{article}{}
