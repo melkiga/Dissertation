@@ -1297,8 +1297,8 @@
       {{hash=CMA}{%
          family={Carbonneau},
          familyi={C\bibinitperiod},
-         given={M.-A.},
-         giveni={M\bibinitperiod-A\bibinitperiod},
+         given={M.\bibnamedelima A.},
+         giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod},
       }}%
       {{hash=CV}{%
          family={Cheplygina},
@@ -2577,13 +2577,13 @@
       {{hash=GS}{%
          family={Godbole},
          familyi={G\bibinitperiod},
-         given={Shantanu},
+         given={S.},
          giveni={S\bibinitperiod},
       }}%
       {{hash=SS}{%
          family={Sarawagi},
          familyi={S\bibinitperiod},
-         given={Sunita},
+         given={S.},
          giveni={S\bibinitperiod},
       }}%
     }
@@ -5118,6 +5118,28 @@
     \field{year}{2014}
   \endentry
 
+  \entry{vapnik2013nature}{book}{}
+    \name{author}{1}{}{%
+      {{hash=VV}{%
+         family={Vapnik},
+         familyi={V\bibinitperiod},
+         given={V.},
+         giveni={V\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer-Verlag}%
+    }
+    \strng{namehash}{VV1}
+    \strng{fullhash}{VV1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{V}
+    \field{sortinithash}{V}
+    \field{title}{The nature of statistical learning theory}
+    \field{year}{1995}
+  \endentry
+
   \entry{vapnik1997support}{inproceedings}{}
     \name{author}{3}{}{%
       {{hash=VV}{%
@@ -5182,28 +5204,6 @@
   to their probabilities}
     \field{volume}{16}
     \field{year}{1971}
-  \endentry
-
-  \entry{vapnik2013nature}{book}{}
-    \name{author}{1}{}{%
-      {{hash=VV}{%
-         family={Vapnik},
-         familyi={V\bibinitperiod},
-         given={Vladimir},
-         giveni={V\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {Springer-Verlag}%
-    }
-    \strng{namehash}{VV1}
-    \strng{fullhash}{VV1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{sortinit}{V}
-    \field{sortinithash}{V}
-    \field{title}{The nature of statistical learning theory}
-    \field{year}{1995}
   \endentry
 
   \entry{vazquez2003multi}{article}{}
