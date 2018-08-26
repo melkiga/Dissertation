@@ -2551,7 +2551,7 @@ The classification performance was measured using the following metrics: accurac
 \begin{minipage}{0.49\textwidth}
 \includegraphics[width=\textwidth]{figures/CPU_vs_NumData_L.eps}
 \end{minipage}
-\caption{\small Runtime in seconds versus the number of samples, divided into two groups: small \& medium (left) versus large (right). Note OLLAWV's gradual increase in runtime as the number of samples increases compared to NNISDA and MNSVM's steeper change. In almost all cases, OLLAWV displays superior runtime over state-of-the-art. Runtime depends upon many characteristics: dimensionality, class-overlapping, complexity of the separation boundary, number of classes as well as upon the number of support vectors, which partly explains the tiny bump in the left figure. }
+\caption{\small Runtime in seconds versus the number of samples, divided into two groups: small \& medium (left) versus large (right). Note OLLAWV's gradual increase in runtime as the number of samples increases compared to NNISDA and MNSVM's steeper change. In almost all cases, OLLAWV displays superior runtime over state-of-the-art. Runtime depends upon many characteristics: dimensionality, class-overlapping, complexity of the separation boundary, number of classes, as well as the number of support vectors, which partly explains the tiny bump in the left figure. }
 \label{fig:cpuvssamples}
 \end{figure}
 
@@ -2560,7 +2560,7 @@ The results in Table~\ref{tab:results} indicate that OLLAWV outperforms NNISDA a
 \begin{figure}[t!]
 \centering
 \includegraphics[trim={3.2cm 0 3.2cm 0},clip,width=\textwidth]{figures/PSV_vs_NumData.eps}
-\caption{Size of the model given as percentage of support vectors with respect to the number of samples  versus the number of samples. Note that OLLAWV’s percentage of support vectors is always smaller (except in one case) than NNISDA's and MNSVM's ones.}
+\caption{\small Size of the model given as percentage of support vectors with respect to the number of samples  versus the number of samples. Note that OLLAWV’s percentage of support vectors is always smaller (except in one case) than NNISDA's and MNSVM's ones.}
 \label{fig:psvvssamples}
 \end{figure}
 Figures~\ref{fig:BonfDunnacc}, \ref{fig:BonfDunncpu}, and \ref{fig:BonfDunnsv} show the results of the statistical analysis for accuracy, runtime, and percentage of support vectors. Figures~\ref{fig:BonfDunncpu} and~\ref{fig:BonfDunnsv} show that OLLAWV is statistically significantly better than MNSVM and NNISDA for runtime and percentage of support vectors (model size). At the same time, Figure~\ref{fig:BonfDunnacc} emphasizes what was mentioned earlier: OLLAWV is shown to speed up the learning process without sacrificing model accuracy against the state-of-the-art methods used. 
@@ -2569,8 +2569,7 @@ Figure~\ref{fig:cpuvssamples} plots the correlation of OLLAWV, NNISDA, and MNSVM
 
 \subsection{Non-SVM Experimental Setup}\label{subsec:nonsvmexp}
 The supplemental experimental setup was designed to compare the performance of the proposed OLLAWV against the following $5$ popular and widely-used non-SVM algorithms: \textit{k-Nearest Neighbors ($k$-NN)}, \textit{J48}, \textit{JRip}, \textit{Na\"ive Bayes}, and \textit{Logistic}. These methods have been implemented within the Weka framework~\cite{eibe2016weka}. The experiments were performed under the same nested $5$-fold cross-validation framework as the SVM algorithm experimental study which was described in Section~\ref{subsec:expsvm}. The following hyper-parameters shown in Table~\ref{tab:hyp} were used for the non-SVM algorithms.
-
-\begin{table}[H]
+\begin{table}[t!]
 \small
 \caption{Non-SVM Algorithm Hyper-parameters}
 \label{tab:hyp}
@@ -2668,13 +2667,13 @@ Ranks & \textbf{1.500} & $2.500$ & $4.041$ & $3.9583$ & $5.0625$ & $3.9375$ \\
 \begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{figures/others.eps}
-\caption{\small Mean accuracy over all datasets for OLLAWV and the 5 non-SVM state-of-the-art methods.}
+\caption{\small Mean accuracy over all datasets for OLLAWV and the 5 non-SVM competing methods.}
 \label{fig:accother}
 \end{figure}
 Table~\ref{tab:OtherResultsacc} displays the accuracy results for OLLAWV and five state-of-the-art methods. The table also shows the standard deviation for accuracy per outer fold, the average values across all datasets, and the algorithm ranks. As the results indicate, OLLAWV outperforms all other state-of-the-art methods. Figure~\ref{fig:accother} displays the average accuracy results for OLLAWV and the non-SVM methods across all datasets and highlights OLLAWV's better performance. The Friedman test indicates that OLLAWV performs significantly better than the competing methods for $\alpha = 0.05$ and is ranked first. Figure~\ref{fig:BonfDunnaccOther} shows the critical distance bar (which is $1.391$), and indicates that all other algorithms perform statistically significantly worse than OLLAWV, except for $k$-NN. 
 
 \section{Conclusions}\label{sec:ollawvconclusion}
-This paper proposed a novel online learning procedure and algorithm for solving the L1-SVM problem, which is a unique method in terms of both iterating over samples and updating the model. A new stopping criterion for the stochastic gradient procedure is also proposed. The model is updated by changing the weight $\alpha_i$ of a single worst-violator per iteration and stops when all violating samples i.e., support vectors, are found. Finding the \textit{worst-violators} is done without replacement. Such an approach results in a significant shortening of training time, as well as in a huge decrease in the resulting model size. The key features of the proposed algorithm, OLLAWV, stem from its implicit ability of finding support vectors and its self-stopping condition. This design was devised to address the limitations presented by current SVM solvers. 
+This chapter proposed a novel online learning procedure and algorithm for solving the L1-SVM problem, which is a unique method in terms of both iterating over samples and updating the model. A new stopping criterion for the stochastic gradient procedure is also proposed. The model is updated by changing the weight $\alpha_i$ of a single worst-violator per iteration and stops when all violating samples i.e., support vectors, are found. Finding the \textit{worst-violators} is done without replacement. Such an approach results in a significant shortening of training time, as well as in a huge decrease in the resulting model size. The key features of the proposed algorithm, OLLAWV, stem from its implicit ability of finding support vectors and its self-stopping condition. This design was devised to address the limitations presented by current SVM solvers. 
 
 The first experimental study demonstrates the better performance of OLLAWV compared with state-of-the-art SVM solvers (MNSVM and NNISDA) which have been shown to outperform the popular SMO implementation in the LIBSVM package. The results for accuracy, runtime, and percentage of support-vectors, obtained by the strict nested cross-validation procedure, were compared and further validated using statistical analysis with non-parametric tests. They highlighted the advantages and major speedup achieved by OLLAWV against the competing MNSVM and NNISDA. The second, supplemental experimental study evaluated the performance of OLLAWV against $5$ popular non-SVM methods, showing the better performance of OLLAWV against all five non-SVM algorithms ($k$-Nearest Neighbors ($k$-NN), J48, JRip, Na\"ive Bayes, and Logistic). The proposal, OLLAWV, performs statistically better in terms of runtime and model size across all $23$ evaluated benchmark datasets, without compromising accuracy. The research outcomes of this chapter have been published in~\cite{melki2018ollawv}.
 
