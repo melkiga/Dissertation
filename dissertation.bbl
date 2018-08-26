@@ -846,6 +846,49 @@
     \field{year}{2005}
   \endentry
 
+  \entry{bordes2007solving}{inproceedings}{}
+    \name{author}{4}{}{%
+      {{hash=BA}{%
+         family={Bordes},
+         familyi={B\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=BL}{%
+         family={Bottou},
+         familyi={B\bibinitperiod},
+         given={L.},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=GP}{%
+         family={Gallinari},
+         familyi={G\bibinitperiod},
+         given={P.},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=WJ}{%
+         family={Weston},
+         familyi={W\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {ACM}%
+    }
+    \strng{namehash}{BA+2}
+    \strng{fullhash}{BABLGPWJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{booktitle}{Proceedings of the 24th international conference on
+  Machine learning}
+    \field{pages}{89\bibrangedash 96}
+    \field{title}{Solving multiclass support vector machines with LaRank}
+    \field{year}{2007}
+  \endentry
+
   \entry{boser1992training}{inproceedings}{}
     \name{author}{3}{}{%
       {{hash=BBE}{%
@@ -2377,6 +2420,41 @@
     \field{year}{1999}
   \endentry
 
+  \entry{frie1998kernel}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=FTT}{%
+         family={Frie},
+         familyi={F\bibinitperiod},
+         given={T.\bibnamedelima T.},
+         giveni={T\bibinitperiod\bibinitdelim T\bibinitperiod},
+      }}%
+      {{hash=CN}{%
+         family={Cristianini},
+         familyi={C\bibinitperiod},
+         given={N.},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=CC}{%
+         family={Campbell},
+         familyi={C\bibinitperiod},
+         given={C.},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{FTTCNCC1}
+    \strng{fullhash}{FTTCNCC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{F}
+    \field{sortinithash}{F}
+    \field{booktitle}{Proceedings of the 15th International Conference on
+  Machine Learning}
+    \field{pages}{188\bibrangedash 196}
+    \field{title}{The kernel-adatron algorithm: a fast and simple learning
+  procedure for support vector machines}
+    \field{year}{1998}
+  \endentry
+
   \entry{Fu2011}{article}{}
     \name{author}{3}{}{%
       {{hash=FZ}{%
@@ -2898,6 +2976,47 @@
     \field{year}{2009}
   \endentry
 
+  \entry{hastie2004entire}{article}{}
+    \name{author}{4}{}{%
+      {{hash=HT}{%
+         family={Hastie},
+         familyi={H\bibinitperiod},
+         given={T.},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=RS}{%
+         family={Rosset},
+         familyi={R\bibinitperiod},
+         given={S.},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=TR}{%
+         family={Tibshirani},
+         familyi={T\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=ZJ}{%
+         family={Zhu},
+         familyi={Z\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{HT+1}
+    \strng{fullhash}{HTRSTRZJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{H}
+    \field{sortinithash}{H}
+    \field{pages}{1391\bibrangedash 1415}
+    \field{title}{The entire regularization path for the support vector
+  machine}
+    \field{volume}{5}
+    \field{journaltitle}{Journal of Machine Learning Research}
+    \field{year}{2004}
+  \endentry
+
   \entry{herbrich2016learning}{book}{}
     \name{author}{1}{}{%
       {{hash=HR}{%
@@ -3077,6 +3196,55 @@
     \field{sortinithash}{H}
     \field{title}{Nonparametric statistical methods}
     \field{year}{1999}
+  \endentry
+
+  \entry{hsieh2008dual}{inproceedings}{}
+    \name{author}{5}{}{%
+      {{hash=HCJ}{%
+         family={Hsieh},
+         familyi={H\bibinitperiod},
+         given={C.\bibnamedelima J.},
+         giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=CKW}{%
+         family={Chang},
+         familyi={C\bibinitperiod},
+         given={K.\bibnamedelima W.},
+         giveni={K\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+      {{hash=LCJ}{%
+         family={Lin},
+         familyi={L\bibinitperiod},
+         given={C.\bibnamedelima J.},
+         giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=KSS}{%
+         family={Keerthi},
+         familyi={K\bibinitperiod},
+         given={S.\bibnamedelima S.},
+         giveni={S\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+      {{hash=SS}{%
+         family={Sundararajan},
+         familyi={S\bibinitperiod},
+         given={S.},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {ACM}%
+    }
+    \strng{namehash}{HCJ+1}
+    \strng{fullhash}{HCJCKWLCJKSSSS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{H}
+    \field{sortinithash}{H}
+    \field{booktitle}{Proceedings of the 25th international conference on
+  Machine learning}
+    \field{pages}{408\bibrangedash 415}
+    \field{title}{A dual coordinate descent method for large-scale linear SVM}
+    \field{year}{2008}
   \endentry
 
   \entry{Huang2006}{book}{}
@@ -4065,6 +4233,38 @@
     \field{year}{2010}
   \endentry
 
+  \entry{mangasarian1999successive}{article}{}
+    \name{author}{2}{}{%
+      {{hash=MOL}{%
+         family={Mangasarian},
+         familyi={M\bibinitperiod},
+         given={O.\bibnamedelima L.},
+         giveni={O\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+      {{hash=MDR}{%
+         family={Musicant},
+         familyi={M\bibinitperiod},
+         given={D.\bibnamedelima R.},
+         giveni={D\bibinitperiod\bibinitdelim R\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{MOLMDR1}
+    \strng{fullhash}{MOLMDR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{number}{5}
+    \field{pages}{1032\bibrangedash 1037}
+    \field{title}{Successive overrelaxation for support vector machines}
+    \field{volume}{10}
+    \field{journaltitle}{IEEE Transactions on Neural Networks}
+    \field{year}{1999}
+  \endentry
+
   \entry{Maron1998}{article}{}
     \name{author}{2}{}{%
       {{hash=MO}{%
@@ -4266,6 +4466,43 @@
     \field{volume}{66}
     \field{journaltitle}{Applied Soft Computing}
     \field{year}{2018}
+  \endentry
+
+  \entry{osuna1997improved}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=OE}{%
+         family={Osuna},
+         familyi={O\bibinitperiod},
+         given={E.},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=FR}{%
+         family={Freund},
+         familyi={F\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=GF}{%
+         family={Girosi},
+         familyi={G\bibinitperiod},
+         given={F.},
+         giveni={F\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{OEFRGF1}
+    \strng{fullhash}{OEFRGF1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{O}
+    \field{sortinithash}{O}
+    \field{booktitle}{Proceedings of the IEEE Workshop on Neural Networks for
+  Signal Processing}
+    \field{pages}{276\bibrangedash 285}
+    \field{title}{An improved training algorithm for support vector machines}
+    \field{year}{1997}
   \endentry
 
   \entry{oza2001onlinebb}{inproceedings}{}
@@ -4765,6 +5002,28 @@
     \field{year}{1999}
   \endentry
 
+  \entry{scheinberg2006efficient}{article}{}
+    \name{author}{1}{}{%
+      {{hash=SK}{%
+         family={Scheinberg},
+         familyi={S\bibinitperiod},
+         given={K.},
+         giveni={K\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SK1}
+    \strng{fullhash}{SK1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{pages}{2237\bibrangedash 2257}
+    \field{title}{An efficient implementation of an active set method for SVMs}
+    \field{volume}{7}
+    \field{journaltitle}{Journal of Machine Learning Research}
+    \field{year}{2006}
+  \endentry
+
   \entry{scholkopf2001generalized}{inproceedings}{}
     \name{author}{3}{}{%
       {{hash=SB}{%
@@ -4931,6 +5190,39 @@
     \field{title}{Pegasos: Primal estimated sub-gradient solver for svm}
     \field{volume}{127}
     \field{journaltitle}{Mathematical programming}
+    \field{year}{2011}
+  \endentry
+
+  \entry{shawe2011review}{article}{}
+    \name{author}{2}{}{%
+      {{hash=STJ}{%
+         family={Shawe-Taylor},
+         familyi={S\bibinitperiod-T\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=SS}{%
+         family={Sun},
+         familyi={S\bibinitperiod},
+         given={S.},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier}%
+    }
+    \strng{namehash}{STJSS1}
+    \strng{fullhash}{STJSS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{number}{17}
+    \field{pages}{3609\bibrangedash 3618}
+    \field{title}{A review of optimization methodologies in support vector
+  machines}
+    \field{volume}{74}
+    \field{journaltitle}{Neurocomputing}
     \field{year}{2011}
   \endentry
 
@@ -5780,6 +6072,37 @@
     \field{volume}{1}
     \field{journaltitle}{Biometrics bulletin}
     \field{year}{1945}
+  \endentry
+
+  \entry{wright1999numerical}{book}{}
+    \name{author}{2}{}{%
+      {{hash=WS}{%
+         family={Wright},
+         familyi={W\bibinitperiod},
+         given={S.},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=NJ}{%
+         family={Nocedal},
+         familyi={N\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer-Veralg}%
+    }
+    \strng{namehash}{WSNJ1}
+    \strng{fullhash}{WSNJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{W}
+    \field{sortinithash}{W}
+    \field{title}{Numerical optimization}
+    \list{location}{1}{%
+      {New York}%
+    }
+    \field{year}{1999}
   \endentry
 
   \entry{Wu2015430}{article}{}
