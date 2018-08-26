@@ -731,13 +731,13 @@ The correlation coefficients matrix, $\bm \Rho$, is then calculated as shown in 
 It will describe the linear relationship among the target variables. The coefficients are then sorted in decreasing order, creating the maximum correlation chain. 
 
 \section{Experimental Environment}\label{sec:MTRexperiments}
-Although many interesting applications of multi-target regression exist, there are not many publicly available datasets to use. The datasets used in the experimental study were collected from the Mulan website~\cite{mulan}, as well as the UCI Machine Learning Repository~\cite{Lichman:2013}. Information on the $24$ datasets used is summarized in Table~\ref{tab:mtrdatasets}, where the number of samples, attributes (dimensionality), and targets are shown. 
+Although many interesting applications of multi-target regression exist, there are not many publicly available datasets to use. The datasets used in the experimental study were collected from the Mulan website~\cite{mulan}, as well as the UCI Machine Learning Repository~\cite{Lichman:2013}. Information on the $24$ datasets used is summarized in Table~\ref{tab:mtrdatasets}.
 \begin{table}[t!]
 \centering \small
 \caption{Multi-Target (MT) Regression datasets} \label{tab:mtrdatasets}
 \begin{tabular}{lccc}
 \noalign{\smallskip}\hline\noalign{\smallskip}
-Dataset & Samples $(n)$ & Attributes $(d)$ & Targets $(m)$\\
+Dataset & \# Samples & \# Attributes & \# Targets \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
 EDM & 145 & 16 & 2\\
 Enb & 768 & 8 & 2 \\
@@ -768,6 +768,7 @@ MP6SPEC & 80 & 700 & 3\\
 \end{table}
 
 Experiments were performed over the RC, ST, MTS, MTSC, ERC, ERCC, and MORF algorithms, which have also been used in the experimental study conducted in~\cite{Spyromitros2014}. These algorithms were chosen because they have shown considerable performance in training multi-target models. The have also made their framework readily available for reproducing their results. All three SVR algorithms are implemented within the general framework of Mulan's MTRegressor\footnote{http://mulan.sourceforge.net}~\cite{mulan}, which was built on top of Weka\footnote{http://www.cs.waikato.ac.nz/ml/weka}~\cite{Hall2009}. LIBSVM's Epsilon-SVR~\cite{CC01a} implementation was used as the base SVR model. The parameters experimented with for the SVR regression task are the penalty parameter $C$, the Gaussian kernel parameter $\gamma$, and the error or tube parameter $\epsilon$ given by Equations~\eqref{eq:paramCmtr} to~\eqref{eq:paramE}, referred to as~\eqref{eq:hyperparammtr}.
+
 \begin{subequations}
 \label{eq:hyperparammtr}
 \begin{align}
