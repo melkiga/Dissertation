@@ -1350,6 +1350,45 @@
     \field{year}{2018}
   \endentry
 
+  \entry{cano2015speeding}{article}{}
+    \name{author}{3}{}{%
+      {{hash=CA}{%
+         family={Cano},
+         familyi={C\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=ZA}{%
+         family={Zafra},
+         familyi={Z\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=VS}{%
+         family={Ventura},
+         familyi={V\bibinitperiod},
+         given={S.},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{CAZAVS1}
+    \strng{fullhash}{CAZAVS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{number}{1}
+    \field{pages}{127\bibrangedash 145}
+    \field{title}{Speeding up multiple instance learning classification rules
+  on GPUs}
+    \field{volume}{44}
+    \field{journaltitle}{Knowledge and information systems}
+    \field{year}{2015}
+  \endentry
+
   \entry{carbonneau2018multiple}{article}{}
     \name{author}{4}{}{%
       {{hash=CMA}{%
@@ -4462,6 +4501,50 @@
     \field{year}{2001}
   \endentry
 
+  \entry{qi2011online}{article}{}
+    \name{author}{4}{}{%
+      {{hash=QZ}{%
+         family={Qi},
+         familyi={Q\bibinitperiod},
+         given={Z.},
+         giveni={Z\bibinitperiod},
+      }}%
+      {{hash=XY}{%
+         family={Xu},
+         familyi={X\bibinitperiod},
+         given={Y.},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=WL}{%
+         family={Wang},
+         familyi={W\bibinitperiod},
+         given={L.},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=SY}{%
+         family={Song},
+         familyi={S\bibinitperiod},
+         given={Y.},
+         giveni={Y\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier}%
+    }
+    \strng{namehash}{QZ+1}
+    \strng{fullhash}{QZXYWLSY1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{Q}
+    \field{sortinithash}{Q}
+    \field{number}{10}
+    \field{pages}{1769\bibrangedash 1775}
+    \field{title}{Online multiple instance boosting for object detection}
+    \field{volume}{74}
+    \field{journaltitle}{Neurocomputing}
+    \field{year}{2011}
+  \endentry
+
   \entry{ralaivola2001incremental}{inproceedings}{}
     \name{author}{2}{}{%
       {{hash=RL}{%
@@ -5163,6 +5246,37 @@
     \field{year}{1996}
   \endentry
 
+  \entry{tomar2017multiple}{incollection}{}
+    \name{author}{2}{}{%
+      {{hash=TD}{%
+         family={Tomar},
+         familyi={T\bibinitperiod},
+         given={D.},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=AS}{%
+         family={Agarwal},
+         familyi={A\bibinitperiod},
+         given={S.},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{TDAS1}
+    \strng{fullhash}{TDAS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{booktitle}{Advances in Computer and Computational Sciences}
+    \field{pages}{497\bibrangedash 507}
+    \field{title}{Multiple Instance Learning Based on Twin Support Vector
+  Machine}
+    \field{year}{2017}
+  \endentry
+
   \entry{tsang2007simpler}{inproceedings}{}
     \name{author}{3}{}{%
       {{hash=TIW}{%
@@ -5529,34 +5643,6 @@
     \field{year}{2000}
   \endentry
 
-  \entry{wang2000solving}{article}{}
-    \name{author}{2}{}{%
-      {{hash=WJ}{%
-         family={Wang},
-         familyi={W\bibinitperiod},
-         given={J.},
-         giveni={J\bibinitperiod},
-      }}%
-      {{hash=ZJD}{%
-         family={Zucker},
-         familyi={Z\bibinitperiod},
-         given={J.\bibnamedelima D.},
-         giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {Morgan Kaufmann}%
-    }
-    \strng{namehash}{WJZJD1}
-    \strng{fullhash}{WJZJD1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{sortinit}{W}
-    \field{sortinithash}{W}
-    \field{title}{Solving multiple-instance problem: A lazy learning approach}
-    \field{year}{2000}
-  \endentry
-
   \entry{webb2016characterizing}{article}{}
     \name{author}{5}{}{%
       {{hash=WGI}{%
@@ -5746,6 +5832,51 @@
     \field{year}{2015}
   \endentry
 
+  \entry{xie2012online}{article}{}
+    \name{author}{4}{}{%
+      {{hash=XY}{%
+         family={Xie},
+         familyi={X\bibinitperiod},
+         given={Y.},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=QY}{%
+         family={Qu},
+         familyi={Q\bibinitperiod},
+         given={Y.},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=LC}{%
+         family={Li},
+         familyi={L\bibinitperiod},
+         given={C.},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=ZW}{%
+         family={Zhang},
+         familyi={Z\bibinitperiod},
+         given={W.},
+         giveni={W\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier}%
+    }
+    \strng{namehash}{XY+1}
+    \strng{fullhash}{XYQYLCZW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{X}
+    \field{sortinithash}{X}
+    \field{number}{9}
+    \field{pages}{1075\bibrangedash 1082}
+    \field{title}{Online multiple instance gradient feature selection for
+  robust visual tracking}
+    \field{volume}{33}
+    \field{journaltitle}{Pattern Recognition Letters}
+    \field{year}{2012}
+  \endentry
+
   \entry{Xiong2014}{article}{}
     \name{author}{3}{}{%
       {{hash=XT}{%
@@ -5879,6 +6010,84 @@
     \field{volume}{53}
     \field{journaltitle}{Pattern Recognition}
     \field{year}{2016}
+  \endentry
+
+  \entry{zafra2011multiplege}{article}{}
+    \name{author}{3}{}{%
+      {{hash=ZA}{%
+         family={Zafra},
+         familyi={Z\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=GEL}{%
+         family={Gibaja},
+         familyi={G\bibinitperiod},
+         given={E.\bibnamedelima L.},
+         giveni={E\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+      {{hash=VS}{%
+         family={Ventura},
+         familyi={V\bibinitperiod},
+         given={S.},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier}%
+    }
+    \strng{namehash}{ZAGELVS1}
+    \strng{fullhash}{ZAGELVS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{Z}
+    \field{sortinithash}{Z}
+    \field{number}{1}
+    \field{pages}{93\bibrangedash 102}
+    \field{title}{Multiple instance learning with multiple objective genetic
+  programming for web mining}
+    \field{volume}{11}
+    \field{journaltitle}{Applied Soft Computing}
+    \field{year}{2011}
+  \endentry
+
+  \entry{zafra2011multiple}{article}{}
+    \name{author}{3}{}{%
+      {{hash=ZA}{%
+         family={Zafra},
+         familyi={Z\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=RC}{%
+         family={Romero},
+         familyi={R\bibinitperiod},
+         given={C.},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=VS}{%
+         family={Ventura},
+         familyi={V\bibinitperiod},
+         given={S.},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier}%
+    }
+    \strng{namehash}{ZARCVS1}
+    \strng{fullhash}{ZARCVS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{Z}
+    \field{sortinithash}{Z}
+    \field{number}{12}
+    \field{pages}{15020\bibrangedash 15031}
+    \field{title}{Multiple instance learning for classifying students in
+  learning management systems}
+    \field{volume}{38}
+    \field{journaltitle}{Expert Systems with Applications}
+    \field{year}{2011}
   \endentry
 
   \entry{zang2014comparative}{article}{}
