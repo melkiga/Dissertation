@@ -1322,6 +1322,34 @@
     \field{year}{1999}
   \endentry
 
+  \entry{canokrawczyk2018}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=CA}{%
+         family={Cano},
+         familyi={C\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=KB}{%
+         family={Krawczyk},
+         familyi={K\bibinitperiod},
+         given={B.},
+         giveni={B\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{CAKB1}
+    \strng{fullhash}{CAKB1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{booktitle}{IEEE Congress on Evolutionary Computation}
+    \field{pages}{197\bibrangedash 204}
+    \field{title}{{Learning classification rules with differential evolution
+  for high-speed data stream mining on GPUs}}
+    \field{year}{2018}
+  \endentry
+
   \entry{carbonneau2018multiple}{article}{}
     \name{author}{4}{}{%
       {{hash=CMA}{%
@@ -2413,6 +2441,41 @@
     \field{year}{2007}
   \endentry
 
+  \entry{gaber2005mining}{article}{}
+    \name{author}{3}{}{%
+      {{hash=GMM}{%
+         family={Gaber},
+         familyi={G\bibinitperiod},
+         given={M.\bibnamedelima M.},
+         giveni={M\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+      {{hash=ZA}{%
+         family={Zaslavsky},
+         familyi={Z\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=KS}{%
+         family={Krishnaswamy},
+         familyi={K\bibinitperiod},
+         given={S.},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{GMMZAKS1}
+    \strng{fullhash}{GMMZAKS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{G}
+    \field{sortinithash}{G}
+    \field{number}{2}
+    \field{pages}{18\bibrangedash 26}
+    \field{title}{Mining data streams: a review}
+    \field{volume}{34}
+    \field{journaltitle}{ACM Sigmod Record}
+    \field{year}{2005}
+  \endentry
+
   \entry{gama2006decision}{article}{}
     \name{author}{3}{}{%
       {{hash=GJ}{%
@@ -2517,6 +2580,53 @@
     \field{volume}{90}
     \field{journaltitle}{Machine learning}
     \field{year}{2013}
+  \endentry
+
+  \entry{gama2014survey}{article}{}
+    \name{author}{5}{}{%
+      {{hash=GJ}{%
+         family={Gama},
+         familyi={G\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=ZI}{%
+         family={{\v{Z}}liobait{\.e}},
+         familyi={{\v{Z}}\bibinitperiod},
+         given={I.},
+         giveni={I\bibinitperiod},
+      }}%
+      {{hash=BA}{%
+         family={Bifet},
+         familyi={B\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=PM}{%
+         family={Pechenizkiy},
+         familyi={P\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=BA}{%
+         family={Bouchachia},
+         familyi={B\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{GJ+1}
+    \strng{fullhash}{GJZIBAPMBA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{G}
+    \field{sortinithash}{G}
+    \field{number}{4}
+    \field{pages}{44}
+    \field{title}{A survey on concept drift adaptation}
+    \field{volume}{46}
+    \field{journaltitle}{ACM computing surveys (CSUR)}
+    \field{year}{2014}
   \endentry
 
   \entry{gama2004learning}{inproceedings}{}
@@ -3784,6 +3894,35 @@
     \field{year}{2007}
   \endentry
 
+  \entry{2018krawczykcano}{article}{}
+    \name{author}{2}{}{%
+      {{hash=KB}{%
+         family={Krawczyk},
+         familyi={K\bibinitperiod},
+         given={B.},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=CA}{%
+         family={Cano},
+         familyi={C\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KBCA1}
+    \strng{fullhash}{KBCA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{pages}{677\bibrangedash 692}
+    \field{title}{Online Ensemble Learning with Abstaining Classifiers for
+  Drifting and Noisy Data Streams}
+    \field{volume}{68}
+    \field{journaltitle}{Applied Soft Computing}
+    \field{year}{2018}
+  \endentry
+
   \entry{krawczyk2017ensemble}{article}{}
     \name{author}{5}{}{%
       {{hash=KB}{%
@@ -4962,6 +5101,44 @@
     \field{title}{Handling concept drifts in incremental learning with support
   vector machines}
     \field{year}{1999}
+  \endentry
+
+  \entry{Tan2005IDM1095618}{book}{}
+    \name{author}{3}{}{%
+      {{hash=TPN}{%
+         family={Tan},
+         familyi={T\bibinitperiod},
+         given={P.\bibnamedelima N.},
+         giveni={P\bibinitperiod\bibinitdelim N\bibinitperiod},
+      }}%
+      {{hash=SM}{%
+         family={Steinbach},
+         familyi={S\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=KV}{%
+         family={Kumar},
+         familyi={K\bibinitperiod},
+         given={V.},
+         giveni={V\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Addison-Wesley Longman Publishing Co., Inc.}%
+    }
+    \strng{namehash}{TPNSMKV1}
+    \strng{fullhash}{TPNSMKV1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{isbn}{0321321367}
+    \field{title}{Introduction to Data Mining}
+    \list{location}{1}{%
+      {Boston, MA, USA}%
+    }
+    \field{year}{2005}
   \endentry
 
   \entry{thrun1996learning}{inproceedings}{}
