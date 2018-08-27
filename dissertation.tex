@@ -2740,7 +2740,7 @@ Unlike the previously mentioned ensemble approaches, the \textit{Learn++ for Non
 
 An example of such windowing methods is the \textit{Probabilistic Adaptive Window} (PAW) algorithm, used with $k$-NN in~\cite{bifet2013efficient}. Rather than storing all samples, or a limited sized window, PAW keeps a dynamically sized window with a logarithmic number of samples, storing those with higher probability than the rest. Another example of windowing techniques is that of the \textit{ADaptive WINdowing} (ADWIN) algorithm~\cite{bifet2007learning}, which increases the size of the window when no change is apparent, and shrinks it when there is a drift. The main disadvantage with these change detection techniques is their difficulty to set a threshold for when a change occurs; too low of a threshold value would cause many false positives, and too large a threshold would cause many false negatives. 
 
-Other widely used examples of change-detection techniques include the \textit{Drift Detection Method} (DDM)~\cite{gama2004learning} and its improvement \textit{Early Drift Detection Method} (EDDM)~\cite{baena2006early}. DDM estimates the classifier error, which must decrease as more training samples arrive. However, if the classification error increases above some threshold, a warning signal is generated and new incoming samples are then stored in a window. If the error later falls below the threshold, the warning is considered a false alarm and the window is discarded. If the error rate increases, the classifier is then rebuilt on the samples stored in the window. EDDM is similar to its predecessor, however offers an improvement for detecting gradual drifts by proposing a novel method for comparing distances of error rates.
+Other widely used examples of change-detection techniques include the \textit{Drift Detection Method} (DDM)~\cite{gama2004learning} and its successor \textit{Early Drift Detection Method} (EDDM)~\cite{baena2006early}. DDM estimates the classifier error, which must decrease as more training samples arrive. However, if the classification error increases above some threshold, a warning signal is generated and new incoming samples are then stored in a window. If the error later falls below the threshold, the warning is considered a false alarm and the window is discarded. If the error rate increases, the classifier is then rebuilt on the samples stored in the window. EDDM is similar to its predecessor, however offers an improvement for detecting gradual drifts by proposing a novel method for comparing distances of error rates.
 
 Support vector machine (SVM) methods have infrequently been used for data stream classification due to challenges that stem from incrementally updating the SVM model as the number of samples increases. Some methods, such as \textit{SVMLight}~\cite{Joachims1999} and \textit{SVMPerf}~\cite{joachims2006training}, have been proposed for speeding up SVM classification. It is worth noting that some of the earliest work in streamed SVM learning~\cite{klinkenberg2000detecting,syed1999handling} precedes the earliest work in stream decision tree learning. In fact, the contributions made by Klinkenberg and Joachims in~\cite{klinkenberg2000detecting}, are one of the earliest window-based methods for detecting concept drift. Other significant contributions on incremental and online (stochastic) support vector machines are discussed in~\cite{bordes2005fast,cauwenberghs2001incremental,domeniconi2001incremental,fung2002incremental,ralaivola2001incremental,ruping2001incremental,shilton2005incremental}.
 
@@ -2845,11 +2845,11 @@ HOT~\cite{pfahringer2007new} 	& Hoeffding Option Tree 	\\
 AdaHOT~\cite{pfahringer2007new} & Adaptive Hoeffding Option Tree			\\
 NB~\cite{john1995estimating}	& Na\"{i}ve Bayes 					\\
 $k$-NNPAW~\cite{bifet2013efficient}	& $k$-NN with Probabilistic Adaptive Windows \\
-EDDM~\cite{baena2006early} 		& Early Drift Detection Method  	\\
+DDM~\cite{gama2004learning} 	& Drift Detection Method with HOT  	\\
 VFDR~\cite{gama2011learning} 	& Very Fast Decision Rules 			\\
 VFDR-NB~\cite{gama2011learning} & VFDR with Na\"{i}ve Bayes			\\
 SAE2~\cite{gomes2014sae2}		& Social Adaptive Ensemble 2			\\
-Learn++.NSE~\cite{elwell2011incremental} & Learning in Non-Stationary Environments\\
+Learn.NSE~\cite{elwell2011incremental} & Learn++ for Non-Stationary Environments\\
 DWM~\cite{kolter2007dynamic} 	& Dynamic Weighted Majority 	\\
 DACC~\cite{jaber2013new}		& Dynamic Adaptation to Concept Changes 		\\
 OCBoost~\cite{pelossof2009online} & Online Coordinate Boosting 		\\
@@ -2858,7 +2858,7 @@ OCBoost~\cite{pelossof2009online} & Online Coordinate Boosting 		\\
 \end{table}
 The experimental environment tests the difference in performance of OLLAWV against 12 contemporary algorithms, designed to handle stationary and non-stationary data streams. Some use explicit drift-detectors and others take a passive approach. The majority of the classifiers are without an explicit drift-detector because OLLAWV was implemented without one, ensuring a fair comparison. However, classifiers with a detector mechanisms were included for a more comprehensive understanding of how OLLAWV will compare. 
 
-The $12$ competing algorithms used are the following: \textit{Hoeffding Option Tree}~\cite{pfahringer2007new}, \textit{Adaptive Hoeffding Option Tree}~\cite{pfahringer2007new}, \textit{Na\"{i}ve Bayes}~\cite{john1995estimating}, \textit{$k$-NN with Probabilistic Adaptive Windows}~\cite{bifet2013efficient}, \textit{Early Drift Detection Method}~\cite{baena2006early}, \textit{Very Fast Decision Rules}~\cite{gama2011learning}, \textit{VFDR with Na\"{i}ve Bayes}~\cite{gama2011learning}, \textit{Social Adaptive Ensemble 2}~\cite{gomes2014sae2}, \textit{Learning in Non-Stationary Environments}~\cite{elwell2011incremental}, \textit{Dynamic Weighted Majority}~\cite{kolter2007dynamic}, \textit{Dynamic Adaptation to Concept Changes}~\cite{jaber2013new}, and \textit{Online Coordinate Boosting}~\cite{pelossof2009online}. A high-level summary of their approach to data streams is given in Table~\ref{tab:dsalgs}. These algorithms were chosen because they have shown considerable performance in learning in a stream environment, while also being readily available for use and reproducing their results through MOA, \textit{Massive Online Analysis}\footnote{https://moa.cms.waikato.ac.nz/}~\cite{moacite} framework. The experiments were run on a server with 2 Intel Xeon CPU E5-2690v4 with 28 cores (56 threads), 128 GB of memory, and CentOS 7.4. OLLAWV was also implemented in Java within MOA framework. 
+ A summary of the $12$ competing algorithms used throughout the experimental study is given in Table~\ref{tab:dsalgs}. They are the following: \textit{Hoeffding Option Tree}~\cite{pfahringer2007new}, \textit{Adaptive Hoeffding Option Tree}~\cite{pfahringer2007new}, \textit{Na\"{i}ve Bayes}~\cite{john1995estimating}, \textit{$k$-NN with Probabilistic Adaptive Windows}~\cite{bifet2013efficient}, \textit{Drift Detection Method}~\cite{gama2004learning}, \textit{Very Fast Decision Rules}~\cite{gama2011learning}, \textit{VFDR with Na\"{i}ve Bayes}~\cite{gama2011learning}, \textit{Social Adaptive Ensemble 2}~\cite{gomes2014sae2}, \textit{Learn++ for Non-Stationary Environments}~\cite{elwell2011incremental}, \textit{Dynamic Weighted Majority}~\cite{kolter2007dynamic}, \textit{Dynamic Adaptation to Concept Changes}~\cite{jaber2013new}, and \textit{Online Coordinate Boosting}~\cite{pelossof2009online}. These algorithms were chosen because they have shown considerable performance in learning in a stream environment, while also being readily available for use and reproducing their results through MOA, \textit{Massive Online Analysis}\footnote{https://moa.cms.waikato.ac.nz/}~\cite{moacite} framework. The experiments were run on a server with 2 Intel Xeon CPU E5-2690v4 with 28 cores (56 threads), 128 GB of memory, and CentOS 7.4. OLLAWV was also implemented in Java within MOA framework. 
 
 In the context of traditional batch learning, the most popular and unbiased method for estimating the performance of an algorithm is the \textit{nested cross-validation} procedure. However, in the online learning setting which has computationally strict requirements and drifting concepts, the nested cross-validation procedure is not straightforwardly applicable. The approach taken for this experimental environment is the evaluation method named \textit{Interleaved Test-Then-Train}, also known as \textit{Prequential}~\cite{gama2013evaluating} (predictive sequential evaluation), listed in Algorithm~\ref{alg:evalChunk}. It is used to describe the change in accuracy (or any other evaluation metric) of algorithms over time. It follows the online learning protocol: when a sample is received, the current model makes a prediction, and when the system receives the sample's true label, the classifier's loss can be computed. In other words, each sample can be used to test the model before it is used during training, and using this, the evaluation metric can be incrementally updated. Using this order, the algorithms are always being tested on unseen samples. This scheme ensures that no hold-out test set is needed, thus utilizing all available data. It also provides a smooth and unbiased plot of the evaluation metric over time, where each sample becomes increasingly less significant to the overall average. 
 \begin{algorithm}[t!]
@@ -2958,18 +2958,23 @@ The classification performance was measured using two metrics: Accuracy and Cohe
 
 In order to analyze the performances of the multiple models, non-parametric statistical tests are used to validate the experimental results obtained. The Iman-Davenport non-parametric test is run to investigate whether significant differences exist among the performance of the algorithms by ranking them over the datasets used, using the Friedman test. The algorithm ranks for each metric in Equations~\eqref{eq:metrics} are presented in the last row of the results tables, and the lowest (best) rank value is typeset in bold. After the Iman-Davenport test indicates significant differences, the Bonferroni-Dunn post-hoc test~\cite{Dunn1961} (for $\alpha = 0.05$) is then used to find where they occur between algorithms by assuming the classifiers' performances are different by at least some critical value. Below each result table, a figure highlighting the critical distance (in gray), from the best ranking algorithm to the rest, is shown. The algorithms to the right of the critical distance bar perform statistically significantly worse than the control algorithm, OLLAWV. Figures \ref{fig:BonfDunnaccDS}, \ref{fig:BonfDunnkappaDS}, and \ref{fig:BonfDunnTrainDS} show the results of the Bonferroni-Dunn post-hoc procedure over the metrics in Equation~\eqref{eq:metricsds}.
 
-\begin{table}[H]
+\subsection{Accuracy}
+Table~\ref{tab:DSResultsacc} shows the accuracy results of the 13 algorithms over 24 data streams, along with their average and rank. Specifically, OLLAWV achieves the best accuracy over 14 of the 24 datasets, with a competitive average against $k$-NNPAW, AdaHOT, DDM, and HOT. Note that OLLAWV performs competitively with the algorithms that employ some form of change detection/adaptation, even on more sudden drifting streams, indicating its value as a base-line batch stream learning algorithm (without a detection/adaptation mechanism). This is most likely due to the method in which OLLAWV performs its model updates: by iteratively selecting and updating the worst-violating sample. If a gradual drift occurs when a new batch is received, there are bound to be misclassified samples, which will in turn be selected first by OLLAWV to be updated. However, for sudden drifts, OLLAWV would not be able to update and adjust the model in time; it would always be one batch behind. This is evident through OLLAWV's accuracy results achieved over the two variant SEA generators: SEASuddenAN0 and SEASuddenAN05.
+
+\newpage
+Figure~\ref{fig:BonfDunnaccDS} shows the results for the statistical analysis on the accuracy results. The algorithms with rank higher than $5.48$ (OLLAWV's rank + the Bonferroni-Dunn critical value), i.e. to the right of the gray bar in Figure~\ref{fig:BonfDunnaccDS}, perform statistically worse than OLLAWV. The Bonferroni-Dunn test shows that there are no statistically significant differences in the accuracy results achieved by OLLAWV and AdaHOT, DDM, $k$-NNPAW, and HOT. This is expected firstly, since the AdaHOT and DDM methods utilize HOT as their base classifier and the HOT classifier performed competitively; and secondly, because of $k$-NNPAW's use of a probabilistic sliding window. 
+\begin{table}[t!]
 \caption{Accuracy (\%) Comparison for Data Stream Classifiers}
 \scriptsize
 \centering
 \label{tab:DSResultsacc}
 \resizebox{\textwidth}{!}{\begin{tabularx}{1.45\textwidth}{l@{\extracolsep{\fill}}ccccccccccccccc}
 \noalign{\smallskip}\hline\noalign{\smallskip}
-Dataset & OLLAWV & HOT & AdaHOT & NB & $k$-NNPAW & EDDM & VFDR & VFDR-NB & SAE2 & LearnNSE &DWM &DACC &OCBoost &\\
+Dataset & OLLAWV & HOT & AdaHOT & NB & $k$-NNPAW & DDM & VFDR & VFDR-NB & SAE2 & LearnNSE &DWM &DACC &OCBoost &\\
 \noalign{\smallskip}\hline\noalign{\smallskip}
 CovType &  \textbf{90.28} & 85.34 & 86.22 & 60.04 & 87.89 & 59.56 & 60.32 & 75.58 & 76.21 & 69.97 & 71.96 & 61.70 & 71.29 \\
-census & 93.76 & 94.70 &  \textbf{94.74} & 87.02 & 93.65 & 91.85 & 93.65 & 84.06 & 90.13 & 84.14 & 91.40 & 90.37 & 93.47 \\
-shuttle &  \textbf{99.67} & 98.18 & 98.52 & 90.02 & 99.26 & 98.49 & 88.40 & 96.06 & 90.24 & 93.79 & 89.91 & 92.03 & 74.21 \\
+Census & 93.76 & 94.70 &  \textbf{94.74} & 87.02 & 93.65 & 91.85 & 93.65 & 84.06 & 90.13 & 84.14 & 91.40 & 90.37 & 93.47 \\
+Shuttle &  \textbf{99.67} & 98.18 & 98.52 & 90.02 & 99.26 & 98.49 & 88.40 & 96.06 & 90.24 & 93.79 & 89.91 & 92.03 & 74.21 \\
 RBFNoDrift &  \textbf{94.21} & 92.94 & 92.96 & 71.99 & 93.75 & 92.48 & 77.53 & 81.71 & 89.16 & 70.28 & 70.43 & 65.01 & 92.08 \\
 LEDNoDrift & 73.83 & 73.85 & 73.84 &  \textbf{73.94} & 65.83 & 73.64 & 41.16 & 73.75 & 67.60 & 67.84 & 71.15 & 48.27 & 17.44 \\
 HyperplaneSlow &  \textbf{90.09} & 82.10 & 82.42 & 77.69 & 84.03 & 81.57 & 68.88 & 85.19 & 82.67 & 86.20 & 88.06 & 80.66 & 85.78 \\
@@ -3024,7 +3029,7 @@ Rank &\textbf{2.52} &5.42 &4.54 &8.19 &4.8542 &4.63 &10.96 &6.77 &8.46 &9.04 &7.
 \node (l2) at (c2) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny AdaHOT};
 \node (l3) at (c3) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny NB};
 \node (l4) at (c4) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny $k$-NNPAW};
-\node (l5) at (c5) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny EDDM};
+\node (l5) at (c5) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny DDM};
 \node (l6) at (c6) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny VFDR};
 \node (l7) at (c7) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny VFDR-NB};
 \node (l8) at (c8) [above right=.2cm and 0cm, align=right,scale=0.7] {\tiny SAE2};
@@ -3042,25 +3047,20 @@ Rank &\textbf{2.52} &5.42 &4.54 &8.19 &4.8542 &4.63 &10.96 &6.77 &8.46 &9.04 &7.
 \captionsetup{width=\linewidth}
 \captionof{figure}{Bonferroni-Dunn test for Accuracy}\label{fig:BonfDunnaccDS}
 \end{minipage}
-\end{table}\vspace{-2em}
-\subsection{Accuracy}
-% CD for 0.05 alpha is 2.96
-Table~\ref{tab:DSResultsacc} shows the accuracy results of the 13 algorithms over 24 data streams, along with their average and rank. Specifically, OLLAWV achieves the best accuracy over 14 of the 24 datasets, with a competitive average against $k$-NNPAW, AdaHOT, EDDM, and HOT. Note that OLLAWV performs competitively with the algorithms that employ some form of change detection/adaptation, even on more sudden drifting streams, indicating its value (without a detection/adaptation mechanism) as a base-line stream learning algorithm. This is most likely due to the method in which OLLAWV performs its model updates, i.e. by iteratively selecting and updating the worst-violating sample. If a concept-drift occurs, there are bound to be misclassified samples, which will in turn be selected by OLLAWV to be updated. However, for sudden drifts, OLLAWV might not be able to update and adjust the model in time.
-
-Figure~\ref{fig:BonfDunnaccDS} shows the results for the statistical analysis on the accuracy results. The algorithms with rank higher than $5.48$ (OLLAWV rank + Bonferroni-Dunn critical value), to the right of the gray bar in Figure~\ref{fig:BonfDunnaccDS}, perform statistically worse than OLLAWV. 
+\end{table}
 
 \begin{table}[b!]
-\caption{Cohen's Kappa (\%) Comparison for Data Stream Classifiers}
+\caption{Cohen's Kappa Rate (\%) Comparison for Data Stream Classifiers}
 \scriptsize
 \centering
 \label{tab:DSResultskappa}
 \resizebox{\textwidth}{!}{\begin{tabularx}{1.45\textwidth}{l@{\extracolsep{\fill}}ccccccccccccccc}
 \noalign{\smallskip}\hline\noalign{\smallskip}
-Dataset & OLLAWV & HOT & AdaHOT & NB & $k$-NNPAW & EDDM & VFDR & VFDR-NB & SAE2 & LearnNSE &DWM &DACC &OCBoost &\\
+Dataset & OLLAWV & HOT & AdaHOT & NB & $k$-NNPAW & DDM & VFDR & VFDR-NB & SAE2 & LearnNSE &DWM &DACC &OCBoost &\\
 \noalign{\smallskip}\hline\noalign{\smallskip}
 CovType  &  \textbf{84.30}  & 76.44 & 77.69 & 40.16 & 80.43 & 34.11 & 31.47 & 61.16 & 62.98 & 50.63 & 55.53 & 36.64 & 48.24 &   \\
-census  & 5.06 & 34.37 &  \textbf{37.39}  & 35.96 & 22.11 & 20.39 & 6.97 & 18.90 & 18.66 & 17.48 & 36.18 & 16.68 & 33.66 &   \\
-shuttle  & 96.17 & 94.91 & 95.85 & 75.04 &  \textbf{97.92}  & 95.75 & 60.82 & 89.53 & 75.32 & 81.56 & 75.10 & 74.98 & 36.69 &  \\ 
+Census  & 5.06 & 34.37 &  \textbf{37.39}  & 35.96 & 22.11 & 20.39 & 6.97 & 18.90 & 18.66 & 17.48 & 36.18 & 16.68 & 33.66 &   \\
+Shuttle  & 96.17 & 94.91 & 95.85 & 75.04 &  \textbf{97.92}  & 95.75 & 60.82 & 89.53 & 75.32 & 81.56 & 75.10 & 74.98 & 36.69 &  \\ 
 RBFNoDrift  &  \textbf{88.42}  & 85.88 & 85.92 & 43.98 & 87.49 & 84.96 & 55.07 & 63.41 & 78.32 & 40.57 & 40.84 & 30.02 & 84.17 &   \\
 LEDNoDrift  & 70.92 & 70.94 & 70.93 &  \textbf{71.05}  & 62.03 & 70.71 & 34.62 & 70.84 & 64.00 & 64.27 & 67.94 & 42.52 & 8.27 &   \\
 HyperplaneSlow  &  \textbf{80.18}  & 64.19 & 64.84 & 55.38 & 68.05 & 63.13 & 37.77 & 70.38 & 66.97 & 72.41 & 76.12 & 61.32 & 71.55 &   \\
@@ -3078,7 +3078,7 @@ RandomRBFGeneratorC4A50  &  \textbf{99.65}  & 98.86 & 98.83 & 89.06 & 98.87 & 98
 SineGeneratorF1BF  & 95.55 &  \textbf{99.50}  & 99.45 & 86.98 & 91.04 & 99.32 & 89.54 & 91.75 & 88.95 & 84.97 & 86.49 & 84.25 & 99.01 &   \\
 SineGeneratoF2BF  & 95.55 &  \textbf{99.49}  & 99.45 & 86.98 & 90.74 & 99.32 & 90.45 & 92.15 & 89.07 & 84.97 & 86.55 & 84.25 & 98.95 &   \\
 STAGGERGeneratorF1BF  &  \textbf{100.0}  & 99.94 & 99.94 &  \textbf{100.0}  &  \textbf{100.0}  &  \textbf{100.0}  & 99.56 &  \textbf{100.0}  & 78.28 & 14.61 &  \textbf{100.0}  & 99.78 &  \textbf{100.0}  &   \\
-STAGGERGeneratorF2BF  &  \textbf{100.0}  & 99.95 & 99.95 &  \textbf{100.0}  &  \textbf{100.0}  & 99.95 & 99.73 &  \textbf{100.0}  & 89.92 & 0.00 &  \textbf{100.0}  &  \textbf{100.0}  & -96.47 &   \\
+STAGGERGeneratorF2BF  &  \textbf{100.0}  & 99.95 & 99.95 &  \textbf{100.0}  &  \textbf{100.0}  & 99.95 & 99.73 &  \textbf{100.0}  & 89.92 & 00.00 &  \textbf{100.0}  &  \textbf{100.0}  & -96.47 &   \\
 HyperplaneFasterAN5  &  \textbf{78.58}  & 65.38 & 70.49 & 74.75 & 68.37 & 77.47 & 58.27 & 69.77 & 67.45 & 72.81 & 73.35 & 62.24 & 74.75 &   \\
 SEASuddenAN0  & 73.80 & 67.61 & 68.19 & 74.80 & 72.76 &  \textbf{76.39}  & 59.86 & 68.06 & 68.29 & 69.27 & 72.05 & 64.99 & 74.80 &   \\
 SEASuddenAN05  & 73.19 & 66.84 & 67.41 & 73.28 & 72.20 &  \textbf{74.92}  & 59.91 & 67.94 & 67.13 & 68.97 & 71.21 & 64.56 & 73.28 &   \\
@@ -3115,7 +3115,7 @@ Rank &\textbf{3.02} &5.54 &4.58 &7.75 &4.85 &4.58 &11.38 &6.60 &8.25 &8.92 &6.94
 \node (l2) at (c2) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny AdaHOT};
 \node (l3) at (c3) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny NB};
 \node (l4) at (c4) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny $k$-NNPAW};
-\node (l5) at (c5) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny EDDM};
+\node (l5) at (c5) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny DDM};
 \node (l6) at (c6) [above right=.1cm and 0cm, align=right,scale=0.7] {\tiny VFDR};
 \node (l7) at (c7) [below left=.25cm and 0cm, align=right,scale=0.7] {\tiny VFDR-NB};
 \node (l8) at (c8) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny SAE2};
@@ -3131,13 +3131,13 @@ Rank &\textbf{3.02} &5.54 &4.58 &7.75 &4.85 &4.58 &11.38 &6.60 &8.25 &8.92 &6.94
 };
 \end{tikzpicture}}\vspace{-1em}
 \captionsetup{width=\linewidth}
-\captionof{figure}{Bonferroni-Dunn test for Cohen's Kappa}\label{fig:BonfDunnkappaDS}
+\captionof{figure}{Bonferroni-Dunn test for Cohen's Kappa rate}\label{fig:BonfDunnkappaDS}
 \end{minipage}
 \end{table}
 \subsection{Cohen's Kappa Rate}
-Table~\ref{tab:DSResultskappa} shows the Cohen's Kappa rate results obtained by the algorithms. These results complement the accuracy results achieved by the algorithms, where OLLAWV outperforms all compared classifiers on 13 out of the 24 datasets, and is competitive with the popular algorithms: AdaHOT, EDDM, $k$-NNPAW, and HOT. OLLAWV's kappa values all fall within the ($50\%$, $100\%$] range, with the exception of the census dataset, indicating that its merit as a classifier agrees with the class distribution, and is not random. Concerning the census dataset, the best result, achieved by AdaHOT, was $37.3923\%$, meaning all algorithms performed approximately randomly. Classifiers OCBoost, DACC, Learn++.NSE, and VFDR all achieved the lowest rates on average. Note, for STAGGERGeneratorF2BF, Learn++.NSE obtained $0\%$ indicating complete random classifier behavior, and OCBoost obtained $-96.4666$ indicating a performance worse than the default-hypothesis. Figure~\ref{fig:BonfDunnkappaDS} show the results of the statistical analysis on the Cohen's Kappa rate results. They show that OLLAWV performs significantly better than $8$ out of the $12$ competing classifiers. These results also support OLLAWV's performance as a competitive base classifier.
+Table~\ref{tab:DSResultskappa} shows the Cohen's Kappa rate results obtained by the algorithms. These results complement the accuracy results achieved by the algorithms, where OLLAWV outperforms all compared classifiers on 13 out of the 24 datasets, and is competitive with the popular algorithms: AdaHOT, DDM, $k$-NNPAW, and HOT. OLLAWV's kappa values all fall within the ($50\%$, $100\%$] range, with the exception of the Census dataset, indicating that its merit as a classifier that agrees with the class distribution, and is not random. Concerning the Census dataset, the best result achieved was by AdaHOT, which obtained $37.39\%$. This indicates that all algorithms performed approximately randomly over the Census dataset. Classifiers OCBoost, DACC, Learn++.NSE, and VFDR all achieved the lowest rates on average. Note, for STAGGERGeneratorF2BF, Learn++.NSE obtained $0\%$ indicating complete random classifier behavior, and OCBoost obtained $-96.47$ indicating a performance worse than the default-hypothesis. Figure~\ref{fig:BonfDunnkappaDS} shows the results of the statistical analysis on the Cohen's Kappa rate results. They show that OLLAWV performs significantly better than $8$ out of the $12$ competing classifiers. These results also support OLLAWV's performance as a competitive base classifier and supplement the statistical analysis over the accuracy metric.
 
-\subsection{Training Time}
+\subsection{Training \& Testing Time}
 \begin{table}[b!]
 \caption{Training Time (seconds) Comparison for Data Stream Classifiers}
 \scriptsize
@@ -3145,7 +3145,7 @@ Table~\ref{tab:DSResultskappa} shows the Cohen's Kappa rate results obtained by 
 \label{tab:DSResultsTrain}
 \resizebox{\textwidth}{!}{\begin{tabularx}{1.45\textwidth}{l@{\extracolsep{\fill}}cccccccccccccc}
 \noalign{\smallskip}\hline\noalign{\smallskip}
-Dataset & OLLAWV & HOT & AdaHOT & NB & $k$-NNPAW & EDDM & VFDR & VFDR-NB & SAE2 & LearnNSE &DWM &DACC &OCBoost \\
+Dataset & OLLAWV & HOT & AdaHOT & NB & $k$-NNPAW & DDM & VFDR & VFDR-NB & SAE2 & LearnNSE &DWM &DACC &OCBoost \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
 CovType &0.0451 &0.0765 &0.0909 &\textbf{0.0009} &0.0387 &0.0577 &0.0371 &0.0445 &0.1121 &6.2806 &0.0419 &0.0357 &0.0984   \\
 census &0.0168 &0.1040 &0.1162 &\textbf{0.0007} &0.0386 &0.0345 &0.0735 &0.0458 &0.0363 &0.9368 &0.0156 &0.0175 &0.0543   \\
@@ -3179,10 +3179,10 @@ Rank &6.5833 &4.7917 &5.7917 &\textbf{1.8750} &7.7500 &6.0833 &9.8333 &9.5833 &8
 \begin{minipage}{0.9\textwidth}
 \centering
 \resizebox{\textwidth}{!}{\begin{tikzpicture}
-\draw (1,0) -- (14,0);
-\foreach \x in {1,2,3,4,5,6,7,8,9,10,11,12,13,14} {
+\draw (1,0) -- (13,0);
+\foreach \x in {1,2,3,4,5,6,7,8,9,10,11,12,13} {
 \draw (\x, 0) -- ++(0,.1) node [above,scale=0.7] {\tiny \x};
-\ifthenelse{\x < 14}{\draw (\x+.5, 0) -- ++(0,.03);}{}
+\ifthenelse{\x < 13}{\draw (\x+.5, 0) -- ++(0,.03);}{}
 }
 
 \coordinate (c0) at (6.5833,0);
@@ -3204,7 +3204,7 @@ Rank &6.5833 &4.7917 &5.7917 &\textbf{1.8750} &7.7500 &6.0833 &9.8333 &9.5833 &8
 \node (l2) at (c2) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny AdaHOT};
 \node (l3) at (c3) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny NB};
 \node (l4) at (c4) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny $k$-NNPAW};
-\node (l5) at (c5) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny EDDM};
+\node (l5) at (c5) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny DDM};
 \node (l6) at (c6) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny VFDR};
 \node (l7) at (c7) [above right=.4cm and 0cm, align=right,scale=0.7] {\tiny VFDR-NB};
 \node (l8) at (c8) [above right=.1cm and 0cm, align=right,scale=0.7] {\tiny SAE2};
@@ -3223,7 +3223,92 @@ Rank &6.5833 &4.7917 &5.7917 &\textbf{1.8750} &7.7500 &6.0833 &9.8333 &9.5833 &8
 \captionof{figure}{Bonferroni-Dunn test for Training Time}\label{fig:BonfDunnTrainDS}
 \end{minipage}
 \end{table}
-Table~\ref{tab:DSResultsTrain} shows the training times, in seconds, for each algorithm. The Na\"ive Bayes classifier has the fastest run time and is ranked first. This is to be expected since it is the simplest algorithm out of the $13$. However, its accuracy and Cohen's kappa results were far from competitive. The DWM and HOT algorithms were ranked next, however, DWM's accuracy and Cohen's kappa rate were also statistically worse in comparison to the competing methods. Based on the previous performance metrics, the top algorithms were: OLLAWV, AdaHOT, EDDM, $k$-NNPAW, and HOT. In terms of run time, OLLAWV showed better scalability than AdaHOT, EDDM, and $k$-NNPAW, despite having to rebuild its classifier model with every received batch of data. These results indicate that OLLAWV shows a competitive performance with respect to training time against the top performing data stream methods.
+\begin{table}[b!]
+\caption{Testing Time (seconds) Comparison for Data Stream Classifiers}
+\scriptsize
+\centering
+\label{tab:DSResultsTest}
+\resizebox{\textwidth}{!}{\begin{tabularx}{1.45\textwidth}{l@{\extracolsep{\fill}}cccccccccccccc}
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Dataset & OLLAWV & HOT & AdaHOT & NB & $k$-NNPAW & DDM & VFDR & VFDR-NB & SAE2 & LearnNSE &DWM &DACC &OCBoost \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+CovType &0.0391 &0.0256 &0.0321 &0.0089 &1.3744 &0.0041 &\textbf{0.0010} &0.0304 &0.0493 &0.1896 &0.0358 &0.0170 &0.0325 &  \\
+census &0.0223 &0.0082 &0.0095 &0.0033 &2.2826 &0.0014 &\textbf{0.0012} &0.0082 &0.0048 &0.1052 &0.0125 &0.0076 &0.0099 &  \\
+shuttle &0.0072 &0.0054 &0.0060 &0.0051 &0.3265 &0.0017 &\textbf{0.0012} &0.0105 &0.0092 &0.1228 &0.0096 &0.0108 &0.0176 &  \\
+RBFNoDrift &0.0372 &0.0051 &0.0065 &0.0016 &0.4792 &\textbf{0.0014} &0.0196 &0.0180 &0.0168 &0.0322 &0.0084 &0.0021 &0.0102 &  \\
+LEDNoDrift &0.0927 &0.0014 &0.0021 &0.0027 &1.6070 &0.0018 &\textbf{0.0010} &0.0190 &0.0302 &0.0603 &0.0148 &0.0050 &0.0105 &  \\
+HyperplaneSlow &0.0407 &0.0029 &0.0038 &0.0016 &0.5687 &0.0020 &\textbf{0.0004} &0.0048 &0.0220 &0.0814 &0.0080 &0.0037 &0.0095 &  \\
+HyperplaneFaster &0.0273 &0.0088 &0.0113 &0.0019 &0.5691 &\textbf{0.0016} &0.0020 &0.0051 &0.0164 &0.0794 &0.0085 &0.0038 &0.0083 &  \\
+RBFGradualRecurring &0.0436 &0.0141 &0.0154 &0.0060 &0.7791 &\textbf{0.0040} &0.0067 &0.0171 &0.0485 &0.2963 &0.0301 &0.0103 &0.0448 &  \\
+RBFBlips &0.0370 &0.0106 &0.0127 &0.0061 &0.7407 &\textbf{0.0032} &0.0039 &0.0148 &0.0464 &0.5582 &0.0312 &0.0133 &0.0457 &  \\
+WaveformGenerator &0.0604 &0.0231 &0.0291 &0.0094 &2.4650 &0.0053 &\textbf{0.0033} &0.0207 &0.0671 &0.3095 &0.0454 &0.0142 &0.0400 &  \\
+STAGGERGeneratorF1 &0.0018 &\textbf{0.0002} &0.0003 &\textbf{0.0002} &0.1834 &\textbf{0.0002} &0.0004 &0.0006 &0.0004 &0.2034 &\textbf{0.0002} &0.0012 &0.0005 &  \\
+HyperplaneFaster02 &0.0272 &0.0088 &0.0118 &0.0016 &0.5671 &\textbf{0.0012} &0.0019 &0.0048 &0.0174 &0.0790 &0.0081 &0.0037 &0.0085 &  \\
+RBFGradualRecurringv2 &0.0551 &0.0067 &0.0078 &0.0064 &0.8919 &0.0039 &\textbf{0.0035} &0.0158 &0.0259 &0.0853 &0.0322 &0.0059 &0.0452 &  \\
+MixedGeneratorBT &0.0202 &0.0012 &0.0012 &0.0004 &0.1348 &\textbf{0.0003} &0.0008 &0.0018 &0.0029 &0.0371 &0.0018 &0.0018 &0.0028 &  \\
+MixedGeneratorBF &0.0330 &0.0010 &0.0011 &0.0004 &0.1372 &\textbf{0.0003} &0.0017 &0.0028 &0.0032 &0.0316 &0.0019 &0.0020 &0.0030 &  \\
+RandomRBFGeneratorC4A25 &0.0218 &0.0153 &0.0145 &0.0072 &0.6871 &0.0030 &\textbf{0.0027} &0.0158 &0.0559 &0.1909 &0.0356 &0.0135 &0.0690 &  \\
+RandomRBFGeneratorC4A50 &0.0204 &0.0115 &0.0117 &0.0137 &1.2234 &0.0036 &\textbf{0.0015} &0.0234 &0.0848 &1.0711 &0.0687 &0.0443 &0.1373 &  \\
+SineGeneratorF1BF &0.0111 &0.0025 &0.0025 &0.0006 &0.1586 &\textbf{0.0003} &\textbf{0.0003} &0.0016 &0.0042 &0.0938 &0.0028 &0.0027 &0.0035 &  \\
+SineGeneratoF2BF &0.0111 &0.0023 &0.0025 &0.0006 &0.1500 &\textbf{0.0003} &\textbf{0.0003} &0.0016 &0.0041 &0.0655 &0.0022 &0.0029 &0.0036 &  \\
+STAGGERGeneratorF1BF &0.0018 &\textbf{0.0002} &0.0003 &\textbf{0.0002} &0.1150 &\textbf{0.0002} &\textbf{0.0002} &0.0006 &0.0004 &0.1853 &\textbf{0.0002} &0.0013 &0.0007 &  \\
+STAGGERGeneratorF2BF &0.0019 &0.0004 &0.0004 &0.0002 &0.1232 &0.0002 &\textbf{0.0001} &0.0011 &0.0004 &0.2370 &0.0002 &0.0012 &0.0011 &  \\
+HyperplaneFasterAN5 &0.0290 &0.0058 &0.0059 &0.0091 &0.2602 &\textbf{0.0009} &0.0016 &0.0041 &0.0129 &0.0573 &0.0068 &0.0039 &0.0153 &  \\
+SEASuddenAN0 &0.0212 &0.0009 &0.0009 &0.0044 &0.1736 &\textbf{0.0004} &0.0118 &0.0129 &0.0045 &0.0326 &0.0026 &0.0021 &0.0055 &  \\
+SEASuddenAN05 &0.0325 &0.0009 &0.0009 &0.0041 &0.1673 &\textbf{0.0004} &0.0106 &0.0119 &0.0044 &0.0321 &0.0025 &0.0022 &0.0053 &  \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Average &0.0290 &0.0068 &0.0079 &0.0040 &0.6736 &\textbf{0.0017} &0.0032 &0.0103 &0.0222 &0.1765 &0.0154 &0.0074 &0.0221 &  \\
+Rank &10.375 &4.7500 &5.6250 &3.3125 &12.875 &\textbf{1.6458} &2.8333 &7.0417 &8.9583 &11.958 &7.0417 &5.7917 &8.7917 &  \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\end{tabularx}}
+\begin{minipage}{0.9\textwidth}
+\centering
+\resizebox{\textwidth}{!}{\begin{tikzpicture}
+\draw (1,0) -- (13,0);
+\foreach \x in {1,2,3,4,5,6,7,8,9,10,11,12,13} {
+\draw (\x, 0) -- ++(0,.1) node [above,scale=0.7] {\tiny \x};
+\ifthenelse{\x < 13}{\draw (\x+.5, 0) -- ++(0,.03);}{}
+}
+
+\coordinate (c0) at (10.375,0);
+\coordinate (c1) at (4.75,0);
+\coordinate (c2) at (5.625,0);
+\coordinate (c3) at (3.3125,0);
+\coordinate (c4) at (12.875,0);
+\coordinate (c5) at (1.6458,0);
+\coordinate (c6) at (2.8333,0);
+\coordinate (c7) at (7.0417,0);
+\coordinate (c8) at (8.9583,0);
+\coordinate (c9) at (11.9583,0);
+\coordinate (c10) at (7.0417,0);
+\coordinate (c11) at (5.7917,0);
+\coordinate (c12) at (8.7917,0);
+
+\node (l0) at (c0) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny \textbf{OLLAWV}};
+\node (l1) at (c1) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny HOT};
+\node (l2) at (c2) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny AdaHOT};
+\node (l3) at (c3) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny NB};
+\node (l4) at (c4) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny kNNPAW};
+\node (l5) at (c5) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny DDM};
+\node (l6) at (c6) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny VFDR};
+\node (l7) at (c7) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny VFDR-NB};
+\node (l8) at (c8) [above left=.1cm and 0cm, align=right,scale=0.7] {\tiny SAE2};
+\node (l9) at (c9) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny LearnNSE};
+\node (l10) at (c10) [above right=.1cm and 0cm, align=right,scale=0.7] {\tiny DWM};
+\node (l11) at (c11) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny DACC};
+\node (l12) at (c12) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny OCBoost};
+
+\fill[fill=gray,fill opacity=0.5] (1.6458,-0.1) rectangle (4.7,0.1);
+
+\foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11,12} {
+\draw (l\x) -| (c\x);
+};
+\end{tikzpicture}}\vspace{-1em}
+\captionsetup{width=\linewidth}
+\captionof{figure}{Bonferroni-Dunn test for Testing Time}\label{fig:BonfDunnTestDS}
+\end{minipage}
+\end{table}
+Tables~\ref{tab:DSResultsTrain} and~\ref{tab:DSResultsTest} show the training and testing times, in seconds, for each algorithm. The Na\"ive Bayes classifier has the fastest training time and is ranked first, while exhibiting fast test times. This is to be expected since it is the simplest algorithm out of the $13$. However, its accuracy and Cohen's kappa results were far from competitive. The DWM and HOT algorithms were ranked next in terms of training time, however, DWM's accuracy and Cohen's kappa rate were also statistically significantly worse in comparison to the competing methods. Fast execution times are insignificant without complementing accuracy results, as in the case with the Na\"ive Bayes and VFDR. Based on the previous performance metrics, the top performing algorithms were: OLLAWV, AdaHOT, DDM, $k$-NNPAW, and HOT. In terms of training time, OLLAWV showed better scalability than AdaHOT, DDM, and $k$-NNPAW, despite having to rebuild the classifier with every received batch of data. In terms of testing time, OLLAWV performed notably better than $k$-NNPAW, which has the lowest ranking testing time. However, in comparison to the HOT, AdaHOT, DDM and DWM methods, OLLAWV's testing times are slower. The DDM method ranked first and had the fastest testing times due to its wrapper drift detection method over the HOT classifier. HOT as a single classifier was shown to have competitive run times; therefore, in conjunction with a drift detector, its run time performance is expected to increase. These results indicate that OLLAWV shows a competitive performance with respect to training time against the top performing data stream methods.
 
 \section{Conclusions}
 This chapter proposed two novel support vector machines, OLLA-L2 and OLLAWV, for the batch data stream problem. The algorithms are online, i.e. stochastic, solvers which are naturally suited for operating in the data stream setting. The main aim of the study was to design a competitive base-line algorithm that satisfied the performance constraints posed by the data stream problem, without sacrificing classification accuracy. The interesting properties of OLLA-L2, in the context of data streams, are its efficient model update procedure, its unordered iterative nature, and its ability to produce sparse models. However, OLLA-L2 suffers from a lack of meaningful stopping criteria, which could lead to denser models. The key features of OLLAWV (OLLA-L2's successor) are its self-stopping condition and unique method of iterating over and selecting samples, as well as a distinct update procedure. These characteristics result in faster training times and sparser models. These algorithmic attributes are desirable for the data stream setting, where time and memory constraints play an important role in classifier efficacy. A preliminary experimental study was conducted to compare the performance of the two solutions, and the results showed the better performance of OLLAWV.
