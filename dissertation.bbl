@@ -4597,6 +4597,33 @@
   \field{year}{2005}
 \endentry
 
+\entry{suykens1999least}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Suykens}{S.}%
+     {J.~A.~K.}{J.~A.~K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Vandewalle}{V.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer}%
+  }
+  \strng{namehash}{SJAKVJ1}
+  \strng{fullhash}{SJAKVJ1}
+  \field{sortinit}{S}
+  \field{number}{3}
+  \field{pages}{293\bibrangedash 300}
+  \field{title}{Least squares support vector machine classifiers}
+  \field{volume}{9}
+  \field{journaltitle}{Neural processing letters}
+  \field{year}{1999}
+\endentry
+
 \entry{syed1999handling}{inproceedings}{}
   \name{author}{3}{}{%
     {{}%
