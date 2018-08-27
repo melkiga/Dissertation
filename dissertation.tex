@@ -810,7 +810,7 @@ The performance metrics used to analyze our contributions' performances are show
 \end{eqnarray}
 \end{itemize}
 
-The predicted output is represented by $\hat{\textbf{y}}$, the average of the predicted output is $\bar{\hat{\textbf{y}}}$, and the average of the true output target variable is $\bar{\textbf{y}}$. The test dataset is the hold-out set during cross validation. This ensures our model is evaluated on data that it has not been trained on, and thus unbiased towards the training datasets. It also contributes to the generalizability and robustness of the model.
+The predicted output is represented by $\hat{\textbf{y}}$, the average of the predicted output is $\bar{\hat{\textbf{y}}}$, and the average of the true output target variable is $\bar{\textbf{y}}$. The test dataset is the hold-out set during cross-validation. This ensures our model is evaluated on data that it has not been trained on, and thus unbiased towards the training datasets. It also contributes to the generalizability and robustness of the model.
 
 \section{Results \& Statistical Analysis}\label{sec:MTRresults}
 Tables~{\ref{tab:mtraccResults}},~{\ref{tab:mseResults}},~{\ref{tab:armseresults}},~{\ref{tab:arrmseresults}}, and~{\ref{tab:timeresults}} show the results of our algorithm implementations compared with those of \textit{RC, MORF, ST, MTS, MTSC, ERC,} and \textit{ERCC}. Each subsection discusses a single metric along with the statistical analysis of the results. The best metric value obtained on each dataset is typeset in bold. Non-parametric statistical tests are then used to validate the experiments results obtained. To determine whether significant differences exist among the performance and results of the algorithms, the Iman-Davenport non-parametric test is run to rank the algorithms over the datasets used, according to the Friedman test. The average ranks are presented in the last row of the results tables. The Bonferroni-Dunn post-hoc test~{\cite{Dunn1961}} is then used to find these differences that occur between the algorithms. Below each result table, a diagram highlighting the critical distance (in gray) between each algorithm is shown. The Wilcoxon, Nemenyi, and Holm~{\cite{Wilcoxon1945}} tests were run for each of the result metrics to compute multiple pairwise comparisons among the algorithms used in the experimental study. Tables~{\ref{tab:statacc}},~{\ref{tab:statmse}},~{\ref{tab:statarmse}},~{\ref{tab:statarrmse}}, and~{\ref{tab:stattime}} show the sum of ranks $R^+$ and $R^-$ of the Wilcoxon rank-sum test, and the $p$-values for the $3$ tests, which show the statistical confidence rather than using a fixed $\alpha$ value.
@@ -2887,7 +2887,7 @@ In the context of traditional batch learning, the most popular and unbiased meth
 \end{algorithmic} 
 \end{algorithm}
 
-Along with the prequential evaluation method, traditional $k$-fold cross-validation was used in the OLLAWV experiments for the purpose of model selection. Once the first batch is received by the algorithm, $5$-fold cross validation is performed to select the best representative parameters for the current batch, and once they are chosen, they will be used for the remaining batches. This rigorous procedure is computationally expensive, however, the goal is to optimally and fairly find the best representative SVM parameters for the incoming stream. Each batch of samples is first normalized by linear transformation of the feature values to the range [0,1]. Then the training process, also involving cross-validation and prequential evaluation, are performed. To deal with multi-class classification problems, the one-vs-one, or pairwise, approach was used. The best hyperparameters were chosen from the following $6 \times 7$ possible combinations, shown in Equations~\eqref{eq:paramCollads} and~\eqref{eq:paramGollads}. 
+Along with the prequential evaluation method, traditional $k$-fold cross-validation was used in the OLLAWV experiments for the purpose of model selection. Once the first batch is received by the algorithm, $5$-fold cross-validation is performed to select the best representative parameters for the current batch, and once they are chosen, they will be used for the remaining batches. This rigorous procedure is computationally expensive, however, the goal is to optimally and fairly find the best representative SVM parameters for the incoming stream. Each batch of samples is first normalized by linear transformation of the feature values to the range [0,1]. Then the training process, also involving cross-validation and prequential evaluation, are performed. To deal with multi-class classification problems, the one-vs-one, or pairwise, approach was used. The best hyperparameters were chosen from the following $6 \times 7$ possible combinations, shown in Equations~\eqref{eq:paramCollads} and~\eqref{eq:paramGollads}. 
 \begin{subequations}
 \label{eq:hyperparamollads}
 \begin{align}
@@ -3308,7 +3308,7 @@ Although OLLAWV shows considerable performance against widely used SVM solvers a
 \textbf{AUC} & Area Under ROC Curve \\
 \textbf{BVM} & Ball Vector Machines \\
 \textbf{CitationKNN} & Citation k-Nearest Neighbors \\
-\textbf{CV} & Cross Validation \\
+\textbf{CV} & Cross-Validation \\
 \textbf{CVM} & Core Vector Machines \\
 \textbf{DD} & Diverse Density \\
 \textbf{EM-DD} & Expectation-Maximization Diverse Density \\
