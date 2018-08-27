@@ -2799,24 +2799,24 @@ Although OLLA-L2 has many advantages, it also has complexities, some of which ar
 \cmidrule(lr){4-5}
  & OLLA-L2 & OLLAWV & OLLA-L2 & OLLAWV \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
-RBFNoDrift &93.0663 &\textbf{94.2117} &\textbf{0.0238} &0.0329   \\
-HyperplaneSlow &87.4016 &\textbf{90.0913} &\textbf{0.0261} &0.0353   \\
-HyperplaneFaster &87.4033 &\textbf{89.5092} &\textbf{0.0256} &0.0263   \\
-STAGGERGeneratorF1 &\textbf{100.000} &\textbf{100.000} &0.0034 &\textbf{0.0021}  \\
-HyperplaneFaster02 &87.4047 &\textbf{89.4911} &\textbf{0.0257} &0.0268   \\
-MixedGeneratorBT &92.4990 &\textbf{97.9969} &\textbf{0.0108} &0.0205  \\
-MixedGeneratorBF &92.5537 &\textbf{98.0284} &\textbf{0.0107} &0.0299   \\
-SineGeneratorF1BF &97.3659 &\textbf{97.7909} &\textbf{0.0091} &0.0122   \\
-SineGeneratorF2BF &97.3659 &\textbf{97.7909} &\textbf{0.0091} &0.0121   \\
-STAGGERGeneratorF1BF &\textbf{100.000} &\textbf{100.000} &0.0035 &\textbf{0.0021}   \\
-STAGGERGeneratorF2BF &\textbf{100.000} &\textbf{100.000} &0.0039 &\textbf{0.0022}  \\
-HyperplaneFasterAN0 &87.4033 &\textbf{89.5092} &\textbf{0.0255} &0.0263   \\
-HyperplaneFasterAN5 &87.2912 &\textbf{89.2898} &\textbf{0.0258} &0.0264   \\
-SEASuddenAN0 &84.0088 &\textbf{87.7956} &0.0494 &\textbf{0.0208}   \\
-SEASuddenAN05 &83.6874 &\textbf{87.5283} &0.0494 &\textbf{0.0284}  \\
+RBFNoDrift &93.07 &\textbf{94.21} &\textbf{0.0238} &0.0329   \\
+HyperplaneSlow &87.40 &\textbf{90.09} &\textbf{0.0261} &0.0353   \\
+HyperplaneFaster &87.40 &\textbf{89.51} &\textbf{0.0256} &0.0263   \\
+STAGGERGeneratorF1 &\textbf{100.0} &\textbf{100.0} &0.0034 &\textbf{0.0021}  \\
+HyperplaneFaster02 &87.41 &\textbf{89.49} &\textbf{0.0257} &0.0268   \\
+MixedGeneratorBT &92.45 &\textbf{98.00} &\textbf{0.0108} &0.0205  \\
+MixedGeneratorBF &92.55 &\textbf{98.03} &\textbf{0.0107} &0.0299   \\
+SineGeneratorF1BF &97.37 &\textbf{97.79} &\textbf{0.0091} &0.0122   \\
+SineGeneratorF2BF &97.37 &\textbf{97.79} &\textbf{0.0091} &0.0121   \\
+STAGGERGeneratorF1BF &\textbf{100.0} &\textbf{100.0} &0.0035 &\textbf{0.0021}   \\
+STAGGERGeneratorF2BF &\textbf{100.0} &\textbf{100.0} &0.0039 &\textbf{0.0022}  \\
+HyperplaneFasterAN0 &87.40 &\textbf{89.51} &\textbf{0.0255} &0.0263   \\
+HyperplaneFasterAN5 &87.29 &\textbf{89.29} &\textbf{0.0258} &0.0264   \\
+SEASuddenAN0 &84.01 &\textbf{87.80} &0.0494 &\textbf{0.0208}   \\
+SEASuddenAN05 &83.69 &\textbf{87.53} &0.0494 &\textbf{0.0284}  \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
-Average &91.8300 &\textbf{93.9356} & \textbf{0.0201} & 0.0203 \\
-Rank & 1.9 &\textbf{1.1} &\textbf{1.3333} & 1.6667  \\
+Average &91.83 &\textbf{93.94} & \textbf{0.0201} & 0.0203 \\
+Rank & 1.90 &\textbf{1.10} &\textbf{1.3333} & 1.6667  \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
 \end{tabularx}}
 \end{table}
@@ -2949,46 +2949,44 @@ The classification performance was measured using two metrics: Accuracy and Cohe
 \end{align}
 \end{subequations}
 
-In order to analyze the performances of the multiple models, non-parametric statistical tests are used to validate the experimental results obtained. The Iman-Davenport non-parametric test is run to investigate whether significant differences exist among the performance of the algorithms by ranking them over the datasets used, using the Friedman test. The algorithm ranks for each metric in Equations~\eqref{eq:metrics} are presented in the last row of the results tables, and the lowest (best) rank value is typeset in bold. 
-
-After the Iman-Davenport test indicates significant differences, the Bonferroni-Dunn post-hoc test~\cite{Dunn1961} (for $\alpha = 0.05$) is then used to find where they occur between algorithms by assuming the classifiers' performances are different by at least some critical value. Below each result table, a figure highlighting the critical distance (in gray), from the best ranking algorithm to the rest, is shown. The algorithms to the right of the critical distance bar perform statistically significantly worse than the control algorithm, OLLAWV. Figures \ref{fig:BonfDunnaccDS}, \ref{fig:BonfDunnkappaDS}, and \ref{fig:BonfDunnTrainDS} show the results of the Bonferroni-Dunn post-hoc procedure over the metrics in Equation~\eqref{eq:metricsds}.
+In order to analyze the performances of the multiple models, non-parametric statistical tests are used to validate the experimental results obtained. The Iman-Davenport non-parametric test is run to investigate whether significant differences exist among the performance of the algorithms by ranking them over the datasets used, using the Friedman test. The algorithm ranks for each metric in Equations~\eqref{eq:metrics} are presented in the last row of the results tables, and the lowest (best) rank value is typeset in bold. After the Iman-Davenport test indicates significant differences, the Bonferroni-Dunn post-hoc test~\cite{Dunn1961} (for $\alpha = 0.05$) is then used to find where they occur between algorithms by assuming the classifiers' performances are different by at least some critical value. Below each result table, a figure highlighting the critical distance (in gray), from the best ranking algorithm to the rest, is shown. The algorithms to the right of the critical distance bar perform statistically significantly worse than the control algorithm, OLLAWV. Figures \ref{fig:BonfDunnaccDS}, \ref{fig:BonfDunnkappaDS}, and \ref{fig:BonfDunnTrainDS} show the results of the Bonferroni-Dunn post-hoc procedure over the metrics in Equation~\eqref{eq:metricsds}.
 
 \begin{table}[H]
 \caption{Accuracy (\%) Comparison for Data Stream Classifiers}
 \scriptsize
 \centering
 \label{tab:DSResultsacc}
-\resizebox{\textwidth}{!}{\begin{tabularx}{1.535\textwidth}{l@{\extracolsep{\fill}}ccccccccccccccc}
+\resizebox{\textwidth}{!}{\begin{tabularx}{1.45\textwidth}{l@{\extracolsep{\fill}}ccccccccccccccc}
 \noalign{\smallskip}\hline\noalign{\smallskip}
 Dataset & OLLAWV & HOT & AdaHOT & NB & $k$-NNPAW & EDDM & VFDR & VFDR-NB & SAE2 & LearnNSE &DWM &DACC &OCBoost &\\
 \noalign{\smallskip}\hline\noalign{\smallskip}
-CovType &\textbf{90.2820} &85.3410 &86.2220 &60.0370 &87.8890 &59.5560 &60.3240 &75.5820 &76.2070 &69.9670 &71.9560 &61.7000 &71.2860   \\
-census &93.7570 &94.6950 &\textbf{94.7350} &87.0190 &93.6460 &91.8530 &93.6480 &84.0600 &90.1320 &84.1440 &91.4040 &90.3710 &93.4690   \\
-shuttle &\textbf{99.6700} &98.1750 &98.5210 &90.0160 & 99.2640 &98.4890 &88.3980 &96.0570 &90.2430 &93.7890 &89.9120 &92.0270 &74.2110   \\
-RBFNoDrift &\textbf{94.2120} &92.9410 &92.9600 &71.9920 &93.7470 &92.4790 &77.5290 &81.7070 &89.1610 &70.2820 &70.4250 &65.0080 &92.0840   \\
-LEDNoDrift &73.8280 &73.8510 &73.8350 &\textbf{73.9420} &65.8280 &73.6380 &41.1620 &73.7520 &67.5960 &67.8400 &71.1460 &48.2680 &17.4400   \\
-HyperplaneSlow &\textbf{90.0910} &82.0960 &82.4210 &77.6900 &84.0260 &81.5660 &68.8830 &85.1880 &82.6670 &86.2040 &88.0600 &80.6620 &85.7760   \\
-HyperplaneFaster &\textbf{89.5090} &82.7170 &85.3420 &77.2310 &84.2720 &84.3260 &78.6330 &85.1810 &83.0130 &86.4990 &86.7610 &81.1540 &87.7950   \\
-RBFGradualRecurring &98.4140 &94.6250 &94.4420 &58.3270 &\textbf{98.4260} &93.4690 &60.0800 &86.1600 &88.4770 &72.8730 &74.9560 &61.9130 &49.6160   \\
-RBFBlips &\textbf{99.0651} &95.6660 &95.6030 &60.8270 &98.9390 &94.9150 &66.8950 &88.3530 &89.0380 &77.5310 &79.9800 &68.2730 &47.4570   \\
-WaveformGenerator &83.9380 &82.9870 &\textbf{84.1390} &80.4110 &80.1250 &83.6090 &63.8800 &75.8410 &80.1840 &80.1910 &78.3940 &73.5900 &55.0490   \\
-STAGGERGeneratorF1 &\textbf{100.000} &99.9890 &99.9890 &\textbf{100.000} &\textbf{100.000} &\textbf{100.000} &99.9140 &\textbf{100.000} &95.0430 &89.8210 &\textbf{100.000} &99.9560 &\textbf{100.000}   \\
-HyperplaneFaster02 &\textbf{89.4910} &82.7740 &85.3600 &77.2520 &84.2740 &87.6380 &78.8850 &85.1130 &83.0400 &86.5080 &86.7560 &81.2290 &87.5860   \\
-RBFGradualRecurringv2 &\textbf{97.1780} &93.2890 &93.0020 &57.4710 &95.7330 &93.1870 &57.9630 &80.7120 &84.4510 &62.4140 &63.7930 &49.4210 &48.8810   \\
-MixedGeneratorBT &97.9970 &99.1060 &\textbf{99.3220} &91.9330 &97.6650 &99.1070 &83.1220 &93.2810 &93.1580 &90.9060 &91.1940 &89.1560 &98.9790   \\
-MixedGeneratorBF &98.0280 &99.1770 &\textbf{99.3600} &92.0420 &97.5910 &99.2030 &89.9630 &94.3040 &93.4080 &90.7610 &91.4590 &88.6090 &98.9440   \\
-RandomRBFGeneratorC4A25 &\textbf{99.1240} &97.4330 &97.1380 &81.5940 &98.6900 &96.8900 &72.3260 &89.0280 &90.6130 &78.2290 &79.6710 &63.0210 &52.1560   \\
-RandomRBFGeneratorC4A50 &\textbf{99.7430} &99.1590 &99.1370 &91.9010 &99.1650 &98.9930 &80.6330 &95.6270 &92.0020 &86.0260 &90.4490 &73.7760 &50.6620   \\
-SineGeneratorF1BF &97.7910 &\textbf{99.7490} &99.7280 &93.5510 &95.5400 &99.6630 &94.8260 &95.9010 &94.5100 &92.5530 &93.3030 &92.1970 &99.5090   \\
-SineGeneratoF2BF &97.7910 &\textbf{99.7460} &99.7260 &93.5510 &95.4140 &99.6620 &95.2620 &96.0970 &94.5690 &92.5530 &93.3380 &92.1970 &99.4790   \\
-STAGGERGeneratorF1BF &\textbf{100.000} &99.9890 &99.9890 &\textbf{100.000} &\textbf{100.000} &\textbf{100.000} &99.9140 &\textbf{100.000} &95.0430 &89.8210 &\textbf{100.000} &99.9560 &\textbf{100.000}   \\
-STAGGERGeneratorF2BF &\textbf{100.000} &99.9770 &99.9770 &\textbf{100.000} &\textbf{100.000} &99.9770 &99.8680 &\textbf{100.000} &95.0190 &44.4050 &\textbf{100.000} &\textbf{100.000} &0.6121   \\
-HyperplaneFasterAN5 &\textbf{89.2900} &82.6890 &85.2440 &87.3760 &84.1850 &88.7370 &79.1350 &84.8850 &82.9210 &86.4050 &86.6740 &81.1180 &87.3760   \\
-SEASuddenAN0 &87.7960 &84.9210 &85.1750 &88.2330 &87.2160 &\textbf{88.9730} &81.5640 &85.1720 &85.1100 &85.7670 &86.9330 &83.7260 &88.2330   \\
-SEASuddenAN05 &87.5280 &84.5690 &84.8190 &87.5280 &86.9570 &\textbf{88.2860} &81.5460 &85.1100 &84.5650 &85.6290 &86.5410 &83.5300 &87.5280   \\
+CovType &  \textbf{90.28} & 85.34 & 86.22 & 60.04 & 87.89 & 59.56 & 60.32 & 75.58 & 76.21 & 69.97 & 71.96 & 61.70 & 71.29 \\
+census & 93.76 & 94.70 &  \textbf{94.74} & 87.02 & 93.65 & 91.85 & 93.65 & 84.06 & 90.13 & 84.14 & 91.40 & 90.37 & 93.47 \\
+shuttle &  \textbf{99.67} & 98.18 & 98.52 & 90.02 & 99.26 & 98.49 & 88.40 & 96.06 & 90.24 & 93.79 & 89.91 & 92.03 & 74.21 \\
+RBFNoDrift &  \textbf{94.21} & 92.94 & 92.96 & 71.99 & 93.75 & 92.48 & 77.53 & 81.71 & 89.16 & 70.28 & 70.43 & 65.01 & 92.08 \\
+LEDNoDrift & 73.83 & 73.85 & 73.84 &  \textbf{73.94} & 65.83 & 73.64 & 41.16 & 73.75 & 67.60 & 67.84 & 71.15 & 48.27 & 17.44 \\
+HyperplaneSlow &  \textbf{90.09} & 82.10 & 82.42 & 77.69 & 84.03 & 81.57 & 68.88 & 85.19 & 82.67 & 86.20 & 88.06 & 80.66 & 85.78 \\
+HyperplaneFaster &  \textbf{89.51} & 82.72 & 85.34 & 77.23 & 84.27 & 84.33 & 78.63 & 85.18 & 83.01 & 86.50 & 86.76 & 81.15 & 87.80 \\
+RBFGradualRecurring & 98.41 & 94.63 & 94.44 & 58.33 &  \textbf{98.43} & 93.47 & 60.08 & 86.16 & 88.48 & 72.87 & 74.96 & 61.91 & 49.62 \\
+RBFBlips &  \textbf{99.07} & 95.67 & 95.60 & 60.83 & 98.94 & 94.92 & 66.90 & 88.35 & 89.04 & 77.53 & 79.98 & 68.27 & 47.46 \\
+WaveformGenerator & 83.94 & 82.99 &  \textbf{84.14} & 80.41 & 80.13 & 83.61 & 63.88 & 75.84 & 80.18 & 80.19 & 78.39 & 73.59 & 55.05 \\
+STAGGERGeneratorF1 &  \textbf{100.0} & 99.99 & 99.99 &  \textbf{100.0} &  \textbf{100.0} &  \textbf{100.0} & 99.91 &  \textbf{100.0} & 95.04 & 89.82 &  \textbf{100.0} & 99.96 &  \textbf{100.0}  \\
+HyperplaneFaster02 &  \textbf{89.49} & 82.77 & 85.36 & 77.25 & 84.27 & 87.64 & 78.89 & 85.11 & 83.04 & 86.51 & 86.76 & 81.23 & 87.59 \\
+RBFGradualRecurringv2 &  \textbf{97.18} & 93.29 & 93.00 & 57.47 & 95.73 & 93.19 & 57.96 & 80.71 & 84.45 & 62.41 & 63.79 & 49.42 & 48.88 \\
+MixedGeneratorBT & 98.00 & 99.11 &  \textbf{99.32} & 91.93 & 97.67 & 99.11 & 83.12 & 93.28 & 93.16 & 90.91 & 91.19 & 89.16 & 98.98 \\
+MixedGeneratorBF & 98.03 & 99.18 &  \textbf{99.36} & 92.04 & 97.59 & 99.20 & 89.96 & 94.30 & 93.41 & 90.76 & 91.46 & 88.61 & 98.94 \\
+RandomRBFGeneratorC4A25 &  \textbf{99.12} & 97.43 & 97.14 & 81.59 & 98.69 & 96.89 & 72.33 & 89.03 & 90.61 & 78.23 & 79.67 & 63.02 & 52.16 \\
+RandomRBFGeneratorC4A50 &  \textbf{99.74} & 99.16 & 99.14 & 91.90 & 99.17 & 98.99 & 80.63 & 95.63 & 92.00 & 86.03 & 90.45 & 73.78 & 50.66 \\
+SineGeneratorF1BF & 97.79 &  \textbf{99.75} & 99.73 & 93.55 & 95.54 & 99.66 & 94.83 & 95.90 & 94.51 & 92.55 & 93.30 & 92.20 & 99.51 \\
+SineGeneratoF2BF & 97.79 &  \textbf{99.75} & 99.73 & 93.55 & 95.41 & 99.66 & 95.26 & 96.10 & 94.57 & 92.55 & 93.34 & 92.20 & 99.48 \\
+STAGGERGeneratorF1BF &  \textbf{100.0} & 99.99 & 99.99 &  \textbf{100.0} &  \textbf{100.0} &  \textbf{100.0} & 99.91 &  \textbf{100.0} & 95.04 & 89.82 &  \textbf{100.0} & 99.96 &  \textbf{100.0}  \\
+STAGGERGeneratorF2BF &  \textbf{100.0} & 99.98 & 99.98 &  \textbf{100.0} &  \textbf{100.0} & 99.98 & 99.87 &  \textbf{100.0} & 95.02 & 44.41 &  \textbf{100.0} &  \textbf{100.0} & 0.61 \\
+HyperplaneFasterAN5 &  \textbf{89.29} & 82.69 & 85.24 & 87.38 & 84.19 & 88.74 & 79.14 & 84.89 & 82.92 & 86.41 & 86.67 & 81.12 & 87.38 \\
+SEASuddenAN0 & 87.80 & 84.92 & 85.18 & 88.23 & 87.22 &  \textbf{88.97} & 81.56 & 85.17 & 85.11 & 85.77 & 86.93 & 83.73 & 88.23 \\
+SEASuddenAN05 & 87.53 & 84.57 & 84.82 & 87.53 & 86.96 &  \textbf{88.28} & 81.55 & 85.11 & 84.57 & 85.63 & 86.54 & 83.53 & 87.53 \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
-Average &\textbf{93.9385} &91.9025 &92.3411 &82.4968 &92.0247 &91.4257 &78.9314 &88.2130 &87.5071 &81.2966 &85.5460 &79.2024 &73.9220   \\
-Rank &\textbf{2.5208} &5.4167 &4.5417 &8.1875 &4.8542 &4.6250 &10.9583 &6.7708 &8.4583 &9.0417 &7.2708 &10.8958 &7.4583 &  \\
+Average &\textbf{93.94} &91.90 &92.34 &82.50 &92.03 &91.43 &78.93 &88.21 &87.51 &81.30 &85.55 &79.20 &73.92   \\
+Rank &\textbf{2.52} &5.42 &4.54 &8.19 &4.8542 &4.63 &10.96 &6.77 &8.46 &9.04 &7.27 &10.90 &7.46 &  \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
 \end{tabularx}}
 \begin{minipage}{0.9\textwidth}
@@ -3037,10 +3035,10 @@ Rank &\textbf{2.5208} &5.4167 &4.5417 &8.1875 &4.8542 &4.6250 &10.9583 &6.7708 &
 \captionsetup{width=\linewidth}
 \captionof{figure}{Bonferroni-Dunn test for Accuracy}\label{fig:BonfDunnaccDS}
 \end{minipage}
-\end{table}
+\end{table}\vspace{-2em}
 \subsection{Accuracy}
 % CD for 0.05 alpha is 2.96
-Table~\ref{tab:DSResultsacc} shows the accuracy results of the 13 algorithms over 24 data streams, along with their average and rank. Specifically, OLLAWV achieves the best accuracy over 14 of the 24 datasets, with a competitive average against $k$-NNPAW, AdaHOT, EDDM, and HOT. Note that OLLAWV performs competitively with the algorithms that employ some form of change detection/adaptation, even on more sudden drifting streams, indicating its value (without a detection/adaptation mechanism) as a base-line stream learning algorithm.
+Table~\ref{tab:DSResultsacc} shows the accuracy results of the 13 algorithms over 24 data streams, along with their average and rank. Specifically, OLLAWV achieves the best accuracy over 14 of the 24 datasets, with a competitive average against $k$-NNPAW, AdaHOT, EDDM, and HOT. Note that OLLAWV performs competitively with the algorithms that employ some form of change detection/adaptation, even on more sudden drifting streams, indicating its value (without a detection/adaptation mechanism) as a base-line stream learning algorithm. This is most likely due to the method in which OLLAWV performs its model updates, i.e. by iteratively selecting and updating the worst-violating sample. If a concept-drift occurs, there are bound to be misclassified samples, which will in turn be selected by OLLAWV to be updated. However, for sudden drifts, OLLAWV might not be able to update and adjust the model in time.
 
 Figure~\ref{fig:BonfDunnaccDS} shows the results for the statistical analysis on the accuracy results. The algorithms with rank higher than $5.48$ (OLLAWV rank + Bonferroni-Dunn critical value), to the right of the gray bar in Figure~\ref{fig:BonfDunnaccDS}, perform statistically worse than OLLAWV. 
 
@@ -3133,7 +3131,7 @@ Rank &\textbf{3.0208} &5.5417 &4.5833 &7.7500 &4.8542 &4.5833 &11.3750 &6.6042 &
 Table~\ref{tab:DSResultskappa} shows the Cohen's Kappa rate results obtained by the algorithms. These results complement the accuracy results achieved by the algorithms, where OLLAWV outperforms all compared classifiers on 13 out of the 24 datasets, and is competitive with the popular algorithms: AdaHOT, EDDM, $k$-NNPAW, and HOT. OLLAWV's kappa values all fall within the ($50\%$, $100\%$] range, with the exception of the census dataset, indicating that its merit as a classifier agrees with the class distribution, and is not random. Concerning the census dataset, the best result, achieved by AdaHOT, was $37.3923\%$, meaning all algorithms performed approximately randomly. Classifiers OCBoost, DACC, Learn++.NSE, and VFDR all achieved the lowest rates on average. Note, for STAGGERGeneratorF2BF, Learn++.NSE obtained $0\%$ indicating complete random classifier behavior, and OCBoost obtained $-96.4666$ indicating a performance worse than the default-hypothesis. Figure~\ref{fig:BonfDunnkappaDS} show the results of the statistical analysis on the Cohen's Kappa rate results. They show that OLLAWV performs significantly better than $8$ out of the $12$ competing classifiers. These results also support OLLAWV's performance as a competitive base classifier.
 
 \subsection{Training Time}
-\begin{table}[t!]
+\begin{table}[b!]
 \caption{Training Time (seconds) Comparison for Data Stream Classifiers}
 \scriptsize
 \centering
