@@ -3148,8 +3148,8 @@ Table~\ref{tab:DSResultskappa} shows the Cohen's Kappa rate results obtained by 
 Dataset & OLLAWV & HOT & AdaHOT & NB & $k$-NNPAW & DDM & VFDR & VFDR-NB & SAE2 & LearnNSE &DWM &DACC &OCBoost \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
 CovType &0.0451 &0.0765 &0.0909 &\textbf{0.0009} &0.0387 &0.0577 &0.0371 &0.0445 &0.1121 &6.2806 &0.0419 &0.0357 &0.0984   \\
-census &0.0168 &0.1040 &0.1162 &\textbf{0.0007} &0.0386 &0.0345 &0.0735 &0.0458 &0.0363 &0.9368 &0.0156 &0.0175 &0.0543   \\
-shuttle &0.0103 &0.0276 &0.0298 &\textbf{0.0004} &0.0386 &0.0069 &0.0108 &0.0069 &0.0217 &0.2692 &0.0104 &0.0186 &0.0581   \\
+Census &0.0168 &0.1040 &0.1162 &\textbf{0.0007} &0.0386 &0.0345 &0.0735 &0.0458 &0.0363 &0.9368 &0.0156 &0.0175 &0.0543   \\
+Shuttle &0.0103 &0.0276 &0.0298 &\textbf{0.0004} &0.0386 &0.0069 &0.0108 &0.0069 &0.0217 &0.2692 &0.0104 &0.0186 &0.0581   \\
 RBFNoDrift &0.0329 &0.0174 &0.0247 &\textbf{0.0002} &0.0383 &0.0828 &0.4267 &0.3172 &0.0491 &3.4029 &0.0104 &0.0137 &0.0402   \\
 LEDNoDrift &0.0697 &0.0373 &0.0649 &\textbf{0.0003} &0.0389 &0.0245 &0.0097 &0.0082 &0.0694 &5.4734 &0.0175 &0.0290 &0.0547   \\
 HyperplaneSlow &0.0353 &0.0094 &0.0142 &\textbf{0.0002} &0.0389 &0.1405 &0.1871 &0.3006 &0.0473 &3.3734 &0.0091 &0.0142 &0.0389   \\
@@ -3232,33 +3232,33 @@ Rank &6.5833 &4.7917 &5.7917 &\textbf{1.8750} &7.7500 &6.0833 &9.8333 &9.5833 &8
 \noalign{\smallskip}\hline\noalign{\smallskip}
 Dataset & OLLAWV & HOT & AdaHOT & NB & $k$-NNPAW & DDM & VFDR & VFDR-NB & SAE2 & LearnNSE &DWM &DACC &OCBoost \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
-CovType &0.0391 &0.0256 &0.0321 &0.0089 &1.3744 &0.0041 &\textbf{0.0010} &0.0304 &0.0493 &0.1896 &0.0358 &0.0170 &0.0325 &  \\
-census &0.0223 &0.0082 &0.0095 &0.0033 &2.2826 &0.0014 &\textbf{0.0012} &0.0082 &0.0048 &0.1052 &0.0125 &0.0076 &0.0099 &  \\
-shuttle &0.0072 &0.0054 &0.0060 &0.0051 &0.3265 &0.0017 &\textbf{0.0012} &0.0105 &0.0092 &0.1228 &0.0096 &0.0108 &0.0176 &  \\
-RBFNoDrift &0.0372 &0.0051 &0.0065 &0.0016 &0.4792 &\textbf{0.0014} &0.0196 &0.0180 &0.0168 &0.0322 &0.0084 &0.0021 &0.0102 &  \\
-LEDNoDrift &0.0927 &0.0014 &0.0021 &0.0027 &1.6070 &0.0018 &\textbf{0.0010} &0.0190 &0.0302 &0.0603 &0.0148 &0.0050 &0.0105 &  \\
-HyperplaneSlow &0.0407 &0.0029 &0.0038 &0.0016 &0.5687 &0.0020 &\textbf{0.0004} &0.0048 &0.0220 &0.0814 &0.0080 &0.0037 &0.0095 &  \\
-HyperplaneFaster &0.0273 &0.0088 &0.0113 &0.0019 &0.5691 &\textbf{0.0016} &0.0020 &0.0051 &0.0164 &0.0794 &0.0085 &0.0038 &0.0083 &  \\
-RBFGradualRecurring &0.0436 &0.0141 &0.0154 &0.0060 &0.7791 &\textbf{0.0040} &0.0067 &0.0171 &0.0485 &0.2963 &0.0301 &0.0103 &0.0448 &  \\
-RBFBlips &0.0370 &0.0106 &0.0127 &0.0061 &0.7407 &\textbf{0.0032} &0.0039 &0.0148 &0.0464 &0.5582 &0.0312 &0.0133 &0.0457 &  \\
-WaveformGenerator &0.0604 &0.0231 &0.0291 &0.0094 &2.4650 &0.0053 &\textbf{0.0033} &0.0207 &0.0671 &0.3095 &0.0454 &0.0142 &0.0400 &  \\
-STAGGERGeneratorF1 &0.0018 &\textbf{0.0002} &0.0003 &\textbf{0.0002} &0.1834 &\textbf{0.0002} &0.0004 &0.0006 &0.0004 &0.2034 &\textbf{0.0002} &0.0012 &0.0005 &  \\
-HyperplaneFaster02 &0.0272 &0.0088 &0.0118 &0.0016 &0.5671 &\textbf{0.0012} &0.0019 &0.0048 &0.0174 &0.0790 &0.0081 &0.0037 &0.0085 &  \\
-RBFGradualRecurringv2 &0.0551 &0.0067 &0.0078 &0.0064 &0.8919 &0.0039 &\textbf{0.0035} &0.0158 &0.0259 &0.0853 &0.0322 &0.0059 &0.0452 &  \\
-MixedGeneratorBT &0.0202 &0.0012 &0.0012 &0.0004 &0.1348 &\textbf{0.0003} &0.0008 &0.0018 &0.0029 &0.0371 &0.0018 &0.0018 &0.0028 &  \\
-MixedGeneratorBF &0.0330 &0.0010 &0.0011 &0.0004 &0.1372 &\textbf{0.0003} &0.0017 &0.0028 &0.0032 &0.0316 &0.0019 &0.0020 &0.0030 &  \\
-RandomRBFGeneratorC4A25 &0.0218 &0.0153 &0.0145 &0.0072 &0.6871 &0.0030 &\textbf{0.0027} &0.0158 &0.0559 &0.1909 &0.0356 &0.0135 &0.0690 &  \\
-RandomRBFGeneratorC4A50 &0.0204 &0.0115 &0.0117 &0.0137 &1.2234 &0.0036 &\textbf{0.0015} &0.0234 &0.0848 &1.0711 &0.0687 &0.0443 &0.1373 &  \\
-SineGeneratorF1BF &0.0111 &0.0025 &0.0025 &0.0006 &0.1586 &\textbf{0.0003} &\textbf{0.0003} &0.0016 &0.0042 &0.0938 &0.0028 &0.0027 &0.0035 &  \\
-SineGeneratoF2BF &0.0111 &0.0023 &0.0025 &0.0006 &0.1500 &\textbf{0.0003} &\textbf{0.0003} &0.0016 &0.0041 &0.0655 &0.0022 &0.0029 &0.0036 &  \\
-STAGGERGeneratorF1BF &0.0018 &\textbf{0.0002} &0.0003 &\textbf{0.0002} &0.1150 &\textbf{0.0002} &\textbf{0.0002} &0.0006 &0.0004 &0.1853 &\textbf{0.0002} &0.0013 &0.0007 &  \\
-STAGGERGeneratorF2BF &0.0019 &0.0004 &0.0004 &0.0002 &0.1232 &0.0002 &\textbf{0.0001} &0.0011 &0.0004 &0.2370 &0.0002 &0.0012 &0.0011 &  \\
-HyperplaneFasterAN5 &0.0290 &0.0058 &0.0059 &0.0091 &0.2602 &\textbf{0.0009} &0.0016 &0.0041 &0.0129 &0.0573 &0.0068 &0.0039 &0.0153 &  \\
-SEASuddenAN0 &0.0212 &0.0009 &0.0009 &0.0044 &0.1736 &\textbf{0.0004} &0.0118 &0.0129 &0.0045 &0.0326 &0.0026 &0.0021 &0.0055 &  \\
-SEASuddenAN05 &0.0325 &0.0009 &0.0009 &0.0041 &0.1673 &\textbf{0.0004} &0.0106 &0.0119 &0.0044 &0.0321 &0.0025 &0.0022 &0.0053 &  \\
+CovType &0.0391 &0.0256 &0.0321 &0.0089 &1.3744 &0.0041 &\textbf{0.0010} &0.0304 &0.0493 &0.1896 &0.0358 &0.0170 &0.0325   \\
+Census &0.0223 &0.0082 &0.0095 &0.0033 &2.2826 &0.0014 &\textbf{0.0012} &0.0082 &0.0048 &0.1052 &0.0125 &0.0076 &0.0099   \\
+Shuttle &0.0072 &0.0054 &0.0060 &0.0051 &0.3265 &0.0017 &\textbf{0.0012} &0.0105 &0.0092 &0.1228 &0.0096 &0.0108 &0.0176   \\
+RBFNoDrift &0.0372 &0.0051 &0.0065 &0.0016 &0.4792 &\textbf{0.0014} &0.0196 &0.0180 &0.0168 &0.0322 &0.0084 &0.0021 &0.0102   \\
+LEDNoDrift &0.0927 &0.0014 &0.0021 &0.0027 &1.6070 &0.0018 &\textbf{0.0010} &0.0190 &0.0302 &0.0603 &0.0148 &0.0050 &0.0105   \\
+HyperplaneSlow &0.0407 &0.0029 &0.0038 &0.0016 &0.5687 &0.0020 &\textbf{0.0004} &0.0048 &0.0220 &0.0814 &0.0080 &0.0037 &0.0095   \\
+HyperplaneFaster &0.0273 &0.0088 &0.0113 &0.0019 &0.5691 &\textbf{0.0016} &0.0020 &0.0051 &0.0164 &0.0794 &0.0085 &0.0038 &0.0083   \\
+RBFGradualRecurring &0.0436 &0.0141 &0.0154 &0.0060 &0.7791 &\textbf{0.0040} &0.0067 &0.0171 &0.0485 &0.2963 &0.0301 &0.0103 &0.0448   \\
+RBFBlips &0.0370 &0.0106 &0.0127 &0.0061 &0.7407 &\textbf{0.0032} &0.0039 &0.0148 &0.0464 &0.5582 &0.0312 &0.0133 &0.0457   \\
+WaveformGenerator &0.0604 &0.0231 &0.0291 &0.0094 &2.4650 &0.0053 &\textbf{0.0033} &0.0207 &0.0671 &0.3095 &0.0454 &0.0142 &0.0400   \\
+STAGGERGeneratorF1 &0.0018 &\textbf{0.0002} &0.0003 &\textbf{0.0002} &0.1834 &\textbf{0.0002} &0.0004 &0.0006 &0.0004 &0.2034 &\textbf{0.0002} &0.0012 &0.0005   \\
+HyperplaneFaster02 &0.0272 &0.0088 &0.0118 &0.0016 &0.5671 &\textbf{0.0012} &0.0019 &0.0048 &0.0174 &0.0790 &0.0081 &0.0037 &0.0085   \\
+RBFGradualRecurringv2 &0.0551 &0.0067 &0.0078 &0.0064 &0.8919 &0.0039 &\textbf{0.0035} &0.0158 &0.0259 &0.0853 &0.0322 &0.0059 &0.0452   \\
+MixedGeneratorBT &0.0202 &0.0012 &0.0012 &0.0004 &0.1348 &\textbf{0.0003} &0.0008 &0.0018 &0.0029 &0.0371 &0.0018 &0.0018 &0.0028  \\
+MixedGeneratorBF &0.0330 &0.0010 &0.0011 &0.0004 &0.1372 &\textbf{0.0003} &0.0017 &0.0028 &0.0032 &0.0316 &0.0019 &0.0020 &0.0030   \\
+RandomRBFGeneratorC4A25 &0.0218 &0.0153 &0.0145 &0.0072 &0.6871 &0.0030 &\textbf{0.0027} &0.0158 &0.0559 &0.1909 &0.0356 &0.0135 &0.0690   \\
+RandomRBFGeneratorC4A50 &0.0204 &0.0115 &0.0117 &0.0137 &1.2234 &0.0036 &\textbf{0.0015} &0.0234 &0.0848 &1.0711 &0.0687 &0.0443 &0.1373   \\
+SineGeneratorF1BF &0.0111 &0.0025 &0.0025 &0.0006 &0.1586 &\textbf{0.0003} &\textbf{0.0003} &0.0016 &0.0042 &0.0938 &0.0028 &0.0027 &0.0035   \\
+SineGeneratoF2BF &0.0111 &0.0023 &0.0025 &0.0006 &0.1500 &\textbf{0.0003} &\textbf{0.0003} &0.0016 &0.0041 &0.0655 &0.0022 &0.0029 &0.0036  \\
+STAGGERGeneratorF1BF &0.0018 &\textbf{0.0002} &0.0003 &\textbf{0.0002} &0.1150 &\textbf{0.0002} &\textbf{0.0002} &0.0006 &0.0004 &0.1853 &\textbf{0.0002} &0.0013 &0.0007   \\
+STAGGERGeneratorF2BF &0.0019 &0.0004 &0.0004 &0.0002 &0.1232 &0.0002 &\textbf{0.0001} &0.0011 &0.0004 &0.2370 &0.0002 &0.0012 &0.0011   \\
+HyperplaneFasterAN5 &0.0290 &0.0058 &0.0059 &0.0091 &0.2602 &\textbf{0.0009} &0.0016 &0.0041 &0.0129 &0.0573 &0.0068 &0.0039 &0.0153   \\
+SEASuddenAN0 &0.0212 &0.0009 &0.0009 &0.0044 &0.1736 &\textbf{0.0004} &0.0118 &0.0129 &0.0045 &0.0326 &0.0026 &0.0021 &0.0055   \\
+SEASuddenAN05 &0.0325 &0.0009 &0.0009 &0.0041 &0.1673 &\textbf{0.0004} &0.0106 &0.0119 &0.0044 &0.0321 &0.0025 &0.0022 &0.0053   \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
-Average &0.0290 &0.0068 &0.0079 &0.0040 &0.6736 &\textbf{0.0017} &0.0032 &0.0103 &0.0222 &0.1765 &0.0154 &0.0074 &0.0221 &  \\
-Rank &10.375 &4.7500 &5.6250 &3.3125 &12.875 &\textbf{1.6458} &2.8333 &7.0417 &8.9583 &11.958 &7.0417 &5.7917 &8.7917 &  \\
+Average &0.0290 &0.0068 &0.0079 &0.0040 &0.6736 &\textbf{0.0017} &0.0032 &0.0103 &0.0222 &0.1765 &0.0154 &0.0074 &0.0221   \\
+Rank &10.375 &4.7500 &5.6250 &3.3125 &12.875 &\textbf{1.6458} &2.8333 &7.0417 &8.9583 &11.958 &7.0417 &5.7917 &8.7917   \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
 \end{tabularx}}
 \begin{minipage}{0.9\textwidth}
@@ -3308,12 +3308,16 @@ Rank &10.375 &4.7500 &5.6250 &3.3125 &12.875 &\textbf{1.6458} &2.8333 &7.0417 &8
 \captionof{figure}{Bonferroni-Dunn test for Testing Time}\label{fig:BonfDunnTestDS}
 \end{minipage}
 \end{table}
-Tables~\ref{tab:DSResultsTrain} and~\ref{tab:DSResultsTest} show the training and testing times, in seconds, for each algorithm. The Na\"ive Bayes classifier has the fastest training time and is ranked first, while exhibiting fast test times. This is to be expected since it is the simplest algorithm out of the $13$. However, its accuracy and Cohen's kappa results were far from competitive. The DWM and HOT algorithms were ranked next in terms of training time, however, DWM's accuracy and Cohen's kappa rate were also statistically significantly worse in comparison to the competing methods. Fast execution times are insignificant without complementing accuracy results, as in the case with the Na\"ive Bayes and VFDR. Based on the previous performance metrics, the top performing algorithms were: OLLAWV, AdaHOT, DDM, $k$-NNPAW, and HOT. In terms of training time, OLLAWV showed better scalability than AdaHOT, DDM, and $k$-NNPAW, despite having to rebuild the classifier with every received batch of data. In terms of testing time, OLLAWV performed notably better than $k$-NNPAW, which has the lowest ranking testing time. However, in comparison to the HOT, AdaHOT, DDM and DWM methods, OLLAWV's testing times are slower. The DDM method ranked first and had the fastest testing times due to its wrapper drift detection method over the HOT classifier. HOT as a single classifier was shown to have competitive run times; therefore, in conjunction with a drift detector, its run time performance is expected to increase. These results indicate that OLLAWV shows a competitive performance with respect to training time against the top performing data stream methods.
+Tables~\ref{tab:DSResultsTrain} and~\ref{tab:DSResultsTest} show the training and testing times in seconds for each algorithm. The Na\"ive Bayes classifier has the fastest training time and is ranked first, while exhibiting fast testing times. This is to be expected since it is the simplest algorithm out of the $13$ compared. However, its accuracy and Cohen's kappa rate results were far from competitive. The DWM and HOT algorithms were ranked next in terms of training time, however, DWM's accuracy and Cohen's kappa rate were also statistically significantly worse in comparison to the competing methods. Fast execution times are insignificant without complementing performance results, as in the case with the Na\"ive Bayes and VFDR. 
+
+Based on the previous metrics, the top performing algorithms were: OLLAWV, AdaHOT, DDM, $k$-NNPAW, and HOT. In terms of training time, OLLAWV showed better scalability than AdaHOT, DDM, and $k$-NNPAW, despite having to rebuild the classifier with every received batch of data. Additionally, OLLAWV performs 5-fold cross-validation for hyperparameter selection, and builds multiple pairwise models for the multi-class streams; both of which as expensive procedures. Despite these traits, OLLAWV still obtains competitive training times. This is due to OLLAWV's early stopping capability.
+
+In terms of testing time, OLLAWV performed notably better than $k$-NNPAW, which has the lowest ranking testing time. However, in comparison to the HOT, AdaHOT, DDM and DWM methods, OLLAWV's testing times are slower. This is yet another trait of building multiple pairwise models. The DDM method ranked first and had the fastest testing times due to its wrapper drift detection method over the HOT classifier. HOT as a single classifier was shown to have competitive testing times; therefore, in conjunction with a drift detector, its run time performance is expected to increase. However, despite the slower testing times exhibited by OLLAWV, it showed competitive performance concerning model training time. 
 
 \section{Conclusions}
 This chapter proposed two novel support vector machines, OLLA-L2 and OLLAWV, for the batch data stream problem. The algorithms are online, i.e. stochastic, solvers which are naturally suited for operating in the data stream setting. The main aim of the study was to design a competitive base-line algorithm that satisfied the performance constraints posed by the data stream problem, without sacrificing classification accuracy. The interesting properties of OLLA-L2, in the context of data streams, are its efficient model update procedure, its unordered iterative nature, and its ability to produce sparse models. However, OLLA-L2 suffers from a lack of meaningful stopping criteria, which could lead to denser models. The key features of OLLAWV (OLLA-L2's successor) are its self-stopping condition and unique method of iterating over and selecting samples, as well as a distinct update procedure. These characteristics result in faster training times and sparser models. These algorithmic attributes are desirable for the data stream setting, where time and memory constraints play an important role in classifier efficacy. A preliminary experimental study was conducted to compare the performance of the two solutions, and the results showed the better performance of OLLAWV.
 
-The experimental study showed the better performance of OLLAWV against $12$ popular data stream classifiers. As a baseline OLLAWV was shown, through various metrics and statistical analysis, to be very attractive in the batch data stream setting, sharing competitive run times with the top performing contemporary methods. 
+The experimental study showed the better performance of OLLAWV against $12$ popular data stream classifiers. As a base-line algorithm, OLLAWV was shown through various metrics and statistical analysis to be very attractive in the batch data stream setting, sharing competitive run times with the top performing contemporary methods. 
 
 \chapter{Conclusions}
 This thesis introduced several novel SVM algorithms for learning from the following diverse machine learning paradigms: multi-target regression, multi-instance classification, traditional supervised classification, and data stream classification.
