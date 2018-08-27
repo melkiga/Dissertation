@@ -4130,6 +4130,39 @@
     \field{year}{2018}
   \endentry
 
+  \entry{krawczyk2015one}{article}{}
+    \name{author}{2}{}{%
+      {{hash=KB}{%
+         family={Krawczyk},
+         familyi={K\bibinitperiod},
+         given={B.},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=WM}{%
+         family={Wo{\'z}niak},
+         familyi={W\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{KBWM1}
+    \strng{fullhash}{KBWM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{number}{12}
+    \field{pages}{3387\bibrangedash 3400}
+    \field{title}{One-class classifiers with incremental learning and
+  forgetting for data streams with concept drift}
+    \field{volume}{19}
+    \field{journaltitle}{Soft Computing}
+    \field{year}{2015}
+  \endentry
+
   \entry{krawczyk2017ensemble}{article}{}
     \name{author}{5}{}{%
       {{hash=KB}{%
@@ -4177,6 +4210,70 @@
     \field{volume}{37}
     \field{journaltitle}{Information Fusion}
     \field{year}{2017}
+  \endentry
+
+  \entry{lawal2017adaptive}{article}{}
+    \name{author}{2}{}{%
+      {{hash=LIA}{%
+         family={Lawal},
+         familyi={L\bibinitperiod},
+         given={I.\bibnamedelima A.},
+         giveni={I\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+      {{hash=ASA}{%
+         family={Abdulkarim},
+         familyi={A\bibinitperiod},
+         given={S.\bibnamedelima A.},
+         giveni={S\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {South African Computer Society}%
+    }
+    \strng{namehash}{LIAASA1}
+    \strng{fullhash}{LIAASA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{L}
+    \field{sortinithash}{L}
+    \field{number}{1}
+    \field{pages}{27\bibrangedash 42}
+    \field{title}{Adaptive SVM for data stream classification}
+    \field{volume}{29}
+    \field{journaltitle}{South African Computer Journal}
+    \field{year}{2017}
+  \endentry
+
+  \entry{li2015data}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=LX}{%
+         family={Li},
+         familyi={L\bibinitperiod},
+         given={X.},
+         giveni={X\bibinitperiod},
+      }}%
+      {{hash=YW}{%
+         family={Yu},
+         familyi={Y\bibinitperiod},
+         given={W.},
+         giveni={W\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{LXYW1}
+    \strng{fullhash}{LXYW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{L}
+    \field{sortinithash}{L}
+    \field{booktitle}{Proceedings of the 1st international conference on big
+  data computing service and applications}
+    \field{pages}{400\bibrangedash 405}
+    \field{title}{Data stream classification for structural health monitoring
+  via on-line support vector machines}
+    \field{year}{2015}
   \endentry
 
   \entry{Lui2010}{article}{}
