@@ -111,7 +111,7 @@ Under the multi-instance paradigm, a novel SVM multiple-instance formulation and
 
 Due to the shortcomings of current popular SVM solvers, especially in the context of large-scale learning, the third contribution presents a novel stochastic, i.e. online, learning algorithm for solving the L1-SVM problem in the primal domain, dubbed \textit{OnLine Learning Algorithm using Worst-Violators} (OLLAWV). This algorithm, unlike other stochastic methods, provides a novel stopping criteria and eliminates the need for using a regularization term. It instead uses early stopping. Because of these characteristics, OLLAWV was proven to efficiently produce sparse models, while maintaining a competitive accuracy.
 
-OLLAWV's online nature and success for traditional classification inspired its implementation, as well as its predecessor named \textit{OnLine Learning Algorithm - List 2} (OLLA-L2), under the batch data stream classification setting. Unlike other existing methods, these two algorithms were chosen because their properties are a natural remedy for the time and memory constraints that arise from the data stream problem. OLLA-L2's low space complexity deals with memory constraints imposed by the data stream setting, and OLLAWV's fast run time, early self-stopping capability, as well as the ability to produce sparse models, remedies both memory and time constraints. The preliminary results for OLLAWV showed a superior performance to its predecessor and was chosen to be used in the final set of experiments against current popular data stream methods. 
+OLLAWV's online nature and success for traditional classification inspired its implementation, as well as its predecessor named \textit{OnLine Learning Algorithm - List 2} (OLLA-L2), under the batch data stream classification setting. Unlike other existing methods, these two algorithms were chosen because their properties are a natural remedy for the time and memory constraints that arise from the data stream problem. OLLA-L2's low spacial complexity deals with memory constraints imposed by the data stream setting, and OLLAWV's fast run time, early self-stopping capability, as well as the ability to produce sparse models, agrees with both memory and time constraints. The preliminary results for OLLAWV showed a superior performance to its predecessor and was chosen to be used in the final set of experiments against current popular data stream methods. 
 
 Rigorous experimental studies and statistical analyses over various metrics and datasets were conducted in order to comprehensively compare the proposed solutions against modern, widely-used methods from all paradigms. The experimental studies and analyses confirm that the proposals achieve better performances and more scalable solutions than the methods compared, making them competitive in their respected fields.
 }
@@ -281,12 +281,12 @@ Supervised learning is the process of determining a relationship $f(\bm x)$ by u
   \draw[black]     (3.5,.2)  circle (3pt); 
   \draw[black]     (4,.3)    circle (3pt); 
 \end{tikzpicture}
-\caption{An illustration of the soft margin L1-SVM solution on an example $2$-dimensional non-linearly separable dataset.}
+\caption{An illustration of the soft-margin L1-SVM solution on an example $2$-dimensional non-linearly separable dataset.}
 \label{fig:nonlinsepdata}
 \end{minipage}
 \end{figure}
 
-The goal of the soft margin SVM classifier is to find a classification function
+The goal of the soft-margin SVM classifier is to find a classification function
 \begin{equation}
 \centering
 f(\bm x) = \textsc{sign } o_{\bm w,b}(\bm x),
@@ -301,7 +301,7 @@ where $\bm \xi \in \reals^n$ are the non-negative slack variables that allow for
 
 In the example shown in Figure~\ref{fig:possiblesephyp}, if the training data points are slightly moved, the solid line (with the larger margin) will still correctly classify all the instances, whereas the dotted line (with a much smaller margin, comparatively) will not. This illustrates that the location of the hyperplane has a direct impact on the classifiers generalization capabilities. The hyperplane with the largest margin is called the \textit{optimal separating hyperplane}. Figure~\ref{fig:nonlinsepdata} shows the optimal separating hyperplane for overlapping training data points, where the filled data points are from the $+1$ class and the non-filled data points are from the $-1$ class. The training data points on the separating hyperplane (the circled data points), whose decision function value equals $+1$ or $-1$, are called the \textit{support vectors}. 
 
-The soft margin SVM is a result of the following optimization problem:
+The soft-margin SVM is a result of the following optimization problem:
 \begin{equation}
 \label{eq:softsvm}
 \begin{aligned}
@@ -317,7 +317,7 @@ Equation~\ref{eq:softsvm} can be rewritten as a regularized loss minimization pr
 \centering
 L(y_i,\, o_{(w,b)}(\bm{x}_i)) = \max \set{0, 1 - y_i o_{(w,b)}(\bm{x}_i)},
 \end{equation}
-which penalizes errors satisfying the following: $ y_i o_{(w,b)}(\bm{x}_i) < 1$ and is a crucial element that facilitates the SVM model's sparseness. The soft margin SVM represented as a regularized loss minimization problem becomes:
+which penalizes errors satisfying the following: $ y_i o_{(w,b)}(\bm{x}_i) < 1$ and is a crucial element that facilitates the SVM model's sparseness. The soft-margin SVM represented as a regularized loss minimization problem becomes:
 \begin{equation}
 \label{eqn:reghingeloss}
 \min\limits_{\bm (\bm{w},b) \in \mathcal{H}_o \times \reals} R {\,\,} = {\,\,} \frac{1}{2}||\bm{w}||^2 + C\sum_{i=1}^n L(y_i,\, o_{(w,b)}(\bm{x}_i)),
@@ -518,7 +518,7 @@ This section first defines the notation that will be used throughout this chapte
 \subsection{Notation}\label{subsec:mtrnotation}
 \begin{table*}[t!]
 \small \centering
-\caption{Multiple-Target Learning Notation}
+\caption{Summary of Multiple-Target Learning Notation}
 \resizebox{\textwidth}{!}{\begin{tabular}{ll}
 \noalign{\smallskip}\hline\noalign{\smallskip}
 Definition & Notation\\ 
@@ -591,7 +591,7 @@ Blockeel et al. proposed \textit{multi-objective decision trees} (MODTs)~\cite{b
 The methods described above were all designed to try to analyze and improve the performance of predicting multiple outputs at once, however there are still outstanding issues to be addressed. Considering the models' predictive performances, the benefits of using MTSC and ERCC instead of the baseline ST are not apparent. In the experimental study performed by Spyromitros-Xioufis et al.~\cite{Spyromitros2014}, the ST method sometimes outperformed their proposed problem transformation approaches. The best explanation for this would be that the targets correlations were not captured due to the \textit{randomized} learning process (chain order). Another issue that these approaches face comes with having a large number of output variables. Due to the ensemble based approach of up to 10 random chains, or solving a large number of single-target problems, the algorithms' computational complexity would suffer. Furthermore, these models do not provide a clear description of the relationship between the input and output variables, as well as the outputs amongst themselves. The contributions of this chapter aim to remedy the mentioned disadvantages.
 
 \section{Three Novel SVMs for Multi-Target Regression}\label{sec:MTRproposal}
-Three novel models have been implemented for the purposes of multi-target regression. The base model is the SVR model, where $m$ single-target soft margin \textit{non-linear support vector regressors} (NL-SVR) are built for each target variable $\bm Y_j$. 
+Three novel models have been implemented for the purposes of multi-target regression. The base model is the SVR model, where $m$ single-target soft-margin \textit{non-linear support vector regressors} (NL-SVR) are built for each target variable $\bm Y_j$. 
 \begin{figure}[b!]
 \begin{minipage}{0.9\textwidth}
 \small \centering
@@ -604,7 +604,7 @@ Three novel models have been implemented for the purposes of multi-target regres
 \end{minipage}
 \caption{\small SVR Flow Diagram. Firstly, the multi-target dataset is divided into $m$ ST datasets, $\mathcal{D}_1, \mathcal{D}_2, \ldots, \mathcal{D}_m$. Then $m$ models, $h_1, h_2, \ldots, h_m$, are independently trained for each ST dataset.}\label{diag:SVR}
 \begin{algorithm}[H]
-\caption{MT Support Vector Regression (SVR)} \label{alg:SVR} 
+\caption{Multi-Target Support Vector Regression (SVR)} \label{alg:SVR} 
 \small \centering
 \begin{algorithmic}[1]
 \renewcommand{\algorithmicrequire}{\textbf{Input:}}
@@ -620,7 +620,7 @@ Three novel models have been implemented for the purposes of multi-target regres
 \end{algorithm}
 \end{figure}
 
-For NL-SVR, the regularized soft margin loss function given in equation~\eqref{eq:softsvropt} is minimized. This contribution involves solving the dual of this formulation given by \eqref{eq:dualSVR}. Using the dual formulation, the multi-target problem is solved by transforming it into $m$ single-target problems, as shown in Algorithm~\ref{alg:SVR} and Figure~\ref{diag:SVR}. This algorithm will output $m$ single-target models, $h_j,\,\forall j = 1,\ldots,m$, for a given dataset $\mathcal{D}$. It first splits the dataset into $m$ separate ones, $\mathcal{D}_j$, each with a single-target variable $\bm Y_j$, and then builds a distinct SVR model for each of the datasets. 
+For NL-SVR, the regularized soft-margin loss function given in equation~\eqref{eq:softsvropt} is minimized. This contribution involves solving the dual of this formulation given by \eqref{eq:dualSVR}. Using the dual formulation, the multi-target problem is solved by transforming it into $m$ single-target problems, as shown in Algorithm~\ref{alg:SVR} and Figure~\ref{diag:SVR}. This algorithm will output $m$ single-target models, $h_j,\,\forall j = 1,\ldots,m$, for a given dataset $\mathcal{D}$. It first splits the dataset into $m$ separate ones, $\mathcal{D}_j$, each with a single-target variable $\bm Y_j$, and then builds a distinct SVR model for each of the datasets. 
 
 Building $m$ ST models is a good base-line, but as mentioned previously, it does not capture possible correlations between the target attributes during training. If these correlations are not exploited, this could retract from the model's potential performance. Therefore, creating an ensemble model using a series of random chains was proposed, using the base-line SVR method, named \textit{SVR Random Chains} (SVRRC). 
 \begin{algorithm}[t!]
@@ -662,7 +662,7 @@ h_3 :  [\bm X \bm{Y_1Y_2} ] \rightarrow \bm{\hat{Y_3}} & h_3 :  [\bm X \bm{Y_1Y_
 \end{minipage}
 \caption{\small SVRRC Flow Diagram on a dataset with three targets. SVRRC first builds the six random chains of the target's indices (three examples are shown). It then constructs a chained model by proceeding recursively over the chain, building a model, and appending the current target to the input space to predict the next target in the chain. } \label{fig:svrrc}
 \begin{algorithm}[H]
-\caption{MT SVR with Random-Chains (SVRRC)}
+\caption{Multi-Target SVR with Random-Chains (SVRRC)}
 \small \centering
 \label{alg:SVRRC} 
 \begin{algorithmic}[1]
@@ -700,9 +700,9 @@ h_1 :  [\bm X] \rightarrow \bm{\hat{Y_1}} \arrow[r]
 & h_3 :  [\bm X \bm{Y_1Y_2} ] \rightarrow \bm{\hat{Y_3}} 
 \end{tikzcd}
 \end{minipage}
-\caption{\small SVRCC Flow Diagram on a sample dataset with three targets. SVRCC first finds the direction of maximum correlation among the targets and uses that order as the only chain. It then constructs the chained model as done in SVRRC. } \label{fig:svrcc}
+\caption{\small SVRCC Flow Diagram on a sample dataset with three targets. SVRCC first finds the direction of maximum correlation among the targets and uses that order as the only chain. It then constructs the chained model, as done in SVRRC. } \label{fig:svrcc}
 \begin{algorithm}[H]
-\caption{MT SVR with Max-Correlation Chain (SVRCC)} \label{alg:SVRCC} 
+\caption{Multi-Target SVR with Max-Correlation Chain (SVRCC)} \label{alg:SVRCC} 
 \centering \small
 \begin{algorithmic}[1]
 \renewcommand{\algorithmicrequire}{\textbf{Input:}}
@@ -2597,7 +2597,7 @@ Logistic & Log-likelihood: $\set{1\text{e}^{-7},\, 1\text{e}^{-8},\,1\text{e}^{-
 \subsection{Non-SVM Results and Statistical Analysis}
 %CD for alpha = 0.05 is 1.3911990032582209
 \begin{table}[t!]
-\caption{Accuracy (\%) Comparison for Non-SVM Methods vs. OLLAWV}
+\caption{Accuracy (\%) for Non-SVM Methods vs. OLLAWV}
 \scriptsize
 \centering
 \label{tab:OtherResultsacc}
@@ -2926,7 +2926,7 @@ SEAGenerator	       			& 	1,000,000	& 	2	        & 	2 \\ %A streaming ensemble a
 \noalign{\smallskip}\hline
 \end{tabularx}
 \end{table}
-\subsection{Datasets}
+\subsection{Static Datasets \& Stream Generators}
 Table~\ref{tab:dsDataset} presents a summary of the static datasets and the stream generators used throughout the experiments, where the number of attributes, classes, and samples are shown. The static datasets were obtained from the UCI Machine Learning repository\footnote{http://archive.ics.uci.edu/ml/index.php}~\cite{Lichman:2013} and were simulated as streams using a stream simulator from the MOA framework. The stream generators listed were also provided by the MOA~\cite{moacite} framework. Both the streamed-static data and the generators provided 1000-sample sized batches to the algorithms. Variations of the generators were also used to simulate the concept drift rate, as well as varying number of attributes, classes, and functions (pertaining to the functional generators). These variations are suffixed with the generator name in the results tables. For the purposes of this experimental study, the variations used on the generators were mild in terms of their drifting capabilities. This was done intentionally in order to test the performance of OLLAWV as a base-line data stream classifier. The following are descriptions of the types of base generators used throughout the experimental study:
 \begin{itemize}
 \iitem \textbf{Random RBF Generator}: This generator produces samples that form normally distributed hyperspheres surrounding randomly selected centroids, with varying densities. This generator also has the option to simulate data evolution, i.e. concept drift. 
@@ -2964,7 +2964,7 @@ Table~\ref{tab:DSResultsacc} shows the accuracy results of the 13 algorithms ove
 \newpage
 Figure~\ref{fig:BonfDunnaccDS} shows the results for the statistical analysis on the accuracy results. The algorithms with rank higher than $5.48$ (OLLAWV's rank + the Bonferroni-Dunn critical value), i.e. to the right of the gray bar in Figure~\ref{fig:BonfDunnaccDS}, perform statistically worse than OLLAWV. The Bonferroni-Dunn test shows that there are no statistically significant differences in the accuracy results achieved by OLLAWV and AdaHOT, DDM, $k$-NNPAW, and HOT. This is expected firstly, since the AdaHOT and DDM methods utilize HOT as their base classifier and the HOT classifier performed competitively; and secondly, because of $k$-NNPAW's use of a probabilistic sliding window. 
 \begin{table}[t!]
-\caption{Accuracy (\%) Comparison for Data Stream Classifiers}
+\caption{Accuracy (\%) for Data Stream Classifiers}
 \scriptsize
 \centering
 \label{tab:DSResultsacc}
@@ -3050,7 +3050,7 @@ Rank &\textbf{2.52} &5.42 &4.54 &8.19 &4.8542 &4.63 &10.96 &6.77 &8.46 &9.04 &7.
 \end{table}
 
 \begin{table}[b!]
-\caption{Cohen's Kappa Rate (\%) Comparison for Data Stream Classifiers}
+\caption{Cohen's Kappa Rate (\%) for Data Stream Classifiers}
 \scriptsize
 \centering
 \label{tab:DSResultskappa}
@@ -3139,7 +3139,7 @@ Table~\ref{tab:DSResultskappa} shows the Cohen's Kappa rate results obtained by 
 
 \subsection{Training \& Testing Time}
 \begin{table}[b!]
-\caption{Training Time (seconds) Comparison for Data Stream Classifiers}
+\caption{Training Time (seconds) for Data Stream Classifiers}
 \scriptsize
 \centering
 \label{tab:DSResultsTrain}
@@ -3224,7 +3224,7 @@ Rank &6.5833 &4.7917 &5.7917 &\textbf{1.8750} &7.7500 &6.0833 &9.8333 &9.5833 &8
 \end{minipage}
 \end{table}
 \begin{table}[b!]
-\caption{Testing Time (seconds) Comparison for Data Stream Classifiers}
+\caption{Testing Time (seconds) for Data Stream Classifiers}
 \scriptsize
 \centering
 \label{tab:DSResultsTest}
