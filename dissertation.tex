@@ -631,7 +631,7 @@ Building $m$ ST models is a good base-line, but as mentioned previously, it does
 \renewcommand{\algorithmicrequire}{\textbf{Input:}}
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
 \Require Training dataset $\mathcal{D}$, random chain $\bm C$
-\Ensure  A chained model $h_j, j = \{1,\ldots,m\}, c \leq 10$
+\Ensure  A chained model $h_j, j = \{1,\ldots,m\}$
 \State $\mathcal{D}_1 = \set{\bm X, \bm Y_{\bm C_1}}$ \Comment{Initialize first dataset}
 \For {$j=1$ to $m$} \Comment{For each target in chain $\bm C$}
 \State $h_j : \mathcal{D}_j \rightarrow \mathbb{R}$ \Comment{Train model on appended dataset}
