@@ -8,17 +8,19 @@
 \textheight=9.0in
 \headsep=0.25in
 
-\usepackage{url}
-\usepackage{tikz-cd,caption,graphicx,times,amsmath,amsfonts,array,url,algorithm,algorithmicx,algpseudocode,float,bm,natbib}
+\usepackage{bm,amsmath,subfigure,graphicx,url,algorithm,algorithmicx,algpseudocode,booktabs}
+\usepackage{tikz-cd,adjustbox,amsfonts,mathtools,tabularx,capt-of,longtable,comment,caption,soul}
 \usepackage[flushleft]{threeparttable}
-\usepackage{empheq}
-\usepackage{booktabs,adjustbox}
-\usepackage{tabularx}
-\usepackage{xifthen}
-\usepackage{courier}
-\usepackage{color,soulutf8}
-\usepackage[hidelinks]{hyperref}
+\usepackage[top=1in,bottom=1in,right=1in,left=1in]{geometry}
+\usepackage[backend=bibtex]{biblatex}
+\usepackage[titletoc]{appendix}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.12}
+\usepackage[linktocpage=true]{hyperref}
 \usetikzlibrary{shapes.geometric,arrows,automata,positioning}
+\usepackage{chngcntr}
+\usepackage[final]{pdfpages}
+\usepackage[explicit]{titlesec}
 
 \definecolor{lightyellow}{cmyk}{0,0,0.5,0}
 \sethlcolor{lightyellow}
@@ -337,5 +339,124 @@ Ranks &5.5 &3.71 &6.0 &8.29 &3.0 &7.08 &9.92 &\textbf{1.88} &6.71 &2.92   \\
 \end{minipage}
 \end{figure}
 
+\begin{figure}[H]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\begin{tikzpicture}[scale=0.7]
+\begin{axis}[
+	ticks=none,
+    axis lines = center, 
+    xlabel = $\epsilon\text{-insensitivity}$, 
+    xlabel style={below left},
+    ylabel = $\bm e$,
+    ylabel style={ right}]
+% negative epsilon intensity
+\addplot [
+	thick,
+    domain=-4:-1, 
+    samples=2, 
+    color=black,
+]
+{- x - 1};
+% 0 epsilon intensity
+\addplot [
+	very thick,
+    color=black,
+]
+coordinates {(-1, 0) (1, 0)};
+% positive epsilon intensity
+\addplot [
+	thick,
+    domain=1:4, 
+    samples=2, 
+    color=black,
+]
+{ x - 1};
+% vertical line indicating where epsilon begines
+\addplot[
+	color=black,
+	style=dashed,
+]
+coordinates {(-1, 0) (-1, 0.5)};
+% epsilon node
+\draw[<->] (-1, 0.5) -- (0, 0.5);
+\draw (-0.5,0.6) node[font=\small] {$\bm \epsilon$};
+\end{axis}
+\end{tikzpicture}
+\caption{Vapnik's $\epsilon$-insensitivity loss function.}
+\label{fig:epsloss}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\begin{tikzpicture}[scale = 0.7]
+\begin{axis}[
+	ticks = none, 
+	axis lines = left, 
+	xlabel = $x_1$, 
+	xlabel style={at={(1,0)}, above left},
+	ylabel = $x_2$,
+	ylabel style={at={(0,1)}, right,rotate=-90}
+    ]
+% main function x
+\addplot [
+    domain=0:6, 
+    samples=2, 
+    color=black,
+]
+{x};
+% margin function x + eps
+\addplot [
+	dashed,
+    domain=0:6, 
+    samples=2, 
+    color=black,
+]
+{ x+1};
+% margin function x - eps
+\addplot [
+	dashed,
+    domain=0:6, 
+    samples=2, 
+    color=black,
+]
+{ x - 1};
+% epsilon margin
+\draw[|-|,very thick] (6,7) -- (6,6);
+\draw[|-|,very thick] (6,6) -- (6,5);
+\draw (5.8,6.4) node[font=\small] {$\bm \epsilon$};
+\draw (5.8,5.4) node[font=\small] {$\bm \epsilon$};
+\addplot[color=black,only marks, mark size=2] coordinates {(0.54,1.5) (2,1) (2.14,3.15) (2.94,3.45) (5.8,4.8) (0.30,0.55) (2.69,3.13) (2.81,1.99) (3.72,4.36) (4.35,5.32) (5.44,4.84) (5,4.5) };
+\end{axis}
+\end{tikzpicture}
+\caption{Linear support vector regression example solution on a toy 2D dataset.}
+\label{fig:regressionsvm}
+\end{minipage}
+\end{figure}
+
+\newpage
+
+\begin{equation}
+\label{eqn:reghingeloss}
+\min\limits_{\bm (\bm{w},b) \in \mathcal{H}_o \times \reals} R {\,\,} = {\,\,} \frac{1}{2}||\bm{w}||^2 + C\sum_{i=1}^n L(y_i,\, o_{(w,b)}(\bm{x}_i))
+\end{equation}
+
+\begin{equation}\label{eqn:hingeloss}
+\centering
+L(y_i,\, o_{(w,b)}(\bm{x}_i)) = \max \set{0, 1 - y_i o_{(w,b)}(\bm{x}_i)}
+\end{equation}
+
+\begin{equation}
+\label{eq:regsvmemp}
+\min\limits_{(\bm{w},b) \in \mathcal{H}_o \times \reals} R {\,\,} = {\,\,} \frac{1}{2}||\bm{w}||^2 + C\sum_{i=1}^n (|y_i - o_{(w,b)}(\bm{x_i})|_\epsilon)
+\end{equation}
+
+\begin{equation}
+\label{eq:epsloss}
+\centering
+L(y_i,\, o_{(w,b)}(\bm{x}_i)) = \begin{cases} 
+															0 & if |y_i - o_{(w,b)}(\bm{x_i})| \leq \epsilon \\
+															|y_i - o_{(w,b)}(\bm{x_i})| - \epsilon & \text{otherwise}.
+														\end{cases}
+\end{equation}
 
 \end{document}
