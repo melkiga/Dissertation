@@ -12,12 +12,13 @@
 \usepackage{tikz-cd,caption,graphicx,times,amsmath,amsfonts,array,url,algorithm,algorithmicx,algpseudocode,float,bm,natbib}
 \usepackage[flushleft]{threeparttable}
 \usepackage{empheq}
-\usepackage{booktabs}
+\usepackage{booktabs,adjustbox}
 \usepackage{tabularx}
 \usepackage{xifthen}
 \usepackage{courier}
 \usepackage{color,soulutf8}
 \usepackage[hidelinks]{hyperref}
+\usetikzlibrary{shapes.geometric,arrows,automata,positioning}
 
 \definecolor{lightyellow}{cmyk}{0,0,0.5,0}
 \sethlcolor{lightyellow}
@@ -60,6 +61,12 @@
 \usepackage{multicol,calc}
 
 \begin{document}
+
+\tikzstyle{decision} = [diamond, draw, text centered, inner sep=3pt]
+\tikzstyle{block} = [rectangle, draw, fill=gray!20,text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+%%%% SVR
 
 \begin{figure}[t!]
 \centering
@@ -275,6 +282,60 @@ Ranks &5.5 &3.71 &6.0 &8.29 &3.0 &7.08 &9.92 &\textbf{1.88} &6.71 &2.92   \\
 \end{aligned}
 \end{equation*}
 
+%%% MIRSVM
+
+\begin{figure}[b!]
+\centering \small
+\begin{minipage}{\textwidth}
+\small
+\adjustbox{scale=0.9}{
+\begin{tikzpicture}[%
+    node distance=4cm,
+    on grid,
+    auto
+  ]
+\node[block](A) {Initialize $\bm S$ randomly};
+\node(B)[block, right of=A, text width=6em] {Train SVM using QP solver over $\bm S$, set $\bm S_{old} = \bm S$};
+\draw[arrow] (A) -- (B);
+\node(C)[block, right of=B,text width=6.3em] {Find optimal representatives, $\bm S$, for the current hyperplane};
+\draw[arrow] (B) -- (C);
+\node(D) [decision,right of=C,fill=gray!55,text width=2cm]{while $\bm S$ has not changed, $\bm S \neq \bm S_{old}$};
+\draw[arrow] (C) -- (D);
+\node(E) [block,right of=D]{return $\bm \alpha,\, b, \bm S$};
+\draw[arrow] (D) -- node {yes} (E);
+\draw[arrow] (D.north) --+(0,0.1cm) -| (B.north) node[below,pos=0.25] {no} ;
+\end{tikzpicture}}
+\caption*{\small A summary of the steps performed by MIRSVM. The representatives are first randomly initialized and continuously updated according to the current hyperplane. Upon completion, the model is returned along with the optimal bag-representatives.}
+\end{minipage}
+\begin{minipage}{\textwidth}
+\begin{algorithm}[H]
+\caption*{Multi-Instance Representative SVM (MIRSVM)}
+\small
+\begin{algorithmic}[1]
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\Require Training dataset $\mathcal{D}$, SVM Parameters $C$ and $\sigma$
+\Ensure  SVM model parameters $\bm \alpha$ and $b$, Bag Representative IDs $\bm S$
+\For {$I \in \set{1,\ldots,n}$}
+\State $\bm S_I \leftarrow \text{ rand}\left(|\mathcal{B}_I|,1,1\right)$ \Comment{Assign each bag a random instance}
+\EndFor
+\While {$\bm S \neq \bm S_{old}$}
+\State $\bm S_{old} \leftarrow \bm S$
+\State $\bm X_S \leftarrow \bm X(\bm S),\,\bm Y_S \leftarrow \bm Y(\bm S)$ \Comment{Initialize the representative dataset}
+\State $\bm G \leftarrow (\bm Y_S \times \bm Y_S) \bm \cdot \mathcal{K}\left( \bm X_S,\,\bm X_S,\,\sigma\right)$ \Comment{Build Gram matrix}
+\State $\bm \alpha \leftarrow \text{ quadprog}\left(\bm G, \bm{-1}^n, \bm Y_S, \bm 0^n, \bm 0^n, \bm C^n\right)$ \Comment{Solve QP Problem}
+\State $\bm{sv} \leftarrow \text{find}\left(0 < \bm \alpha \leq C \right)$ \Comment{Get the support vector indices}
+\State $n_{\bm{sv}} \leftarrow \text{count}\left(0 < \bm \alpha \leq C \right)$ \Comment{Get the number of support vectors}
+\State $b \leftarrow \frac{1}{n_{\bm{sv}}}\sum_{i=1}^{n_{\bm{sv}}} \left(\bm Y_{\bm{sv}} - \bm G_{\bm{sv}}*\left(\bm{\alpha_{\bm{sv}}} \cdot \bm Y_{\bm{sv}}\right)\right)$ \Comment{Calculate the bias term}
+\For {$I \in \set{1,\ldots,n}$} 
+\State $\bm G_I \leftarrow (Y_I \times \bm Y_S) \bm \cdot \mathcal{K}\left( \mathcal{B}_I,\,\bm X_S,\,\sigma\right)$
+\State $\bm S_I \leftarrow \text{argmax}_{i \in I}\left(\bm G_I*\bm{\alpha} + b \right)$ \Comment{Select optimal bag-representatives}
+\EndFor
+\EndWhile 
+\end{algorithmic}
+\end{algorithm}
+\end{minipage}
+\end{figure}
 
 
 \end{document}
