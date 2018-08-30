@@ -614,8 +614,7 @@ Three novel models have been implemented for the purposes of multi-target regres
 \For {$j = 1$ to $m$}
 \State $\mathcal{D}_j = \{\bm X, \bm Y_j\}$ \Comment{Get ST data}
 \State $h_j : \bm X \rightarrow \mathbb{R}$ \Comment{Build ST model for the $j^{th}$ target}
-\EndFor \\
-\Return $h_j, j=1,\ldots,m$ 
+\EndFor 
 \end{algorithmic} 
 \end{algorithm}
 \end{figure}
@@ -638,8 +637,7 @@ Building $m$ ST models is a good base-line, but as mentioned previously, it does
 \If {$j < m$}
 \State $\mathcal{D}_{j+1} = \set{\mathcal{D}_j, \bm Y_{\bm C_j}}$ \Comment{Append new target in chain to dataset}
 \EndIf
-\EndFor \\
-\Return $h_j, j=1,\ldots,m$ 
+\EndFor 
 \end{algorithmic} 
 \end{algorithm}
 
@@ -671,9 +669,8 @@ h_3 :  [\bm X \bm{Y_1Y_2} ] \rightarrow \bm{\hat{Y_3}} & h_3 :  [\bm X \bm{Y_1Y_
 \Require Training dataset $\mathcal{D}$, $c$ random chains $\mathcal{C}$
 \Ensure  An ensemble of chained models $h_\mathcal{C}$
 \For {\textbf{each }$\bm C \in \mathcal{C}$} \Comment{For each random chain}
-\State $h_{\bm C} = $ \text{build chained model}$(\mathcal{D},\bm C)$ \Comment{build a chained model for chain $\bm C$}
-\EndFor \\
-\Return $h_\mathcal{C}$ 
+\State $h_{\bm C} \leftarrow  \mathtt{build Chained Model} (\mathcal{D},\bm C)$ \Comment{build a chained model for chain $\bm C$}
+\EndFor 
 \end{algorithmic} 
 \end{algorithm}
 \end{figure}
@@ -702,16 +699,15 @@ h_1 :  [\bm X] \rightarrow \bm{\hat{Y_1}} \arrow[r]
 \end{minipage}
 \caption{\small SVRCC Flow Diagram on a sample dataset with three targets. SVRCC first finds the direction of maximum correlation among the targets and uses that order as the only chain. It then constructs the chained model, as done in SVRRC. } \label{fig:svrcc}
 \begin{algorithm}[H]
-\caption{Multi-Target SVR with Max-Correlation Chain (SVRCC)} \label{alg:SVRCC} 
+\caption{Multi-Target SVR with max-Correlation Chain (SVRCC)} \label{alg:SVRCC} 
 \centering \small
 \begin{algorithmic}[1]
 \renewcommand{\algorithmicrequire}{\textbf{Input:}}
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
 \State $\bm \Rho = corrcoef(\bm Y)$ \Comment{Find correlation coefficient matrix for target variables}
 \State $\bm C = \sum_{i=1}^n \bm \Rho_{ij}, \forall j=1,\ldots,m$ \Comment{Sum row elements of the correlation coefficient matrix}
-\State $\bm C = \text{sort}\left(\bm C,\textbf{decreasing}\right)$ \Comment{Sort sums in decreasing order}
-\State $h_{\bm C} = $ \text{build chained model}$(\mathcal{D},\bm C)$ \Comment{build a chained model for max correlation chain $\bm C$} \\
-\Return $h_{\bm C}$
+\State $\bm C = \mathtt{sort}\left(\bm C,\textbf{decreasing}\right)$ \Comment{Sort sums in decreasing order}
+\State $h_{\bm C} = \mathtt{buildChainedModel} (\mathcal{D},\bm C)$ \Comment{build a chained model for max correlation chain $\bm C$} 
 \end{algorithmic} 
 \end{algorithm}
 \end{figure}
