@@ -195,7 +195,7 @@ h_1 :  [\bm X] \rightarrow \bm{\hat{Y_1}} \arrow[r]
 
 \newpage
 
-\begin{table}[b!]
+\begin{table}[t!]
 \centering \small
 \caption*{Average Relative Root Mean Square Error (aRRMSE) for MT regressors}\vspace{-1em}
 \resizebox{0.95\textwidth}{!}{\begin{tabular}{l@{\extracolsep{\fill}}ccccccccccc}
@@ -458,5 +458,481 @@ L(y_i,\, o_{(w,b)}(\bm{x}_i)) = \begin{cases}
 															|y_i - o_{(w,b)}(\bm{x_i})| - \epsilon & \text{otherwise}.
 														\end{cases}
 \end{equation}
+
+\newpage
+
+\begin{figure}
+\centering \small
+\begin{minipage}{\textwidth}
+\small
+\adjustbox{scale=0.9}{
+\begin{tikzpicture}[%
+    node distance=4cm,
+    on grid,
+    auto
+]
+\node[block](A) {Initialize training variables};
+\node(B)[block, right of=A, text width=6em] {Calculate updates based on worst-violator and current decision boundary};
+\draw[arrow] (A) -- (B);
+\node(C)[block, right of=B,text width=6.3em] {Update output vector, worst-violator's alpha, \& bias term};
+\draw[arrow] (B) -- (C);
+\node(D) [decision,right of=C,fill=gray!55,text width=2cm]{while errors exist};
+\draw[arrow] (C) -- (D);
+\node(E) [block,right of=D]{return $\bm \alpha,\, b, \bm S$};
+\draw[arrow] (D) -- node {no} (E);
+\draw[arrow] (D.south) --+(0,-0.7cm) -| (B.south) node[below,pos=0.25] {yes} ;
+\end{tikzpicture}}
+\caption*{Summary of the steps performed by OLLAWV. The model parameters ($\bm \alpha$, $b$, $\bm S$) and the algorithm variables ($\bm o$, $t$, $wv$, and $yo$) are first initialized. The worst-violator with respect to the current hyperplane is then found and the model parameters are updated. Once no violating samples are found, the model is returned.}
+\end{minipage}
+\begin{algorithm}[H]
+\caption*{OnLine Learning Algorithm using Worst-Violators (OLLAWV)}
+\small
+\begin{algorithmic}[1]
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\Require $\mathcal{D}$, $C$, $\gamma$, $\beta$, $M$
+\Ensure  $\bm \alpha$, $b$, $\bm S$
+\State $\bm \alpha \leftarrow \bm 0,\, b \leftarrow 0, \bm S \leftarrow \bm 0$ \Comment{Initialize OLLAWV model parameters}
+\State $\bm o \leftarrow \bm 0,\, t \leftarrow 0$ \Comment{Initialize the output vector and iteration counter}
+\State $wv \leftarrow 0,\, yo \leftarrow y_{wv}*\bm{o}_{wv}$ \Comment{Initialize hinge loss error and worst-violator index}
+\While {$yo < M$}
+\State $t \leftarrow t + 1$
+\State $\eta \leftarrow 2/\sqrt{t}$ \Comment{Learning rate}
+\State 
+\State $\Lambda \leftarrow \eta*C*y_{wv}$ \Comment{Calculate hinge loss update}
+\State $B \leftarrow \left(\Lambda*\beta\right)/n$ \Comment{Calculate bias update}
+\State $\bm o \leftarrow \bm o + \Lambda*\mathcal{K}\left(\bm{x}_{\neg \bm S},\, \bm{x}_{wv}, \gamma \right) + B$ \Comment{Update output vector}
+\State $\bm \alpha_{wv} \leftarrow \bm \alpha_{wv} + \Lambda$ \Comment{Update worst-violator's alpha value}
+\State $b \leftarrow b + B$ \Comment{Update bias term}
+\State
+\State $\bm S_t \leftarrow wv$ \Comment{Save index of worst-violator}
+\State $\left[yo,\, wv\right] \leftarrow \min\limits_{wv \in \set{\neg \bm S}}\set{y_{wv} \cdot o_{wv}}$ \Comment{Find the worst-violator}
+\EndWhile 
+\end{algorithmic} 
+\end{algorithm}
+\end{figure}
+
+\begin{table}[t!]
+\caption*{Classification Datasets}
+\footnotesize \centering
+\begin{tabularx}{0.5\textwidth}{l@{\extracolsep{\fill}}rrr}
+\hline\noalign{\smallskip}
+Dataset & \# Samples & \# Attributes & \# Classes \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\textbf{\textit{small datasets}} & \\
+iris & 150 & 4 &  3  \\ 
+teach & 151 & 5 &  3  \\ 
+wine & 178 & 13 &  3  \\ 
+cancer & 198 & 32 &  2  \\ 
+sonar & 208 & 60 &  2  \\ 
+glass & 214 & 9 &  6  \\ 
+vote & 232 & 16 &  2  \\ 
+heart & 270 & 13 &  2  \\ 
+dermatology & 366 & 33 &  6  \\ 
+prokaryotic & 997 & 20 &  3  \\ 
+eukaryotic & 2,427 & 20 &  4  \\ 
+\textbf{\textit{medium datasets}} & \\
+optdigits & 5,620 & 64 &  10  \\ 
+satimage & 6,435 & 36 &  6  \\ 
+usps & 9,298 & 256 &  10  \\ 
+pendigits & 10,992 & 16 &  10  \\ 
+reuters & 11,069 & 8,315 &  2  \\ 
+letter & 20,000 & 16 &  26  \\ 
+\textbf{\textit{large datasets}} & \\
+adult & 48,842 & 123 &  2  \\ 
+w3a & 49,749 & 300 &  2  \\ 
+shuttle & 58,000 & 7 &  7  \\ 
+web (w8a) & 64,700 & 300 &  2  \\ 
+ijcnn1 & 141,691 & 22 &  2  \\ 
+intrusion & 5,209,460 & 127 &  2  \\  
+\noalign{\smallskip}\hline
+\end{tabularx}
+\end{table}
+
+\newpage
+
+\begin{table}[t!]
+\centering \small
+\caption*{Comparison of OLLAWV vs. NNISDA and MNSVM}\vspace{-1em}
+\resizebox{\textwidth}{!}{\begin{tabularx}{1.3\textwidth}{l@{\extracolsep{\fill}}cccrrrccc}
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\multicolumn{1}{l}{Dataset} & \multicolumn{3}{c}{Accuracy (\%)} & \multicolumn{3}{c}{Run Time (s)} & \multicolumn{3}{c}{Support Vectors (\%)} \\
+\cmidrule(lr){2-4}
+\cmidrule(lr){5-7}
+\cmidrule(lr){8-10} 
+ & OLLAWV & NNISDA & MNSVM & OLLAWV & NNISDA & MNSVM & OLLAWV & NNISDA & MNSVM \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\textbf{\textit{small datasets}} & & & & & & & & & \\
+iris & \textbf{97.33} & 94.00 & 96.67 & \textbf{0.05} & 0.27 & 3.57 & \textbf{13.50} & 40.20 & 29.80 \\
+teach & 52.32 & 52.31 & \textbf{52.95} & \textbf{0.12} & 0.44 & 8.85 & \textbf{69.19} & 99.80 & 87.40 \\
+wine & \textbf{98.87} & 96.60 & 96.60 & \textbf{0.28} & 0.43 & 4.84 & \textbf{15.02} & 44.40 & 48.60 \\
+cancer & 80.36 & \textbf{81.86} & 81.38 & \textbf{0.49} & 0.85 & 4.46 & \textbf{42.79} & 83.80 & 89.60 \\
+sonar & \textbf{92.32} & 89.48 & 87.57 & \textbf{0.59} & 0.98 & 3.03 & \textbf{31.26} & 73.00 & 66.00 \\
+glass & \textbf{72.41} & 67.81 & 69.30 & \textbf{0.46} & 1.01 & 11.94 & \textbf{62.84} & 90.80 & 87.60 \\
+vote & \textbf{96.54} & 96.11 & 93.99 & \textbf{0.26} & 0.46 & 1.49 & \textbf{13.36} & 33.20 & 34.00 \\
+heart & 82.22 & \textbf{83.33} & \textbf{83.33} & \textbf{0.50} & 0.91 & 6.45 & \textbf{37.69} & 73.00 & 82.00 \\
+dermatology & 97.82 & \textbf{98.36} & \textbf{98.36} & \textbf{1.62} & 2.47 & 11.68 & \textbf{36.94} & 59.00 & 59.80 \\
+prokaryotic & 88.96 & 88.86 & \textbf{88.97} & \textbf{6.09} & 10.64 & 50.86 & \textbf{29.01} & 51.20 & 49.00 \\
+eukaryotic & 77.38 & 79.56 & \textbf{81.21} & 61.95 & \textbf{49.16} & 342.76 & \textbf{54.11} & 76.40 & 72.60 \\
+\textbf{\textit{medium datasets}} & & & & & & & & & \\
+optdigits & 99.11 & 99.29 & \textbf{99.31} & \textbf{411} & 528 & 787 & \textbf{28.64} & 31.60 & 30.60 \\
+satimage & 91.66 & \textbf{92.39} & 92.35 & 1,334 & \textbf{687} & 1,094 & \textbf{20.72} & 45.00 & 44.80 \\
+usps & 97.49 & 98.05 & \textbf{98.24} & 10,214 & \textbf{5,245} & 7,777 & \textbf{11.22} & 29.40 & 28.00 \\
+pendigits & 99.56 & \textbf{99.62} & 99.61 & \textbf{723} & 909 & 1,500 & \textbf{10.27} & 17.60 & 16.60 \\
+reuters & 98.03 & \textbf{98.08} & 97.99 & \textbf{954} & 1,368 & 1,657 & \textbf{8.770} & 18.20 & 18.60 \\
+letter & 96.99 & 99.11 & \textbf{99.13} & \textbf{5,259} & 12,009 & 26,551 & \textbf{43.56} & 57.60 & 56.60 \\
+\textbf{\textit{large datasets}} & & & & & & & & & \\
+adult & 84.75 & 85.07 & \textbf{85.13} & \textbf{21,025} & 72,552 & 123,067 & \textbf{34.66} & 56.00 & 56.60 \\
+w3a & \textbf{98.86} & 98.82 & 98.82 & \textbf{6,532} & 15,951 & 24,562 & \textbf{3.270} & 14.60 & 12.40 \\
+shuttle & 99.77 & 99.83 & \textbf{99.87} & \textbf{2,833} & 7,420 & 45,062 & \textbf{2.010} & 6.00 & 16.40 \\
+web & 98.94 & \textbf{99.00} & 99.00 & \textbf{12,067} & 30,583 & 38,040 & \textbf{4.320} & 13.20 & 10.80 \\
+ijcnn1 & 98.31 & 99.34 & \textbf{99.41} & \textbf{162,587} & 296,917 & 370,144 & 16.36 & 11.00 & \textbf{7.600} \\
+intrusion & \textbf{99.77} & 99.67 & 99.66 & \textbf{2,402,804} & 4,646,810 & 3,772,113 & \textbf{0.780} & 2.000 & 1.700 \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Average & \textbf{91.29} & 91.15 & 91.25 & \textbf{114,209} & 221,350 & 191,861 & \textbf{25.66} & 44.65 & 43.79 \\
+Ranks & \textbf{1.739} & 2.022 & 2.239 & \textbf{1.217} & 1.913 & 2.869 & \textbf{1.087} & 2.609 & 2.304 \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\end{tabularx}}
+\\ \vspace{1em}
+\begin{minipage}{0.3\textwidth}
+\centering
+\resizebox{0.9\textwidth}{!}{\begin{tikzpicture}
+\draw (1,0) -- (3,0);
+\foreach \x in {1,2,3} {
+\draw (\x, 0) -- ++(0,.1) node [above,scale=0.7] {\tiny \x};
+\ifthenelse{\x < 3}{\draw (\x+.5, 0) -- ++(0,.03);}{}
+}
+
+\coordinate (c0) at (1.7391,0);
+\coordinate (c1) at (2.0217,0);
+\coordinate (c2) at (2.2391,0);
+
+\node (l0) at (c0) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny \textbf{OLLAWV}};
+\node (l1) at (c1) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny NNISDA};
+\node (l2) at (c2) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny MNSVM};
+
+\fill[fill=gray,fill opacity=0.5] (1.7391,-0.1) rectangle (2.3991,0.1);
+
+\foreach \x in {0,1,2} {
+\draw (l\x) -| (c\x);
+};
+\end{tikzpicture}}
+\captionsetup{width=0.7\linewidth}
+\captionof*{figure}{\small Bonferroni-Dunn test for Accuracy}\label{fig:BonfDunnaccolla}
+\end{minipage}
+\hspace{0.5em}
+\begin{minipage}{0.3\textwidth}
+\centering
+\resizebox{0.8\textwidth}{!}{\begin{tikzpicture}
+\draw (1,0) -- (3,0);
+\foreach \x in {1,2,3}{
+\draw (\x, 0) -- ++(0,.1) node [above,scale=0.7] {\tiny \x};
+\ifthenelse{\x < 3}{\draw (\x+.5, 0) -- ++(0,.03);}{}
+}
+
+\coordinate (c0) at (1.2174,0);
+\coordinate (c1) at (1.913,0);
+\coordinate (c2) at (2.8696,0);
+
+\node (l0) at (c0) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny \textbf{OLLAWV}};
+\node (l1) at (c1) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny NNISDA};
+\node (l2) at (c2) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny MNSVM};
+
+\fill[fill=gray,fill opacity=0.5] (1.2174,-0.1) rectangle (1.8774,0.1);
+
+\foreach \x in {0,1,2} {
+\draw (l\x) -| (c\x);
+};
+\end{tikzpicture}}
+\captionsetup{width=0.7\linewidth}
+\captionof*{figure}{\small Bonferroni-Dunn test for Run Time}\label{fig:BonfDunncpu}
+\end{minipage}
+\hspace{0.5em}
+\begin{minipage}{0.3\textwidth}
+\centering
+\resizebox{0.8\textwidth}{!}{\begin{tikzpicture}
+\draw (1,0) -- (3,0);
+\foreach \x in {1,2,3} {
+\draw (\x, 0) -- ++(0,.1) node [above,scale=0.7] {\tiny \x};
+\ifthenelse{\x < 3}{\draw (\x+.5, 0) -- ++(0,.03);}{}
+}
+
+\coordinate (c0) at (1.087,0);
+\coordinate (c1) at (2.6087,0);
+\coordinate (c2) at (2.3043,0);
+
+\node (l0) at (c0) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny \textbf{OLLAWV}};
+\node (l1) at (c1) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny NNISDA};
+\node (l2) at (c2) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny MNSVM};
+
+\fill[fill=gray,fill opacity=0.5] (1.087,-0.1) rectangle (1.747,0.1);
+
+\foreach \x in {0,1,2} {
+\draw (l\x) -| (c\x);
+};
+\end{tikzpicture}}
+\captionsetup{width=0.7\linewidth}
+\captionof*{figure}{\small Bonferroni-Dunn test for \% Support Vectors}\label{fig:BonfDunnsv}
+\end{minipage}
+\end{table}
+
+\newpage
+
+\begin{figure}
+\centering
+\begin{minipage}{0.3\textwidth}
+\centering \small
+\resizebox{0.8\textwidth}{!}{\begin{tikzpicture}
+\draw (1,0) -- (3,0);
+\foreach \x in {1,2,3} {
+\draw (\x, 0) -- ++(0,.1) node [above,scale=0.7] {\tiny \x};
+\ifthenelse{\x < 3}{\draw (\x+.5, 0) -- ++(0,.03);}{}
+}
+
+\coordinate (c0) at (1.7391,0);
+\coordinate (c1) at (2.0217,0);
+\coordinate (c2) at (2.2391,0);
+
+\node (l0) at (c0) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny \textbf{OLLAWV}};
+\node (l1) at (c1) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny NNISDA};
+\node (l2) at (c2) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny MNSVM};
+
+\fill[fill=gray,fill opacity=0.5] (1.7391,-0.1) rectangle (2.3991,0.1);
+
+\foreach \x in {0,1,2} {
+\draw (l\x) -| (c\x);
+};
+\end{tikzpicture}}
+\vspace{-0.5em}
+\captionsetup{width=0.7\linewidth}
+\captionof*{figure}{\small Bonferroni-Dunn test for Accuracy}
+\end{minipage}
+
+\vspace{2em}
+
+\begin{minipage}{0.3\textwidth}
+\centering \small
+\resizebox{0.8\textwidth}{!}{\begin{tikzpicture}
+\draw (1,0) -- (3,0);
+\foreach \x in {1,2,3}{
+\draw (\x, 0) -- ++(0,.1) node [above,scale=0.7] {\tiny \x};
+\ifthenelse{\x < 3}{\draw (\x+.5, 0) -- ++(0,.03);}{}
+}
+
+\coordinate (c0) at (1.2174,0);
+\coordinate (c1) at (1.913,0);
+\coordinate (c2) at (2.8696,0);
+
+\node (l0) at (c0) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny \textbf{OLLAWV}};
+\node (l1) at (c1) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny NNISDA};
+\node (l2) at (c2) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny MNSVM};
+
+\fill[fill=gray,fill opacity=0.5] (1.2174,-0.1) rectangle (1.8774,0.1);
+
+\foreach \x in {0,1,2} {
+\draw (l\x) -| (c\x);
+};
+\end{tikzpicture}}
+\vspace{-0.5em}
+\captionsetup{width=0.7\linewidth}
+\captionof*{figure}{\small Bonferroni-Dunn test for Run Time}
+\end{minipage}
+
+\vspace{2em}
+
+\begin{minipage}{0.3\textwidth}
+\centering \small
+\resizebox{0.8\textwidth}{!}{\begin{tikzpicture}
+\draw (1,0) -- (3,0);
+\foreach \x in {1,2,3} {
+\draw (\x, 0) -- ++(0,.1) node [above,scale=0.7] {\tiny \x};
+\ifthenelse{\x < 3}{\draw (\x+.5, 0) -- ++(0,.03);}{}
+}
+
+\coordinate (c0) at (1.087,0);
+\coordinate (c1) at (2.6087,0);
+\coordinate (c2) at (2.3043,0);
+
+\node (l0) at (c0) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny \textbf{OLLAWV}};
+\node (l1) at (c1) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny NNISDA};
+\node (l2) at (c2) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny MNSVM};
+
+\fill[fill=gray,fill opacity=0.5] (1.087,-0.1) rectangle (1.747,0.1);
+
+\foreach \x in {0,1,2} {
+\draw (l\x) -| (c\x);
+};
+\end{tikzpicture}}
+\vspace{-0.5em}
+\captionsetup{width=0.7\linewidth}
+\captionof*{figure}{\small Bonferroni-Dunn test for \% Support Vectors}
+\end{minipage}
+\end{figure}
+
+\newpage
+
+\begin{table}[b!]
+\centering \small
+\begin{tabularx}{0.3\textwidth}{c@{\extracolsep{\fill}}}
+\begin{minipage}{0.3\textwidth}
+\centering \small
+\resizebox{0.8\textwidth}{!}{\begin{tikzpicture}
+\draw (1,0) -- (3,0);
+\foreach \x in {1,2,3} {
+\draw (\x, 0) -- ++(0,.1) node [above,scale=0.7] {\tiny \x};
+\ifthenelse{\x < 3}{\draw (\x+.5, 0) -- ++(0,.03);}{}
+}
+
+\coordinate (c0) at (1.7391,0);
+\coordinate (c1) at (2.0217,0);
+\coordinate (c2) at (2.2391,0);
+
+\node (l0) at (c0) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny \textbf{OLLAWV}};
+\node (l1) at (c1) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny NNISDA};
+\node (l2) at (c2) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny MNSVM};
+
+\fill[fill=gray,fill opacity=0.5] (1.7391,-0.1) rectangle (2.3991,0.1);
+
+\foreach \x in {0,1,2} {
+\draw (l\x) -| (c\x);
+};
+\end{tikzpicture}}
+\captionsetup{width=0.7\linewidth}
+\captionof*{figure}{\small Accuracy (\%)}
+\end{minipage}\vspace{1em} \\
+
+\begin{minipage}{0.3\textwidth}
+\centering \small
+\resizebox{0.8\textwidth}{!}{\begin{tikzpicture}
+\draw (1,0) -- (3,0);
+\foreach \x in {1,2,3}{
+\draw (\x, 0) -- ++(0,.1) node [above,scale=0.7] {\tiny \x};
+\ifthenelse{\x < 3}{\draw (\x+.5, 0) -- ++(0,.03);}{}
+}
+
+\coordinate (c0) at (1.2174,0);
+\coordinate (c1) at (1.913,0);
+\coordinate (c2) at (2.8696,0);
+
+\node (l0) at (c0) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny \textbf{OLLAWV}};
+\node (l1) at (c1) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny NNISDA};
+\node (l2) at (c2) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny MNSVM};
+
+\fill[fill=gray,fill opacity=0.5] (1.2174,-0.1) rectangle (1.8774,0.1);
+
+\foreach \x in {0,1,2} {
+\draw (l\x) -| (c\x);
+};
+\end{tikzpicture}}
+\captionsetup{width=0.7\linewidth}
+\captionof*{figure}{\small Run Time (s)}
+\end{minipage}\vspace{1em} \\ 
+
+\begin{minipage}{0.3\textwidth}
+\centering \small
+\resizebox{0.8\textwidth}{!}{\begin{tikzpicture}
+\draw (1,0) -- (3,0);
+\foreach \x in {1,2,3} {
+\draw (\x, 0) -- ++(0,.1) node [above,scale=0.7] {\tiny \x};
+\ifthenelse{\x < 3}{\draw (\x+.5, 0) -- ++(0,.03);}{}
+}
+
+\coordinate (c0) at (1.087,0);
+\coordinate (c1) at (2.6087,0);
+\coordinate (c2) at (2.3043,0);
+
+\node (l0) at (c0) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny \textbf{OLLAWV}};
+\node (l1) at (c1) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny NNISDA};
+\node (l2) at (c2) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny MNSVM};
+
+\fill[fill=gray,fill opacity=0.5] (1.087,-0.1) rectangle (1.747,0.1);
+
+\foreach \x in {0,1,2} {
+\draw (l\x) -| (c\x);
+};
+\end{tikzpicture}}\\
+\captionsetup{width=0.7\linewidth}
+\captionof*{figure}{\small Support Vectors (\%)}
+\end{minipage} \\
+\end{tabularx}
+\end{table}
+
+\newpage
+
+\begin{figure}[t!]
+\begin{minipage}{0.8\textwidth}
+\caption*{Accuracy (\%) for Non-SVM Methods vs. OLLAWV}\vspace{-1em}
+\small \centering
+\resizebox{\textwidth}{!}{\begin{tabular}{l@{\extracolsep{\fill}}cccccc}
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Dataset & OLLAWV & $k$-NN & J48 & JRip & Na\"ive Bayes & Logistic \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\textbf{\textit{small datasets}} & & & & & & \\
+iris & \textbf{97.33 $\pm$ 1.49} & 96.00 $\pm$ 3.65 & 94.00 $\pm$ 2.79 & 90.67 $\pm$ 4.35 & 96.00 $\pm$ 2.79 & 97.33 $\pm$ 2.79  \\
+teach & 52.32 $\pm$ 3.46 & \textbf{59.64 $\pm$ 2.89} & 49.72 $\pm$ 7.58 & 56.75 $\pm$ 9.60 & 53.75 $\pm$ 6.46 & 51.77 $\pm$ 6.68 \\
+wine & \textbf{98.87 $\pm$ 1.54} & 97.73 $\pm$ 3.72 & 90.43 $\pm$ 5.83 & 93.24 $\pm$ 3.27 & 96.60 $\pm$ 3.14 & 96.05 $\pm$ 2.58 \\
+cancer & \textbf{80.36 $\pm$ 5.80} & 77.32 $\pm$ 6.93 & 73.81 $\pm$ 8.57 & 73.78 $\pm$ 5.81 & 67.73 $\pm$ 5.07 & 77.32 $\pm$ 7.78 \\
+sonar & \textbf{92.32 $\pm$ 3.11} & 88.99 $\pm$ 4.59 & 76.16 $\pm$ 10.6 & 75.18 $\pm$ 6.77 & 73.69 $\pm$ 7.65 & 75.18 $\pm$ 7.31 \\
+glass & \textbf{72.41 $\pm$ 2.28} & 67.73 $\pm$ 5.91 & 65.06 $\pm$ 5.51 & 65.59 $\pm$ 9.66 & 49.46 $\pm$ 5.19 & 62.04 $\pm$ 5.75 \\
+vote & \textbf{96.54 $\pm$ 1.87} & 92.26 $\pm$ 3.19 & 95.70 $\pm$ 2.12 & 96.54 $\pm$ 2.45 & 92.24 $\pm$ 3.24 & 93.54 $\pm$ 2.59 \\
+heart & 82.22 $\pm$ 2.93 & 79.63 $\pm$ 5.71 & 78.52 $\pm$ 2.81 & 80.74 $\pm$ 4.06 & \textbf{84.44 $\pm$ 4.46} & 83.33 $\pm$ 3.93 \\
+dermatology & \textbf{97.82 $\pm$ 0.05} & 96.18 $\pm$ 1.78 & 94.52 $\pm$ 2.21 & 91.27 $\pm$ 5.08 & 97.28 $\pm$ 1.64 & 96.98 $\pm$ 2.28 \\
+prokaryotic & \textbf{88.96 $\pm$ 2.14} & 87.96 $\pm$ 3.01 & 78.54 $\pm$ 1.62 & 79.13 $\pm$ 2.78 & 62.38 $\pm$ 3.54 & 87.57 $\pm$ 2.56 \\
+eukaryotic & 77.38 $\pm$ 1.96 & \textbf{81.42 $\pm$ 2.06} & 65.27 $\pm$ 2.92 & 66.42 $\pm$ 3.47 & 39.27 $\pm$ 3.43 & 69.55 $\pm$ 1.34 \\
+\textbf{\textit{medium datasets}} & & & & & & \\
+optdigits & \textbf{99.11 $\pm$ 0.38} & 98.74 $\pm$ 0.39 & 90.87 $\pm$ 1.09 & 91.28 $\pm$ 0.40 & 92.42 $\pm$ 0.75 & 95.05 $\pm$ 0.91 \\
+satimage & \textbf{91.66 $\pm$ 0.80} & 90.38 $\pm$ 0.72 & 85.64 $\pm$ 1.21 & 85.33 $\pm$ 0.77 & 85.41 $\pm$ 0.92 & 88.14 $\pm$ 1.11 \\
+usps & \textbf{97.49 $\pm$ 0.22} & 97.04 $\pm$ 0.47 & 88.73 $\pm$ 0.46 & 89.20 $\pm$ 1.00 & 79.45 $\pm$ 0.59 & 91.88 $\pm$ 0.65 \\
+pendigits & \textbf{99.56 $\pm$ 0.12} & 99.33 $\pm$ 0.17 & 96.24 $\pm$ 0.31 & 96.34 $\pm$ 0.41 & 88.34 $\pm$ 0.65 & 95.59 $\pm$ 0.18 \\
+reuters & \textbf{98.03 $\pm$ 0.22} & 97.15 $\pm$ 0.43 & 96.90 $\pm$ 0.32 & 97.18 $\pm$ 0.44 & 93.52 $\pm$ 0.02 & 69.54 $\pm$ 0.28 \\
+letter & \textbf{96.99 $\pm$ 0.21} & 95.71 $\pm$ 0.19 & 87.34 $\pm$ 0.68 & 87.02 $\pm$ 0.66 & 74.12 $\pm$ 0.97 & 77.45 $\pm$ 0.16 \\
+\textbf{\textit{large datasets}} & & & & & & \\
+adult & \textbf{84.75 $\pm$ 0.26} & 83.85 $\pm$ 0.28 & 84.38 $\pm$ 0.28 & 83.73 $\pm$ 0.17 & 80.57 $\pm$ 0.09 & 82.46 $\pm$ 0.14 \\
+w3a & \textbf{98.86 $\pm$ 0.04} & 98.60 $\pm$ 0.06 & 98.71 $\pm$ 0.05 & 98.41 $\pm$ 0.10 & 96.71 $\pm$ 0.20 & 98.61 $\pm$ 0.12 \\
+shuttle & 99.77 $\pm$ 0.03 & 99.93 $\pm$ 0.03 & \textbf{99.97 $\pm$ 0.02} & 99.96 $\pm$ 0.02 & 98.57 $\pm$ 0.24 & 96.83 $\pm$ 0.12 \\
+web & \textbf{98.94 $\pm$ 0.05} & 98.89 $\pm$ 0.06 & 98.79 $\pm$ 0.09 & 98.50 $\pm$ 0.13 & 96.71 $\pm$ 0.21 & 98.70 $\pm$ 0.08 \\
+ijcnn1 & 98.31 $\pm$ 0.07 & \textbf{98.48 $\pm$ 0.04} & 98.40 $\pm$ 0.09 & 98.11 $\pm$ 0.10 & 90.69 $\pm$ 0.26 & 92.29 $\pm$ 0.16 \\
+intrusion & \textbf{99.77 $\pm$ 0.02} & 88.20 $\pm$ 1.06 & 58.01 $\pm$ 26.6 & 87.66 $\pm$ 3.79 & 49.75 $\pm$ 30.7 & 65.15 $\pm$ 15.7 \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Average & \textbf{91.29 $\pm$ 1.26} & 90.05 $\pm$ 2.06 & 84.60 $\pm$ 3.64 & 86.18 $\pm$ 2.84 & 79.96 $\pm$ 3.58 & 84.45 $\pm$ 2.83 \\
+Ranks & \textbf{1.500} & $2.500$ & $4.041$ & $3.958$ & $5.063$ & $3.938$ \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\end{tabular}}
+\end{minipage}
+\hspace{1em}
+\begin{minipage}{0.13\textwidth}
+\centering
+\resizebox{\textwidth}{!}{\begin{tikzpicture}
+\draw (0,1) -- (0,6);
+\foreach \x in {1,2,3,4,5,6} {
+\draw (0, \x) -- ++(0.1,0) node [right,scale=0.7] {\small \x};
+\ifthenelse{\x < 6}{\draw (0, \x+.5) -- ++(.03, 0);}{}
+}
+
+\coordinate (c0) at (0,1.5);
+\coordinate (c1) at (0,2.5);
+\coordinate (c2) at (0,4.041);
+\coordinate (c3) at (0,3.9583);
+\coordinate (c4) at (0,5.0625);
+\coordinate (c5) at (0,3.9375);
+
+\node (l0) at (c0) [left=0cm and 0.1cm, align=right,scale=0.7] {\small \textbf{OLLAWV}};
+\node (l1) at (c1) [left=0cm and 0.1cm, align=right,scale=0.7] {\small $k$-NN};
+\node (l2) at (c2) [above left=0cm and 0.2cm, align=right,scale=0.7] {\small J$48$};
+\node (l3) at (c3) [left=0cm and 0.1cm, align=right,scale=0.7] {\small JRip};
+\node (l4) at (c4) [left=0cm and 0.1cm, align=left,scale=0.7] {\small Na\"{i}ve Bayes};
+\node (l5) at (c5) [below left=0cm and 0.2cm, align=right,scale=0.7] {\small Logistic};
+
+
+\fill[fill=gray,fill opacity=0.5] (-0.1,1.5) rectangle (0.1,2.89);
+
+\foreach \x in {0,1,2,3,4,5} {
+\draw (l\x) -| (c\x);
+};
+\end{tikzpicture}}
+\end{minipage}
+\end{figure}
+
+
 
 \end{document}
