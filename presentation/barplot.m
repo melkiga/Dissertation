@@ -17,13 +17,14 @@ end
 
 xlim([0.1 7.9]);
 
-title('Mean Accuracy (\%) Over All Datasets','Interpreter','latex','FontSize',11.5);
-ylabel('Mean Accuracy (\%)','Interpreter','latex','FontSize',11.5);
+title('Mean Accuracy (\%) Over All Datasets','Interpreter','latex','FontSize',18);
+ylabel('Mean Accuracy (\%)','Interpreter','latex','FontSize',18);
 set(gca,'xticklabel',methods(2:end));
-set(gca,'TickLabelInterpreter','latex','FontSize',11.5);
+set(gca,'XTickLabelRotation',18);
+set(gca,'TickLabelInterpreter','latex','FontSize',18);
 ylim([78 100]);
 lgd = legend({'OLLAWV','NNISDA','MNSVM','$k$NN','J48','JRip','Na\"{i}ve Bayes','Logistic'},'Interpreter','latex');
-lgd.FontSize = 11.5;
+lgd.FontSize = 18;
 saveas(accuracyFigure,'../figures/mean_accuracy','epsc');
 
 %%
@@ -32,16 +33,17 @@ percentSV = [25.66 44.65 43.79];
 
 svFigure = figure; hold on; grid minor; 
 b = bar(1,25.66,'FaceColor',[.5 .5 .5],'EdgeColor',[.5 .5 .5]); % ollawv
-bar(2,25.66);
-bar(3,25.66);
+bar(2,44.65);
+bar(3,43.79);
 
-xticks([1 2 3]); ylim([0 40]);
-title('Mean Support Vectors (\%) Over All Datasets','Interpreter','latex','FontSize',11.5);
-ylabel('Mean Support Vectors (\%)','Interpreter','latex','FontSize',11.5);
+xticks([1 2 3]); ylim([0 50]);
+title('Mean Support Vectors (\%) Over All Datasets','Interpreter','latex','FontSize',18);
+ylabel('Mean Support Vectors (\%)','Interpreter','latex','FontSize',18);
 set(gca,'xticklabel',methods(1:end));
-set(gca,'TickLabelInterpreter','latex','FontSize',11.5);
+set(gca,'XTickLabelRotation',45);
+set(gca,'TickLabelInterpreter','latex','FontSize',18);
 lgd = legend({'OLLAWV','NNISDA','MNSVM'},'Interpreter','latex');
-lgd.FontSize = 11.5;
+lgd.FontSize = 18;
 saveas(svFigure,'../figures/mean_sv','epsc');
 
 %% 
@@ -53,10 +55,13 @@ bar(2,221350);
 bar(3,191861);
 
 xticks([1 2 3]); ylim([0 240000]);
-title('Mean Run Time (s) Over All Datasets','Interpreter','latex','FontSize',11.5);
-ylabel('Mean Run Time (s)','Interpreter','latex','FontSize',11.5);
+title('Mean Run Time (s) Over All Datasets','Interpreter','latex','FontSize',18);
+ylabel('Mean Run Time (s)','Interpreter','latex','FontSize',18);
 set(gca,'xticklabel',methods(1:end));
-set(gca,'TickLabelInterpreter','latex','FontSize',11.5);
+set(gca,'XTickLabelRotation',45);
+set(gca,'TickLabelInterpreter','latex','FontSize',18);
 lgd = legend({'OLLAWV','NNISDA','MNSVM'},'Interpreter','latex');
-lgd.FontSize = 11.5;
+lgd.FontSize = 18;
 saveas(timeFigure,'../figures/mean_time','epsc');
+
+close all; fclose('all');

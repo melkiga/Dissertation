@@ -70,22 +70,21 @@
 
 %%%% SVR
 
-\begin{figure}[t!]
+\begin{figure}[H]
 \centering
 \begin{minipage}{0.65\textwidth}
-\small \centering
+\centering
 \[\begin{tikzcd}[column sep = small, row sep = small]
 & & \mathcal{D}_1 :  [\bm X][\bm Y_1]  \arrow[rr]  & & h_1 :  \mathcal{D}_1 \rightarrow \bm{\hat{Y_1}}\\
 & & \mathcal{D}_2 :  [\bm X][\bm Y_2]  \arrow[rr] & & h_2 :  \mathcal{D}_2 \rightarrow \bm{\hat{Y_2}} \\        
 \mathcal{D} :  [\bm X][\bm Y]  \arrow[uurr, bend left=45] \arrow[urr, bend left] \arrow[drr, bend right]  		& & \vdots \\
 & & \mathcal{D}_m :  [\bm X][\bm Y_m] \arrow[rr] & & h_m :  \mathcal{D}_m \rightarrow \bm{\hat{Y}_m}
 \end{tikzcd}\]
-\caption*{\small SVR Flow Diagram. Firstly, the multi-target dataset is divided into $m$ ST datasets, $\mathcal{D}_1, \mathcal{D}_2, \ldots, \mathcal{D}_m$. Then $m$ models, $h_1, h_2, \ldots, h_m$, are independently trained for each ST dataset.}
 \end{minipage}
 \begin{minipage}{0.65\textwidth}
 \begin{algorithm}[H]
 \caption*{Multi-Target Support Vector Regression (SVR)} \label{alg:SVR} 
-\small \centering
+ \centering
 \begin{algorithmic}[1]
 \renewcommand{\algorithmicrequire}{\textbf{Input:}}
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
@@ -101,7 +100,7 @@
 \end{figure}
 
 %%% BUILD CHAINED MODEL
-\begin{figure}[t!]
+\begin{figure}[H]
 \centering
 \begin{minipage}{0.65\textwidth}
 \begin{algorithm}[H]
@@ -127,10 +126,10 @@
 
 %%% SVRRC 
 
-\begin{figure}[t!]
-\centering \small
-\begin{minipage}{0.65\textwidth}
-\centering \small
+\begin{figure}[H]
+\centering 
+\begin{minipage}{\textwidth}
+\centering 
 \begin{tikzcd}[column sep = small, row sep = small]
 & \mathcal{D} :  [\bm X][\bm Y_1 \bm Y_2 \bm Y_3] \arrow[dl] \arrow[d] \arrow[drr] & & \\
 \left[1,2,3\right] \arrow[d] & \left[1,3,2\right] \arrow[d] & \hdots & \left[3,2,1\right] \arrow[d] \\
@@ -138,13 +137,11 @@ h_1 :  [\bm X] \rightarrow \bm{\hat{Y_1}} \arrow[d] & h_1 :  [\bm X] \rightarrow
 h_2 :  [\bm X \bm{Y_1} ] \rightarrow \bm{\hat{Y_2}} \arrow[d] & h_2 :  [\bm X \bm{Y_1} ] \rightarrow \bm{\hat{Y_3}} \arrow[d] & \hdots & h_2 :  [\bm X \bm{Y_3} ] \rightarrow \bm{\hat{Y_2}} \arrow[d] \\
 h_3 :  [\bm X \bm{Y_1Y_2} ] \rightarrow \bm{\hat{Y_3}} & h_3 :  [\bm X \bm{Y_1Y_3} ] \rightarrow \bm{\hat{Y_2}} & \hdots & h_3 :  [\bm X \bm{Y_3Y_2} ] \rightarrow \bm{\hat{Y_1}}
 \end{tikzcd}
-\caption*{\small SVRRC Flow Diagram on a dataset with three targets. SVRRC first builds the six random chains of the target's indices (three examples are shown). It then constructs a chained model by proceeding recursively over the chain, building a model, and appending the current target to the input space to predict the next target in the chain. } 
 \end{minipage}
-\begin{minipage}{0.65\textwidth}
+\begin{minipage}{0.75\textwidth}
 \begin{algorithm}[H]
 \caption*{Multi-Target SVR with Random-Chains (SVRRC)}
-\small \centering
-\label{alg:SVRRC} 
+\centering
 \begin{algorithmic}[1]
 \renewcommand{\algorithmicrequire}{\textbf{Input:}}
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
@@ -160,10 +157,10 @@ h_3 :  [\bm X \bm{Y_1Y_2} ] \rightarrow \bm{\hat{Y_3}} & h_3 :  [\bm X \bm{Y_1Y_
 
 %%%% SVRCC
 
-\begin{figure}[t!]
-\centering \small
-\begin{minipage}{0.65\textwidth}
-\centering \small
+\begin{figure}[H]
+\centering 
+\begin{minipage}{\textwidth}
+\centering 
 \begin{tikzcd}
 \mathcal{D} :  [\bm X][\bm Y_1 \bm Y_2 \bm Y_3] \arrow{rr}{\textit{generate maximum correlation chain}}[swap]{\frac{\mathbf{E}\left[(Y_i - \mu_i)(Y_j - \mu_j)\right]}{\sqrt{\mathbf{E}\left[(Y_i - \mu_i)(Y_i - \mu_i)\right]\mathbf{E}\left[(Y_j - \mu_j)(Y_j - \mu_j)\right]}}} 
 &  \arrow[d, phantom, ""{coordinate, name=Z}]
@@ -175,9 +172,8 @@ h_1 :  [\bm X] \rightarrow \bm{\hat{Y_1}} \arrow[r]
 & h_2 :  [\bm X \bm{Y_1} ] \rightarrow \bm{\hat{Y_2}} \arrow[r]
 & h_3 :  [\bm X \bm{Y_1Y_2} ] \rightarrow \bm{\hat{Y_3}} 
 \end{tikzcd}
-\caption*{\small SVRCC Flow Diagram on a sample dataset with three targets. SVRCC first finds the direction of maximum correlation among the targets and uses that order as the only chain. It then constructs the chained model, as done in SVRRC. } 
 \end{minipage}
-\begin{minipage}{0.65\textwidth}
+\begin{minipage}{0.8\textwidth}
 \begin{algorithm}[H]
 \caption*{Multi-Target SVR with max-Correlation Chain (SVRCC)} 
 \centering \small
@@ -195,7 +191,7 @@ h_1 :  [\bm X] \rightarrow \bm{\hat{Y_1}} \arrow[r]
 
 \newpage
 
-\begin{table}[t!]
+\begin{table}[H]
 \centering \small
 \caption*{Average Relative Root Mean Square Error (aRRMSE) for MT regressors}\vspace{-1em}
 \resizebox{0.95\textwidth}{!}{\begin{tabular}{l@{\extracolsep{\fill}}ccccccccccc}
@@ -233,7 +229,7 @@ Ranks &7.5000 &5.7708 &5.9375 &6.1667 &7.4375 &6.3750 &4.9792 &4.7708 &3.2708 &\
 \end{tabular}}
 \end{table}
 
-\begin{table}[t!]
+\begin{table}[H]
 \centering \small
 \caption*{Run Time (seconds) for MT regressors}\vspace{-1em}
 \resizebox{0.95\textwidth}{!}{\begin{tabular}{l@{\extracolsep{\fill}}rrrrrrrrrrr}
@@ -287,9 +283,8 @@ Ranks &5.5 &3.71 &6.0 &8.29 &3.0 &7.08 &9.92 &\textbf{1.88} &6.71 &2.92   \\
 %%% MIRSVM
 
 \begin{figure}[b!]
-\centering \small
+\centering 
 \begin{minipage}{\textwidth}
-\small
 \adjustbox{scale=0.9}{
 \begin{tikzpicture}[%
     node distance=4cm,
@@ -301,18 +296,16 @@ Ranks &5.5 &3.71 &6.0 &8.29 &3.0 &7.08 &9.92 &\textbf{1.88} &6.71 &2.92   \\
 \draw[arrow] (A) -- (B);
 \node(C)[block, right of=B,text width=6.3em] {Find optimal representatives, $\bm S$, for the current hyperplane};
 \draw[arrow] (B) -- (C);
-\node(D) [decision,right of=C,fill=gray!55,text width=2cm]{while $\bm S$ has not changed, $\bm S \neq \bm S_{old}$};
+\node(D) [decision,right of=C,fill=gray!55,text width=2cm]{While $\bm S$ has not changed, $\bm S \neq \bm S_{old}$};
 \draw[arrow] (C) -- (D);
-\node(E) [block,right of=D]{return $\bm \alpha,\, b, \bm S$};
+\node(E) [block,right of=D]{Return $\bm \alpha,\, b, \bm S$};
 \draw[arrow] (D) -- node {yes} (E);
 \draw[arrow] (D.north) --+(0,0.1cm) -| (B.north) node[below,pos=0.25] {no} ;
 \end{tikzpicture}}
-\caption*{\small A summary of the steps performed by MIRSVM. The representatives are first randomly initialized and continuously updated according to the current hyperplane. Upon completion, the model is returned along with the optimal bag-representatives.}
 \end{minipage}
 \begin{minipage}{\textwidth}
 \begin{algorithm}[H]
 \caption*{Multi-Instance Representative SVM (MIRSVM)}
-\small
 \begin{algorithmic}[1]
 \renewcommand{\algorithmicrequire}{\textbf{Input:}}
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
@@ -462,9 +455,8 @@ L(y_i,\, o_{(w,b)}(\bm{x}_i)) = \begin{cases}
 \newpage
 
 \begin{figure}
-\centering \small
+\centering
 \begin{minipage}{\textwidth}
-\small
 \adjustbox{scale=0.9}{
 \begin{tikzpicture}[%
     node distance=4cm,
@@ -476,17 +468,15 @@ L(y_i,\, o_{(w,b)}(\bm{x}_i)) = \begin{cases}
 \draw[arrow] (A) -- (B);
 \node(C)[block, right of=B,text width=6.3em] {Update output vector, worst-violator's alpha, \& bias term};
 \draw[arrow] (B) -- (C);
-\node(D) [decision,right of=C,fill=gray!55,text width=2cm]{while errors exist};
+\node(D) [decision,right of=C,fill=gray!55,text width=2cm]{While errors exist};
 \draw[arrow] (C) -- (D);
-\node(E) [block,right of=D]{return $\bm \alpha,\, b, \bm S$};
+\node(E) [block,right of=D]{Return $\bm \alpha,\, b, \bm S$};
 \draw[arrow] (D) -- node {no} (E);
 \draw[arrow] (D.south) --+(0,-0.7cm) -| (B.south) node[below,pos=0.25] {yes} ;
 \end{tikzpicture}}
-\caption*{Summary of the steps performed by OLLAWV. The model parameters ($\bm \alpha$, $b$, $\bm S$) and the algorithm variables ($\bm o$, $t$, $wv$, and $yo$) are first initialized. The worst-violator with respect to the current hyperplane is then found and the model parameters are updated. Once no violating samples are found, the model is returned.}
 \end{minipage}
 \begin{algorithm}[H]
 \caption*{OnLine Learning Algorithm using Worst-Violators (OLLAWV)}
-\small
 \begin{algorithmic}[1]
 \renewcommand{\algorithmicrequire}{\textbf{Input:}}
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
@@ -512,7 +502,7 @@ L(y_i,\, o_{(w,b)}(\bm{x}_i)) = \begin{cases}
 \end{algorithm}
 \end{figure}
 
-\begin{table}[t!]
+\begin{table}[H]
 \caption*{Classification Datasets}\vspace{-1em}
 \footnotesize \centering
 \begin{tabularx}{0.5\textwidth}{l@{\extracolsep{\fill}}rrr}
@@ -551,7 +541,7 @@ intrusion & 5,209,460 & 127 &  2  \\
 
 \newpage
 
-\begin{table}[t!]
+\begin{table}[H]
 \centering \small
 \caption*{Comparison of OLLAWV vs. NNISDA and MNSVM}\vspace{-1em}
 \resizebox{\textwidth}{!}{\begin{tabularx}{1.3\textwidth}{l@{\extracolsep{\fill}}cccrrrccc}
@@ -766,7 +756,7 @@ Ranks & \textbf{1.739} & 2.022 & 2.239 & \textbf{1.217} & 1.913 & 2.869 & \textb
 
 \newpage
 
-\begin{figure}[t!]
+\begin{figure}[H]
 \begin{minipage}{0.8\textwidth}
 \caption*{Accuracy (\%) for Non-SVM Methods vs. OLLAWV}\vspace{-1em}
 \small \centering
@@ -843,7 +833,7 @@ Ranks & \textbf{1.500} & $2.500$ & $4.041$ & $3.958$ & $5.063$ & $3.938$ \\
 \newpage
 
 
-\begin{figure}[t!]
+\begin{figure}[H]
 \centering
 \begin{minipage}{0.3\textwidth}
 \includegraphics[width=\textwidth]{../../figures/mean_accuracy.eps}
@@ -865,7 +855,7 @@ C \in \set{4^n}, & \,\,\,\,\,n = \set{-2, \ldots, 5} \label{eq:paramColla}\\
 \end{align}
 \end{subequations}
 
-\begin{table}[b!]
+\begin{table}[H]
 \small
 \caption*{Algorithm Hyperparameters}\vspace{-1em}
 \label{tab:hyp}
@@ -884,5 +874,231 @@ Algorithm & Parameters \\
 \end{tabularx}
 \end{table}
 
+\newpage
+
+\begin{minipage}{\textwidth}
+\begin{equation*}
+\min\limits_{\bm (\bm{w},b) \in \mathcal{H}_o \times \reals} R {\,\,} = {\,\,} \frac{1}{2}||\bm{w}||^2 + C\sum_{i=1}^n L(y_i,\, o_{(w,b)}(\bm{x}_i)),
+\end{equation*}
+
+\begin{equation*}
+\min\limits_{\bm (\bm{w},b) \in \mathcal{H}_o \times \reals} R {\,\,} = {\,\,} \frac{1}{2}||\bm{w}||^2 + C L(y_i,\, o_{(w,b)}(\bm{x}_i)).
+\end{equation*}
+
+\begin{equation*}
+\begin{aligned}
+\min\limits_{\bm{w} \in \mathcal{H}_o \times \reals} R {\,\,} = {\,\,} \frac{1}{2}||\bm{w}||^2 + C\sum_{i=1}^n \max \set{0, 1 - y_i o_{(w)}(\bm{x}_i)} 
+\end{aligned}
+\end{equation*}
+
+
+%\text{where } o_{(w)}(\bm{x}_i) = \langle\bm w, \bm x_i\rangle \text{ is a linear predictor.}
+%$o_{(w)}(\bm{x}_i) = \langle\bm w, \bm x_i\rangle$ 
+
+\begin{align*}
+\bm w &\leftarrow \bm w - \eta \frac{\partial R}{\partial \bm w} \\
+\bm w &\leftarrow \bm w + \eta \begin{cases} 
+															C y_i \bm{x_i} - \bm w & y_i o_i < 1 \\
+															-\bm w & \text{otherwise}
+													 \end{cases}
+\end{align*}
+
+\begin{equation*}
+\centering
+\sum_{i=1}^n \alpha_i \phi(\bm x_i) \leftarrow \sum_{i=1}^n \alpha_i \phi(\bm x_i) + \eta \begin{cases} 
+															C y_i \phi(\bm{x_i}) - \sum_{i=1}^n \alpha_i \phi(\bm x_i) & y_i o_i < 1 \\[5pt]
+															-\sum_{i=1}^n \alpha_i \phi(\bm x_i) & \text{otherwise}
+													 \end{cases}
+\end{equation*}
+
+\begin{align*}
+&\forall i: \alpha_i \phi(\bm x_i) \leftarrow \alpha_i \phi(\bm x_i) + \eta \begin{cases} 
+																													(Cy_i\phi(\bm{x_i}) - \alpha_i \phi(\bm x_i)) & y_i o_i < 1 \\
+																													(- \alpha_i \phi(\bm x_i)) & \text{otherwise}
+																													 \end{cases} \\							
+&\forall i: \alpha_i \leftarrow \alpha_i + \eta \begin{cases} 
+																(Cy_i - \alpha_i) & y_i o_i < 1 \\
+																(- \alpha_i) & \text{otherwise}
+															\end{cases} 
+\end{align*}
+
+\begin{equation*}
+\begin{aligned}
+&\Lambda \leftarrow Cy_i \\
+&\alpha_i \leftarrow \alpha_i + \eta \Lambda \\
+&b \leftarrow b + \eta \Lambda
+\end{aligned}
+\end{equation*}
+
+\begin{equation*}
+\label{eq:upbias}
+\forall i: b \leftarrow b + \eta \frac{C y_i}{n}
+\end{equation*}
+
+\begin{equation}
+\label{eq:upoutput}
+\bm o \leftarrow \bm o + \Lambda*\mathcal{K}\left(\bm{x}_{\neg \bm S},\, \bm{x}_{wv}, \gamma \right) + B
+\end{equation}
+
+\end{minipage}
+
+\newpage
+
+\begin{table}[H]
+\centering \scriptsize
+\caption*{Comparison of OLLAWV vs. OLLA-L2}\vspace{-1em}
+\begin{tabular}{lcccc}
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\multicolumn{1}{l}{Dataset} & \multicolumn{2}{c}{Accuracy (\%)} & \multicolumn{2}{c}{Run Time (s)} \\
+\cmidrule(lr){2-3}
+\cmidrule(lr){4-5}
+ & OLLA-L2 & OLLAWV & OLLA-L2 & OLLAWV \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+RBFNoDrift &93.07 &\textbf{94.21} &\textbf{0.0238} &0.0329   \\
+HyperplaneSlow &87.40 &\textbf{90.09} &\textbf{0.0261} &0.0353   \\
+HyperplaneFaster &87.40 &\textbf{89.51} &\textbf{0.0256} &0.0263   \\
+STAGGERGeneratorF1 &\textbf{100.0} &\textbf{100.0} &0.0034 &\textbf{0.0021}  \\
+HyperplaneFaster02 &87.41 &\textbf{89.49} &\textbf{0.0257} &0.0268   \\
+MixedGeneratorBT &92.45 &\textbf{98.00} &\textbf{0.0108} &0.0205  \\
+MixedGeneratorBF &92.55 &\textbf{98.03} &\textbf{0.0107} &0.0299   \\
+SineGeneratorF1BF &97.37 &\textbf{97.79} &\textbf{0.0091} &0.0122   \\
+SineGeneratorF2BF &97.37 &\textbf{97.79} &\textbf{0.0091} &0.0121   \\
+STAGGERGeneratorF1BF &\textbf{100.0} &\textbf{100.0} &0.0035 &\textbf{0.0021}   \\
+STAGGERGeneratorF2BF &\textbf{100.0} &\textbf{100.0} &0.0039 &\textbf{0.0022}  \\
+HyperplaneFasterAN0 &87.40 &\textbf{89.51} &\textbf{0.0255} &0.0263   \\
+HyperplaneFasterAN5 &87.29 &\textbf{89.29} &\textbf{0.0258} &0.0264   \\
+SEASuddenAN0 &84.01 &\textbf{87.80} &0.0494 &\textbf{0.0208}   \\
+SEASuddenAN05 &83.69 &\textbf{87.53} &0.0494 &\textbf{0.0284}  \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Average &91.83 &\textbf{93.94} & \textbf{0.0201} & 0.0203 \\
+Rank & 1.900 &\textbf{1.100} &\textbf{1.3333} & 1.6667  \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\end{tabular}
+\end{table}
+
+
+\begin{figure}
+\centering 
+\begin{minipage}{\textwidth}
+\small
+\adjustbox{scale=0.9}{
+\begin{tikzpicture}[%
+    node distance=4cm,
+    on grid,
+    auto
+]
+\node[block](A) {Initialize training variables}; % A
+\node(B)[decision,right of=A,fill=gray!55,text width=2cm] {\textbf{$\mathtt{while}$} \\ $t <$ max number of iterations}; %B
+
+\draw[arrow] (A) -- (B);
+
+\node(C)[block, above right of=B, text width=6em] {Terminate}; %C
+
+\draw[arrow] (B.north)--+(0,0.92cm) -- (C.west) node[above,pos=0.25] {no};
+
+\node(D)[decision,right of=B,fill=gray!55,text width=2cm] {\textbf{$\mathtt{if}$} sample is a violator}; %D
+
+\draw[arrow] (B) -- (D) node[above,pos=0.25] {yes};
+
+\node(E)[block, below=3.3cm and 4cm of D, text width=6em]{Calculate current sample output}; %E
+
+\draw[arrow] (D.south) -- (E.north) node[right,pos=0.25] {no};
+\draw[arrow] (E.west) --+(-2.9cm,0cm) -- (B.south);
+
+\node(F)[block, right of=D, text width=6em] {Update the violator's alpha, \& bias term}; %F
+
+\draw[arrow] (D) -- (F);
+\draw[arrow] (F.south) --+(0,-2.48cm) -- (E.east);
+\end{tikzpicture}}
+\end{minipage}
+
+\begin{algorithm}[H]
+\centering 
+\caption*{OnLine Learning Algorithm - List 2 (OLLA-L2)}
+\begin{algorithmic}[1]
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\Require $\bm X, \bm Y, \beta, n, e$
+\Ensure  $\bm \alpha$, $b$, $\bm S$
+\State $\bm \alpha \leftarrow \bm 0, b \leftarrow 0, \bm S \leftarrow \bm 0,\, \bm o \leftarrow \bm 0,\, i \leftarrow 0$ \Comment{Initialize model and algorithm parameters}
+\For{$t = 1, \ldots, n*e$}
+\State $\eta \leftarrow 2/\sqrt{t}$ \Comment{Learning rate in function of time}
+\If{$y_i\, o_i \leq 1$} \Comment{Check if current sample is a violator}
+\State \textit{Calculate $\Lambda$ and $\Rho$} \Comment{Calculate update parameters}
+\State $\bm S \leftarrow [\bm S \cup i]$ \Comment{Save index of current violator}
+\State $\alpha_i \leftarrow \alpha_i + (\Lambda - \Rho)$ \Comment{Update violator's alpha value}
+\State $b \leftarrow b + (\Lambda - \Rho)\beta$ \Comment{Update bias term}
+\EndIf
+\State $i \leftarrow i + 1$ \Comment{Get new sample}
+\If{$i = n$} \Comment{If the sample index exceeds the number of samples}
+\State $i = 0$ \Comment{Reset sample index}
+\EndIf
+\State $o_i \leftarrow \bm{K}(\bm x_i,\, \bm x_{\bm S})\, \bm \alpha_{\bm S} + b$ \Comment{Calculate the new sample's output value}
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+\end{figure}
+
+\newpage
+
+\begin{tikzpicture}[scale = 1]
+  % Draw axes
+  \draw [-latex] (0,0)--(0,7) node  [right, font=\Large]{$x_2$};
+  \draw [-latex] (0,0)--(7,0) node  [above, font=\Large]{$x_1$};
+  % draw line
+  \draw (0,-1) -- (7,6); % y=x-1
+  \draw[dashed] (-1,0) -- (6,7); % y=x+1
+  \draw[dashed] (2,-1) -- (8,5); % y=x-3
+  % \draw labels
+  \draw (6.4,4.9) node[rotate=45] {$o_{\bm w,b}(\bm{x}) = 0$};
+  \draw (5.4,5.9) node[rotate=45] {$o_{\bm w,b}(\bm{x}) = 1$};
+  \draw (7.4,3.9) node[rotate=45] {$o_{\bm w,b}(\bm{x}) = -1$};
+  % draw distance & margin
+  \draw[dotted, thick] (6,7) -- (8,5);
+  \draw (7.3,6.3) node[rotate=-45, font=\Large] {$\frac{2}{\Vert \bm{w} \Vert}$};
+  % draw distance & bias
+  \draw[dotted] (0,0) -- (0.5,-0.5);
+  \draw (-0.3,-0.5) node[rotate=-45, font=\Large] {$\frac{b}{\Vert \bm{w} \Vert}$};
+  % class labels
+  \draw (6.5,1) node [font=\Large] {$\bm{-1}$};
+  \draw (1,6) node [font=\Large] {$\bm{+1}$};
+  % 0 <= Ksi 1 <= 1
+  \draw (1,1.5) -- (0.75,1.75);
+  \draw (1,1) node  {$0 \leq \bm{\xi}_1 \leq 1$};
+  \draw[thick, draw=gray, fill=black] 	(1,1.5)  circle (3pt); 
+  % Ksi 2 > 1
+  \draw (3,1.6) -- (1.8,2.8);
+  \draw (2.6,2.3) node [rotate=-45] {$\bm{\xi}_2 > 1$};
+  % ksi 3 > 2
+  \draw (3,5.5) -- (5.75,2.75);
+  \draw (4.4,4.4) node [rotate=-45] {$\bm{\xi}_3 > 2$};
+  \draw[black,thick] (3,5.5)  circle (3pt);
+  % ksi 4 = 0
+  \draw (5.5,2) node [rotate=45] {$\bm{\xi}_4 = 0$}; % pure SV
+  \draw[black,thick] (5,2) circle (3pt); 
+  % draw positive Class
+  \draw[thick, draw=gray, fill=black] 	(3.5,4.5) 	circle (3pt); % pure SV
+  \draw[thick, draw=gray, fill=black]   (1.5,2.5)   circle (3pt); % pure SV
+  \draw[thick, draw=gray, fill=black] 	(3,1.6)     circle (3pt);  % pure SV
+  \fill[black] 	(1,2.5)     circle (3pt);
+  \fill[black] 	(0.75,2)  circle (3pt);
+  \fill[black] 	(0.6,1.9)   circle (3pt);
+  \fill[black] 	(4, 5.5) circle (3pt);
+  \fill[black] 	(1.5,3)     circle (3pt);
+  \fill[black] 	(1.3,3.3)   circle (3pt);
+  \fill[black] 	(0.6,3.2)   circle (3pt);
+  \fill[black] 	(2,4.2)   circle (3pt);
+  \fill[black] 	(3,5.2)   circle (3pt);
+  \fill[black] 	(0.6,5)   circle (3pt);
+  % draw negative dots
+   \draw[black,thick] (3.3,.3)  circle (3pt); % pure SV
+  \draw[black,thick] (5.5,2.5)  circle (3pt); % pure SV
+  \draw[black]     (4.5,1.2) circle (3pt); 
+  \draw[black]     (4.5,.5)  circle (3pt); 
+  \draw[black]     (3.9,.7)  circle (3pt); 
+  \draw[black]     (5,1)     circle (3pt); 
+  \draw[black]     (3.5,.2)  circle (3pt); 
+  \draw[black]     (4,.3)    circle (3pt); 
+\end{tikzpicture}
 
 \end{document}
