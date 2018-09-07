@@ -1101,4 +1101,203 @@ Rank & 1.900 &\textbf{1.100} &\textbf{1.3333} & 1.6667  \\
   \draw[black]     (4,.3)    circle (3pt); 
 \end{tikzpicture}
 
+\newpage
+
+\begin{algorithm}[H]
+\centering 
+\caption*{OnLine Learning Algorithm - List 2 (OLLA-L2)}
+\begin{algorithmic}[1]
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\Require $\bm X, \bm Y, \beta, n, e$
+\Ensure  $\bm \alpha$, $b$, $\bm S$
+\State $\bm \alpha \leftarrow \bm 0, b \leftarrow 0, \bm S \leftarrow \bm 0,\, \bm o \leftarrow \bm 0,\, i \leftarrow 0$ \Comment{Initialize model and algorithm parameters}
+\For{$t = 1, \ldots, n*e$}
+\State $\eta \leftarrow 2/\sqrt{t}$ \Comment{Learning rate in function of time}
+\If{$y_i\, o_i \leq 1$} \Comment{Check if current sample is a violator}
+\State \textit{Calculate $\Lambda$ and $\Rho$} \Comment{Calculate update parameters}
+\State $\bm S \leftarrow [\bm S \cup i]$ \Comment{Save index of current violator}
+\State $\alpha_i \leftarrow \alpha_i + (\Lambda - \Rho)$ \Comment{Update violator's alpha value}
+\State $b \leftarrow b + (\Lambda - \Rho)\beta$ \Comment{Update bias term}
+\EndIf
+\State $i \leftarrow i + 1$ \Comment{Get new sample}
+\If{$i = n$} \Comment{If the sample index exceeds the number of samples}
+\State $i = 0$ \Comment{Reset sample index}
+\EndIf
+\State $o_i \leftarrow \bm{K}(\bm x_i,\, \bm x_{\bm S})\, \bm \alpha_{\bm S} + b$ \Comment{Calculate the new sample's output value}
+\EndFor
+\end{algorithmic} 
+\end{algorithm}
+
+\newpage
+
+\begin{table}[t!]
+\caption*{Accuracy (\%) for Data Stream Classifiers} \vspace{-1em}
+\small
+\centering
+\resizebox{\textwidth}{!}{\begin{tabularx}{1.49\textwidth}{l@{\extracolsep{\fill}}ccccccccccccccc}
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Dataset & OLLAWV & HOT & AdaHOT & NB & $k$-NNPAW & DDM & VFDR & VFDR-NB & SAE2 & LearnNSE &DWM &DACC &OCBoost \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+CovType &  \textbf{90.28} & 85.34 & 86.22 & 60.04 & 87.89 & 59.56 & 60.32 & 75.58 & 76.21 & 69.97 & 71.96 & 61.70 & 71.29 \\
+Census & 93.76 & 94.70 &  \textbf{94.74} & 87.02 & 93.65 & 91.85 & 93.65 & 84.06 & 90.13 & 84.14 & 91.40 & 90.37 & 93.47 \\
+Shuttle &  \textbf{99.67} & 98.18 & 98.52 & 90.02 & 99.26 & 98.49 & 88.40 & 96.06 & 90.24 & 93.79 & 89.91 & 92.03 & 74.21 \\
+RBFNoDrift &  \textbf{94.21} & 92.94 & 92.96 & 71.99 & 93.75 & 92.48 & 77.53 & 81.71 & 89.16 & 70.28 & 70.43 & 65.01 & 92.08 \\
+LEDNoDrift & 73.83 & 73.85 & 73.84 &  \textbf{73.94} & 65.83 & 73.64 & 41.16 & 73.75 & 67.60 & 67.84 & 71.15 & 48.27 & 17.44 \\
+HyperplaneSlow &  \textbf{90.09} & 82.10 & 82.42 & 77.69 & 84.03 & 81.57 & 68.88 & 85.19 & 82.67 & 86.20 & 88.06 & 80.66 & 85.78 \\
+HyperplaneFaster &  \textbf{89.51} & 82.72 & 85.34 & 77.23 & 84.27 & 84.33 & 78.63 & 85.18 & 83.01 & 86.50 & 86.76 & 81.15 & 87.80 \\
+RBFGradualRecurring & 98.41 & 94.63 & 94.44 & 58.33 &  \textbf{98.43} & 93.47 & 60.08 & 86.16 & 88.48 & 72.87 & 74.96 & 61.91 & 49.62 \\
+RBFBlips &  \textbf{99.07} & 95.67 & 95.60 & 60.83 & 98.94 & 94.92 & 66.90 & 88.35 & 89.04 & 77.53 & 79.98 & 68.27 & 47.46 \\
+WaveformGenerator & 83.94 & 82.99 &  \textbf{84.14} & 80.41 & 80.13 & 83.61 & 63.88 & 75.84 & 80.18 & 80.19 & 78.39 & 73.59 & 55.05 \\
+STAGGERGeneratorF1 &  \textbf{100.0} & 99.99 & 99.99 &  \textbf{100.0} &  \textbf{100.0} &  \textbf{100.0} & 99.91 &  \textbf{100.0} & 95.04 & 89.82 &  \textbf{100.0} & 99.96 &  \textbf{100.0}  \\
+HyperplaneFaster02 &  \textbf{89.49} & 82.77 & 85.36 & 77.25 & 84.27 & 87.64 & 78.89 & 85.11 & 83.04 & 86.51 & 86.76 & 81.23 & 87.59 \\
+RBFGradualRecurringv2 &  \textbf{97.18} & 93.29 & 93.00 & 57.47 & 95.73 & 93.19 & 57.96 & 80.71 & 84.45 & 62.41 & 63.79 & 49.42 & 48.88 \\
+MixedGeneratorBT & 98.00 & 99.11 &  \textbf{99.32} & 91.93 & 97.67 & 99.11 & 83.12 & 93.28 & 93.16 & 90.91 & 91.19 & 89.16 & 98.98 \\
+MixedGeneratorBF & 98.03 & 99.18 &  \textbf{99.36} & 92.04 & 97.59 & 99.20 & 89.96 & 94.30 & 93.41 & 90.76 & 91.46 & 88.61 & 98.94 \\
+RandomRBFGeneratorC4A25 &  \textbf{99.12} & 97.43 & 97.14 & 81.59 & 98.69 & 96.89 & 72.33 & 89.03 & 90.61 & 78.23 & 79.67 & 63.02 & 52.16 \\
+RandomRBFGeneratorC4A50 &  \textbf{99.74} & 99.16 & 99.14 & 91.90 & 99.17 & 98.99 & 80.63 & 95.63 & 92.00 & 86.03 & 90.45 & 73.78 & 50.66 \\
+SineGeneratorF1BF & 97.79 &  \textbf{99.75} & 99.73 & 93.55 & 95.54 & 99.66 & 94.83 & 95.90 & 94.51 & 92.55 & 93.30 & 92.20 & 99.51 \\
+SineGeneratoF2BF & 97.79 &  \textbf{99.75} & 99.73 & 93.55 & 95.41 & 99.66 & 95.26 & 96.10 & 94.57 & 92.55 & 93.34 & 92.20 & 99.48 \\
+STAGGERGeneratorF1BF &  \textbf{100.0} & 99.99 & 99.99 &  \textbf{100.0} &  \textbf{100.0} &  \textbf{100.0} & 99.91 &  \textbf{100.0} & 95.04 & 89.82 &  \textbf{100.0} & 99.96 &  \textbf{100.0}  \\
+STAGGERGeneratorF2BF &  \textbf{100.0} & 99.98 & 99.98 &  \textbf{100.0} &  \textbf{100.0} & 99.98 & 99.87 &  \textbf{100.0} & 95.02 & 44.41 &  \textbf{100.0} &  \textbf{100.0} & 0.61 \\
+HyperplaneFasterAN5 &  \textbf{89.29} & 82.69 & 85.24 & 87.38 & 84.19 & 88.74 & 79.14 & 84.89 & 82.92 & 86.41 & 86.67 & 81.12 & 87.38 \\
+SEASuddenAN0 & 87.80 & 84.92 & 85.18 & 88.23 & 87.22 &  \textbf{88.97} & 81.56 & 85.17 & 85.11 & 85.77 & 86.93 & 83.73 & 88.23 \\
+SEASuddenAN05 & 87.53 & 84.57 & 84.82 & 87.53 & 86.96 &  \textbf{88.28} & 81.55 & 85.11 & 84.57 & 85.63 & 86.54 & 83.53 & 87.53 \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Average &\textbf{93.94} &91.90 &92.34 &82.50 &92.03 &91.43 &78.93 &88.21 &87.51 &81.30 &85.55 &79.20 &73.92   \\
+Rank &\textbf{2.52} &5.42 &4.54 &8.19 &4.8542 &4.63 &10.96 &6.77 &8.46 &9.04 &7.27 &10.90 &7.46 &  \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\end{tabularx}}
+\begin{minipage}{0.9\textwidth}
+\centering
+\resizebox{\textwidth}{!}{\begin{tikzpicture}
+\draw (1,0) -- (12,0);
+\foreach \x in {1,2,3,4,5,6,7,8,9,10,11,12} {
+\draw (\x, 0) -- ++(0,.1) node [above,scale=0.7] {\tiny \x};
+\ifthenelse{\x < 12}{\draw (\x+.5, 0) -- ++(0,.03);}{}
+}
+
+\coordinate (c0) at (2.5208,0);
+\coordinate (c1) at (5.4167,0);
+\coordinate (c2) at (4.5417,0);
+\coordinate (c3) at (8.1875,0);
+\coordinate (c4) at (4.8542,0);
+\coordinate (c5) at (4.625,0);
+\coordinate (c6) at (10.9583,0);
+\coordinate (c7) at (6.7708,0);
+\coordinate (c8) at (8.4583,0);
+\coordinate (c9) at (9.0417,0);
+\coordinate (c10) at (7.2708,0);
+\coordinate (c11) at (10.8958,0);
+\coordinate (c12) at (7.4583,0);
+
+\node (l0) at (c0) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny \textbf{OLLAWV}};
+\node (l1) at (c1) [above right=.1cm and 0cm, align=right,scale=0.7] {\tiny HOT};
+\node (l2) at (c2) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny AdaHOT};
+\node (l3) at (c3) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny NB};
+\node (l4) at (c4) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny $k$-NNPAW};
+\node (l5) at (c5) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny DDM};
+\node (l6) at (c6) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny VFDR};
+\node (l7) at (c7) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny VFDR-NB};
+\node (l8) at (c8) [above right=.2cm and 0cm, align=right,scale=0.7] {\tiny SAE2};
+\node (l9) at (c9) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny LearnNSE};
+\node (l10) at (c10) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny DWM};
+\node (l11) at (c11) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny DACC};
+\node (l12) at (c12) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny OCBoost};
+
+\fill[fill=gray,fill opacity=0.5] (2.5208,-0.1) rectangle (5.48,0.1);
+
+\foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11,12} {
+\draw (l\x) -| (c\x);
+};
+\end{tikzpicture}}
+\end{minipage}
+\end{table}
+
+\newpage
+
+\begin{table}[H]
+\caption{Training Time (seconds) for Data Stream Classifiers} \vspace{-1em}
+\small \centering
+\resizebox{\textwidth}{!}{\begin{tabularx}{1.5\textwidth}{l@{\extracolsep{\fill}}cccccccccccccc}
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Dataset & OLLAWV & HOT & AdaHOT & NB & $k$-NNPAW & DDM & VFDR & VFDR-NB & SAE2 & LearnNSE &DWM &DACC &OCBoost \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+CovType &0.0451 &0.0765 &0.0909 &\textbf{0.0009} &0.0387 &0.0577 &0.0371 &0.0445 &0.1121 &6.2806 &0.0419 &0.0357 &0.0984   \\
+Census &0.0168 &0.1040 &0.1162 &\textbf{0.0007} &0.0386 &0.0345 &0.0735 &0.0458 &0.0363 &0.9368 &0.0156 &0.0175 &0.0543   \\
+Shuttle &0.0103 &0.0276 &0.0298 &\textbf{0.0004} &0.0386 &0.0069 &0.0108 &0.0069 &0.0217 &0.2692 &0.0104 &0.0186 &0.0581   \\
+RBFNoDrift &0.0329 &0.0174 &0.0247 &\textbf{0.0002} &0.0383 &0.0828 &0.4267 &0.3172 &0.0491 &3.4029 &0.0104 &0.0137 &0.0402   \\
+LEDNoDrift &0.0697 &0.0373 &0.0649 &\textbf{0.0003} &0.0389 &0.0245 &0.0097 &0.0082 &0.0694 &5.4734 &0.0175 &0.0290 &0.0547   \\
+HyperplaneSlow &0.0353 &0.0094 &0.0142 &\textbf{0.0002} &0.0389 &0.1405 &0.1871 &0.3006 &0.0473 &3.3734 &0.0091 &0.0142 &0.0389   \\
+HyperplaneFaster &0.0263 &0.0295 &0.0416 &\textbf{0.0002} &0.0384 &0.1231 &0.3016 &0.3784 &0.0424 &3.2991 &0.0098 &0.0143 &0.0376   \\
+RBFGradualRecurring &0.0456 &0.0316 &0.0369 &\textbf{0.0003} &0.0389 &0.0391 &1.1284 &0.9295 &0.1004 &11.7980 &0.0335 &0.0474 &0.1070  \\
+RBFBlips &0.0396 &0.0243 &0.0299 &\textbf{0.0003} &0.0384 &0.0278 &0.7587 &0.8342 &0.0948 &11.9934 &0.0342 &0.0473 &0.1050  \\
+WaveformGenerator &0.0394 &0.0751 &0.0965 &\textbf{0.0006} &0.0390 &0.1847 &0.9670 &0.9271 &0.1715 &17.9675 &0.0511 &0.0743 &0.1318  \\
+STAGGERGeneratorF1 &0.0021 &0.0006 &0.0007 &\textbf{0.0001} &0.0389 &0.0005 &0.0013 &0.0007 &0.0018 &0.5517 &0.0003 &0.0020 &0.0113  \\
+HyperplaneFaster02 &0.0268 &0.0302 &0.0465 &\textbf{0.0002} &0.0388 &0.0260 &0.3192 &0.3010 &0.0456 &3.2893 &0.0095 &0.0141 &0.0372  \\
+RBFGradualRecurringv2 &0.0545 &0.0169 &0.0203 &\textbf{0.0003} &0.0383 &0.0859 &0.7622 &0.7634 &0.0552 &12.0529 &0.0367 &0.0464 &0.1053  \\
+MixedGeneratorBT &0.0205 &0.0027 &0.0026 &\textbf{0.0001} &0.0336 &0.0071 &1.7640 &1.5534 &0.0086 &0.9761 &0.0024 &0.0052 &0.0204   \\
+MixedGeneratorBF &0.0299 &0.0024 &0.0024 &\textbf{0.0001} &0.0334 &0.0065 &1.1035 &1.0924 &0.0093 &0.8971 &0.0024 &0.0058 &0.0209   \\
+RandomRBFGeneratorC4A25 &0.0200 &0.0441 &0.0407 &\textbf{0.0003} &0.0358 &0.0730 &1.7831 &1.6927 &0.1245 &13.9876 &0.0395 &0.0719 &0.1580   \\
+RandomRBFGeneratorC4A50 &0.0157 &0.0333 &0.0337 &\textbf{0.0007} &0.0350 &0.0909 &2.8802 &2.5559 &0.1917 &27.8456 &0.0752 &0.1432 &0.2974   \\
+SineGeneratorF1BF &0.0122 &0.0056 &0.0056 &\textbf{0.0001} &0.0334 &0.0073 &1.9301 &2.9169 &0.0127 &1.3768 &0.0034 &0.0071 &0.0235   \\
+SineGeneratoF2BF &0.0121 &0.0051 &0.0053 &\textbf{0.0001} &0.0314 &0.0077 &5.0598 &5.9477 &0.0117 &1.3996 &0.0027 &0.0074 &0.0236   \\
+STAGGERGeneratorF1BF &0.0021 &0.0006 &0.0006 &\textbf{0.0001} &0.0323 &0.0005 &0.0006 &0.0005 &0.0015 &0.6175 &0.0003 &0.0022 &0.0143   \\
+STAGGERGeneratorF2BF &0.0022 &0.0010 &0.0009 &\textbf{0.0001} &0.0340 &0.0006 &0.0005 &0.0005 &0.0017 &0.6752 &0.0003 &0.0020 &0.0139   \\
+HyperplaneFasterAN5 &0.0264 &0.0200 &0.0200 &0.0440 &0.0269 &0.0115 &0.2298 &0.2417 &0.0312 &2.5014 &\textbf{0.0080} &0.0147 &0.0740   \\
+SEASuddenAN0 &0.0208 &0.0051 &0.0052 &0.0268 &0.0312 &0.0099 &0.0370 &0.0373 &0.0176 &1.3545 &\textbf{0.0032} &0.0059 &0.0335   \\
+SEASuddenAN05 &0.0284 &0.0055 &0.0055 &0.0257 &0.0309 &0.0095 &0.0321 &0.0334 &0.0167 &1.3365 &\textbf{0.0032} &0.0061 &0.0326   \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Average &0.0264 &0.0252 &0.0307 &\textbf{0.0043} &0.0359 &0.0441 &0.8252 &0.8721 &0.0531 &5.5690 &0.0175 &0.0269 &0.0663   \\
+Rank &6.5833 &4.7917 &5.7917 &\textbf{1.8750} &7.7500 &6.0833 &9.8333 &9.5833 &8.2917 &12.6667 &2.7917 &5.5417 &9.4167   \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\end{tabularx}}
+\begin{minipage}{0.9\textwidth}
+\centering
+\resizebox{\textwidth}{!}{\begin{tikzpicture}
+\draw (1,0) -- (13,0);
+\foreach \x in {1,2,3,4,5,6,7,8,9,10,11,12,13} {
+\draw (\x, 0) -- ++(0,.1) node [above,scale=0.7] {\tiny \x};
+\ifthenelse{\x < 13}{\draw (\x+.5, 0) -- ++(0,.03);}{}
+}
+
+\coordinate (c0) at (6.5833,0);
+\coordinate (c1) at (4.7917,0);
+\coordinate (c2) at (5.7917,0);
+\coordinate (c3) at (1.875,0);
+\coordinate (c4) at (7.75,0);
+\coordinate (c5) at (6.0833,0);
+\coordinate (c6) at (9.8333,0);
+\coordinate (c7) at (9.5833,0);
+\coordinate (c8) at (8.2917,0);
+\coordinate (c9) at (12.6667,0);
+\coordinate (c10) at (2.7917,0);
+\coordinate (c11) at (5.5417,0);
+\coordinate (c12) at (9.4167,0);
+
+\node (l0) at (c0) [above right=.3cm and 0cm, align=right,scale=0.7] {\tiny \textbf{OLLAWV}};
+\node (l1) at (c1) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny HOT};
+\node (l2) at (c2) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny AdaHOT};
+\node (l3) at (c3) [above left=.25cm and 0cm, align=right,scale=0.7] {\tiny NB};
+\node (l4) at (c4) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny $k$-NNPAW};
+\node (l5) at (c5) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny DDM};
+\node (l6) at (c6) [above right=.25cm and 0cm, align=right,scale=0.7] {\tiny VFDR};
+\node (l7) at (c7) [above right=.4cm and 0cm, align=right,scale=0.7] {\tiny VFDR-NB};
+\node (l8) at (c8) [above right=.1cm and 0cm, align=right,scale=0.7] {\tiny SAE2};
+\node (l9) at (c9) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny LearnNSE};
+\node (l10) at (c10) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny DWM};
+\node (l11) at (c11) [below left=.1cm and 0cm, align=right,scale=0.7] {\tiny DACC};
+\node (l12) at (c12) [below right=.1cm and 0cm, align=right,scale=0.7] {\tiny OCBoost};
+
+\fill[fill=gray,fill opacity=0.5] (1.875,-0.1) rectangle (4.835,0.1);
+
+\foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11,12} {
+\draw (l\x) -| (c\x);
+};
+\end{tikzpicture}}\vspace{-1em}
+\captionsetup{width=\linewidth}
+\captionof{figure}{Bonferroni-Dunn test for Training Time}\label{fig:BonfDunnTrainDS}
+\end{minipage}
+\end{table}
+
 \end{document}
