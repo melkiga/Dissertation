@@ -765,15 +765,14 @@ MP6SPEC & 80 & 700 & 3\\
 \end{tabular}
 \end{table}
 
-Experiments were performed over the RC, ST, MTS, MTSC, ERC, ERCC, and MORF algorithms, which have also been used in the experimental study conducted in~\cite{Spyromitros2014}. These algorithms were chosen because they have shown considerable performance in training multi-target models. The have also made their framework readily available for reproducing their results. All three SVR algorithms are implemented within the general framework of Mulan's MTRegressor\footnote{http://mulan.sourceforge.net}~\cite{mulan}, which was built on top of Weka\footnote{http://www.cs.waikato.ac.nz/ml/weka}~\cite{Hall2009}. LIBSVM's Epsilon-SVR~\cite{CC01a} implementation was used as the base SVR model. The parameters experimented with for the SVR regression task are the penalty parameter $C$, the Gaussian kernel parameter $\gamma$, and the error or tube parameter $\epsilon$ given by Equations~\eqref{eq:paramCmtr} to~\eqref{eq:paramE}, referred to as~\eqref{eq:hyperparammtr}.
+Experiments were performed over the RC, ST, MTS, MTSC, ERC, ERCC, and MORF algorithms, which have also been used in the experimental study conducted in~\cite{Spyromitros2014}. These algorithms were chosen because they have shown considerable performance in training multi-target models. The have also made their framework readily available for reproducing their results. All three SVR algorithms are implemented within the general framework of Mulan's MTRegressor\footnote{http://mulan.sourceforge.net}~\cite{mulan}, which was built on top of Weka\footnote{http://www.cs.waikato.ac.nz/ml/weka}~\cite{Hall2009}. LIBSVM's Epsilon-SVR~\cite{CC01a} implementation was used as the base SVR model. The parameters experimented with for the SVR regression task are the penalty parameter $C$, the Gaussian kernel parameter $\gamma$, and the error or tube parameter $\epsilon$ are shown below.
 
 \begin{subequations}
-\label{eq:hyperparammtr}
-\begin{align}
-C \in  & \{1, 10, 100\} \label{eq:paramCmtr}\\
-\gamma \in  & \{1^{-9}, 1^{-7}, 1^{-5}, 1^{-3}, 1^{-1}, 1, 5, 10\} \label{eq:mtrparamG}\\
-\epsilon \in  & \{0.01, 0.1, 0.2\} \label{eq:paramE}
-\end{align}
+\begin{align*}
+C \in  & \{1, 10, 100\} \\
+\gamma \in  & \{1^{-9}, 1^{-7}, 1^{-5}, 1^{-3}, 1^{-1}, 1, 5, 10\} \\
+\epsilon \in  & \{0.01, 0.1, 0.2\} 
+\end{align*}
 \end{subequations}
 
 To ensure a controlled environment when conducting the performance comparisons, the experimental environment for running the competing algorithms was the same as what was done in~\cite{Spyromitros2014}. This includes the following. The ST base-line model used was Bagging~\cite{Breiman1996} of 100 regression trees~\cite{Wu2015430}. The MTSC and ERCC methods are run using $10$-fold cross-validation, and the ensemble size for the ERC and ERCC methods was set to $10$. The ensemble size of 100 trees was used for MORF, and the rest of its parameters were set as recommended by~\cite{Kocev2013}.
@@ -1611,13 +1610,12 @@ Function & 200 & 443 & 4799 & 5242 & 55536 &  10.59  \\
 
 The experimental environment was designed to test the difference in performance of the proposed method against $11$ competing algorithms, contrasting instance-level, bag-level, and ensemble methods. Instance-level methods include MIOptimalBall, MIBoost, MISVM, MIDD, and MIWrapper. Bag-level methods include MISMO, SimpleMI, miGraph, and TLC. The ensemble-based bag-space methods, Bagging and Stacking, were also used. The base algorithms selected for the ensembles Bagging and Stacking were TLC, and TLC and SimpleMI, respectively. These algorithms were chosen because they have shown considerable performance in learning multi-instance models, while also having their frameworks readily available for reproducing their results through MILK, the Multi-Instance Learning Kit\footnote{http://www.cs.waikato.ac.nz/ml/milk}~\cite{Xu2003}, used in conjunction with the Weka framework. Experiments were run on an Intel i7-6700k CPU with 32GB RAM. MIRSVM was implemented in MATLAB while the referenced algorithms are available in the Java implementation of Weka with the exception of miGraph which was made available by Zhou et al.\footnote{http://lamda.nju.edu.cn/code\_miGraph.ashx} and tested in MATLAB.
 
-We have compared the models trained on the different hyperparameters using the cross-validation (CV) procedure which ensures that the models’ performances are accurately assessed and the model built is not biased towards the full dataset. The tuning of the model includes finding the best penalty parameter, $C$, as well as the best shape parameter for the Gaussian radial basis function kernel, $\sigma$. The best hyperparameters were chosen from the following $6 \times 6$ possible combination runs, shown in Equations~\eqref{eq:paramC} and~\eqref{eq:miparamG}, referred to as~\eqref{eq:hyperparam}. 
+We have compared the models trained on the different hyperparameters using the cross-validation (CV) procedure which ensures that the models’ performances are accurately assessed and the model built is not biased towards the full dataset. The tuning of the model includes finding the best penalty parameter, $C$, as well as the best shape parameter for the Gaussian radial basis function kernel, $\sigma$. The best hyperparameters were chosen from the following $6 \times 6$ possible combination runs, shown in below.
 \begin{subequations}
-\label{eq:hyperparam}
-\begin{align}
-C \in  & \{0.1, 1, 10, 100, 1000, 10000\} \label{eq:paramC}\\
-\sigma \in  & \{0.1, 0.5, 1, 2, 5, 10\} \label{eq:miparamG}
-\end{align}
+\begin{align*}
+C \in  & \{0.1, 1, 10, 100, 1000, 10000\} \\
+\sigma \in  & \{0.1, 0.5, 1, 2, 5, 10\} 
+\end{align*}
 \end{subequations}
 These parameters were also used for the compared SVM methods. This was done in order to keep the experimental environment controlled and ensure fair evaluation of the multi-instance SVM algorithms. The parameters for the referenced algorithms used throughout the experiments were those specified by their authors.
 
@@ -2401,13 +2399,12 @@ Table~\ref{tab:ollawvDataset} presents a summary of the $23$ datasets used throu
 \subsection{SVM Experimental Setup}\label{subsec:expsvm}
 The experimental setup was designed to evaluate differences in performance of the proposed OLLAWV method against the algorithms: \textit{Minimal Norm SVM} (MNSVM) \cite{strack2013geometric} and \textit{Non-Negative Iterative Single Data Algorithm} (NNISDA)~\cite{zigic2016}. These algorithms were chosen because they have shown considerable performance in run time, memory consumption, and accuracy against the popular and widely used LIBSVM and LibCVM packages. In~\cite{strack2013geometric}, it was shown that MNSVM outperforms both the L1 and L2 implementations of LIBSVM, and BVM embedded in LibCVM. NNISDA was then compared to MNSVM in~\cite{zigic2016}, and showed an added improvement in run time performance. MNSVM was implemented in an open source C++ framework called ``GSVM \textendash ~Command Line Tool for Geometric SVM Training\footnote{\url{https://github.com/strackr/gsvm}}''. Both, NNISDA and OLLAWV were implemented as additional modules within Strack-Kecman's code, keeping the experimental environment controlled for all three algorithms. The experiments for all methods were run on the same machine containing two Intel Xeon X5680 CPUs (6-core, 3.33 GHz) and 96 GB of RAM.
 
-Experiments were performed using double, or nested, $5$-fold cross-validation in order to objectively evaluate the models' performances and tune hyperparameters. In the outer loop, the data are separated into $5$ equally sized folds and each part is held out in turn as the test set, and the remaining four parts are used as the training set. In the inner loop, $5$-fold cross-validation is also used over the training set assigned by the outer loop, where the best hyperparameters are chosen. The best model obtained by the inner loop is then applied on the outer loop's test set. This procedure ensures the model's performance is not optimistically biased as when using a single loop of $k$-fold cross-validation. It ensures the class labels of the test data will not be seen when tuning the hyperparameters, which is consistent with real-world applications. Obviously, such a rigorous procedure is computationally expensive, but the goal is to fairly compare different classification models on the same data sets, with the same cross-validation procedure, and hyperparameters. First, the datasets were normalized by linear transformation of the feature values to the range $[0,1]$. Then, the training process, also involving model selection using pattern search, was performed. The best hyperparameters were chosen from the following $8 \times 8$ possible combinations, shown in Equations~\eqref{eq:paramColla} and~\eqref{eq:paramGolla}, and were also used for the competing SVM methods.
+Experiments were performed using double, or nested, $5$-fold cross-validation in order to objectively evaluate the models' performances and tune hyperparameters. In the outer loop, the data are separated into $5$ equally sized folds and each part is held out in turn as the test set, and the remaining four parts are used as the training set. In the inner loop, $5$-fold cross-validation is also used over the training set assigned by the outer loop, where the best hyperparameters are chosen. The best model obtained by the inner loop is then applied on the outer loop's test set. This procedure ensures the model's performance is not optimistically biased as when using a single loop of $k$-fold cross-validation. It ensures the class labels of the test data will not be seen when tuning the hyperparameters, which is consistent with real-world applications. Obviously, such a rigorous procedure is computationally expensive, but the goal is to fairly compare different classification models on the same data sets, with the same cross-validation procedure, and hyperparameters. First, the datasets were normalized by linear transformation of the feature values to the range $[0,1]$. Then, the training process, also involving model selection using pattern search, was performed. The best hyperparameters were chosen from the following $8 \times 8$ possible combinations, shown below, and were also used for the competing SVM methods.
 \begin{subequations}
-\label{eq:hyperparamolla}
-\begin{align}
-C \in \set{4^n}, & \,\,\,\,\,n = \set{-2, \ldots, 5} \label{eq:paramColla}\\
-\gamma \in \set{4^n},  & \,\,\,\,\,n = \set{-5, \ldots, 2} \label{eq:paramGolla}
-\end{align}
+\begin{align*}
+C \in \set{4^n}, & \,\,\,\,\,n = \set{-2, \ldots, 5} \\
+\gamma \in \set{4^n},  & \,\,\,\,\,n = \set{-5, \ldots, 2} 
+\end{align*}
 \end{subequations}
 The $\gamma$ parameter refers to that of the Gaussian RBF kernel, given by:
 \begin{equation}
@@ -2887,13 +2884,12 @@ In the context of traditional batch learning, the most popular and unbiased meth
 \end{algorithmic} 
 \end{algorithm}
 
-Along with the prequential evaluation method, traditional $k$-fold cross-validation was used in the OLLAWV experiments for the purpose of model selection. Once the first batch is received by the algorithm, $5$-fold cross-validation is performed to select the best representative parameters for the current batch, and once they are chosen, they will be used for the remaining batches. This rigorous procedure is computationally expensive, however, the goal is to optimally and fairly find the best representative SVM parameters for the incoming stream. Each batch of samples is first normalized by linear transformation of the feature values to the range [0,1]. Then the training process, also involving cross-validation and prequential evaluation, are performed. To deal with multi-class classification problems, the one-vs-one, or pairwise, approach was used. The best hyperparameters were chosen from the following $6 \times 7$ possible combinations, shown in Equations~\eqref{eq:paramCollads} and~\eqref{eq:paramGollads}. 
+Along with the prequential evaluation method, traditional $k$-fold cross-validation was used in the OLLAWV experiments for the purpose of model selection. Once the first batch is received by the algorithm, $5$-fold cross-validation is performed to select the best representative parameters for the current batch, and once they are chosen, they will be used for the remaining batches. This rigorous procedure is computationally expensive, however, the goal is to optimally and fairly find the best representative SVM parameters for the incoming stream. Each batch of samples is first normalized by linear transformation of the feature values to the range [0,1]. Then the training process, also involving cross-validation and prequential evaluation, are performed. To deal with multi-class classification problems, the one-vs-one, or pairwise, approach was used. The best hyperparameters were chosen from the following $6 \times 7$ possible combinations. 
 \begin{subequations}
-\label{eq:hyperparamollads}
-\begin{align}
-C \in \set{0.01, 0.1, 1.0, 10.0, 100.0, 1000.0} \label{eq:paramCollads}\\
-\gamma \in \set{0.01, 0.1, 0.5, 1.0, 2.0, 4.0, 16.0} \label{eq:paramGollads}
-\end{align}
+\begin{align*}
+C \in \set{0.01, 0.1, 1.0, 10.0, 100.0, 1000.0} \\
+\gamma \in \set{0.01, 0.1, 0.5, 1.0, 2.0, 4.0, 16.0} 
+\end{align*}
 \end{subequations}
 The $\gamma$ parameter refers to that of the Gaussian RBF kernel, given by:
 \begin{equation}
