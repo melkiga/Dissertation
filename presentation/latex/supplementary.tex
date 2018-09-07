@@ -1217,7 +1217,7 @@ Rank &\textbf{2.52} &5.42 &4.54 &8.19 &4.8542 &4.63 &10.96 &6.77 &8.46 &9.04 &7.
 \newpage
 
 \begin{table}[H]
-\caption{Training Time (seconds) for Data Stream Classifiers} \vspace{-1em}
+\caption*{Training Time (seconds) for Data Stream Classifiers} \vspace{-1em}
 \small \centering
 \resizebox{\textwidth}{!}{\begin{tabularx}{1.5\textwidth}{l@{\extracolsep{\fill}}cccccccccccccc}
 \noalign{\smallskip}\hline\noalign{\smallskip}
@@ -1294,10 +1294,62 @@ Rank &6.5833 &4.7917 &5.7917 &\textbf{1.8750} &7.7500 &6.0833 &9.8333 &9.5833 &8
 \foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11,12} {
 \draw (l\x) -| (c\x);
 };
-\end{tikzpicture}}\vspace{-1em}
-\captionsetup{width=\linewidth}
-\captionof{figure}{Bonferroni-Dunn test for Training Time}\label{fig:BonfDunnTrainDS}
+\end{tikzpicture}}
 \end{minipage}
 \end{table}
+
+\newpage
+
+\begin{minipage}{\paperwidth}
+\centering
+\begin{table}[H]
+\centering 
+\caption*{Algorithms} \vspace{-1em}
+\begin{tabularx}{0.4\paperwidth}{l@{\extracolsep{\fill}}l}
+\hline\noalign{\smallskip}
+Algorithm 	& Description 						\\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+HOT				& Hoeffding Option Tree 	\\
+AdaHOT 		& Adaptive Hoeffding Option Tree			\\
+NB				& Na\"{i}ve Bayes 					\\
+$k$-NNPAW	& $k$-NN with Probabilistic Adaptive Windows \\
+DDM			 	& Drift Detection Method with HOT  	\\
+VFDR			& Very Fast Decision Rules 			\\
+VFDR-NB		& VFDR with Na\"{i}ve Bayes			\\
+SAE2			& Social Adaptive Ensemble 2			\\
+Learn.NSE		& Learn++ for Non-Stationary Environments\\
+DWM			 	& Dynamic Weighted Majority 	\\
+DACC			& Dynamic Adaptation to Concept Changes 		\\
+OCBoost		& Online Coordinate Boosting 		\\
+\noalign{\smallskip}\hline
+\end{tabularx}
+\end{table}
+\end{minipage}
+\begin{minipage}{0.4\paperwidth}
+\centering
+\begin{table}[H]
+\centering
+\caption*{Base Streamed Datasets \& Generators} \vspace{-1em}
+\begin{tabularx}{0.4\paperwidth}{l@{\extracolsep{\fill}}rrr}
+\hline\noalign{\smallskip}
+Dataset & \# Samples & \# Attributes & \# Classes \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\textbf{\textit{Static}} 		&				&				& 		\\
+Shuttle 						&    57,999		&   10 			& 	7 \\
+Census							&   299,284     &  	42			& 	2 \\
+CovType		 					&   581,012     & 	55			& 	7 \\
+\textbf{\textit{Generators}} 	&				&				& 		\\
+RandomRBFGenerator 	       	 	& 	1,000,000	& 	10	        & 	2 \\ %moa
+LEDGenerator	 	       	 	& 	1,000,000	& 	2	        & 	10 \\ %moa
+HyperplaneGenerator 	        & 	1,000,000	& 	10	        & 	2 \\ %
+WaveformGenerator 	       	 	& 	1,000,000	& 	40	        & 	3 \\ %moa
+STAGGERGenerator 	 			& 	1,000,000	& 	3	        & 	2 \\ %Incremental Learning from Noisy Data
+MixedGenerator 					& 	1,000,000	& 	4	        & 	2 \\%Learning with drift detection.
+SineGenerator 					& 	1,000,000	& 	2	        & 	2 \\%Learning with drift detection.
+SEAGenerator	       			& 	1,000,000	& 	2	        & 	2 \\ %A streaming ensemble algorithm (SEA) for large-scale classification
+\noalign{\smallskip}\hline
+\end{tabularx}
+\end{table}
+\end{minipage}
 
 \end{document}
