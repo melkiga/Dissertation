@@ -1352,4 +1352,39 @@ SEAGenerator	       			& 	1,000,000	& 	2	        & 	2 \\ %A streaming ensemble a
 \end{table}
 \end{minipage}
 
+\newpage
+
+\begin{figure}
+\centering  \small
+\adjustbox{scale=0.9}{
+\begin{tikzpicture}[%
+    node distance=4cm,
+    on grid,
+    auto
+]
+\node[block](A) {Initialize training variables}; % A
+\node(B)[decision,right of=A,fill=gray!55,text width=2cm] {\textbf{$\mathtt{while}$} \\ $t <$ max number of iterations}; %B
+
+\draw[arrow] (A) -- (B);
+
+\node(C)[block, above right of=B, text width=6em] {Terminate}; %C
+
+\draw[arrow] (B.north)--+(0,0.92cm) -- (C.west) node[above,pos=0.25] {no};
+
+\node(D)[decision,right of=B,fill=gray!55,text width=2cm] {\textbf{$\mathtt{if}$} sample is a violator}; %D
+
+\draw[arrow] (B) -- (D) node[above,pos=0.25] {yes};
+
+\node(E)[block, below=3.3cm and 4cm of D, text width=6em]{Calculate current sample output}; %E
+
+\draw[arrow] (D.south) -- (E.north) node[right,pos=0.25] {no};
+\draw[arrow] (E.west) --+(-2.9cm,0cm) -- (B.south);
+
+\node(F)[block, right of=D, text width=6em] {Update the violator's alpha, \& bias term}; %F
+
+\draw[arrow] (D) -- (F);
+\draw[arrow] (F.south) --+(0,-2.48cm) -- (E.east);
+\end{tikzpicture}}
+\end{figure}
+
 \end{document}
