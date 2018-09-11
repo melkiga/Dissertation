@@ -275,8 +275,8 @@ Ranks &5.5 &3.71 &6.0 &8.29 &3.0 &7.08 &9.92 &\textbf{1.88} &6.71 &2.92   \\
 \begin{aligned}
 \min\limits_{\bm w, b,\bm\xi}& {\,\,} \frac{1}{2}||\bm{w}||^2 + C\sum_I \xi_I, & \max\limits_{\bm \alpha}& \sum_I \alpha_I - \frac{1}{2}\sum_I \sum_{K \in I} \alpha_I \alpha_K Y_I Y_K  \spa{K}\left(\bm{x}_{s_I},\bm{x}_{s_K}\right) \\
 \text{s.t.}& {\,\,} Y_I(\langle\bm{w},\bm x_{s_I}\rangle + b) \geq 1 - \xi_I,\, \forall I \in \set{1,\ldots,n}, & \text{s.t.}&  \sum_I{\alpha_IY_I} = 0,\, \\
-{} & {\,\,} \xi_I \geq 0,\, \forall I \in \set{1,\ldots,n}, & {} & 0 \leq \alpha_I \leq C,\, \forall I \in \set{1,\ldots,n},  \\
-{} & s_I = \underset{i \in I}{\text{argmax}} (\langle \bm w,\, \bm x_i \rangle + b),\, \forall I \in \set{1,\ldots,n}. & {} & s_I = \underset{i \in I}{\text{argmax}}(\bm o_I),\, \forall I \in \set{1,\ldots,n}.
+{} & {\,\,} \xi_I \geq 0,\, \forall I \in \set{1,\ldots,n}, & {} & 0 \leq \alpha_I \leq C,\, \forall I \in \set{1,\ldots,n},  \\[8pt]
+{} & s_I = \underset{i \in I}{\text{argmax}} (\langle \bm w,\, \bm x_i \rangle + b),\, \forall I \in \set{1,\ldots,n} & {} & s_I = \underset{i \in I}{\text{argmax}}(\bm o_I),\, \forall I \in \set{1,\ldots,n}
 \end{aligned}
 \end{equation*}
 
