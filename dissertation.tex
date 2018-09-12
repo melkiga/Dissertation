@@ -705,7 +705,7 @@ h_1 :  [\bm X] \rightarrow \bm{\hat{Y_1}} \arrow[r]
 \renewcommand{\algorithmicrequire}{\textbf{Input:}}
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
 \State $\bm \Rho = corrcoef(\bm Y)$ \Comment{Find correlation coefficient matrix for target variables}
-\State $\bm C = \sum_{i=1}^n \bm \Rho_{ij}, \forall j=1,\ldots,m$ \Comment{Sum row elements of the correlation coefficient matrix}
+\State $\bm C = \sum_{i=1}^n |\bm{\Rho}_{ij}|, \forall j=1,\ldots,m$ \Comment{Sum row elements of the correlation coefficient matrix}
 \State $\bm C = \mathtt{sort}\left(\bm C,\textbf{decreasing}\right)$ \Comment{Sort sums in decreasing order}
 \State $h_{\bm C} = \mathtt{buildChainedModel} (\mathcal{D},\bm C)$ \Comment{build a chained model for max correlation chain $\bm C$} 
 \end{algorithmic} 
